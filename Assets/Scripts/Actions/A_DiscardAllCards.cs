@@ -1,0 +1,81 @@
+﻿using UnityEngine;
+using System.Collections.Generic;
+
+public class A_DiscardAllCards : Action
+{
+    public A_DiscardAllCards(int photonId, int actionId = -1) : base(photonId, actionId) {}
+
+    public override bool Continue()
+    {
+        return true;
+    }
+
+    public override void Execute()
+    {
+        if (!isInit)
+        {
+            List<Action> discardActions = new List<Action>();
+            List<Card> cardsToDiscard = new List<Card>();
+
+            PlayerHolder player = GM.getPlayerHolder(photonId);
+
+            cardsToDiscard.AddRange(PrepareForDiscard(player.handCards));
+            cardsToDiscard.AddRange(PrepareForDiscard(player.playedCards));
+
+
+            for (int i = 0; i < cardsToDiscard.Count; i++)
+            {
+                Card card = cardsToDiscard[i];
+
+                A_Discard discard_card = new A_Discard(card.instanceId, photonId);
+
+                GM.actionManager.PushAction(actionId, discard_card);
+
+                discardActions.Add(discard_card);
+            }
+
+            linkedActions.AddRange(discardActions);
+
+            isInit = true;
+        }
+    }
+
+    List<Card> PrepareForDiscard(List<Card> cardList)
+    {
+        List<Card> cardsToDiscard = new List<Card>();
+
+        for (int i = 0; i < cardList.Count; i++)
+        {
+            bool skip = false;
+
+            Card card = cardList[i];
+            CardInstance physInstance = card.cardPhysicalInst;
+
+            foreach (CardEffect effect in card.cardEffects)
+            {
+                effect.isDone = false;
+
+                if (effect.type == EffectType.MAINTAIN || effect.type == EffectType.PREVAIL)
+                {
+                    skip = true;
+                }
+            }
+
+            if (!skip)
+            {
+                physInstance.setCurrentLogic(GM.resourcesManager.dataHolder.discardLogic);
+
+                physInstance.viz.cardBorder.color = Color.black;
+
+                cardsToDiscard.Add(card);
+            }
+        }
+
+        return cardsToDiscard;
+    }
+
+    public override bool IsComplete()
+    {
+        return isInit;
+    }
+}

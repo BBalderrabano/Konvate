@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db19fcd9fae00ca43bf27047e40084b4, type: 3}
+  m_Name: Ase_CE_Preparacion
+  m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviour
+  isTemporary: 0
+  priority: 3
+  type: 1
+  effectTags: 0c000000
+  amount: 2
+  comboDiscount: {fileID: 11400000, guid: 93822d3c8b815e942b658d9869fe2811, type: 2}

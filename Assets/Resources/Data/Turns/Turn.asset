@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dea19cb1a56625348aaa758dcbcbf88a, type: 3}
+  m_Name: Turn
+  m_EditorClassIdentifier: 
+  currentPhase: {fileID: 11400000, guid: 6bb8ba318859f1c4a88af43e3b92f630, type: 2}
+  phases:
+  - {fileID: 11400000, guid: 86e755b2d33c89248bb8a7cdc74cf343, type: 2}
+  - {fileID: 11400000, guid: def6c76ca94d65c4ebd7a4de45da920d, type: 2}
+  - {fileID: 11400000, guid: 9b17233e20e90d046b7892dc871e7111, type: 2}
+  - {fileID: 11400000, guid: 9d1a3bf2dd7e31c4bb878f752acd418f, type: 2}
+  - {fileID: 11400000, guid: 31da3533cba2a434e838ae7a87e6a5a6, type: 2}
+  - {fileID: 11400000, guid: 880fe10a797469b4eb52f017d2eb5789, type: 2}
+  - {fileID: 11400000, guid: e193432aec4a62b47956e606948ae4dc, type: 2}
+  - {fileID: 11400000, guid: 11b24df1afc9f62469c8dd0f55077510, type: 2}
+  - {fileID: 11400000, guid: 4bc376867548fc649b2ace5efba8c3ee, type: 2}
+  - {fileID: 11400000, guid: 00f1d3da71de7c34e8bce9bbd1cc1e02, type: 2}
+  localPlayer: {fileID: 11400000, guid: 126e2f04c594a8f48a738f2e0728588c, type: 2}
+  clientPlayer: {fileID: 11400000, guid: 136895e718f1cf044807aeec75f4557b, type: 2}
+  offensivePlayer: {fileID: 11400000, guid: 126e2f04c594a8f48a738f2e0728588c, type: 2}
+  offensiveChip: {fileID: 0}
+  turnCount: 0

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a690ff51c21df6840a240e723fb5d079, type: 3}
+  m_Name: Ase_DagaEnvenenada
+  m_EditorClassIdentifier: 
+  CardCost: 1
+  cardName: Daga Envenenada
+  art: {fileID: -8721808903620248100, guid: 97a79c830db58284fb68dd5fed6f8a64, type: 3}
+  classIcon: {fileID: 21300000, guid: 57a308f36f61f40448287854439f13ae, type: 3}
+  cardType: {fileID: 11400000, guid: 0e3332cf33a066a4d8be0f706aa9ccea, type: 2}
+  cardText: '<color=#1E9D44> Coloca </color>1 <sprite=1>
+
+    <color=#FF0000> Coloca
+    </color>1 <sprite=0>'
+  cardEffects:
+  - {fileID: 11400000, guid: ede2e68374dc4644d9e9456480433e7e, type: 2}
+  - {fileID: 11400000, guid: 33a1dbbfa375bdf49bd869a36b75960a, type: 2}
+  conditions: []
+  cardTags: 01000000020000000600000005000000

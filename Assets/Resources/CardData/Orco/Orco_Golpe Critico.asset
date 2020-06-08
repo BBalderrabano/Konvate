@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a690ff51c21df6840a240e723fb5d079, type: 3}
+  m_Name: Orco_Golpe Critico
+  m_EditorClassIdentifier: 
+  CardCost: 1
+  cardName: "Golpe Cr\xEDtico"
+  art: {fileID: 150573892755324403, guid: 16ddd29cb9f74e7498e3ac8a48497102, type: 3}
+  classIcon: {fileID: 21300000, guid: 2c8b01a2dc74d8043b92177bacc47146, type: 3}
+  cardType: {fileID: 11400000, guid: 0e3332cf33a066a4d8be0f706aa9ccea, type: 2}
+  cardText: '<color=#FF0000> Coloca </color>3 <sprite=0>
+
+    Autoinflije 1 <sprite=2>'
+  cardEffects:
+  - {fileID: 11400000, guid: dfc3a647185509a4881a7e5432845e1c, type: 2}
+  - {fileID: 11400000, guid: 1f770f73eec48a34dbb509882675611e, type: 2}
+  conditions: []
+  cardTags: 01000000020000000500000007000000

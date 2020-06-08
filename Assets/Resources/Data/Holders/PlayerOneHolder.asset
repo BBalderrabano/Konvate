@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 032b5dc03497752449ffa4b3349014b6, type: 3}
+  m_Name: PlayerOneHolder
+  m_EditorClassIdentifier: 
+  deckGrid: {fileID: 11400000, guid: 7e470e8cb90fe2049a7f292fb416ef96, type: 2}
+  handGrid: {fileID: 11400000, guid: 2bdcbd4b2cc589647a05e87a1fd860e7, type: 2}
+  playedGrid: {fileID: 11400000, guid: e05e0ea572250af478522b54f9ceb853, type: 2}
+  discardGrid: {fileID: 11400000, guid: 80ac9f0a8e62b7a449e84bf135d1ab2c, type: 2}
+  bleedChipHolder: {fileID: 11400000, guid: a609c9b6f02d91342a3ce1f976e24603, type: 2}
+  combatChipHolder: {fileID: 11400000, guid: b63cb600462078348856a7afd4a1a68e, type: 2}
+  poisonChipHolder: {fileID: 11400000, guid: 7505f3bdf13b2f54b9c8efc9dadf2e94, type: 2}
+  playedCombatChipHolder: {fileID: 11400000, guid: b1e69000cb9eb114282d4bf3f9534185,
+    type: 2}
+  playedPoisonChipHolder: {fileID: 11400000, guid: d4b503bf08f06d24299071e1cc6dcb15,
+    type: 2}

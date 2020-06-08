@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6db648d9446c03d4faab3f39fee6b0c0, type: 3}
+  m_Name: Mazo_Caballero
+  m_EditorClassIdentifier: 
+  deckName: Caballero
+  cardIds:
+  - Ataque Basico
+  - Ataque Basico
+  - Ataque Basico
+  - Ataque Basico
+  - Ataque Basico
+  - Defensa
+  - Defensa
+  - Defensa
+  - Defensa
+  - Defensa
+  - Cab_Refrigerio
+  - Cab_Golpe con Escudo
+  - Cab_Golpe con Escudo
+  - Cab_Refuerzo
+  - Cab_Parry
+  - Cab_Parry
+  - Cab_Golpe Critico
+  - Cab_Golpe Critico
+  - Cab_Defensa Superior
+  - Cab_Defensa Superior

@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a8d1862a9558834e809f4e69d705fa2, type: 3}
+  m_Name: MouseHoldWithCard
+  m_EditorClassIdentifier: 
+  currentCard: {fileID: 11400000, guid: fb8342578fe1eae42aec941b29400f7f, type: 2}
+  originalCard: {fileID: 11400000, guid: 58c9c4ee1001d724790d5f602c89137b, type: 2}
+  playerControlState: {fileID: 11400000, guid: ac95c4d4474a2a441b0847b40942c727, type: 2}
+  onPlayerControlState: {fileID: 11400000, guid: 58993748bba7a0b47a51175374e0ae3b, type: 2}

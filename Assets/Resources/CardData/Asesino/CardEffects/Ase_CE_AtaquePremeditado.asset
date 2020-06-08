@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5737746e4f6d5aa46bc72f207e341f80, type: 3}
+  m_Name: Ase_CE_AtaquePremeditado
+  m_EditorClassIdentifier: 
+  isTemporary: 0
+  priority: 3
+  type: 2
+  effectTags: 
+  doneSelecting: {fileID: 11400000, guid: 83735d34e4e26ce46a737f53ada18aad, type: 2}
+  selectedCards: {fileID: 11400000, guid: 077a8c941824af94193c868751aa4d2a, type: 2}
+  maintainEffect: {fileID: 11400000, guid: 6c8c95dd7e64cbe428a3bfba67052d54, type: 2}
+  PhaseControllerChangeEvent: {fileID: 11400000, guid: 0cfaa6fbdfcf2c1409179548862600b0,
+    type: 2}

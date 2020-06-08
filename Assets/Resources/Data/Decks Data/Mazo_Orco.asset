@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6db648d9446c03d4faab3f39fee6b0c0, type: 3}
+  m_Name: Mazo_Orco
+  m_EditorClassIdentifier: 
+  deckName: Orco
+  cardIds:
+  - Orco_Frenesi
+  - Orco_Frenesi
+  - Orco_Fuerza en Numeros
+  - Orco_Fuerza en Numeros
+  - Orco_Fuerza en Numeros
+  - Orco_Golpe Critico
+  - Orco_Golpe Critico
+  - Orco_Odio Orco
+  - Orco_Odio Orco
+  - Orco_Porrazo
+  - Orco_Porrazo
+  - Orco_Romper Armadura
+  - Ataque Basico
+  - Ataque Basico
+  - Ataque Basico
+  - Ataque Basico
+  - Ataque Basico
+  - Defensa
+  - Defensa
+  - Defensa

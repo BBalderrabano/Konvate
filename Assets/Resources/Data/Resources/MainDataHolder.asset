@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b33cd3b6d3fdea44087549dd114ab30e, type: 3}
+  m_Name: MainDataHolder
+  m_EditorClassIdentifier: 
+  offensiveChip: {fileID: 7396917724270986844, guid: 9f8935d8168ccc04b83ae6173f2c9c21,
+    type: 3}
+  bleedChipPrefab: {fileID: 7396917724270986844, guid: b57be492259b00a4f8e1b8807bc392be,
+    type: 3}
+  cardPrefab: {fileID: 3812758503073055535, guid: 99a0dac87a4c90b459157eeba1ea2785,
+    type: 3}
+  cardQuickPlayLogic: {fileID: 11400000, guid: ab76b014d341d054aa2197ca77bec849, type: 2}
+  cardFaceDownLogic: {fileID: 11400000, guid: 12cedea7dfed0a749a1dd4b851ca566e, type: 2}
+  handLogic: {fileID: 11400000, guid: 2f63eaa3c6d930d46aa56839777d422c, type: 2}
+  opponentHandLogic: {fileID: 11400000, guid: 3a6da82dddfe45c47bd09302f713b1b5, type: 2}
+  playedLogic: {fileID: 11400000, guid: ab76b014d341d054aa2197ca77bec849, type: 2}
+  discardLogic: {fileID: 11400000, guid: d5f044f32c10b5245acb94c2b13fde8a, type: 2}
+  deckLogic: {fileID: 11400000, guid: 3f8cad92b4408b040b78d837a60aae7c, type: 2}
+  quickPlayType: {fileID: 11400000, guid: 824122562ba26474b9e5d23302a17560, type: 2}
+  setPlayType: {fileID: 11400000, guid: 0e3332cf33a066a4d8be0f706aa9ccea, type: 2}
+  carouselIsDone: {fileID: 11400000, guid: 83735d34e4e26ce46a737f53ada18aad, type: 2}
+  carouselSelection: {fileID: 11400000, guid: 077a8c941824af94193c868751aa4d2a, type: 2}

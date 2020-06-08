@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a690ff51c21df6840a240e723fb5d079, type: 3}
+  m_Name: Defensa
+  m_EditorClassIdentifier: 
+  CardCost: 1
+  cardName: Defensa
+  art: {fileID: -1130204270925325466, guid: 8eb29d46c2c8afc4aab1f56d10fbaf44, type: 3}
+  classIcon: {fileID: -3489923402679896410, guid: 2eee63c6bb266654b9b31ef874534da9,
+    type: 3}
+  cardType: {fileID: 11400000, guid: 0e3332cf33a066a4d8be0f706aa9ccea, type: 2}
+  cardText: <color=#036bfc> Remueve </color>1<sprite=0>
+  cardEffects:
+  - {fileID: 11400000, guid: a9c5218c23a864845a4e48805a14b72e, type: 2}
+  conditions: []
+  cardTags: 000000000300000008000000

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a690ff51c21df6840a240e723fb5d079, type: 3}
+  m_Name: Pes_GranVeneno
+  m_EditorClassIdentifier: 
+  CardCost: 1
+  cardName: Gran Veneno
+  art: {fileID: -6715933494441364696, guid: f205d4b6ceb05924483801ce30c77fd5, type: 3}
+  classIcon: {fileID: 21300000, guid: 80d50a17ad7910344a6eb1e82f1228f0, type: 3}
+  cardType: {fileID: 11400000, guid: 0e3332cf33a066a4d8be0f706aa9ccea, type: 2}
+  cardText: <color=#1E9D44> Coloca </color>3 <sprite=1>
+  cardEffects:
+  - {fileID: 11400000, guid: 422356b891a0e8d409de6d0dc587dbbb, type: 2}
+  conditions: []
+  cardTags: 01000000060000000200000011000000
