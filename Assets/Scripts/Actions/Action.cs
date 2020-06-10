@@ -1,32 +1,31 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
 public abstract class Action
 {
-    public bool isInit = false;
-    public bool readyToRemove = false;
-
-    public int photonId;
-    public int actionId;
-    List<SyncSignal> playerSync;
-
-    public List<Action> linkedActions = new List<Action>();
-    public List<Animation> linkedAnimations = new List<Animation>();
-
-    public bool forceContinue = false;  //TODO: Unelegant solution, needs improvement
-
-    protected int effectOrigin;
-    protected int cardOrigin;
-
+    #region Variables
     protected GameManager GM
     {
         get { return GameManager.singleton; }
     }
 
+    public bool isInit = false;
+    public bool readyToRemove = false;
+
+    public int photonId;
+    public int actionId;
+
+    protected int effectOrigin;
+    protected int cardOrigin;
+
+    List<SyncSignal> playerSync;
+    #endregion
+
     public Action(int photonId, int actionId = -1)
     {
         this.isInit = false;
         this.readyToRemove = false;
-        this.forceContinue = false;
 
         if(photonId < 0)
         {
@@ -54,26 +53,62 @@ public abstract class Action
         }
     }
 
+    #region Linked Actions
+    public List<Action> linkedActions = new List<Action>();
+
     public virtual void PushActions(List<Action> actionsToPush)
     {
         linkedActions.AddRange(actionsToPush);
-
-        for (int i = (actionsToPush.Count) - 1; i > 0; i--)
-        {
-            actionsToPush[i].linkedActions.AddRange(linkedActions);
-            GM.actionManager.PushAction(actionId, actionsToPush[i]);
-        }
     }
 
     public virtual void PushAction(Action actionToPush)
     {
         linkedActions.Add(actionToPush);
-        actionToPush.linkedActions.AddRange(linkedActions);
-
-        GM.actionManager.PushAction(actionId, actionToPush);
     }
 
-    public virtual bool PlayersAreReady(bool log = false)
+    public virtual Action GetLinkedAction(int actionId)
+    {
+        for (int i = 0; i < linkedActions.Count; i++)
+        {
+            if (linkedActions[i].actionId == actionId)
+                return linkedActions[i];
+        }
+
+        return null;
+    }
+
+    public virtual void ExecuteLinkedAction(float t)
+    {
+        for (int i = 0; i < linkedActions.Count; i++)
+        {
+            Action current = linkedActions[i];
+        
+            if (!current.IsComplete())
+            {
+                current.Execute(t);
+
+                if (!current.Continue())
+                {
+                    break;
+                }
+            }
+            else
+            {
+                if (!current.readyToRemove)
+                {
+                    current.OnComplete();
+                }
+            }
+        }
+
+        linkedActions.RemoveAll(a => a.readyToRemove);
+    }
+
+    #endregion
+
+    public List<Animation> linkedAnimations = new List<Animation>();
+
+    public virtual bool PlayersAreReady()
     {
         for (int i = 0; i < playerSync.Count; i++)
         {
@@ -164,7 +199,7 @@ public abstract class Action
 
     public abstract bool IsComplete();
 
-    public abstract void Execute();
+    public abstract void Execute(float t);
 
     public virtual void OnComplete()
     {

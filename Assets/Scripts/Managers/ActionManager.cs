@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
@@ -49,6 +48,11 @@ public class ActionManager
             {
                 if (action.actionId == actionId)
                     return action;
+
+                if(action.GetLinkedAction(actionId) != null)
+                {
+                    return action.GetLinkedAction(actionId);
+                }
             }
         }
 
@@ -83,7 +87,7 @@ public class ActionManager
 
                 if (!current.IsComplete())
                 {
-                    current.Execute();
+                    current.Execute(d);
 
                     if (!current.Continue())
                     {

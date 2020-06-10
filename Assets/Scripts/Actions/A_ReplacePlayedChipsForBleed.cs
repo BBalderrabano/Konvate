@@ -8,7 +8,7 @@ public class A_ReplacePlayedChipsForBleed : Action
         return false;
     }
 
-    public override void Execute()
+    public override void Execute(float t)
     {
         if (!isInit)
         {

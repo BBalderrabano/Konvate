@@ -14,6 +14,10 @@ public class AnimationManager : MonoBehaviour
     public static float ANIMATION_DELAY = 0f;
     public static float ANIMATION_INTERVAL = 0.2f;
 
+    public static float CHIP_ANIMATION_TIME = 0.5f;
+    public static float CHIP_ANIMATION_DELAY = 0.5f;
+
+
     #region Move bleed chips to damage players
     public Animation MoveBleedChipsToDamagePlayers(int actionId)
     {
@@ -35,22 +39,24 @@ public class AnimationManager : MonoBehaviour
 
             for (int i = 0; i < playedChips.childCount; i++)
             {
-                float delay = ANIMATION_DELAY + (ANIMATION_INTERVAL * i);
+                float delay = CHIP_ANIMATION_DELAY + (ANIMATION_INTERVAL * i);
 
                 GameObject chip = playedChips.GetChild(i).gameObject;
+                GameObject parent = chip.GetComponent<Chip>().owner.currentHolder.bleedChipHolder.value.gameObject;
 
                 iTween.MoveTo(chip,
                     iTween.Hash(
                         "position", enemy.currentHolder.bleedChipHolder.value.position,
-                        "time", ANIMATION_TIME,
+                        "time", CHIP_ANIMATION_TIME,
                         "oncomplete", "BleedChipDamage",
                         "easetype", ANIMATION_STYLE,
                         "delay", delay,
                         "oncompleteparams", iTween.Hash("action", actionId,
-                                                        "new_parent", player.currentHolder.bleedChipHolder.value.gameObject,
+                                                        "new_parent", parent,
                                                         "object", chip,
                                                         "photonId", enemy.photonId,
-                                                        "animationId", animationPointer.animId),
+                                                        "animationId", animationPointer.animId,
+                                                        "reset_position", true),
                         "onCompleteTarget", this.gameObject
                 ));
             }
@@ -62,7 +68,10 @@ public class AnimationManager : MonoBehaviour
     public void BleedChipDamage(object animParams)
     {
         Hashtable hstbl = (Hashtable)animParams;
-        PlayerHolder player = ((PlayerHolder)hstbl["photonId"]);
+
+        int photonId = ((int)hstbl["photonId"]);
+
+        PlayerHolder player = GM.getPlayerHolder(photonId);
 
         player.ModifyBloodChip(-1);
 
@@ -101,14 +110,12 @@ public class AnimationManager : MonoBehaviour
             {
                 float delay = ANIMATION_DELAY + (ANIMATION_INTERVAL * i);
 
-                animationAmount++;
-
                 GameObject chip = playedChips.GetChild(i).gameObject;
 
                 iTween.RotateTo(chip,
                     iTween.Hash(
                         "rotation", rotateTo,
-                        "time", ANIMATION_TIME,
+                        "time", CHIP_ANIMATION_TIME,
                         "oncomplete", "RotateBleedChips",
                         "easetype", ANIMATION_STYLE,
                         "delay", delay,
@@ -139,16 +146,20 @@ public class AnimationManager : MonoBehaviour
 
         Settings.SetParent(bleedChip.transform, chipOwner.currentHolder.playedCombatChipHolder.value);
 
-        iTween.RotateAdd(bleedChip, 
+        bleedChip.transform.Rotate(rotateAdd);
+
+        iTween.RotateAdd(bleedChip,
             iTween.Hash(
-                    "rotation", rotateAdd,
-                    "time", ANIMATION_TIME,
+                    "amount", rotateAdd,
+                    "time", CHIP_ANIMATION_TIME,
+                    "delay", CHIP_ANIMATION_DELAY,
                     "oncomplete", "AM_FinishAnimation",
                     "oncompleteparams", iTween.Hash("action", action_id,
-                                                    "new_parent", chipOwner.currentHolder.bleedChipHolder.value.gameObject,
+                                                    "new_parent", null,
                                                     "object", bleedChip,
                                                     "photonId", -1,
-                                                    "animationId", animationId),
+                                                    "animationId", animationId,
+                                                    "reset_position", true),
                     "onCompleteTarget", this.gameObject
         ));
 
@@ -156,7 +167,7 @@ public class AnimationManager : MonoBehaviour
         {
             Settings.SetParent(chip.transform, chipOwner.currentHolder.poisonChipHolder.value.transform);
         }
-        else if (chip.GetComponent<Chip>().type == ChipType.COMBAT)
+        else if (chip.GetComponent<Chip>().type == ChipType.COMBAT || chip.GetComponent<Chip>().type == ChipType.OFFENSIVE)
         {
             Settings.SetParent(chip.transform, chipOwner.currentHolder.combatChipHolder.value.transform);
         }
@@ -211,8 +222,8 @@ public class AnimationManager : MonoBehaviour
 
                 iTween.MoveTo(chip,
                     iTween.Hash(
-                        "position", card.cardPhysicalInst.transform.position,
-                        "time", ANIMATION_TIME,
+                        "position", WorldToCanvasPosition(card.cardPhysicalInst.transform.position),
+                        "time", CHIP_ANIMATION_TIME,
                         "oncomplete", "AM_FinishAnimation",
                         "easetype", ANIMATION_STYLE,
                         "delay", delay,
@@ -220,7 +231,8 @@ public class AnimationManager : MonoBehaviour
                                                         "new_parent", parentTo,
                                                         "object", chip,
                                                         "photonId", photonId,
-                                                        "animationId", animationPointer.animId),
+                                                        "animationId", animationPointer.animId,
+                                                        "reset_position", false),
                         "onCompleteTarget", this.gameObject
                 ));
             }
@@ -273,7 +285,7 @@ public class AnimationManager : MonoBehaviour
 
             if (floatingDefense != null)
             {
-                travelTo = floatingDefense.effect.card.cardPhysicalInst.gameObject.transform.position;
+                travelTo = WorldToCanvasPosition(floatingDefense.effect.card.cardPhysicalInst.gameObject.transform.position);
 
                 if (type == ChipType.POISON)
                 {
@@ -305,7 +317,7 @@ public class AnimationManager : MonoBehaviour
             iTween.MoveTo(chip.gameObject,
                 iTween.Hash(
                     "position", travelTo,
-                    "time", ANIMATION_TIME,
+                    "time", CHIP_ANIMATION_TIME,
                     "oncomplete", "AM_FinishAnimation",
                     "easetype", ANIMATION_STYLE,
                     "delay", delay,
@@ -313,7 +325,8 @@ public class AnimationManager : MonoBehaviour
                                                     "new_parent", parentTo,
                                                     "object", chip.gameObject,
                                                     "photonId", photonId,
-                                                    "animationId", animationPointer.animId),
+                                                    "animationId", animationPointer.animId,
+                                                    "reset_position", true),
                     "onCompleteTarget", this.gameObject
             ));
         }
@@ -325,20 +338,19 @@ public class AnimationManager : MonoBehaviour
     {
         Animation animationPointer = new Animation();
 
-        PlayerHolder p = GM.getPlayerHolder(photonId);
-
         iTween.MoveTo(chip,
             iTween.Hash(
                 "position", position,
-                "time", ANIMATION_TIME,
+                "time", CHIP_ANIMATION_TIME,
                 "oncomplete", "AM_FinishAnimation",
                 "easetype", ANIMATION_STYLE,
-                "delay", ANIMATION_DELAY,
+                "delay", CHIP_ANIMATION_DELAY,
                 "oncompleteparams", iTween.Hash("action", actionId,
                                                 "new_parent", new_parent,
                                                 "object", chip,
                                                 "photonId", photonId,
-                                                "animationId", animationPointer.animId),
+                                                "animationId", animationPointer.animId,
+                                                "reset_position", true),
                 "onCompleteTarget", this.gameObject
         ));
 
@@ -366,14 +378,14 @@ public class AnimationManager : MonoBehaviour
                                                 "new_parent", new_parent,
                                                 "object", c.cardPhysicalInst.gameObject,
                                                 "photonId", photonId,
-                                                "animationId", animationPointer.animId),
+                                                "animationId", animationPointer.animId,
+                                                "reset_position", true),
                 "onCompleteTarget", this.gameObject
         ));
 
         iTween.RotateTo(c.cardPhysicalInst.gameObject,
             iTween.Hash(
-                "islocal", true,
-                "rotation", new_parent.transform.rotation,
+                "rotation", new_parent.transform.rotation.eulerAngles,
                 "time", ANIMATION_TIME));
 
         return animationPointer;
@@ -386,6 +398,7 @@ public class AnimationManager : MonoBehaviour
 
         GameObject target = (GameObject)hstbl["object"];
         GameObject new_parent = (GameObject)hstbl["new_parent"];
+        bool reset_position = (bool)hstbl["reset_position"];
 
         int action_id = (int)hstbl["action"];
         int photonId = (int)hstbl["photonId"];
@@ -395,7 +408,14 @@ public class AnimationManager : MonoBehaviour
 
         if (new_parent != null)
         {
-            Settings.SetParent(target.transform, new_parent.transform);
+            if (reset_position)
+            {
+                Settings.SetParent(target.transform, new_parent.transform);
+            }
+            else
+            {
+                target.transform.SetParent(new_parent.transform);
+            }
         }
 
         if(action != null && action.GetAnimation(animationId) != null)

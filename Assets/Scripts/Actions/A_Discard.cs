@@ -19,7 +19,7 @@ public class A_Discard : Action
         return waitForAnimation;
     }
 
-    public override void Execute()
+    public override void Execute(float t)
     {
         if (!isInit)
         {

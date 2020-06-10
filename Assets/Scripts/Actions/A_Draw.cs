@@ -1,4 +1,6 @@
 ﻿
+using UnityEngine;
+
 public class A_Draw : Action
 {
     bool noCardsToDraw;
@@ -15,7 +17,7 @@ public class A_Draw : Action
         return false;
     }
 
-    public override void Execute()
+    public override void Execute(float t)
     {
         if (!isInit)
         {
@@ -71,28 +73,16 @@ public class A_Draw : Action
 
         if (GM.isMultiplayer)
         {
-            return PlayersAreReady();
+            return PlayersAreReady() && AnimationsAreReady();
         }
         else
         {
-            return true;
+            return AnimationsAreReady();
         }
     }
 
     public override void OnComplete()
     {
-        if(effectOrigin != 0 && cardOrigin != 0)
-        {
-            PlayerHolder player = GM.getPlayerHolder(photonId);
-            Card effectCard = player.GetCard(cardOrigin);
-            CardEffect effect = effectCard.GetEffect(effectOrigin);
-
-            if (effect != null)
-            {
-                effect.Finish();
-            }
-        }
-
         base.OnComplete();
     }
 }

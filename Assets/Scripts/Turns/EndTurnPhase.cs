@@ -1,13 +1,10 @@
-﻿using Photon.Pun;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Turns/Phases/End Turn Phase")]
 public class EndTurnPhase : Phase
 {
-    int effectIndex = 0;
     List<CardEffect> endTurnStart = new List<CardEffect>();
 
     public SO.GameEvent PhaseControllerChangeEvent;
@@ -39,81 +36,20 @@ public class EndTurnPhase : Phase
         }
     }
 
-    bool executing = false;
-
     void ExecuteEffect()
     {
-        if (!effectsAreDone())
+        foreach (CardEffect eff in endTurnStart)
         {
-            if (!endTurnStart[effectIndex].isDone && !executing)
-            {
-                executing = true;
-                endTurnStart[effectIndex].card.cardViz.cardBorder.color = Color.blue;
-                endTurnStart[effectIndex].Execute();
-            }
-            else if (endTurnStart[effectIndex].isDone && executing)
-            {
-                if (endTurnStart[effectIndex].card.EffectsDone())
-                {
-                    GM.ActiveViz(endTurnStart[effectIndex].card);
-                }
-                executing = false;
-                effectIndex++;
-            }
-        }
-    }
+            if (eff.isDone) { continue; }
 
-    bool effectsAreDone()
-    {
-        for (int i = 0; i < endTurnStart.Count; i++)
-        {
-            if (!endTurnStart[i].isDone)
-            {
-                return false;
-            }
+            Action end_turn_start = new A_ExecuteEffect(eff.card.instanceId, eff.effectId, eff.card.owner.photonId);
+            GM.actionManager.AddAction(end_turn_start);
         }
-
-        return true;
     }
 
     public override bool IsComplete()
     {
-        if (!isInit)
-        {
-            return false;
-        }
-        /*
-        if ((endTurnStart.Count == 0) || (effectsAreDone() && !executing))
-        {
-            if (gm.isMultiplayer)
-            {
-                if (!isDoneLocal)
-                {
-                    MultiplayerManager.singleton.PhaseIsDone(gm.localPlayer.photonId, this.phaseIndex);
-
-                    isDoneLocal = true;
-
-                    gm.currentPlayer = gm.clientPlayer;
-                    PhaseControllerChangeEvent.Raise();
-
-                    return false;
-                }
-                else if (isDoneClient && isDoneLocal)
-                {
-                    return true;
-                }
-            }
-            else
-            {
-                return true;
-            }
-        }
-        else
-        {
-            ExecuteEffect();
-        }*/
-
-        return false;
+        return isInit && GM.actionManager.IsDone();
     }
 
     public override void OnStartPhase()
@@ -122,18 +58,18 @@ public class EndTurnPhase : Phase
 
         if (!isInit)
         {
+            MultiplayerManager.singleton.PlayerIsNotReady();
+
             GM.currentPlayer = null;
             GM.SetState(null);
             GM.onPhaseChange.Raise();
             GM.onPhaseControllerChange.Raise();
 
             endTurnStart.Clear();
-            effectIndex = 0;
-            executing = false;
 
             LoadCardEffects();
 
-            MultiplayerManager.singleton.PlayerIsNotReady();
+            ExecuteEffect();
 
             isInit = true;
         }
@@ -143,7 +79,7 @@ public class EndTurnPhase : Phase
     {
         if (isInit)
         {
-            GameManager.singleton.SetState(null);
+            GM.SetState(null);
             isInit = false;
         }
     }

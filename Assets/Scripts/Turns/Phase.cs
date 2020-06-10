@@ -18,7 +18,22 @@ public abstract class Phase : ScriptableObject
 
     public bool forcePlayerControlChange;
 
+    #region Player Sync
+
     List<SyncSignal> playerSync = null;
+
+    public void InitPlayerSync()
+    {
+        if (playerSync == null)
+        {
+            playerSync = new List<SyncSignal>();
+
+            foreach (PlayerHolder p in GM.allPlayers)
+            {
+                playerSync.Add(new SyncSignal(p.photonId));
+            }
+        }
+    }
 
     public bool PlayersAreReady()
     {
@@ -65,6 +80,7 @@ public abstract class Phase : ScriptableObject
             }
         }
     }
+    #endregion
 
     public abstract bool IsComplete();
 
@@ -77,16 +93,6 @@ public abstract class Phase : ScriptableObject
 
     public virtual void OnStartPhase()
     {
-        if (playerSync == null)
-        {
-            playerSync = new List<SyncSignal>();
-
-            foreach (PlayerHolder p in GM.allPlayers)
-            {
-                playerSync.Add(new SyncSignal(p.photonId));
-            }
-        }
-
         ResetPlayerSync();
     }
 

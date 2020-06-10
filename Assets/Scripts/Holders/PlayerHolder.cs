@@ -232,6 +232,7 @@ public class PlayerHolder : ScriptableObject
         {
             GameObject newInstance = Instantiate(prefab);
             Settings.SetParent( newInstance.transform, currentHolder.bleedChipHolder.value);
+            newInstance.GetComponent<Chip>().owner = this;
         }
     }
 

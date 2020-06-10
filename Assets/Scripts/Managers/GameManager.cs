@@ -36,9 +36,9 @@ public class GameManager : MonoBehaviour
     public PlayerHolder getOpponentHolder(int photonId)
     {
         if (clientPlayer.photonId == photonId)
-            return clientPlayer;
-        else
             return localPlayer;
+        else
+            return clientPlayer;
     }
 
     public CardHolders playerOneHolder;
@@ -117,6 +117,7 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < turn.phases.Length; i++)
         {
             turn.phases[i].phaseIndex = i;
+            turn.phases[i].InitPlayerSync();
         }
 
         onTurnChange.Raise();
@@ -180,24 +181,19 @@ public class GameManager : MonoBehaviour
     {
         List<Action> actions = new List<Action>();
 
-        if (isMultiplayer && player.isLocal)
+        if (player.isLocal)
         {
             for (int i = 0; i < amount; i++)
             {
                 Action draw = new A_Draw(player.photonId, -1, cardId, effectId);
-                actionManager.AddAction(draw);
+
+                if(action == null)
+                {
+                    actionManager.AddAction(draw);
+                }
 
                 actions.Add(draw);
             }
-        }
-        else if(action != null)
-        {
-            action.forceContinue = true;
-        }
-
-        foreach (Action a in actions)
-        {
-            a.linkedActions.AddRange(actions);
         }
 
         return actions;

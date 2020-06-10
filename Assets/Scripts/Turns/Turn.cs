@@ -36,7 +36,7 @@ public class Turn : ScriptableObject
     public bool Execute()
     {
         bool result = false;
-        bool phaseDone = false;
+        bool phaseDone;
 
         if(currentPhase.value != phases[index])
         {

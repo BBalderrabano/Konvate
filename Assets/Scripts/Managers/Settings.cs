@@ -50,7 +50,6 @@ public static class Settings
     {
         if (c.parent != p)
         {
-            //Debug.Log(c.gameObject.GetComponent<CardViz>().card.cardName + " (" + c.gameObject.GetComponent<CardViz>().card.instanceId + ")  " + p.name);
             c.SetParent(p);
             c.localPosition = Vector3.zero;
             c.localEulerAngles = Vector3.zero;

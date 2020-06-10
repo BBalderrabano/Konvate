@@ -65,89 +65,35 @@ public class FinalEndPhase : Phase
         }
     }
 
-    bool executing = false;
-    int effectIndex = 0;
-
-    void ExecuteEffect()
+    void ExecuteEffects()
     {
-        if (!turn_end[effectIndex].isDone && !executing)
+        foreach (CardEffect eff in turn_end)
         {
-            executing = true;
-            turn_end[effectIndex].card.cardViz.cardBorder.color = Color.blue;
-            turn_end[effectIndex].Execute();
-        }
-        else if (turn_end[effectIndex].isDone && executing)
-        {
-            if (turn_end[effectIndex].card.EffectsDone())
-            {
-                GM.ActiveViz(turn_end[effectIndex].card);
-            }
+            if (eff.isDone) { continue; }
 
-            executing = false;
-            effectIndex++;
+            Action turn_end = new A_ExecuteEffect(eff.card.instanceId, eff.effectId, eff.card.owner.photonId);
+            GM.actionManager.AddAction(turn_end);
         }
     }
 
-    bool EffectsAreDone()
+    void SyncAllCards()
     {
-        for (int i = 0; i < turn_end.Count; i++)
-        {
-            if (!turn_end[i].isDone)
-            {
-                return false;
-            }
-        }
-
-        return true;
+        Action sync_all_cards = new A_SyncronizeCards(GM.localPlayer.photonId, true, true, true, true);
+        GM.actionManager.AddAction(sync_all_cards);
     }
+
+    bool localIsDone = false;
 
     public override bool IsComplete()
     {
-        if ((turn_end.Count == 0) || (EffectsAreDone() && !executing))
+        if (isInit && GM.actionManager.IsDone())
         {
             if (GM.isMultiplayer)
             {
-                /*
-                if (!isDoneLocal)
-                {
-                    isDoneLocal = true;
-
-                    GM.currentPlayer = GM.clientPlayer;
-                    PhaseControllerChangeEvent.Raise();
-
-                    int[] handCards = new int[GM.localPlayer.handCards.Count];
-                    int[] deckCards = new int[GM.localPlayer.deck.Count];
-                    int[] discardCards = new int[GM.localPlayer.discardCards.Count];
-                    int[] playedCards = new int[GM.localPlayer.playedCards.Count];
-
-                    for (int i = 0; i < handCards.Length; i++)
-                    {
-                        handCards[i] = GM.localPlayer.handCards[i].instanceId;
-                    }
-
-                    for (int i = 0; i < deckCards.Length; i++)
-                    {
-                        deckCards[i] = GM.localPlayer.deck[i].instanceId;
-                    }
-
-                    for (int i = 0; i < discardCards.Length; i++)
-                    {
-                        discardCards[i] = GM.localPlayer.discardCards[i].instanceId;
-                    }
-
-                    for (int i = 0; i < playedCards.Length; i++)
-                    {
-                        playedCards[i] = GM.localPlayer.playedCards[i].instanceId;
-                    }
-
-                    MultiplayerManager.singleton.SyncronizeAllCards(GM.localPlayer.photonId, handCards, deckCards, discardCards, playedCards);
-
-                    return false;
-                }
-                else if (isDoneLocal && isDoneClient)
+                if (!localIsDone)
                 {
                     MultiplayerManager.singleton.PlayerIsReady();
-                }*/
+                }
 
                 if (MultiplayerManager.singleton.ArePlayersReady())
                 {
@@ -156,12 +102,8 @@ public class FinalEndPhase : Phase
             }
             else
             {
-                return true;
+                return CheckVictoryConditions();
             }
-        }
-        else
-        {
-            ExecuteEffect();
         }
 
         return false;
@@ -173,6 +115,8 @@ public class FinalEndPhase : Phase
 
         if (!isInit)
         {
+            localIsDone = false;
+
             turn_end.Clear();
 
             GM.currentPlayer = null;
@@ -182,26 +126,9 @@ public class FinalEndPhase : Phase
 
             LoadCardEffects();
 
-            PlayerHolder p = GM.localPlayer;
+            ExecuteEffects();
 
-            for (int i = 0; i < p.playedCards.Count; i++)
-            {
-                if (!p.playedCards[i].cardEffects.Exists(b => b.type == EffectType.PREVAIL))
-                {
-                    p.discardCards.Add(p.playedCards[i]);
-                }
-            }
-
-            for (int i = 0; i < p.handCards.Count; i++)
-            {
-                if (!p.handCards[i].cardEffects.Exists(b => b.type == EffectType.MAINTAIN))
-                {
-                    p.discardCards.Add(p.handCards[i]);
-                }
-            }
-
-            p.handCards.RemoveAll(a => a.cardEffects.Exists(b => b.type != EffectType.MAINTAIN));
-            p.playedCards.RemoveAll(a => a.cardEffects.Exists(b => b.type != EffectType.PREVAIL));
+            SyncAllCards();
 
             isInit = true;
         }

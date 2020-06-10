@@ -36,72 +36,8 @@ public class StartPhase : Phase
         */
     }
 
-    /*
-    bool executing = false;
-    int effectIndex = 0;
-
-    void ExecuteEffect()
-    {
-        if (!turn_start[effectIndex].isDone && !executing)
-        {
-            executing = true;
-            turn_start[effectIndex].card.cardViz.cardBorder.color = Color.blue;
-            turn_start[effectIndex].Execute();
-        }
-        else if (turn_start[effectIndex].isDone && executing)
-        {
-            if (turn_start[effectIndex].card.EffectsDone())
-            {
-                GM.ActiveViz(turn_start[effectIndex].card);
-            }
-
-            executing = false;
-            effectIndex++;
-        }
-    }
-
-    bool EffectsAreDone()
-    {
-        for (int i = 0; i < turn_start.Count; i++)
-        {
-            if (!turn_start[i].isDone)
-            {
-                return false;
-            }
-        }
-
-        return true;
-    }*/
-
     public override bool IsComplete()
     {
-        /*if ((turn_start.Count == 0) || (EffectsAreDone() && !executing))
-        {
-            if (GM.isMultiplayer)
-            {
-                if (!isDoneLocal)
-                {
-                    MultiplayerManager.singleton.PhaseIsDone(GM.localPlayer.photonId, this.phaseIndex);
-
-                    isDoneLocal = true;
-
-                    return false;
-                }
-                else if (isDoneClient && isDoneLocal)
-                {
-                    return true;
-                }
-            }
-            else
-            {
-                return true;
-            }
-        }
-        else
-        {
-            ExecuteEffect();
-        }*/
-
         return isInit && PlayersAreReady();
     }
 
@@ -152,11 +88,9 @@ public class StartPhase : Phase
         PlayerHolder currentOffPlayer = GM.turn.offensivePlayer;
         PlayerHolder opponent = GM.getOpponentHolder(currentOffPlayer.photonId);
 
-        GM.turn.offensiveChip.transform.SetParent(opponent.currentHolder.playedCombatChipHolder.value);
+        Settings.SetParent(GM.turn.offensiveChip.transform, opponent.currentHolder.playedCombatChipHolder.value);
 
-        GM.turn.offensiveChip.transform.position = Vector3.zero;
-        GM.turn.offensiveChip.transform.rotation = Quaternion.identity;
-        GM.turn.offensiveChip.transform.localScale = Vector3.one;
+        GM.turn.offensiveChip.GetComponent<Chip>().owner = opponent;
 
         GM.turn.offensivePlayer = opponent;
     }

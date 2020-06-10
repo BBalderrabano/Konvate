@@ -7,10 +7,10 @@ public class A_DiscardAllCards : Action
 
     public override bool Continue()
     {
-        return true;
+        return false;
     }
 
-    public override void Execute()
+    public override void Execute(float t)
     {
         if (!isInit)
         {
@@ -22,22 +22,21 @@ public class A_DiscardAllCards : Action
             cardsToDiscard.AddRange(PrepareForDiscard(player.handCards));
             cardsToDiscard.AddRange(PrepareForDiscard(player.playedCards));
 
-
             for (int i = 0; i < cardsToDiscard.Count; i++)
             {
                 Card card = cardsToDiscard[i];
 
                 A_Discard discard_card = new A_Discard(card.instanceId, photonId);
 
-                GM.actionManager.PushAction(actionId, discard_card);
-
                 discardActions.Add(discard_card);
             }
 
-            linkedActions.AddRange(discardActions);
+            PushActions(discardActions);
 
             isInit = true;
         }
+
+        ExecuteLinkedAction(t);
     }
 
     List<Card> PrepareForDiscard(List<Card> cardList)
@@ -76,6 +75,6 @@ public class A_DiscardAllCards : Action
 
     public override bool IsComplete()
     {
-        return isInit;
+        return isInit && LinkedActionsReady();
     }
 }

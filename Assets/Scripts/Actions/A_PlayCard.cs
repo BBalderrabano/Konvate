@@ -15,7 +15,7 @@ public class A_PlayCard : Action
         return false;
     }
 
-    public override void Execute()
+    public override void Execute(float t)
     {
         if (!isInit)
         {

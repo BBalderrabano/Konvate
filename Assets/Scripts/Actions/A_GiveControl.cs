@@ -19,7 +19,7 @@ public class A_GiveControl : Action
         return false;
     }
 
-    public override void Execute()
+    public override void Execute(float t)
     {
         if (!isInit)
         {

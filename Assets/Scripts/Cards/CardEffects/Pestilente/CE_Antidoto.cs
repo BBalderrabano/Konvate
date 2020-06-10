@@ -1,8 +1,4 @@
-﻿using Photon.Realtime;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics.Eventing.Reader;
-using System.Linq;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Card Effects/Pestilente/Antidoto")]
