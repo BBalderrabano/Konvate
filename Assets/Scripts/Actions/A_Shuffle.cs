@@ -1,15 +1,16 @@
-﻿
+﻿using UnityEngine;
+
 public class A_Shuffle : Action
 {
     int[] deck;
     bool andDraw;
-    bool drawCreated = false;
 
-    public A_Shuffle(int photonId, bool andDraw = true, int instanceId = -1 ) : base(photonId, instanceId){
+    public A_Shuffle(int photonId, bool andDraw = true, int actionId = -1 ) : base(photonId, actionId)
+    {
         this.andDraw = andDraw;
     }
 
-    public A_Shuffle(int photonId, int[] deck, bool andDraw = true, int instanceId = -1) : base(photonId, instanceId)
+    public A_Shuffle(int photonId, int[] deck, bool andDraw = true, int actionId = -1) : base(photonId, actionId)
     {
         this.andDraw = andDraw;
         this.deck = deck;
@@ -24,7 +25,6 @@ public class A_Shuffle : Action
     {
         if (!isInit)
         {
-            isInit = true;
             PlayerHolder player = GM.getPlayerHolder(photonId);
 
             if (player.isLocal || !GM.isMultiplayer)
@@ -51,6 +51,12 @@ public class A_Shuffle : Action
                     PlayerIsReady(photonId);    //Modificar esto para que se envie LUEGO de la animacion
                     MultiplayerManager.singleton.SendShuffle(actionId, photonId, deck_state);
                 }
+
+                if (andDraw)
+                {
+                    Action draw = new A_Draw(photonId);
+                    PushAction(draw);
+                }
             }
             else
             {
@@ -67,9 +73,14 @@ public class A_Shuffle : Action
                 }
 
                 PlayerIsReady(photonId);    //Modificar esto para que se envie LUEGO de la animacion
-
-                MultiplayerManager.singleton.SendAction(actionId, player.photonId);
             }
+
+            isInit = true;
+        }
+
+        if (isInit && PlayersAreReady())
+        {
+            ExecuteLinkedAction(t);
         }
     }
 
@@ -77,24 +88,11 @@ public class A_Shuffle : Action
     {
         if (GM.isMultiplayer)
         {
-            if (andDraw && !drawCreated)
-            {
-                PlayerHolder player = GM.getPlayerHolder(photonId);
-
-                if (player.isLocal)
-                {
-                    Action draw = new A_Draw(photonId);
-                    PushAction(draw);
-                }
-
-                drawCreated = true;
-            }
-
-            return PlayersAreReady();
+            return isInit && PlayersAreReady() && LinkedActionsReady();
         }
         else
         {
-            return true;
+            return isInit && LinkedActionsReady();
         }
     }
 }

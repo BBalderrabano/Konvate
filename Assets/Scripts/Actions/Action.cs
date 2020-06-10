@@ -71,7 +71,12 @@ public abstract class Action
         for (int i = 0; i < linkedActions.Count; i++)
         {
             if (linkedActions[i].actionId == actionId)
+            {
                 return linkedActions[i];
+            }
+
+            if (linkedActions[i].GetLinkedAction(actionId) != null)
+                return linkedActions[i].GetLinkedAction(actionId);
         }
 
         return null;

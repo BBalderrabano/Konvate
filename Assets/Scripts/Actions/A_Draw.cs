@@ -1,4 +1,5 @@
 ﻿
+using System.Linq;
 using UnityEngine;
 
 public class A_Draw : Action
@@ -54,8 +55,6 @@ public class A_Draw : Action
 
                     PushAction(shuffle);
                 }
-
-                noCardsToDraw = true;
             }
             else if (player.deck.Count == 0 && player.discardCards.Count == 0)
             {
@@ -64,6 +63,8 @@ public class A_Draw : Action
 
             isInit = true;
         }
+
+        ExecuteLinkedAction(t);
     }
 
     public override bool IsComplete()
@@ -73,16 +74,18 @@ public class A_Draw : Action
 
         if (GM.isMultiplayer)
         {
-            return PlayersAreReady() && AnimationsAreReady();
+            if (linkedActions.Any())
+            {
+                return AnimationsAreReady() && LinkedActionsReady();
+            }
+            else
+            {
+                return PlayersAreReady() && AnimationsAreReady();
+            }
         }
         else
         {
-            return AnimationsAreReady();
+            return AnimationsAreReady() && LinkedActionsReady();
         }
-    }
-
-    public override void OnComplete()
-    {
-        base.OnComplete();
     }
 }
