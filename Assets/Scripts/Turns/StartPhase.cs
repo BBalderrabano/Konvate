@@ -71,6 +71,7 @@ public class StartPhase : Phase
             {
                 GM.allPlayers[i].ResetMana();
                 GM.allPlayers[i].clearFloatingDefend();
+                GM.allPlayers[i].playerUI.UpdateAll();
             }
 
             LoadCardEffects();
