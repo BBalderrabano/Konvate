@@ -1,7 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.XR;
 
 [CreateAssetMenu(menuName = "Actions/Highlight Card")]
 public class MouseHighlightCard : PlayerAction
@@ -50,13 +50,12 @@ public class MouseHighlightCard : PlayerAction
         {
             List<RaycastResult> results = Settings.GetUIObjects();
 
-            IClickable c = null;
-            CardInstance inst = null;
+            bool isInsideCard = false;
 
             foreach (RaycastResult r in results)
             {
-                c = r.gameObject.GetComponentInParent<IClickable>();
-                inst = r.gameObject.GetComponentInParent<CardInstance>();
+                IClickable c = r.gameObject.GetComponentInParent<IClickable>();
+                CardInstance inst = r.gameObject.GetComponentInParent<CardInstance>();
 
                 if (c != null && inst.GetCurrentLogic() is HandCard)
                 {
@@ -64,11 +63,14 @@ public class MouseHighlightCard : PlayerAction
                     originalCard.value.viz.cardBorder.color = Color.green;
                     cardIsSelected.value = false;
                     c.OnHighlight();
+
+                    isInsideCard = true;
+
                     break;
                 }
             }
 
-            if(results.Count == 0)
+            if(!isInsideCard)
             {
                 currentCard.value.gameObject.SetActive(false);
                 originalCard.value.viz.cardBorder.color = Color.black;

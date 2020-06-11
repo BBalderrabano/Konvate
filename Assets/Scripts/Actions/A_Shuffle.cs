@@ -1,9 +1,9 @@
-﻿using UnityEngine;
-
+﻿
 public class A_Shuffle : Action
 {
     int[] deck;
     bool andDraw;
+    float time = 0;
 
     public A_Shuffle(int photonId, bool andDraw = true, int actionId = -1 ) : base(photonId, actionId)
     {
@@ -75,13 +75,17 @@ public class A_Shuffle : Action
                 PlayerIsReady(photonId);    //Modificar esto para que se envie LUEGO de la animacion
             }
 
+            AudioManager.singleton.Play(SoundEffectType.SHUFFLE_DECK);
+
             isInit = true;
         }
 
-        if (isInit && PlayersAreReady())
+        if (isInit && PlayersAreReady() && time > Settings.SHUFFLE_MIN_PREVIEW)
         {
             ExecuteLinkedAction(t);
         }
+
+        time += t;
     }
 
     public override bool IsComplete()

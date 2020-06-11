@@ -29,7 +29,5 @@ public class CE_Parry : CardEffect
         {
             base.Finish();
         }
-
-        Debug.Log(card.owner.photonId + " hace parry " + card.instanceId);
     }
 }

@@ -43,11 +43,6 @@ public class Turn : ScriptableObject
             currentPhase.value = phases[index];
             phases[index].OnStartPhase();
 
-            if (GameManager.singleton.isMultiplayer)
-            {
-                MultiplayerManager.singleton.SetCurrentPhase(index);
-            }
-
             return false;
         }
         else

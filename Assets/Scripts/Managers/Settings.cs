@@ -1,11 +1,21 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public static class Settings
 {
     public static ResourcesManager _resourcesManager;
+
+    public static float ANIMATION_TIME = 0.3f;
+    public static string ANIMATION_STYLE = "easeInOutQuad";
+    public static float ANIMATION_DELAY = 0f;
+    public static float ANIMATION_INTERVAL = 0.2f;
+
+    public static float CHIP_ANIMATION_TIME = 0.5f;
+    public static float CHIP_ANIMATION_DELAY = 0.5f;
+
+    public static float CARD_EFFECT_MIN_PREVIEW = 1f;
+    public static float SHUFFLE_MIN_PREVIEW = 0.5f;
 
     public static void Shuffle<T>(this IList<T> ts)
     {

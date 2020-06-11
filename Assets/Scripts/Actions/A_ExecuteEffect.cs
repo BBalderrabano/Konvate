@@ -25,6 +25,8 @@ public class A_ExecuteEffect : Action
     {
         if (!isInit)
         {
+            GM.PreviewCard(effect.card);
+
             time = 0;
             effect.Execute();
             isInit = true;
@@ -37,7 +39,7 @@ public class A_ExecuteEffect : Action
 
     public override bool IsComplete()
     {
-        return isInit && LinkedActionsReady() && AnimationsAreReady() && (time > 1);
+        return isInit && LinkedActionsReady() && AnimationsAreReady() && (time > Settings.CARD_EFFECT_MIN_PREVIEW);
     }
 
     public override void OnComplete()

@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SocialPlatforms;
 
 public class GameManager : MonoBehaviour
 {
@@ -55,6 +51,35 @@ public class GameManager : MonoBehaviour
     public SO.GameEvent onPhaseChange;
 
     public static GameManager singleton;
+
+    public GameObject currentPreviewCard;
+    Vector3 originalPreviewScale;
+
+    public void PreviewCard(Card c)
+    {
+        if (c == null)
+            return;
+
+        iTween.Stop(currentPreviewCard);
+
+        currentPreviewCard.transform.localScale = originalPreviewScale;
+        currentPreviewCard.GetComponent<CardViz>().LoadCardViz(c);
+        currentPreviewCard.SetActive(true);
+
+        iTween.ScaleTo(currentPreviewCard, iTween.Hash(
+                "scale", Vector3.zero,
+                "time", 0.5f,
+                "delay", Settings.CARD_EFFECT_MIN_PREVIEW,
+                "easetype", "easeInElastic",
+                "oncomplete", "HidePreviewCard",
+                "oncompletetarget", this.gameObject
+                ));
+    }
+
+    public void HidePreviewCard()
+    {
+        currentPreviewCard.SetActive(false);
+    }
     #endregion
 
     #region Initialization
@@ -69,6 +94,9 @@ public class GameManager : MonoBehaviour
 
             singleton = this;
             animationManager = GetComponent<AnimationManager>();
+
+            currentPreviewCard.SetActive(false);
+            originalPreviewScale = currentPreviewCard.transform.localScale;
         }
     }
 

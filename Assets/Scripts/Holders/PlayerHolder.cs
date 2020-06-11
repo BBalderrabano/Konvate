@@ -164,43 +164,6 @@ public class PlayerHolder : ScriptableObject
         return false;
     }
 
-    public CardInstance getCardOnLocation(int instanceId, CardLocation location)
-    {
-        switch (location)
-        {
-            case CardLocation.Hand:
-                for (int i = 0; i < handCards.Count; i++)
-                {
-                    if (handCards[i].instanceId == instanceId)
-                        return handCards[i].cardPhysicalInst;
-                }
-                break;
-            case CardLocation.Discard:
-                for (int i = 0; i < discardCards.Count; i++)
-                {
-                    if (discardCards[i].instanceId == instanceId)
-                        return discardCards[i].cardPhysicalInst;
-                }
-                break;
-            case CardLocation.Play:
-                for (int i = 0; i < playedCards.Count; i++)
-                {
-                    if (playedCards[i].instanceId == instanceId)
-                        return playedCards[i].cardPhysicalInst;
-                }
-                break;
-            case CardLocation.Deck:
-                for (int i = 0; i < deck.Count; i++)
-                {
-                    if (deck[i].instanceId == instanceId)
-                        return deck[i].cardPhysicalInst;
-                }
-                break;
-        }
-
-        return null;
-    }
-
     public SO.IntVariable currentEnergy;
     public int baseEnergy = 3;
 
@@ -222,6 +185,19 @@ public class PlayerHolder : ScriptableObject
         playerUI.UpdateAll();
 
         CreateBleedChips();
+
+        InitChips();
+    }
+
+    public List<Chip> all_combat_chips = new List<Chip>();
+    public List<Chip> all_poison_chips = new List<Chip>();
+    public List<Chip> all_bleed_chips = new List<Chip>();
+
+    public void InitChips()
+    {
+        all_combat_chips.AddRange(currentHolder.combatChipHolder.value.GetComponentsInChildren<Chip>());
+        all_poison_chips.AddRange(currentHolder.poisonChipHolder.value.GetComponentsInChildren<Chip>());
+        all_bleed_chips.AddRange(currentHolder.bleedChipHolder.value.GetComponentsInChildren<Chip>());
     }
 
     void CreateBleedChips()

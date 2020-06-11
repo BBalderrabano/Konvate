@@ -42,6 +42,8 @@ public class A_Discard : Action
 
             LinkAnimation(GM.animationManager.MoveCard(actionId, photonId, card.instanceId, player.currentHolder.discardGrid.value.position, player.currentHolder.discardGrid.value.gameObject));
 
+            AudioManager.singleton.Play(SoundEffectType.DISCARD_CARD);
+
             isInit = true;
         }
     }

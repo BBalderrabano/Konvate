@@ -36,6 +36,8 @@ public class A_ReturnToHand : Action
             card.cardPhysicalInst.gameObject.SetActive(true);
 
             LinkAnimation(GM.animationManager.MoveCard(actionId, photonId, card.instanceId, player.currentHolder.handGrid.value.position, player.currentHolder.handGrid.value.gameObject));
+           
+            AudioManager.singleton.Play(SoundEffectType.PICK_CARD_UP);
 
             if (player.isLocal)
             {

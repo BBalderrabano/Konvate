@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SocialPlatforms;
 
 [CreateAssetMenu(menuName = "Turns/Phases/Quick Play Phase")]
@@ -52,10 +53,23 @@ public class QuickPlayPhase : Phase
         }
     }
 
+    bool finalCheck = false;
 
     public override bool IsComplete()
     {
-        return isInit && GM.actionManager.IsDone() && PlayersAreReady();
+        if(isInit && GM.actionManager.IsDone() && PlayersAreReady() && !finalCheck)
+        {
+            foreach (PlayerHolder p in GM.allPlayers)
+            {
+                LoadPlayedCardEffects(p.photonId);
+            }
+
+            ExecuteEffect();
+
+            finalCheck = true;
+        }
+
+        return isInit && GM.actionManager.IsDone() && PlayersAreReady() && finalCheck;
     }
 
     public override void OnStartPhase()
@@ -69,6 +83,7 @@ public class QuickPlayPhase : Phase
             quickplay.Clear();
             GM.localPlayer.playedQuickCard = false;
 
+            finalCheck = false;
             isInit = true;
         }
     }
@@ -99,11 +114,13 @@ public class QuickPlayPhase : Phase
         int localPlayerId = GM.localPlayer.photonId;
         int otherPlayerId = GM.clientPlayer.photonId;
 
-        if (CheckPlayerIsReady(localPlayerId))
+        if ((CheckPlayerIsReady(localPlayerId) && !GM.currentPlayer.isLocal) || CheckPlayerIsReady(otherPlayerId))
             return;
 
         Action giveControl = new A_GiveControl(phaseIndex, localPlayerId, false, otherPlayerId);
         GM.actionManager.AddAction(giveControl);
+
+        AudioManager.singleton.Play(SoundEffectType.BUTTON_CLICK);
     }
 
     public override void OnTurnButtonHold()
@@ -116,6 +133,8 @@ public class QuickPlayPhase : Phase
 
         Action giveControl = new A_GiveControl(phaseIndex, localPlayerId, true, otherPlayerId);
         GM.actionManager.AddAction(giveControl);
+
+        AudioManager.singleton.Play(SoundEffectType.BUTTON_CLICK);
     }
 
     public override void OnPhaseControllerChange(int photonId)

@@ -37,41 +37,6 @@ public class MultiplayerManager : MonoBehaviourPun, IPunInstantiateMagicCallback
     #endregion
 
     #region Multiplayer Checks
-
-    public void SetCurrentPhase(int index)
-    {
-        ExitGames.Client.Photon.Hashtable properties = new ExitGames.Client.Photon.Hashtable() { { "CurrentPhase", index } };
-        PhotonNetwork.LocalPlayer.SetCustomProperties(properties);
-    }
-
-    public bool PhaseBehindCheck()
-    {
-        bool behind = false;
-        int[] playerCheck = new int[PhotonNetwork.PlayerList.Length];
-        int currentPhase = 0;
-
-        for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
-        {
-            playerCheck[i] = (int)PhotonNetwork.PlayerList[i].CustomProperties["CurrentPhase"];
-
-            if (PhotonNetwork.PlayerList[i].IsLocal)
-            {
-                currentPhase = playerCheck[i];
-            }
-        }
-
-        for (int i = 0; i < playerCheck.Length; i++)
-        {
-            if (playerCheck[i] > currentPhase)
-            {
-                behind = true;
-                break;
-            }
-        }
-
-        return behind;
-    }
-
     public void PlayerIsReady()
     {
         ExitGames.Client.Photon.Hashtable properties = new ExitGames.Client.Photon.Hashtable() { { "PlayerIsReady", true } };

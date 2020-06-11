@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CurrentSelectedManager : MonoBehaviour
 {
@@ -18,7 +16,6 @@ public class CurrentSelectedManager : MonoBehaviour
         if (currentCard.value == null) 
             return;
 
-        //currentCard.value.gameObject.SetActive(false);
         currentCardViz.LoadCardViz(currentCard.value.viz.card);
         currentCardViz.gameObject.SetActive(true);
     }

@@ -17,13 +17,11 @@ public class CE_RefrigerioRestoreEffect : CardEffect
 
         if(bloodChips.Count == 0)
         {
-            Debug.Log(card.photonId + " recupera 3 " + card.instanceId);
             card.owner.ModifyBloodChip(3);
             isDone = true;
         }
         else
         {
-            Debug.Log(card.photonId + " recibio danio este turno " + card.instanceId);
             isDone = true;
         }
     }

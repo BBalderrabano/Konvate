@@ -2,21 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 
+
+
 public class AnimationManager : MonoBehaviour
 {
     GameManager GM
     {
         get { return GameManager.singleton; }
     }
-
-    public static float ANIMATION_TIME = 0.3f;
-    public static string ANIMATION_STYLE = "easeInOutQuad";
-    public static float ANIMATION_DELAY = 0f;
-    public static float ANIMATION_INTERVAL = 0.2f;
-
-    public static float CHIP_ANIMATION_TIME = 0.5f;
-    public static float CHIP_ANIMATION_DELAY = 0.5f;
-
 
     #region Move bleed chips to damage players
     public Animation MoveBleedChipsToDamagePlayers(int actionId)
@@ -39,17 +32,20 @@ public class AnimationManager : MonoBehaviour
 
             for (int i = 0; i < playedChips.childCount; i++)
             {
-                float delay = CHIP_ANIMATION_DELAY + (ANIMATION_INTERVAL * i);
+                float delay = Settings.CHIP_ANIMATION_DELAY + (Settings.ANIMATION_INTERVAL * i);
 
                 GameObject chip = playedChips.GetChild(i).gameObject;
-                GameObject parent = chip.GetComponent<Chip>().owner.currentHolder.bleedChipHolder.value.gameObject;
+                GameObject parent = enemy.currentHolder.bleedChipHolder.value.gameObject;
 
                 iTween.MoveTo(chip,
                     iTween.Hash(
                         "position", enemy.currentHolder.bleedChipHolder.value.position,
-                        "time", CHIP_ANIMATION_TIME,
+                        "time", Settings.CHIP_ANIMATION_TIME,
+                        "onstart", "PlaySound",
+                        "onstarttarget", this.gameObject,
+                        "onstartparams", iTween.Hash("play_sound", SoundEffectType.MOVE_CHIP),
                         "oncomplete", "BleedChipDamage",
-                        "easetype", ANIMATION_STYLE,
+                        "easetype", Settings.ANIMATION_STYLE,
                         "delay", delay,
                         "oncompleteparams", iTween.Hash("action", actionId,
                                                         "new_parent", parent,
@@ -108,19 +104,20 @@ public class AnimationManager : MonoBehaviour
 
             for (int i = 0; i < playedChips.childCount; i++)
             {
-                float delay = ANIMATION_DELAY + (ANIMATION_INTERVAL * i);
+                float delay = Settings.ANIMATION_DELAY + (Settings.ANIMATION_INTERVAL * i);
 
                 GameObject chip = playedChips.GetChild(i).gameObject;
 
                 iTween.RotateTo(chip,
                     iTween.Hash(
                         "rotation", rotateTo,
-                        "time", CHIP_ANIMATION_TIME,
+                        "time", (Settings.CHIP_ANIMATION_TIME * 0.5),
                         "oncomplete", "RotateBleedChips",
-                        "easetype", ANIMATION_STYLE,
+                        "easetype", Settings.ANIMATION_STYLE,
                         "delay", delay,
                         "oncompleteparams", iTween.Hash("object", chip,
                                                         "action", actionId,
+                                                        "photonId", player.photonId,
                                                         "animationId", animationPointer.animId),
                         "onCompleteTarget", this.gameObject
                 ));
@@ -135,10 +132,11 @@ public class AnimationManager : MonoBehaviour
         Hashtable hstbl = (Hashtable)animParams;
         GameObject chip = (GameObject)hstbl["object"];
 
+        int photon_id = (int)hstbl["photonId"];
         int action_id = (int)hstbl["action"];
         int animationId = (int)hstbl["animationId"];
 
-        PlayerHolder chipOwner = chip.GetComponent<Chip>().owner;
+        PlayerHolder chipOwner = GM.getPlayerHolder(photon_id);
 
         Vector3 rotateAdd = new Vector3(0, 90, 0);
 
@@ -151,8 +149,11 @@ public class AnimationManager : MonoBehaviour
         iTween.RotateAdd(bleedChip,
             iTween.Hash(
                     "amount", rotateAdd,
-                    "time", CHIP_ANIMATION_TIME,
-                    "delay", CHIP_ANIMATION_DELAY,
+                    "time", (Settings.CHIP_ANIMATION_TIME * 0.5),
+                    "delay", Settings.CHIP_ANIMATION_DELAY,
+                    "onstart", "PlaySound",
+                    "onstarttarget", this.gameObject,
+                    "onstartparams", iTween.Hash("play_sound", SoundEffectType.PLACE_CHIP),
                     "oncomplete", "AM_FinishAnimation",
                     "oncompleteparams", iTween.Hash("action", action_id,
                                                     "new_parent", null,
@@ -202,7 +203,7 @@ public class AnimationManager : MonoBehaviour
         { 
             if(i < temp_amount)
             {
-                float delay = ANIMATION_DELAY + (ANIMATION_INTERVAL * i);
+                float delay = Settings.ANIMATION_DELAY + (Settings.ANIMATION_INTERVAL * i);
 
                 GameObject chip = chips[i].gameObject;
                 GameObject parentTo;
@@ -223,16 +224,20 @@ public class AnimationManager : MonoBehaviour
                 iTween.MoveTo(chip,
                     iTween.Hash(
                         "position", WorldToCanvasPosition(card.cardPhysicalInst.transform.position),
-                        "time", CHIP_ANIMATION_TIME,
+                        "time", Settings.CHIP_ANIMATION_TIME,
+                        "onstart", "PlaySound",
+                        "onstarttarget", this.gameObject,
+                        "onstartparams", iTween.Hash("play_sound", SoundEffectType.MOVE_CHIP),
                         "oncomplete", "AM_FinishAnimation",
-                        "easetype", ANIMATION_STYLE,
+                        "easetype", Settings.ANIMATION_STYLE,
                         "delay", delay,
                         "oncompleteparams", iTween.Hash("action", actionId,
                                                         "new_parent", parentTo,
                                                         "object", chip,
                                                         "photonId", photonId,
                                                         "animationId", animationPointer.animId,
-                                                        "reset_position", false),
+                                                        "reset_position", false,
+                                                        "play_sound", SoundEffectType.PLACE_CHIP),
                         "onCompleteTarget", this.gameObject
                 ));
             }
@@ -312,21 +317,25 @@ public class AnimationManager : MonoBehaviour
                 }
             }
 
-            float delay = ANIMATION_DELAY + (ANIMATION_INTERVAL * i);
+            float delay = Settings.ANIMATION_DELAY + (Settings.ANIMATION_INTERVAL * i);
 
             iTween.MoveTo(chip.gameObject,
                 iTween.Hash(
                     "position", travelTo,
-                    "time", CHIP_ANIMATION_TIME,
+                    "time", Settings.CHIP_ANIMATION_TIME,
+                    "onstart", "PlaySound",
+                    "onstarttarget", this.gameObject,
+                    "onstartparams", iTween.Hash("play_sound", SoundEffectType.MOVE_CHIP),
                     "oncomplete", "AM_FinishAnimation",
-                    "easetype", ANIMATION_STYLE,
+                    "easetype", Settings.ANIMATION_STYLE,
                     "delay", delay,
                     "oncompleteparams", iTween.Hash("action", actionId,
                                                     "new_parent", parentTo,
                                                     "object", chip.gameObject,
                                                     "photonId", photonId,
                                                     "animationId", animationPointer.animId,
-                                                    "reset_position", true),
+                                                    "reset_position", true,
+                                                    "play_sound", SoundEffectType.PLACE_CHIP),
                     "onCompleteTarget", this.gameObject
             ));
         }
@@ -338,19 +347,22 @@ public class AnimationManager : MonoBehaviour
     {
         Animation animationPointer = new Animation();
 
+        AudioManager.singleton.Play(SoundEffectType.MOVE_CHIP);
+
         iTween.MoveTo(chip,
             iTween.Hash(
                 "position", position,
-                "time", CHIP_ANIMATION_TIME,
+                "time", Settings.CHIP_ANIMATION_TIME,
+                "easetype", Settings.ANIMATION_STYLE,
+                "delay", Settings.CHIP_ANIMATION_DELAY,
                 "oncomplete", "AM_FinishAnimation",
-                "easetype", ANIMATION_STYLE,
-                "delay", CHIP_ANIMATION_DELAY,
                 "oncompleteparams", iTween.Hash("action", actionId,
                                                 "new_parent", new_parent,
                                                 "object", chip,
                                                 "photonId", photonId,
                                                 "animationId", animationPointer.animId,
-                                                "reset_position", true),
+                                                "reset_position", true,
+                                                "play_sound", SoundEffectType.PLACE_CHIP),
                 "onCompleteTarget", this.gameObject
         ));
 
@@ -360,7 +372,7 @@ public class AnimationManager : MonoBehaviour
     #endregion
 
     #region Card Animations
-    public Animation MoveCard(int actionId, int photonId, int cardId, Vector3 position, GameObject new_parent)
+    public Animation MoveCard(int actionId, int photonId, int cardId, Vector3 position, GameObject new_parent, SoundEffectType playSound = SoundEffectType.NONE)
     {
         Animation animationPointer = new Animation();
 
@@ -370,23 +382,24 @@ public class AnimationManager : MonoBehaviour
         iTween.MoveTo(c.cardPhysicalInst.gameObject, 
             iTween.Hash(
                 "position", position,
-                "time", ANIMATION_TIME,
+                "time", Settings.ANIMATION_TIME,
                 "oncomplete", "AM_FinishAnimation",
-                "easetype", ANIMATION_STYLE,
-                "delay", ANIMATION_DELAY,
+                "easetype", Settings.ANIMATION_STYLE,
+                "delay", Settings.ANIMATION_DELAY,
                 "oncompleteparams", iTween.Hash("action", actionId,
                                                 "new_parent", new_parent,
                                                 "object", c.cardPhysicalInst.gameObject,
                                                 "photonId", photonId,
                                                 "animationId", animationPointer.animId,
-                                                "reset_position", true),
+                                                "reset_position", true,
+                                                "play_sound", playSound),
                 "onCompleteTarget", this.gameObject
         ));
 
         iTween.RotateTo(c.cardPhysicalInst.gameObject,
             iTween.Hash(
                 "rotation", new_parent.transform.rotation.eulerAngles,
-                "time", ANIMATION_TIME));
+                "time", Settings.ANIMATION_TIME));
 
         return animationPointer;
     }
@@ -403,6 +416,16 @@ public class AnimationManager : MonoBehaviour
         int action_id = (int)hstbl["action"];
         int photonId = (int)hstbl["photonId"];
         int animationId = (int)hstbl["animationId"];
+
+        if (hstbl.ContainsKey("play_sound"))
+        {
+            SoundEffectType soundEffect = (SoundEffectType)hstbl["play_sound"];
+
+            if(soundEffect != SoundEffectType.NONE)
+            {
+                AudioManager.singleton.Play(soundEffect);
+            }
+        }
 
         Action action = GM.actionManager.GetAction(action_id);
 
@@ -421,6 +444,21 @@ public class AnimationManager : MonoBehaviour
         if(action != null && action.GetAnimation(animationId) != null)
         {
             action.CompleteAnimation(animationId, photonId);
+        }
+    }
+
+    public void PlaySound(object animParams)
+    {
+        Hashtable hstbl = (Hashtable)animParams;
+
+        if (hstbl.ContainsKey("play_sound"))
+        {
+            SoundEffectType soundEffect = (SoundEffectType)hstbl["play_sound"];
+
+            if (soundEffect != SoundEffectType.NONE)
+            {
+                AudioManager.singleton.Play(soundEffect);
+            }
         }
     }
 

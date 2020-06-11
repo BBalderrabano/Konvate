@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -46,6 +45,7 @@ public class StartGameScript : MonoBehaviour
             {
                 if (GameManager.singleton.isMultiplayer)
                 {
+                    AudioManager.singleton.PlayMusic();
                     MultiplayerManager.singleton.PlayerIsReady();
                 }
 
@@ -64,7 +64,6 @@ public class StartGameScript : MonoBehaviour
         {
             for (float i = 1; i >= 0; i -= Time.deltaTime)
             {
-                // set color with i as alpha
                 img.color  = new Color(0, 0, 0, i);
                 yield return null;
             }

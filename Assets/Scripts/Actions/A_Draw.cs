@@ -42,6 +42,8 @@ public class A_Draw : Action
 
                 LinkAnimation(GM.animationManager.MoveCard(actionId, photonId, card.instanceId, player.currentHolder.handGrid.value.position, player.currentHolder.handGrid.value.gameObject));
 
+                AudioManager.singleton.Play(SoundEffectType.DRAW_CARD);
+
                 if (GM.isMultiplayer && player.isLocal)
                 {
                     MultiplayerManager.singleton.SendDraw(photonId, actionId, cardOrigin, effectOrigin);

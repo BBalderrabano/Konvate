@@ -15,17 +15,4 @@ public class CardHolders : ScriptableObject
     public TransformVariable poisonChipHolder;
     public TransformVariable playedCombatChipHolder;
     public TransformVariable playedPoisonChipHolder;
-
-    public void LoadPlayer(PlayerHolder h)
-    {
-        foreach (Card c in h.playedCards)
-        {
-            c.cardViz.gameObject.transform.SetParent(playedGrid.value.transform);
-        }
-        
-        foreach (Card c in h.handCards)
-        {
-            c.cardViz.gameObject.transform.SetParent(handGrid.value.transform);
-        }
-    }
 }

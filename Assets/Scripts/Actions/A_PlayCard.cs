@@ -47,7 +47,7 @@ public class A_PlayCard : Action
 
             card.cardPhysicalInst.gameObject.SetActive(true);
 
-            LinkAnimation(GM.animationManager.MoveCard(actionId, photonId, card.instanceId, player.currentHolder.playedGrid.value.position, player.currentHolder.playedGrid.value.gameObject));
+            LinkAnimation(GM.animationManager.MoveCard(actionId, photonId, card.instanceId, player.currentHolder.playedGrid.value.position, player.currentHolder.playedGrid.value.gameObject, SoundEffectType.PLACE_CARD));
 
             if (player.isLocal)
             {

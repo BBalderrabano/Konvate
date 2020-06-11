@@ -53,15 +53,16 @@ public class SetCardsPhase : Phase
 
     public override void OnTurnButtonPress()
     {
-        int currentPlayerId = GM.currentPlayer.photonId;
         int localPlayerId = GM.localPlayer.photonId;
         int otherPlayerId = GM.clientPlayer.photonId;
 
-        if (CheckPlayerIsReady(localPlayerId) || localPlayerId != currentPlayerId)
+        if (CheckPlayerIsReady(localPlayerId) || !GM.currentPlayer.isLocal)
             return;
 
         Action giveControl = new A_GiveControl(phaseIndex, localPlayerId, true, otherPlayerId);
         GM.actionManager.AddAction(giveControl);
+
+        AudioManager.singleton.Play(SoundEffectType.BUTTON_CLICK);
     }
 
     public override void OnTurnButtonHold()

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Turns/Phases/Start Phase")]
@@ -38,7 +36,7 @@ public class StartPhase : Phase
 
     public override bool IsComplete()
     {
-        return isInit && PlayersAreReady();
+        return isInit;
     }
 
     public override bool CanPlayCard(Card c)
