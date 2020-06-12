@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 058cba836c1846c3aa1c5fd2e28aea77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: -768941466747332146, guid: a924014ad7465e74983aebef24a37204,
+  m_Material: {fileID: -9203392982338463219, guid: 555c26606ae632b41a2741d1fa1631f3,
     type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
@@ -140,9 +140,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_spriteAsset: {fileID: 11400000, guid: a924014ad7465e74983aebef24a37204, type: 2}
+  m_spriteAsset: {fileID: 11400000, guid: 555c26606ae632b41a2741d1fa1631f3, type: 2}
   m_material: {fileID: 0}
-  m_sharedMaterial: {fileID: -768941466747332146, guid: a924014ad7465e74983aebef24a37204,
+  m_sharedMaterial: {fileID: -9203392982338463219, guid: 555c26606ae632b41a2741d1fa1631f3,
     type: 2}
   m_isDefaultMaterial: 1
   m_padding: 0
@@ -468,7 +468,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 11400000, guid: a924014ad7465e74983aebef24a37204, type: 2}
+  m_spriteAsset: {fileID: 11400000, guid: 555c26606ae632b41a2741d1fa1631f3, type: 2}
   m_tintAllSprites: 0
   m_overrideHtmlColors: 0
   m_faceColor:

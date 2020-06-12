@@ -42,27 +42,18 @@ public class FinalEndPhase : Phase
 
     void LoadCardEffects()
     {
-        if (GM.isMultiplayer)
+        for (int i = 0; i < GM.turn.endTurnEffects.Count; i++)
         {
-            foreach (PlayerHolder player in GM.allPlayers)
+            if (GM.turn.endTurnEffects[i].isDone)
+                continue;
+
+            if (GM.turn.endTurnEffects[i].type == EffectType.ENDTURN)
             {
-                foreach (Card c in player.playedCards)
-                {
-                    for (int i = 0; i < c.cardEffects.Count; i++)
-                    {
-                        if (c.cardEffects[i].isDone)
-                            continue;
-
-                        if (c.cardEffects[i].type == EffectType.ENDTURN)
-                        {
-                            turn_end.Add(c.cardEffects[i]);
-                        }
-                    }
-                }
+                turn_end.Add(GM.turn.endTurnEffects[i]);
             }
-
-            turn_end = turn_end.OrderBy(a => a.priority).ToList();
         }
+
+        turn_end = turn_end.OrderBy(a => a.priority).ToList();
     }
 
     void ExecuteEffects()
@@ -138,7 +129,8 @@ public class FinalEndPhase : Phase
     {
         if (isInit)
         {
-            GameManager.singleton.SetState(null);
+            GM.turn.endTurnEffects.Clear();
+            GM.SetState(null);
             isInit = false;
         }
     }

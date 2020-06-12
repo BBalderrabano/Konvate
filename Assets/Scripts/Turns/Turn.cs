@@ -23,6 +23,9 @@ public class Turn : ScriptableObject
     public PlayerHolder offensivePlayer;
     public GameObject offensiveChip;
 
+    public List<CardEffect> startTurnEffects = new List<CardEffect>();
+    public List<CardEffect> endTurnEffects = new List<CardEffect>();
+
     public bool IsOffensivePlayer(int photonId)
     {
         if (offensivePlayer == null)

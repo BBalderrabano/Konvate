@@ -77,5 +77,6 @@ public enum EffectType
     MAINTAIN,
     PLAY,
     STAT_MOD,
-    PREVAIL
+    PREVAIL,
+    STARTTURN
 }

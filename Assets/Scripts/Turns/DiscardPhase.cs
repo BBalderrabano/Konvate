@@ -23,6 +23,25 @@ public class DiscardPhase : Phase
         {
             foreach (PlayerHolder player in GM.allPlayers)
             {
+                foreach (Card c in player.playedCards)
+                {
+                    foreach (CardEffect eff in c.cardEffects)
+                    {
+                        if (eff.type == EffectType.ENDTURN || eff.type == EffectType.ENDTURNSTART)
+                        {
+                            GM.turn.endTurnEffects.Add(eff);
+                        }
+
+                        if (eff.type == EffectType.STARTTURN)
+                        {
+                            GM.turn.startTurnEffects.Add(eff);
+                        }
+                    }
+                }
+            }
+
+            foreach (PlayerHolder player in GM.allPlayers)
+            {
                 Action resetChips = new A_ResetChips(player.photonId);
 
                 GM.actionManager.AddAction(resetChips);

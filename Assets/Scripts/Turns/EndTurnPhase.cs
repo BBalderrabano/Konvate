@@ -11,29 +11,20 @@ public class EndTurnPhase : Phase
 
     void LoadCardEffects()
     {
-        if (GM.isMultiplayer)
+        int offensivePhotonId = GM.turn.offensivePlayer.photonId;
+
+        for (int i = 0; i < GM.turn.endTurnEffects.Count; i++)
         {
-            int offensivePhotonId = GM.turn.offensivePlayer.photonId;
+            if (GM.turn.endTurnEffects[i].isDone)
+                continue;
 
-            foreach (PlayerHolder player in GM.allPlayers)
+            if (GM.turn.endTurnEffects[i].type == EffectType.ENDTURNSTART)
             {
-                foreach (Card c in player.playedCards)
-                {
-                    for (int i = 0; i < c.cardEffects.Count; i++)
-                    {
-                        if (c.cardEffects[i].isDone)
-                            continue;
-
-                        if (c.cardEffects[i].type == EffectType.ENDTURNSTART)
-                        {
-                            endTurnStart.Add(c.cardEffects[i]);
-                        }
-                    }
-                }
+                endTurnStart.Add(GM.turn.endTurnEffects[i]);
             }
-
-            endTurnStart = endTurnStart.OrderBy(a => (a.card.owner.photonId != offensivePhotonId)).ThenBy(a => a.priority).ToList();
         }
+
+        endTurnStart = endTurnStart.OrderBy(a => (a.card.owner.photonId != offensivePhotonId)).ThenBy(a => a.priority).ToList();
     }
 
     void ExecuteEffect()

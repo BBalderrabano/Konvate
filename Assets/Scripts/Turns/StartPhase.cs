@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Turns/Phases/Start Phase")]
@@ -8,30 +9,20 @@ public class StartPhase : Phase
 
     void LoadCardEffects()
     {
-        ///
-        /// TODO: Aqui tiene que loopear una lista "start turn effects" que tiene effectholders para poder poner la carta en el campo, mostrarla, hacer el efecto y regresarla al mazo/descarte/mano sin que se vea
-        //////
-        /*int offensivePhotonId = gm.turn.offensivePlayer.photonId;
+        int offensivePhotonId = GM.turn.offensivePlayer.photonId;
 
-        foreach (PlayerHolder player in gm.allPlayers)
+        for (int i = 0; i < GM.turn.endTurnEffects.Count; i++)
         {
-            foreach (Card c in player.playedCards)
-            {
-                for (int i = 0; i < c.cardEffects.Count; i++)
-                {
-                    if (c.cardEffects[i].isDone)
-                        continue;
+            if (GM.turn.endTurnEffects[i].isDone)
+                continue;
 
-                    if (c.cardEffects[i].type == EffectType.RESTORE)
-                    {
-                        turn_start.Add(c.cardEffects[i]);
-                    }
-                }
+            if (GM.turn.endTurnEffects[i].type == EffectType.ENDTURNSTART)
+            {
+                turn_start.Add(GM.turn.endTurnEffects[i]);
             }
         }
-        
-                 turn_start = turn_start.OrderBy(a => a.priority).ToList();
-        */
+
+        turn_start = turn_start.OrderBy(a => (a.card.owner.photonId != offensivePhotonId)).ThenBy(a => a.priority).ToList();
     }
 
     public override bool IsComplete()
@@ -98,8 +89,8 @@ public class StartPhase : Phase
     {
         if (isInit)
         {
-            GameManager.singleton.SetState(null);
-
+            GM.turn.startTurnEffects.Clear();
+            GM.SetState(null);
             isInit = false;
         }
     }

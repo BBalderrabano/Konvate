@@ -3647,7 +3647,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: <color=#FF0000> Coloca </color>1<sprite=3>
+  m_text: '<color=#FF0000> Coloca </color>1<sprite=7>
+
+    y MAS '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3666,7 +3668,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 11400000, guid: a924014ad7465e74983aebef24a37204, type: 2}
+  m_spriteAsset: {fileID: 11400000, guid: 555c26606ae632b41a2741d1fa1631f3, type: 2}
   m_tintAllSprites: 0
   m_overrideHtmlColors: 0
   m_faceColor:
@@ -3716,12 +3718,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 855760424595823123}
-    characterCount: 10
+    characterCount: 17
     spriteCount: 0
-    spaceCount: 2
-    wordCount: 3
+    spaceCount: 5
+    wordCount: 5
     linkCount: 0
-    lineCount: 1
+    lineCount: 2
     pageCount: 1
     materialCount: 2
   m_isUsingLegacyAnimationComponent: 0
@@ -3833,7 +3835,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 058cba836c1846c3aa1c5fd2e28aea77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: -768941466747332146, guid: a924014ad7465e74983aebef24a37204,
+  m_Material: {fileID: -9203392982338463219, guid: 555c26606ae632b41a2741d1fa1631f3,
     type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
@@ -3842,9 +3844,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_spriteAsset: {fileID: 11400000, guid: a924014ad7465e74983aebef24a37204, type: 2}
+  m_spriteAsset: {fileID: 11400000, guid: 555c26606ae632b41a2741d1fa1631f3, type: 2}
   m_material: {fileID: 0}
-  m_sharedMaterial: {fileID: -768941466747332146, guid: a924014ad7465e74983aebef24a37204,
+  m_sharedMaterial: {fileID: -9203392982338463219, guid: 555c26606ae632b41a2741d1fa1631f3,
     type: 2}
   m_isDefaultMaterial: 1
   m_padding: 0
@@ -4018,7 +4020,7 @@ RectTransform:
   m_GameObject: {fileID: 738702839874424224}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 855760424614342174}
   - {fileID: 4515357777399559802}
