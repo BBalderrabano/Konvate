@@ -5,6 +5,7 @@ public class CE_AgilidadFix : CardEffect
 {
     public override void Execute()
     {
+        base.Execute();
         base.Finish();
     }
 }

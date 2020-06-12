@@ -1,8 +1,6 @@
 ﻿using SO;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.XR;
 
 [CreateAssetMenu(menuName = "Card Effects/Asesino/Ataque Premeditado")]
 public class CE_AtaquePremeditado : CardEffect
@@ -39,7 +37,7 @@ public class CE_AtaquePremeditado : CardEffect
             }
             else
             {
-                if (card.owner.photonId == GameManager.singleton.localPlayer.photonId)
+                if (card.owner.photonId == GM.localPlayer.photonId)
                 { 
                     ScrollSelectionManager.singleton.SelectCards(handCards, "Puedes <b>mantener</b> una carta", false, false, 0, 0, this);
                 }
@@ -47,7 +45,7 @@ public class CE_AtaquePremeditado : CardEffect
                 {
                     ScrollSelectionManager.singleton.WaitForOpponent(this);
 
-                    GameManager.singleton.currentPlayer = GameManager.singleton.clientPlayer;
+                    GM.currentPlayer = GM.clientPlayer;
                     PhaseControllerChangeEvent.Raise();
                 }
             }
@@ -61,9 +59,9 @@ public class CE_AtaquePremeditado : CardEffect
             isDone = true;
             init = false;
 
-            if (card.owner.photonId != GameManager.singleton.localPlayer.photonId)
+            if (card.owner.photonId != GM.localPlayer.photonId)
             {
-                GameManager.singleton.currentPlayer = null;
+                GM.currentPlayer = null;
                 PhaseControllerChangeEvent.Raise();
             }
         }

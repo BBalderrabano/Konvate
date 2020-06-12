@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PhotonServerSettings
   m_EditorClassIdentifier: 
   AppSettings:
-    AppIdRealtime: 9ee903bb-d898-4b4c-b495-0bc29ad25a97
+    AppIdRealtime: 
     AppIdChat: 
     AppIdVoice: 
     AppVersion: 
@@ -25,43 +25,12 @@ MonoBehaviour:
     AuthMode: 0
     EnableLobbyStatistics: 0
     NetworkLogging: 1
-  DevRegion: sa
+  DevRegion: 
   PunLogging: 0
   EnableSupportLogger: 0
   RunInBackground: 1
   StartInOfflineMode: 0
-  RpcList:
-  - ClickRpc
-  - DestroyRpc
-  - RPC_CreateAllCardsForPlayers
-  - RPC_InitGame
-  - RPC_MasterManagesTurn
-  - RPC_PlayerChangePhaseController
-  - RPC_PlayerDraw
-  - RPC_PlayerEndsPhase
-  - RPC_PlayerEndTurn
-  - RPC_PlayerStartTurn
-  - RPC_PlayerUsesCard
-  - RPC_PlayerWantsToDrawCard
-  - RPC_PlayerWantsToUseCard
-  - playerIsDone
-  - RPC_PlayerIsDone
-  - RPC_PlayerControlEnd
-  - RPC_PlayerControlStart
-  - RPC_PlayerPhaseEnd
-  - RPC_PlayerEndPhaseControl
-  - RPC_PlayerFinishCardSelection
-  - RPC_CardDrawSynced
-  - RPC_PhaseIsDone
-  - RPC_SyncronizeAllCards
-  - RPC_EndCardEffect
-  - RPC_ShowOpponentCards
-  - RPC_SendAction
-  - RPC_SendPlayCard
-  - RPC_SendUseCard
-  - RPC_SendActionGiveControl
-  - RPC_SendDraw
-  - RPC_SendShuffle
+  RpcList: []
   DisableAutoOpenWizard: 1
-  ShowSettings: 1
-  DevRegionSetOnce: 1
+  ShowSettings: 0
+  DevRegionSetOnce: 0
