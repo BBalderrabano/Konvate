@@ -15,19 +15,19 @@ public class A_ResetChips : Action
         {
             PlayerHolder p = GM.getPlayerHolder(photonId);
 
-            foreach(Chip c in p.all_bleed_chips)
+            for (int i = 0; i < p.currentHolder.bleedChipHolder.value.childCount; i++)
             {
-                ResetPosition(c.gameObject.transform);
+                ResetPosition(p.currentHolder.bleedChipHolder.value.GetChild(i).transform);
             }
 
-            foreach (Chip c in p.all_combat_chips)
+            for (int i = 0; i < p.currentHolder.combatChipHolder.value.childCount; i++)
             {
-                ResetPosition(c.gameObject.transform);
+                ResetPosition(p.currentHolder.combatChipHolder.value.GetChild(i).transform);
             }
 
-            foreach (Chip c in p.all_poison_chips)
+            for (int i = 0; i < p.currentHolder.poisonChipHolder.value.childCount; i++)
             {
-                ResetPosition(c.gameObject.transform);
+                ResetPosition(p.currentHolder.poisonChipHolder.value.GetChild(i).transform);
             }
 
             ResetPosition(GM.turn.offensiveChip.transform);
@@ -38,9 +38,9 @@ public class A_ResetChips : Action
 
     void ResetPosition(Transform t)
     {
-        t.transform.localPosition = Vector3.zero;
-        t.transform.localEulerAngles = Vector3.zero;
-        t.transform.localScale = Vector3.one;
+        t.localPosition = Vector3.zero;
+        t.localEulerAngles = Vector3.zero;
+        t.localScale = Vector3.one;
     }
 
     public override bool IsComplete()

@@ -73,18 +73,18 @@ public class PlayerHolder : ScriptableObject
     [System.NonSerialized]
     List<FloatingDefenseHolder> floatingDefends = new List<FloatingDefenseHolder>();
 
-    public void addFloatingDefend(FloatingDefenseHolder holder)
+    public void AddFloatingDefend(FloatingDefenseHolder holder)
     {
         floatingDefends.Add(holder);
         floatingDefends = floatingDefends.OrderBy(a => a.effect.priority).ToList();
     }
 
-    public void removeFloatingDefend(FloatingDefenseHolder holder)
+    public void RemoveFloatingDefend(FloatingDefenseHolder holder)
     {
         floatingDefends.Remove(holder);
     }
 
-    public FloatingDefenseHolder getFloatingDefend(ChipType type)
+    public FloatingDefenseHolder GetFloatingDefend(ChipType type)
     {
         List<FloatingDefenseHolder> check = new List<FloatingDefenseHolder>();
 
@@ -185,19 +185,6 @@ public class PlayerHolder : ScriptableObject
         playerUI.UpdateAll();
 
         CreateBleedChips();
-
-        InitChips();
-    }
-
-    public List<Chip> all_combat_chips = new List<Chip>();
-    public List<Chip> all_poison_chips = new List<Chip>();
-    public List<Chip> all_bleed_chips = new List<Chip>();
-
-    public void InitChips()
-    {
-        all_combat_chips.AddRange(currentHolder.combatChipHolder.value.GetComponentsInChildren<Chip>());
-        all_poison_chips.AddRange(currentHolder.poisonChipHolder.value.GetComponentsInChildren<Chip>());
-        all_bleed_chips.AddRange(currentHolder.bleedChipHolder.value.GetComponentsInChildren<Chip>());
     }
 
     void CreateBleedChips()

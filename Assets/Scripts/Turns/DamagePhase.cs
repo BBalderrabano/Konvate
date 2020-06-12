@@ -101,6 +101,9 @@ public class DamagePhase : Phase
 
             LoadCardEffects();
 
+            Action checkFloatingDefend = new A_CheckFloatingDefense(GM.localPlayer.photonId);
+            GM.actionManager.AddAction(checkFloatingDefend);
+
             Action replaceForBleed = new A_ReplacePlayedChipsForBleed(GM.localPlayer.photonId);
             GM.actionManager.AddAction(replaceForBleed);
 

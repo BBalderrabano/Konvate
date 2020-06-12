@@ -243,7 +243,7 @@ public class AnimationManager : MonoBehaviour
             }
             else if(floatsDefend)
             {
-                card.owner.addFloatingDefend(new FloatingDefenseHolder(effect, type));
+                card.owner.AddFloatingDefend(new FloatingDefenseHolder(effect, type));
                 animationPointer.OnComplete();
             }
         }
@@ -286,7 +286,7 @@ public class AnimationManager : MonoBehaviour
             Vector3 travelTo;
             GameObject parentTo;
 
-            FloatingDefenseHolder floatingDefense = e.getFloatingDefend(type);
+            FloatingDefenseHolder floatingDefense = e.GetFloatingDefend(type);
 
             if (floatingDefense != null)
             {
@@ -301,7 +301,7 @@ public class AnimationManager : MonoBehaviour
                     parentTo = p.currentHolder.combatChipHolder.value.gameObject;
                 }
 
-                e.removeFloatingDefend(floatingDefense);
+                e.RemoveFloatingDefend(floatingDefense);
             }
             else
             {
