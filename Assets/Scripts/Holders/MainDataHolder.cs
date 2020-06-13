@@ -22,7 +22,4 @@ public class MainDataHolder : ScriptableObject
 
     public CardType quickPlayType;
     public CardType setPlayType;
-
-    public BoolVariable carouselIsDone;
-    public CardListVariable carouselSelection;
 }

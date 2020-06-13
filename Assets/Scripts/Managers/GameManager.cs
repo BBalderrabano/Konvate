@@ -274,13 +274,17 @@ public class GameManager : MonoBehaviour
         actionManager.Tick(Time.deltaTime);
     }
 
-    public void ChangeTurnController(int photonID)
+    public void ChangeTurnController(int photonID, bool isVisual = false)
     {
         PlayerHolder p = getPlayerHolder(photonID);
 
-        p.playedQuickCard = false;
+        if (!isVisual)
+        {
+            p.playedQuickCard = false;
+            turn.currentPhase.value.OnPhaseControllerChange(photonID);
+        }
+
         currentPlayer = p;
-        turn.currentPhase.value.OnPhaseControllerChange(photonID);
         onPhaseControllerChange.Raise();
     }
 

@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Card Effects/Asesino/Ataque Premeditado")]
-public class CE_AtaquePremeditado : CardEffect
+public class CE_AtaquePremeditado : SelectionCardEffect
 {
-    public BoolVariable doneSelecting;
-    public CardListVariable selectedCards;
     public CardEffect maintainEffect;
 
     public SO.GameEvent PhaseControllerChangeEvent;
@@ -19,51 +17,34 @@ public class CE_AtaquePremeditado : CardEffect
 
         if (!init)
         {
-            init = true;
-            doneSelecting.value = false;
-
-            List<Card> handCards = card.owner.handCards;
-
-            handCards.RemoveAll(a => a.cardEffects.Exists(b => b.type == EffectType.MAINTAIN));
-
-            if(handCards.Count <= 0)
+            if (card.owner.isLocal)
             {
-                doneSelecting.value = false;
-                selectedCards.values.Clear();
-                isDone = true;
-                init = false;
+                List<Card> handCards = card.owner.handCards;
 
-                return;
+                handCards.RemoveAll(a => a.cardEffects.Exists(b => b.type == EffectType.MAINTAIN));
+
+                parentAction.PushAction(new A_CardSelection("Puedes <b>mantener</b> una carta", handCards, card.owner.photonId, this, card.instanceId));
             }
             else
             {
-                if (card.owner.photonId == GM.localPlayer.photonId)
-                { 
-                    ScrollSelectionManager.singleton.SelectCards(handCards, "Puedes <b>mantener</b> una carta", false, false, 0, 0, this);
-                }
-                else
-                {
-                    ScrollSelectionManager.singleton.WaitForOpponent(this);
-
-                    GM.currentPlayer = GM.clientPlayer;
-                    PhaseControllerChangeEvent.Raise();
-                }
+                GM.actionManager.PushAction(parentAction.actionId, new A_CardSelectionWait(GM.localPlayer.photonId, this, card.instanceId));
             }
+
+            init = true;
         }
-        else if (doneSelecting.value)
+    }
+
+    public override void DoneSelecting(int[] cardIds)
+    {
+        if (cardIds != null)
         {
-            selectedCards.values[0].cardEffects.Add(maintainEffect);
-
-            doneSelecting.value = false;
-            selectedCards.values.Clear();
-            isDone = true;
-            init = false;
-
-            if (card.owner.photonId != GM.localPlayer.photonId)
+            for (int i = 0; i < cardIds.Length; i++)
             {
-                GM.currentPlayer = null;
-                PhaseControllerChangeEvent.Raise();
+                Card selected = GM.getPlayerHolder(card.owner.photonId).GetCard(cardIds[i]);
+                selected.cardEffects.Add(maintainEffect);
             }
         }
+
+        Finish();
     }
 }

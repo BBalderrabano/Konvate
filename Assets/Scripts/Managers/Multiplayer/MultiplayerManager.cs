@@ -368,6 +368,21 @@ public class MultiplayerManager : MonoBehaviourPun, IPunInstantiateMagicCallback
 
     #endregion
 
+    #region Carrousel Card Selection
+
+    public void PlayerFinishCardSelection(int[] cardIds, int cardId, int effectId, int photonId, int actionId)
+    {
+        photonView.RPC("RPC_PlayerFinishCardSelection", RpcTarget.Others, cardIds, cardId, effectId, photonId, actionId);
+    }
+
+    [PunRPC]
+    public void RPC_PlayerFinishCardSelection(int[] cardIds, int cardId, int effectId, int photonId, int actionId)
+    {
+        GM.actionManager.AddAction(new A_CardSelectionComplete(cardIds, photonId, cardId, effectId, actionId));
+    }
+
+    #endregion
+
     #region Turn Handles
     public void PhaseIsDone(int photonId, int phaseIndex)
     {
@@ -389,24 +404,6 @@ public class MultiplayerManager : MonoBehaviourPun, IPunInstantiateMagicCallback
                 GM.turn.GetPhaseByIndex(phaseIndex).ChangePlayerSync(photonId, true);
             }
         }
-    }
-
-    public void PlayerFinishCardSelection(int[] cardIds)
-    {
-        photonView.RPC("RPC_PlayerFinishCardSelection", RpcTarget.Others, cardIds);
-    }
-
-    [PunRPC]
-    public void RPC_PlayerFinishCardSelection(int[] cardIds)
-    {
-        for (int i = 0; i < cardIds.Length; i++)
-        {
-            Card c = GM.all_cards.Find(a => a.instanceId == cardIds[i]);
-
-            GM.resourcesManager.dataHolder.carouselSelection.values.Add(c);
-        }
-
-        GM.resourcesManager.dataHolder.carouselIsDone.value = true;
     }
 
     #endregion

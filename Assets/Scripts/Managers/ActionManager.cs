@@ -59,6 +59,18 @@ public class ActionManager
         return null;
     }
 
+    public List<Action> GetPlayerActions(int photonId)
+    {
+        foreach (ActionList list in actions)
+        {
+            if (list.photonId == photonId)
+            {
+                return list;
+            }
+        }
+        return null;
+    }
+
     public void PushAction(int actionId, Action action)
     {
         foreach (ActionList list in actions)

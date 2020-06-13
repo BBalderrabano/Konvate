@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PhotonServerSettings
   m_EditorClassIdentifier: 
   AppSettings:
-    AppIdRealtime: 
+    AppIdRealtime: 9ee903bb-d898-4b4c-b495-0bc29ad25a97
     AppIdChat: 
     AppIdVoice: 
     AppVersion: 
@@ -30,7 +30,20 @@ MonoBehaviour:
   EnableSupportLogger: 0
   RunInBackground: 1
   StartInOfflineMode: 0
-  RpcList: []
+  RpcList:
+  - ClickRpc
+  - DestroyRpc
+  - RPC_CreateAllCardsForPlayers
+  - RPC_InitGame
+  - RPC_PhaseIsDone
+  - RPC_PlayerFinishCardSelection
+  - RPC_SendAction
+  - RPC_SendActionGiveControl
+  - RPC_SendDraw
+  - RPC_SendShuffle
+  - RPC_SendUseCard
+  - RPC_ShowOpponentCards
+  - RPC_SyncronizeAllCards
   DisableAutoOpenWizard: 1
-  ShowSettings: 0
+  ShowSettings: 1
   DevRegionSetOnce: 0

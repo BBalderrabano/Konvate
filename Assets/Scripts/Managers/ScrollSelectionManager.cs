@@ -14,17 +14,14 @@ public class ScrollSelectionManager : MonoBehaviour
     public GameObject selectorHolder;
 
     List<Card> listOfCards = new List<Card>();
+    List<Card> cardsSelected = new List<Card>();
 
     public Button acceptButton;
     public Button addCardButton;
     public Button hideButton;
     public Button closeButton;
 
-    public CardListVariable cardsSelected;
-    public BoolVariable doneSelecting;
-
-    CardEffect callback;
-
+    A_CardSelection callback;
     string description;
 
     bool isMultipleSelection = false;
@@ -36,8 +33,6 @@ public class ScrollSelectionManager : MonoBehaviour
     int selectedAmount = 0;
 
     bool visible = true;
-
-    bool waitingForOpponent = false;
 
     public void Start()
     {
@@ -56,39 +51,11 @@ public class ScrollSelectionManager : MonoBehaviour
         }
     }
 
-    private void Update()
+    public void SelectCards(List<Card> cards, string description, bool isVisual, bool isMultiple = false, int minSelected = 0, int maxSelected = 0, A_CardSelection callback = null)
     {
-        if (waitingForOpponent)
-        {
-            if (doneSelecting.value)
-            {
-                CloseSelection();
-            }
-        }
-    }
-
-    public void WaitForOpponent(CardEffect effect)
-    {
-        callback = effect;
-
-        gameObject.SetActive(true);
-        addCardButton.gameObject.SetActive(false);
-        acceptButton.gameObject.SetActive(false);
-        hideButton.gameObject.SetActive(false);
-        selectorHolder.gameObject.SetActive(false);
-
-        waitingForOpponent = true;
-    }
-
-    public void SelectCards(List<Card> cards, string description, bool isVisual, bool isMultiple = false, int minSelected = 0, int maxSelected = 0, CardEffect effect = null)
-    {
-        waitingForOpponent = false;
-
         selectedAmount = 0;
         listOfCards.Clear();
-        cardsSelected.values.Clear();
 
-        doneSelecting.value = false;
         visible = true;
         this.isVisual = isVisual;
 
@@ -96,7 +63,7 @@ public class ScrollSelectionManager : MonoBehaviour
         this.minSelected = minSelected;
         this.maxSelected = maxSelected;
 
-        callback = effect;
+        this.callback = callback;
 
         if (cards == null || cards.Count <= 0)
         {
@@ -183,10 +150,10 @@ public class ScrollSelectionManager : MonoBehaviour
 
         Transform border = sss.Panels[index].transform.GetChild(0).Find("Border");
 
-        if (cardsSelected.values.Contains(current))
+        if (cardsSelected.Contains(current))
         {
             selectedAmount--;
-            cardsSelected.values.Remove(current);
+            cardsSelected.Remove(current);
 
             if (border != null)
             {
@@ -202,7 +169,7 @@ public class ScrollSelectionManager : MonoBehaviour
             }
 
             selectedAmount++;
-            cardsSelected.values.Add(current);
+            cardsSelected.Add(current);
 
             if (border != null)
             {
@@ -232,24 +199,19 @@ public class ScrollSelectionManager : MonoBehaviour
 
     public void CloseSelection()
     {
-        if (!waitingForOpponent && !isVisual)
+        if (!isVisual)
         {
-            int[] cardIds = new int[cardsSelected.values.Count];
+            int[] cardIds = new int[cardsSelected.Count];
 
-            for (int i = 0; i < cardsSelected.values.Count; i++)
+            for (int i = 0; i < cardsSelected.Count; i++)
             {
-                cardIds[i] = cardsSelected.values[i].instanceId;
+                cardIds[i] = cardsSelected[i].instanceId;
             }
 
-            MultiplayerManager.singleton.PlayerFinishCardSelection(cardIds);
-        }
-
-        waitingForOpponent = false;
-        doneSelecting.value = true;
-
-        if (callback != null)
-        {
-            callback.Execute();
+            if (callback != null)
+            {
+                callback.DoneSelecting(cardIds);
+            }
         }
 
         gameObject.SetActive(false);
