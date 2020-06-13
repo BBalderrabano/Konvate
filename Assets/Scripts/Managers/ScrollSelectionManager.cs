@@ -1,13 +1,10 @@
 ﻿using DanielLochner.Assets.SimpleScrollSnap;
-using SO;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ScrollSelectionManager : MonoBehaviour
 {    
-    public List<Card> test = new List<Card>();
-
     public static ScrollSelectionManager singleton;
     public SimpleScrollSnap sss;
     public GameObject cardPrefab;
@@ -41,14 +38,7 @@ public class ScrollSelectionManager : MonoBehaviour
             singleton = this;
         }
 
-        if(test.Count > 0)
-        {
-            SelectCards(test, "Cartas de prueba", true);
-        }
-        else
-        {
-            gameObject.SetActive(false);
-        }
+        gameObject.SetActive(false);
     }
 
     public void SelectCards(List<Card> cards, string description, bool isVisual, bool isMultiple = false, int minSelected = 0, int maxSelected = 0, A_CardSelection callback = null)

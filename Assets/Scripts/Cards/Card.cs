@@ -95,6 +95,4 @@ public class Card : ScriptableObject
 
         return cardTags.Intersect(checks).Count() == checks.Count();
     }
-
-    int priority = 9999;
 }

@@ -1,7 +1,4 @@
-﻿using Photon.Realtime;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [CreateAssetMenu(menuName = "Turns/Phases/Discard Phase")]
 public class DiscardPhase : Phase

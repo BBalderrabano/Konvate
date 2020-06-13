@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -7,7 +6,6 @@ using UnityEngine;
 public class FinalEndPhase : Phase
 {
     List<CardEffect> turn_end = new List<CardEffect>();
-    public SO.GameEvent PhaseControllerChangeEvent;
 
     bool CheckVictoryConditions()
     {
@@ -84,6 +82,8 @@ public class FinalEndPhase : Phase
                 if (!localIsDone)
                 {
                     MultiplayerManager.singleton.PlayerIsReady();
+
+                    GM.ChangeTurnController(GM.getOpponentHolder(GM.localPlayer.photonId).photonId, true);
                 }
 
                 if (MultiplayerManager.singleton.ArePlayersReady())

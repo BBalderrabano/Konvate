@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [CreateAssetMenu(menuName = "Conditions/Asesino/Esquivar")]
 public class Ase_CD_Esquivar : Condition
