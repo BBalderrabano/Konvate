@@ -75,8 +75,9 @@ public enum EffectType
     ENDTURNSTART,
     ENDTURN,
     MAINTAIN,
-    PLAY,
+    PLAY_START,
     STAT_MOD,
     PREVAIL,
-    STARTTURN
+    STARTTURN,
+    PLAY_END
 }

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -99,20 +97,4 @@ public class Card : ScriptableObject
     }
 
     int priority = 9999;
-
-    public int getPriority()
-    {
-        if(priority > 1000)
-        {
-            for (int i = 0; i < cardEffects.Count; i++)
-            {
-                if(cardEffects[i].priority < priority)
-                {
-                    priority = cardEffects[i].priority;
-                }
-            }
-        }
-
-        return priority;
-    }
 }

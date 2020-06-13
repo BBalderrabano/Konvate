@@ -35,8 +35,7 @@ public class A_PlayCard : Action
 
             foreach (CardEffect eff in card.cardEffects)
             {
-                //TODO: Aca poner que cree el efecto y lo empuje a la lista
-                if (eff.type == EffectType.PLAY)
+                if (eff.type == EffectType.PLAY_START)
                     eff.Execute();
             }
 
@@ -78,6 +77,12 @@ public class A_PlayCard : Action
         {
             GM.turn.currentPhase.value.OnPlayCard(card);
             completed = true;
+
+            foreach (CardEffect eff in card.cardEffects)
+            {
+                if (eff.type == EffectType.PLAY_END)
+                    eff.Execute();
+            }
         }
 
         base.OnComplete();
