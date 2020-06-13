@@ -7,8 +7,6 @@ public class CE_AtaquePremeditado : SelectionCardEffect
 {
     public CardEffect maintainEffect;
 
-    public SO.GameEvent PhaseControllerChangeEvent;
-
     bool init = false;
 
     public override void Execute()
