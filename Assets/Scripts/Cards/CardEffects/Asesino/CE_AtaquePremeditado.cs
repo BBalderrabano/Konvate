@@ -1,5 +1,4 @@
-﻿using SO;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Card Effects/Asesino/Ataque Premeditado")]

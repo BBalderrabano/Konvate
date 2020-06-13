@@ -20,6 +20,7 @@ public class A_CardSelectionWait : Action
     {
         if (!isInit)
         {
+            WarningPanel.singleton.ShowWarning(callback.card.owner.playerName + " esta eligiendo una carta");
             lastCurrentPlayer = GM.currentPlayer;
             GM.ChangeTurnController(callback.card.owner.photonId, true);
 
