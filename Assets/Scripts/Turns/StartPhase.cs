@@ -76,7 +76,7 @@ public class StartPhase : Phase
     void SetOffensivePlayer()
     {
         PlayerHolder currentOffPlayer = GM.turn.offensivePlayer;
-        PlayerHolder opponent = GM.getOpponentHolder(currentOffPlayer.photonId);
+        PlayerHolder opponent = GM.GetOpponentHolder(currentOffPlayer.photonId);
 
         Settings.SetParent(GM.turn.offensiveChip.transform, opponent.currentHolder.playedCombatChipHolder.value);
 

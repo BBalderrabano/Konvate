@@ -11,7 +11,7 @@ public class CE_RefrigerioRestoreEffect : CardEffect
     {
         base.Execute();
 
-        enemy = GameManager.singleton.getOpponentHolder(card.owner.photonId);
+        enemy = GameManager.singleton.GetOpponentHolder(card.owner.photonId);
 
         List<Transform> bloodChips = GameManager.singleton.GetChips(ChipType.BLEED, enemy, true);
 

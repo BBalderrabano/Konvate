@@ -17,7 +17,7 @@ public class A_DiscardAllCards : Action
             List<Action> discardActions = new List<Action>();
             List<Card> cardsToDiscard = new List<Card>();
 
-            PlayerHolder player = GM.getPlayerHolder(photonId);
+            PlayerHolder player = GM.GetPlayerHolder(photonId);
 
             cardsToDiscard.AddRange(PrepareForDiscard(player.handCards));
             cardsToDiscard.AddRange(PrepareForDiscard(player.playedCards));

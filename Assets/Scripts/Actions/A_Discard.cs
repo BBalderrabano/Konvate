@@ -23,7 +23,7 @@ public class A_Discard : Action
     {
         if (!isInit)
         {
-            PlayerHolder player = GM.getPlayerHolder(photonId);
+            PlayerHolder player = GM.GetPlayerHolder(photonId);
             Card card = player.GetCard(cardTarget);
 
             foreach (CardEffect effect in card.cardEffects)

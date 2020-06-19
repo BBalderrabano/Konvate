@@ -39,7 +39,7 @@ public class A_CardSelectionComplete : Action
 
     public override void OnComplete()
     {
-        MultiplayerManager.singleton.SendAction(actionId, GM.localPlayer.photonId);
+        MultiplayerManager.singleton.SendCompleteAction(actionId, GM.localPlayer.photonId);
 
         base.OnComplete();
     }

@@ -13,7 +13,7 @@ public class A_ResetChips : Action
     {
         if (!isInit)
         {
-            PlayerHolder p = GM.getPlayerHolder(photonId);
+            PlayerHolder p = GM.GetPlayerHolder(photonId);
 
             for (int i = 0; i < p.currentHolder.bleedChipHolder.value.childCount; i++)
             {

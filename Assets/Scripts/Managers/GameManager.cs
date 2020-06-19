@@ -1,9 +1,12 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using SO;
 
 public class GameManager : MonoBehaviour
 {
     #region Variables
+    public static GameManager singleton;
+
     public ActionManager actionManager;
     public AnimationManager animationManager;
     public ResourcesManager resourcesManager;
@@ -11,14 +14,29 @@ public class GameManager : MonoBehaviour
     public bool isMultiplayer;
 
     public PlayerHolder[] allPlayers;
+
     public PlayerHolder currentPlayer;
 
+    public CardHolders playerOneHolder;
+    public CardHolders playerTwoHolder;
+
     public List<Card> all_cards = new List<Card>();
+
+    public Card GetCard(int instanceId)
+    {
+        for (int i = 0; i < all_cards.Count; i++)
+        {
+            if (all_cards[i].instanceId == instanceId)
+                return all_cards[i];
+        }
+
+        return null;
+    }
 
     public PlayerHolder localPlayer;
     public PlayerHolder clientPlayer;
 
-    public PlayerHolder getPlayerHolder(int photonId)
+    public PlayerHolder GetPlayerHolder(int photonId)
     {
         if (localPlayer.photonId == photonId)
             return localPlayer;
@@ -29,7 +47,7 @@ public class GameManager : MonoBehaviour
         return null;
     }
 
-    public PlayerHolder getOpponentHolder(int photonId)
+    public PlayerHolder GetOpponentHolder(int photonId)
     {
         if (clientPlayer.photonId == photonId)
             return localPlayer;
@@ -37,20 +55,15 @@ public class GameManager : MonoBehaviour
             return clientPlayer;
     }
 
-    public CardHolders playerOneHolder;
-    public CardHolders playerTwoHolder;
-
     public GameState currentState;
 
     public Turn turn;
 
     public bool isInit = false;
 
-    public SO.GameEvent onTurnChange;
-    public SO.GameEvent onPhaseControllerChange;
-    public SO.GameEvent onPhaseChange;
-
-    public static GameManager singleton;
+    public GameEvent onTurnChange;
+    public GameEvent onPhaseControllerChange;
+    public GameEvent onPhaseChange;
 
     public GameObject currentPreviewCard;
     Vector3 originalPreviewScale;
@@ -108,6 +121,7 @@ public class GameManager : MonoBehaviour
 
             allPlayers[0] = localPlayer;
             allPlayers[0].isLocal = true;
+
             allPlayers[1] = clientPlayer;
             allPlayers[1].isLocal = false;
 
@@ -276,7 +290,7 @@ public class GameManager : MonoBehaviour
 
     public void ChangeTurnController(int photonID, bool isVisual = false)
     {
-        PlayerHolder p = getPlayerHolder(photonID);
+        PlayerHolder p = GetPlayerHolder(photonID);
 
         if (!isVisual)
         {
@@ -315,7 +329,6 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region Chips
-
     public List<Transform> GetChips(ChipType type, PlayerHolder player, bool played = false)
     {
         List<Transform> pick = new List<Transform>();

@@ -17,7 +17,7 @@ public class StartGameScript : MonoBehaviour
     {
         if(MultiplayerManager.singleton != null)
         {
-            playerVsText.GetComponent<TMPro.TMP_Text>().text = MultiplayerManager.singleton.getVsText();
+            playerVsText.GetComponent<TMPro.TMP_Text>().text = MultiplayerManager.singleton.GetVsText();
         }
 
         img.gameObject.SetActive(true);

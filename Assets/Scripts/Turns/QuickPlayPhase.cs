@@ -12,7 +12,7 @@ public class QuickPlayPhase : Phase
 
     void LoadPlayedCardEffects(int photonId)
     {
-        PlayerHolder player = GM.getPlayerHolder(photonId);
+        PlayerHolder player = GM.GetPlayerHolder(photonId);
 
         foreach (Card c in player.playedCards)
         {

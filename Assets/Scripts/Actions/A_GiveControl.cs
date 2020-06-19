@@ -37,7 +37,7 @@ public class A_GiveControl : Action
                     }
                     else
                     {
-                        WarningPanel.singleton.ShowWarning(GM.getPlayerHolder(photonId).playerName + " terminó la fase", true);
+                        WarningPanel.singleton.ShowWarning(GM.GetPlayerHolder(photonId).playerName + " terminó la fase", true);
                     }
                 }
             }
@@ -52,7 +52,7 @@ public class A_GiveControl : Action
                     }
                     else
                     {
-                        WarningPanel.singleton.ShowWarning(GM.getPlayerHolder(photonId).playerName + " cedió su turno");
+                        WarningPanel.singleton.ShowWarning(GM.GetPlayerHolder(photonId).playerName + " cedió su turno");
                     }
                 }
 

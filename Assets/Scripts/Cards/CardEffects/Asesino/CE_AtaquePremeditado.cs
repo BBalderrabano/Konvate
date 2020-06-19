@@ -37,7 +37,7 @@ public class CE_AtaquePremeditado : SelectionCardEffect
         {
             for (int i = 0; i < cardIds.Length; i++)
             {
-                Card selected = GM.getPlayerHolder(card.owner.photonId).GetCard(cardIds[i]);
+                Card selected = GM.GetPlayerHolder(card.owner.photonId).GetCard(cardIds[i]);
                 selected.cardEffects.Add(maintainEffect);
             }
         }

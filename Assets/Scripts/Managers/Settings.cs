@@ -23,7 +23,7 @@ public static class Settings
         var last = count - 1;
         for (var i = 0; i < last; ++i)
         {
-            var r = UnityEngine.Random.Range(i, count);
+            var r = Random.Range(i, count);
             var tmp = ts[i];
             ts[i] = ts[r];
             ts[r] = tmp;
@@ -32,7 +32,6 @@ public static class Settings
 
     public static ResourcesManager GetResourcesManager() 
     {
-
         if (_resourcesManager == null)
         {
             _resourcesManager = Resources.Load("ResourcesManager") as ResourcesManager;

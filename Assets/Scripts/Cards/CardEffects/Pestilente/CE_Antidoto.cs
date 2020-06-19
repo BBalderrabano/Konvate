@@ -12,9 +12,10 @@ public class CE_Antidoto : CardEffect
     {
         placedChips = false;
 
-        enemy = GameManager.singleton.getOpponentHolder(card.owner.photonId);
+        enemy = GM.GetOpponentHolder(card.owner.photonId);
 
-        List<Transform> enemyPoisonChips = GameManager.singleton.GetChips(ChipType.POISON, enemy, true);
+        List<Transform> enemyPoisonChips = GM.GetChips(ChipType.POISON, enemy, true);
+
         int playedAmount = enemyPoisonChips.Count;
 
         if (playedAmount == 0)

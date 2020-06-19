@@ -13,7 +13,7 @@ public class CE_ExplosionVenenosa : CardEffect
     {
         base.Execute();
 
-        PlayerHolder player = GameManager.singleton.getPlayerHolder(card.owner.photonId);
+        PlayerHolder player = GameManager.singleton.GetPlayerHolder(card.owner.photonId);
 
         for (int i = 0; i < player.all_cards.Count; i++)
         {

@@ -10,7 +10,7 @@ public class Ase_CD_AtaqueBasico : Condition
 
     public override bool isValid(int photonId, int cardId)
     {
-        PlayerHolder player = GameManager.singleton.getPlayerHolder(photonId);
+        PlayerHolder player = GameManager.singleton.GetPlayerHolder(photonId);
 
         for (int i = 0; i < player.playedCards.Count; i++)
         {

@@ -11,7 +11,7 @@ public class CE_Parry : CardEffect
     {
         base.Execute();
 
-        enemy = GameManager.singleton.getOpponentHolder(card.owner.photonId);
+        enemy = GameManager.singleton.GetOpponentHolder(card.owner.photonId);
 
         List<Transform> fistChips = GameManager.singleton.GetChips(ChipType.COMBAT_OFFENSIVE, enemy, true);
 

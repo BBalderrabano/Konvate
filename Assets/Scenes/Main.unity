@@ -429,11 +429,11 @@ MonoBehaviour:
   isMultiplayer: 0
   allPlayers: []
   currentPlayer: {fileID: 11400000, guid: 126e2f04c594a8f48a738f2e0728588c, type: 2}
+  playerOneHolder: {fileID: 11400000, guid: 9dde29d87ba85c3418ab1752e1b9933a, type: 2}
+  playerTwoHolder: {fileID: 11400000, guid: 9774157da280d1c4da5ccf270cc56918, type: 2}
   all_cards: []
   localPlayer: {fileID: 11400000, guid: 126e2f04c594a8f48a738f2e0728588c, type: 2}
   clientPlayer: {fileID: 11400000, guid: 136895e718f1cf044807aeec75f4557b, type: 2}
-  playerOneHolder: {fileID: 11400000, guid: 9dde29d87ba85c3418ab1752e1b9933a, type: 2}
-  playerTwoHolder: {fileID: 11400000, guid: 9774157da280d1c4da5ccf270cc56918, type: 2}
   currentState: {fileID: 0}
   turn: {fileID: 11400000, guid: 7bc49a201c9d8b04f967642e262651cd, type: 2}
   isInit: 0
@@ -1475,7 +1475,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a028ec2720ffac74cb828c6749c99d43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  test: []
   sss: {fileID: 1688091580}
   cardPrefab: {fileID: 3812758503073055535, guid: 99a0dac87a4c90b459157eeba1ea2785,
     type: 3}
@@ -12805,7 +12804,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: <color=#FF0000> Coloca </color>1<sprite=0>
+  m_text: Texto
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -12836,9 +12835,9 @@ MonoBehaviour:
   m_fontSize: 45
   m_fontSizeBase: 45
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 45
   m_fontStyle: 0
   m_textAlignment: 514
   m_characterSpacing: 0
@@ -12874,14 +12873,14 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 3839741357561755211}
-    characterCount: 10
+    characterCount: 5
     spriteCount: 0
-    spaceCount: 2
-    wordCount: 3
+    spaceCount: 0
+    wordCount: 1
     linkCount: 0
     lineCount: 1
     pageCount: 1
-    materialCount: 2
+    materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
@@ -12914,8 +12913,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.725, y: -208.09999}
-  m_SizeDelta: {x: 429.55, y: 183.8}
+  m_AnchoredPosition: {x: 1.725, y: -203.09998}
+  m_SizeDelta: {x: 429.55, y: 173.79997}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &3839741357561755213
 GameObject:
@@ -14004,9 +14003,9 @@ MonoBehaviour:
   m_fontSize: 45
   m_fontSizeBase: 45
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 45
   m_fontStyle: 0
   m_textAlignment: 514
   m_characterSpacing: 0
@@ -14108,8 +14107,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.725, y: -208.09999}
-  m_SizeDelta: {x: 429.55, y: 183.8}
+  m_AnchoredPosition: {x: 1.725, y: -203.1}
+  m_SizeDelta: {x: 429.55, y: 173.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4941812462994691430
 GameObject:

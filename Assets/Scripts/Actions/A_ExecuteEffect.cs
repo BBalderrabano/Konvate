@@ -8,7 +8,7 @@ public class A_ExecuteEffect : Action
 
     public A_ExecuteEffect(int cardId, int effectId, int photonId, int actionId = -1) : base(GameManager.singleton.localPlayer.photonId, actionId)
     {
-        owner = GM.getPlayerHolder(photonId).GetCard(cardId);
+        owner = GM.GetPlayerHolder(photonId).GetCard(cardId);
         effect = owner.GetEffect(effectId);
         effect.parentAction = this;
 

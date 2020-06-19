@@ -8,7 +8,7 @@ public class MultiplayerManager : MonoBehaviourPun, IPunInstantiateMagicCallback
     public static MultiplayerManager singleton;
     List<NetworkPrint> playerPrints = new List<NetworkPrint>();
 
-    public string getVsText()
+    public string GetVsText()
     {
         return PhotonNetwork.PlayerList[0].NickName + " vs " + PhotonNetwork.PlayerList[1].NickName;
     }
@@ -64,8 +64,7 @@ public class MultiplayerManager : MonoBehaviourPun, IPunInstantiateMagicCallback
 
     #endregion
 
-    #region Tick
-
+    #region Update
     private void Update()
     {
         if (!gameStarted && PhotonNetwork.LevelLoadingProgress == 1)
@@ -75,7 +74,6 @@ public class MultiplayerManager : MonoBehaviourPun, IPunInstantiateMagicCallback
                 gameStarted = true;
                 StartMatch();
             }
-
         }
         else if (gameStarted)
         {
@@ -198,7 +196,7 @@ public class MultiplayerManager : MonoBehaviourPun, IPunInstantiateMagicCallback
         for (int i = 0; i < playerIds.Length; i++)
         {
             NetworkPrint player = GetPrint(playerIds[i]);
-            PlayerHolder playerHolder = GM.getPlayerHolder(playerIds[i]);
+            PlayerHolder playerHolder = GM.GetPlayerHolder(playerIds[i]);
 
             foreach (string cardName in player.getStartingCardIds())
             {
@@ -253,7 +251,6 @@ public class MultiplayerManager : MonoBehaviourPun, IPunInstantiateMagicCallback
     #endregion
 
     #region Phase Controller
-
     public void SendActionGiveControl(int phaseIndex, int photonId, bool endMyPhase, int newControllerPhotonId, bool showMessages, int actionId)
     {
         photonView.RPC("RPC_SendActionGiveControl", RpcTarget.OthersBuffered, phaseIndex, photonId, endMyPhase, newControllerPhotonId, showMessages, actionId);
@@ -269,13 +266,6 @@ public class MultiplayerManager : MonoBehaviourPun, IPunInstantiateMagicCallback
     #endregion
 
     #region Card Operations
-    public enum CardOperation
-    {
-        cardPlayed,
-        sendToDiscard,
-        cardToHand
-    }
-
     public void SyncronizeAllCards(int photonId, int[] hand, int[] deck, int[] discard, int[] played, int actionId = -1)
     {
         if (photonId == localPrint.photonId)
@@ -287,7 +277,7 @@ public class MultiplayerManager : MonoBehaviourPun, IPunInstantiateMagicCallback
     [PunRPC]
     public void RPC_SyncronizeAllCards(int photonId, int[] hand, int[] deck, int[] discard, int[] played, int actionId)
     {
-        PlayerHolder player = GM.getPlayerHolder(photonId);
+        PlayerHolder player = GM.GetPlayerHolder(photonId);
 
         if (!player.isLocal)
         {
@@ -333,7 +323,7 @@ public class MultiplayerManager : MonoBehaviourPun, IPunInstantiateMagicCallback
 
             if(actionId > 0)
             {
-                SendAction(actionId, GM.localPlayer.photonId);
+                SendCompleteAction(actionId, GM.localPlayer.photonId);
             }
         }
     }
@@ -351,7 +341,7 @@ public class MultiplayerManager : MonoBehaviourPun, IPunInstantiateMagicCallback
     {
         if (photonId != localPrint.photonId)
         {
-            PlayerHolder player = GM.getPlayerHolder(photonId);
+            PlayerHolder player = GM.GetPlayerHolder(photonId);
             List<Card> cardsShown = new List<Card>();
 
             for (int i = 0; i < cardIds.Length; i++)
@@ -400,7 +390,6 @@ public class MultiplayerManager : MonoBehaviourPun, IPunInstantiateMagicCallback
         {
             if (GM.turn.GetPhaseByIndex(phaseIndex) != null)
             {   
-                
                 GM.turn.GetPhaseByIndex(phaseIndex).ChangePlayerSync(photonId, true);
             }
         }
@@ -423,7 +412,7 @@ public class MultiplayerManager : MonoBehaviourPun, IPunInstantiateMagicCallback
         GM.actionManager.AddAction(draw);
 
         draw.PlayerIsReady(GM.localPlayer.photonId);
-        SendAction(actionId, GM.localPlayer.photonId);
+        SendCompleteAction(actionId, GM.localPlayer.photonId);
     }
 
     public void SendShuffle(int actionId, int photonId, int[] deckId, bool andDraw = true)
@@ -439,7 +428,7 @@ public class MultiplayerManager : MonoBehaviourPun, IPunInstantiateMagicCallback
         GM.actionManager.AddAction(shuffle);
 
         shuffle.PlayerIsReady(GM.localPlayer.photonId);
-        SendAction(actionId, GM.localPlayer.photonId);
+        SendCompleteAction(actionId, GM.localPlayer.photonId);
     }
 
     public void SendUseCard(int instanceId, int photonId, int actionId, ActionType type)
@@ -472,17 +461,17 @@ public class MultiplayerManager : MonoBehaviourPun, IPunInstantiateMagicCallback
             GM.actionManager.AddAction(execute);
 
             execute.PlayerIsReady(GM.localPlayer.photonId);
-            SendAction(actionId, GM.localPlayer.photonId);
+            SendCompleteAction(actionId, GM.localPlayer.photonId);
         }
     }
 
-    public void SendAction(int actionId, int photonId)
+    public void SendCompleteAction(int actionId, int photonId)
     {
-        photonView.RPC("RPC_SendAction", RpcTarget.OthersBuffered, actionId, photonId);
+        photonView.RPC("RPC_SendCompleteAction", RpcTarget.OthersBuffered, actionId, photonId);
     }
 
     [PunRPC]
-    public void RPC_SendAction(int actionId, int photonId)
+    public void RPC_SendCompleteAction(int actionId, int photonId)
     {
         if (GM.actionManager.GetAction(actionId) != null)
         {

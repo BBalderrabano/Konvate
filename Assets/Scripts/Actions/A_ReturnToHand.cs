@@ -6,8 +6,8 @@ public class A_ReturnToHand : Action
 
     public A_ReturnToHand(int instanceId, int photonId, int actionId = -1) : base(photonId, actionId)
     {
-        player = GM.getPlayerHolder(photonId);
-        card = GM.getPlayerHolder(photonId).GetCard(instanceId);
+        player = GM.GetPlayerHolder(photonId);
+        card = GM.GetPlayerHolder(photonId).GetCard(instanceId);
     }
 
     public override bool Continue()

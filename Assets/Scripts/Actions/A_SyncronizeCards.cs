@@ -23,7 +23,7 @@ public class A_SyncronizeCards : Action
     {
         if (!isInit)
         {
-            PlayerHolder player = GM.getPlayerHolder(photonId);
+            PlayerHolder player = GM.GetPlayerHolder(photonId);
 
             int[] handCards = null;
             int[] deckCards = null;

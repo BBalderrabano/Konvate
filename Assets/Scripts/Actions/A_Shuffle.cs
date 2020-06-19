@@ -25,7 +25,7 @@ public class A_Shuffle : Action
     {
         if (!isInit)
         {
-            PlayerHolder player = GM.getPlayerHolder(photonId);
+            PlayerHolder player = GM.GetPlayerHolder(photonId);
 
             if (player.isLocal || !GM.isMultiplayer)
             {

@@ -83,7 +83,7 @@ public class FinalEndPhase : Phase
                 {
                     MultiplayerManager.singleton.PlayerIsReady();
 
-                    GM.ChangeTurnController(GM.getOpponentHolder(GM.localPlayer.photonId).photonId, true);
+                    GM.ChangeTurnController(GM.GetOpponentHolder(GM.localPlayer.photonId).photonId, true);
                 }
 
                 if (MultiplayerManager.singleton.ArePlayersReady())

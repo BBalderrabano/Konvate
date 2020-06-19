@@ -15,7 +15,7 @@ public class A_CheckFloatingDefense : Action
         {
             foreach (PlayerHolder p in GM.allPlayers)
             {
-                PlayerHolder enemy = GM.getOpponentHolder(p.photonId);
+                PlayerHolder enemy = GM.GetOpponentHolder(p.photonId);
 
                 for (int i = 0; i < p.currentHolder.playedPoisonChipHolder.value.childCount; i++)
                 {

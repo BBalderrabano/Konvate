@@ -9,38 +9,43 @@ public class CE_AcelerarToxina_Remove : CardEffect
 
     public override void Execute()
     {
+        base.Execute();
+
         int totalAmount = 3;
+        int currentAmount = 0;
 
-        enemy = GameManager.singleton.getOpponentHolder(card.owner.photonId);
+        enemy = GM.GetOpponentHolder(card.owner.photonId);
 
-        List<Transform> enemyPoisonChips = GameManager.singleton.GetChips(ChipType.POISON, enemy, true);
-        List<Transform> playerPoisonChips = GameManager.singleton.GetChips(ChipType.POISON, card.owner, true);
-
-        List<Transform> poisonChips = new List<Transform>();
+        List<Transform> enemyPoisonChips = GM.GetChips(ChipType.POISON, enemy, true);
+        List<Transform> playerPoisonChips = GM.GetChips(ChipType.POISON, card.owner, true);
 
         if(enemyPoisonChips.Count > 0)
         {
-            poisonChips.AddRange(enemyPoisonChips.GetRange(0, Mathf.Min(enemyPoisonChips.Count, 3)));
+            int enemyChipsAmount = Mathf.Min(enemyPoisonChips.Count, 3);
+
+            currentAmount += enemyChipsAmount;
+
+            parentAction.LinkAnimation(GM.animationManager.RemoveChip(parentAction.actionId, this, card.owner.photonId, card.instanceId, ChipType.POISON, enemyChipsAmount, false));
         }
 
-        if(playerPoisonChips.Count > 0 && poisonChips.Count < totalAmount)
+        if(playerPoisonChips.Count > 0 && currentAmount < totalAmount)
         {
-            poisonChips.AddRange(playerPoisonChips.GetRange(0, totalAmount - poisonChips.Count));
-        }
+            int remainingChipsAmount = Mathf.Min(playerPoisonChips.Count, (totalAmount - currentAmount));
 
-        int playedAmount = poisonChips.Count;
+            currentAmount += remainingChipsAmount;
+
+            parentAction.LinkAnimation(GM.animationManager.RemoveChip(parentAction.actionId, this, enemy.photonId, card.instanceId, ChipType.POISON, remainingChipsAmount, false));
+        }
 
         foreach (CE_AcelerarToxina_Place place in card.cardEffects.OfType<CE_AcelerarToxina_Place>())
         {
-            place.amount = playedAmount;
+            place.amount = currentAmount;
         }
 
-        if (playedAmount == 0)
+        if (currentAmount == 0)
         {
             base.Finish();
             return;
         }
-
-        parentAction.LinkAnimation(GM.animationManager.RemoveChip(parentAction.actionId, this, card.owner.photonId, card.instanceId, ChipType.POISON, playedAmount));
     }
 }

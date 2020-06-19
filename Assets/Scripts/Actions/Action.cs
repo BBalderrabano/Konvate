@@ -210,7 +210,7 @@ public abstract class Action
     {
         if (effectOrigin != 0 && cardOrigin != 0)
         {
-            PlayerHolder player = GM.getPlayerHolder(photonId);
+            PlayerHolder player = GM.GetPlayerHolder(photonId);
             Card effectCard = player.GetCard(cardOrigin);
             CardEffect effect = effectCard.GetEffect(effectOrigin);
 

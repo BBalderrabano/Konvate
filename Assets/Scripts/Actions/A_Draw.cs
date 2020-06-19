@@ -1,9 +1,8 @@
-﻿
-using System.Linq;
-using UnityEngine;
+﻿using System.Linq;
 
 public class A_Draw : Action
 {
+    Card cardDrawn = null;
     bool noCardsToDraw;
 
     public A_Draw(int photonId, int actionId = -1, int cardId = 0, int effectId = 0) : base(photonId, actionId) 
@@ -22,25 +21,25 @@ public class A_Draw : Action
     {
         if (!isInit)
         {
-            PlayerHolder player = GM.getPlayerHolder(photonId);
+            PlayerHolder player = GM.GetPlayerHolder(photonId);
 
             if (player.deck.Count > 0)
             {
-                Card card = player.deck[0];
+                cardDrawn = player.deck[0];
 
                 if (player.isLocal)
                 {
-                    card.cardPhysicalInst.setCurrentLogic(GM.resourcesManager.dataHolder.handLogic);
+                    cardDrawn.cardPhysicalInst.setCurrentLogic(GM.resourcesManager.dataHolder.handLogic);
                 }
                 else
                 {
-                    card.cardPhysicalInst.setCurrentLogic(GM.resourcesManager.dataHolder.opponentHandLogic);
+                    cardDrawn.cardPhysicalInst.setCurrentLogic(GM.resourcesManager.dataHolder.opponentHandLogic);
                 }
 
-                player.handCards.Add(card);
-                player.deck.Remove(card);
+                player.handCards.Add(cardDrawn);
+                player.deck.Remove(cardDrawn);
 
-                LinkAnimation(GM.animationManager.MoveCard(actionId, photonId, card.instanceId, player.currentHolder.handGrid.value.position, player.currentHolder.handGrid.value.gameObject));
+                LinkAnimation(GM.animationManager.MoveCard(actionId, photonId, cardDrawn.instanceId, player.currentHolder.handGrid.value.position, player.currentHolder.handGrid.value.gameObject));
 
                 AudioManager.singleton.Play(SoundEffectType.DRAW_CARD);
 

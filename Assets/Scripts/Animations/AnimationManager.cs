@@ -28,7 +28,7 @@ public class AnimationManager : MonoBehaviour
         foreach (PlayerHolder player in GM.allPlayers)
         {
             Transform playedChips = player.currentHolder.playedCombatChipHolder.value;
-            PlayerHolder enemy = GM.getOpponentHolder(player.photonId);
+            PlayerHolder enemy = GM.GetOpponentHolder(player.photonId);
 
             for (int i = 0; i < playedChips.childCount; i++)
             {
@@ -67,7 +67,7 @@ public class AnimationManager : MonoBehaviour
 
         int photonId = ((int)hstbl["photonId"]);
 
-        PlayerHolder player = GM.getPlayerHolder(photonId);
+        PlayerHolder player = GM.GetPlayerHolder(photonId);
 
         player.ModifyBloodChip(-1);
 
@@ -136,7 +136,7 @@ public class AnimationManager : MonoBehaviour
         int action_id = (int)hstbl["action"];
         int animationId = (int)hstbl["animationId"];
 
-        PlayerHolder chipOwner = GM.getPlayerHolder(photon_id);
+        PlayerHolder chipOwner = GM.GetPlayerHolder(photon_id);
 
         Vector3 rotateAdd = new Vector3(0, 90, 0);
 
@@ -180,12 +180,12 @@ public class AnimationManager : MonoBehaviour
     {
         int temp_amount = amount;
 
-        PlayerHolder p = GM.getPlayerHolder(photonId);
-        PlayerHolder e = GM.getOpponentHolder(photonId);
+        PlayerHolder p = GM.GetPlayerHolder(photonId);
+        PlayerHolder e = GM.GetOpponentHolder(photonId);
 
         List<Transform> chips = GM.GetChips(type, e, true);
 
-        Card card = p.GetCard(cardId);
+        Card card = GM.GetCard(cardId);
 
         if (chips.Count == 0)
         {
@@ -255,8 +255,8 @@ public class AnimationManager : MonoBehaviour
     {
         int temp_amount = amount;
 
-        PlayerHolder p = GM.getPlayerHolder(photonId);
-        PlayerHolder e = GM.getOpponentHolder(photonId);
+        PlayerHolder p = GM.GetPlayerHolder(photonId);
+        PlayerHolder e = GM.GetOpponentHolder(photonId);
 
         List<Transform> chips = GM.GetChips(type, p);
 
@@ -376,7 +376,7 @@ public class AnimationManager : MonoBehaviour
     {
         Animation animationPointer = new Animation();
 
-        PlayerHolder p = GM.getPlayerHolder(photonId);
+        PlayerHolder p = GM.GetPlayerHolder(photonId);
         Card c = p.GetCard(cardId);
 
         iTween.MoveTo(c.cardPhysicalInst.gameObject, 
