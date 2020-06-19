@@ -18,17 +18,20 @@ public class CE_MaestriaDelVeneno : CardEffect
 
     public override void Finish()
     {
-        List<Card> currentHand = card.owner.handCards;
-
-        currentHand = currentHand.Except(savedHand).ToList();
-
-        if (currentHand[0].HasTags(new CardTags[] { CardTags.PLACES_POISON_CHIP }))
+        if (card.owner.isLocal)
         {
-            Execute();
-        }
-        else
-        {
-            base.Finish();
+            List<Card> currentHand = card.owner.handCards;
+
+            currentHand = currentHand.Except(savedHand).ToList();
+
+            if (currentHand[0].HasTags(new CardTags[] { CardTags.PLACES_POISON_CHIP }))
+            {
+                Execute();
+            }
+            else
+            {
+                base.Finish();
+            }
         }
     }
 }
