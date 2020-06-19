@@ -27,11 +27,16 @@ public class CE_MaestriaDelVeneno : CardEffect
             if (currentHand[0].HasTags(new CardTags[] { CardTags.PLACES_POISON_CHIP }))
             {
                 Execute();
+                parentAction.readyToRemove = false;
             }
             else
             {
                 base.Finish();
             }
+        }
+        else
+        {
+            base.Finish();
         }
     }
 }
