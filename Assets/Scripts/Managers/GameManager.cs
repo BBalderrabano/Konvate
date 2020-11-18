@@ -345,7 +345,8 @@ public class GameManager : MonoBehaviour
                 chipsHolder = player.currentHolder.poisonChipHolder.value;
             }
 
-        }else if(type == ChipType.BLEED)
+        }
+        else if(type == ChipType.BLEED)
         {
             chipsHolder = player.currentHolder.bleedChipHolder.value;
         }

@@ -19,7 +19,8 @@ MonoBehaviour:
   cardType: {fileID: 11400000, guid: 0e3332cf33a066a4d8be0f706aa9ccea, type: 2}
   cardText: '<color=#FF0000> Coloca </color>3 <sprite=0>
 
-    Autoinflije 1 <sprite=2>'
+    Tu oponente <color=#FF0000>coloca</color>
+    1 <sprite=2>'
   cardEffects:
   - {fileID: 11400000, guid: dfc3a647185509a4881a7e5432845e1c, type: 2}
   - {fileID: 11400000, guid: 1f770f73eec48a34dbb509882675611e, type: 2}

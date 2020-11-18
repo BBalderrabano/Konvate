@@ -2,8 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 
-
-
 public class AnimationManager : MonoBehaviour
 {
     GameManager GM
@@ -35,8 +33,23 @@ public class AnimationManager : MonoBehaviour
                 float delay = Settings.CHIP_ANIMATION_DELAY + (Settings.ANIMATION_INTERVAL * i);
 
                 GameObject chip = playedChips.GetChild(i).gameObject;
-                GameObject parent = enemy.currentHolder.bleedChipHolder.value.gameObject;
+                Chip chip_component = chip.GetComponent<Chip>();
 
+                GameObject parent;
+
+                if (chip_component.type == ChipType.POISON)
+                {
+                    parent = chip_component.owner.currentHolder.poisonChipHolder.value.gameObject;
+                }
+                else if (chip_component.type == ChipType.BLEED)
+                {
+                    parent = chip_component.owner.currentHolder.bleedChipHolder.value.gameObject;
+                }
+                else
+                {
+                    parent = chip_component.owner.currentHolder.combatChipHolder.value.gameObject;
+                }
+                
                 iTween.MoveTo(chip,
                     iTween.Hash(
                         "position", enemy.currentHolder.bleedChipHolder.value.position,
@@ -66,12 +79,15 @@ public class AnimationManager : MonoBehaviour
         Hashtable hstbl = (Hashtable)animParams;
 
         int photonId = ((int)hstbl["photonId"]);
+        GameObject chip = (GameObject)hstbl["object"];
 
         PlayerHolder player = GM.GetPlayerHolder(photonId);
 
         player.ModifyBloodChip(-1);
 
         AM_FinishAnimation(animParams);
+
+        chip.GetComponent<Chip>().backSide.gameObject.SetActive(false);
     }
 
     #endregion
@@ -80,8 +96,7 @@ public class AnimationManager : MonoBehaviour
 
     public Animation ReplaceChipsWithBleed(int actionId)
     {
-        Vector3 rotateTo = new Vector3(0, 90, 0);
-
+        Vector3 rotateTo;
         int animationAmount = 0;
 
         foreach (PlayerHolder player in GM.allPlayers)
@@ -108,6 +123,15 @@ public class AnimationManager : MonoBehaviour
 
                 GameObject chip = playedChips.GetChild(i).gameObject;
 
+                if(chip.GetComponent<Chip>().type != ChipType.BLEED)
+                {
+                    rotateTo = new Vector3(0, 90, 0);
+                }
+                else
+                {
+                    rotateTo = Vector3.zero;
+                }
+
                 iTween.RotateTo(chip,
                     iTween.Hash(
                         "rotation", rotateTo,
@@ -121,6 +145,7 @@ public class AnimationManager : MonoBehaviour
                                                         "animationId", animationPointer.animId),
                         "onCompleteTarget", this.gameObject
                 ));
+                
             }
         }
 
@@ -132,21 +157,23 @@ public class AnimationManager : MonoBehaviour
         Hashtable hstbl = (Hashtable)animParams;
         GameObject chip = (GameObject)hstbl["object"];
 
-        int photon_id = (int)hstbl["photonId"];
         int action_id = (int)hstbl["action"];
         int animationId = (int)hstbl["animationId"];
 
-        PlayerHolder chipOwner = GM.GetPlayerHolder(photon_id);
+        Vector3 rotateAdd;
 
-        Vector3 rotateAdd = new Vector3(0, 90, 0);
+        chip.GetComponent<Chip>().backSide.gameObject.SetActive(true);
 
-        GameObject bleedChip = chipOwner.currentHolder.bleedChipHolder.value.GetChild(0).gameObject;
+        if (chip.GetComponent<Chip>().type != ChipType.BLEED)
+        {
+            rotateAdd = new Vector3(0, 90, 0);
+        }
+        else
+        {
+            rotateAdd = Vector3.zero;
+        }
 
-        Settings.SetParent(bleedChip.transform, chipOwner.currentHolder.playedCombatChipHolder.value);
-
-        bleedChip.transform.Rotate(rotateAdd);
-
-        iTween.RotateAdd(bleedChip,
+        iTween.RotateAdd(chip,
             iTween.Hash(
                     "amount", rotateAdd,
                     "time", (Settings.CHIP_ANIMATION_TIME * 0.5),
@@ -157,21 +184,12 @@ public class AnimationManager : MonoBehaviour
                     "oncomplete", "AM_FinishAnimation",
                     "oncompleteparams", iTween.Hash("action", action_id,
                                                     "new_parent", null,
-                                                    "object", bleedChip,
+                                                    "object", chip,
                                                     "photonId", -1,
                                                     "animationId", animationId,
                                                     "reset_position", true),
                     "onCompleteTarget", this.gameObject
         ));
-
-        if (chip.GetComponent<Chip>().type == ChipType.POISON)
-        {
-            Settings.SetParent(chip.transform, chipOwner.currentHolder.poisonChipHolder.value.transform);
-        }
-        else if (chip.GetComponent<Chip>().type == ChipType.COMBAT || chip.GetComponent<Chip>().type == ChipType.OFFENSIVE)
-        {
-            Settings.SetParent(chip.transform, chipOwner.currentHolder.combatChipHolder.value.transform);
-        }
     }
     #endregion
 
@@ -180,7 +198,6 @@ public class AnimationManager : MonoBehaviour
     {
         int temp_amount = amount;
 
-        PlayerHolder p = GM.GetPlayerHolder(photonId);
         PlayerHolder e = GM.GetOpponentHolder(photonId);
 
         List<Transform> chips = GM.GetChips(type, e, true);
@@ -206,19 +223,21 @@ public class AnimationManager : MonoBehaviour
                 float delay = Settings.ANIMATION_DELAY + (Settings.ANIMATION_INTERVAL * i);
 
                 GameObject chip = chips[i].gameObject;
+                Chip chip_component = chip.GetComponent<Chip>();
+
                 GameObject parentTo;
 
                 if (type == ChipType.BLEED)
                 {
-                    parentTo = p.currentHolder.bleedChipHolder.value.gameObject;
+                    parentTo = chip_component.owner.currentHolder.bleedChipHolder.value.gameObject;
                 }
                 else if (type == ChipType.POISON)
                 {
-                    parentTo = p.currentHolder.poisonChipHolder.value.gameObject;
+                    parentTo = chip_component.owner.currentHolder.poisonChipHolder.value.gameObject;
                 }
                 else 
                 {
-                    parentTo = p.currentHolder.combatChipHolder.value.gameObject;
+                    parentTo = chip_component.owner.currentHolder.combatChipHolder.value.gameObject;
                 }
 
                 iTween.MoveTo(chip,
@@ -277,6 +296,7 @@ public class AnimationManager : MonoBehaviour
         for (int i = 0; i < temp_amount; i++)
         {
             Transform chip = chips[i];
+            Chip chip_component = chip.GetComponent<Chip>();
 
             if (card != null)
             {
@@ -294,11 +314,11 @@ public class AnimationManager : MonoBehaviour
 
                 if (type == ChipType.POISON)
                 {
-                    parentTo = p.currentHolder.poisonChipHolder.value.gameObject;
+                    parentTo = chip_component.owner.currentHolder.poisonChipHolder.value.gameObject;
                 }
                 else
                 {
-                    parentTo = p.currentHolder.combatChipHolder.value.gameObject;
+                    parentTo = chip_component.owner.currentHolder.combatChipHolder.value.gameObject;
                 }
 
                 e.RemoveFloatingDefend(floatingDefense);

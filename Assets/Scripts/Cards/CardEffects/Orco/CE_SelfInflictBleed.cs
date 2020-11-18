@@ -7,8 +7,8 @@ public class CE_SelfInflictBleed : CardEffect
 {
     public override void Execute()
     {
-        //GameManager.singleton.CreateBleedChipToDamagePlayer(card.owner.photonId, card.owner.photonId, card.instanceId, this, 1, true);
-        Finish();
-        //parentAction.LinkAnimation(GM.animationManager.PlaceChip(parentAction.actionId, card.owner.photonId, card.instanceId, ChipType.BLEEd, 1));
+        base.Execute();
+
+        parentAction.LinkAnimation(GM.animationManager.PlaceChip(parentAction.actionId, GM.GetOpponentHolder(card.owner.photonId).photonId, card.instanceId, ChipType.BLEED, 1));
     }
 }

@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 462d258e63d3c684c91987fb08f5cace, type: 3}
   m_Name: Cab_CE_Parry
   m_EditorClassIdentifier: 
+  isTemporary: 0
   priority: 1
   type: 3
+  effectTags: 
   amount: 1
