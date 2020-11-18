@@ -58,6 +58,20 @@ public class DamagePhase : Phase
                     }
                 }
             }
+
+            foreach (Card c in player.handCards)
+            {
+                foreach (CE_HandCheck hand_effect in c.cardEffects.OfType<CE_HandCheck>())
+                {
+                    if (hand_effect.linkedCardEffect.isDone)
+                        continue;
+
+                    if (hand_effect.linkedCardEffect.type == EffectType.RESTORE)
+                    {
+                        restore.Add(hand_effect.linkedCardEffect);
+                    }
+                }
+            }
         }
 
         restore = restore.OrderBy(a => (a.card.owner.photonId != offensivePhotonId)).ThenBy(a => a.priority).ToList();

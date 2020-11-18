@@ -54,6 +54,11 @@ public class A_DiscardAllCards : Action
             {
                 effect.isDone = false;
 
+                if(effect is CE_HandCheck)
+                {
+                    ((CE_HandCheck)effect).linkedCardEffect.isDone = false;
+                }
+
                 if (effect.type == EffectType.MAINTAIN || effect.type == EffectType.PREVAIL)
                 {
                     skip = true;

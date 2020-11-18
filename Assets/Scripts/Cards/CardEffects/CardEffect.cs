@@ -79,5 +79,6 @@ public enum EffectType
     STAT_MOD,
     PREVAIL,
     STARTTURN,
-    PLAY_END
+    PLAY_END,
+    HAND_EFFECT
 }

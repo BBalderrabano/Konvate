@@ -74,6 +74,64 @@ public class AnimationManager : MonoBehaviour
         return animationPointer;
     }
 
+    public Animation DirectDamageBleedChip(int actionId, int photonId, int cardId, int target_photonId, int amount = 1)
+    {
+        int temp_amount = amount;
+
+        PlayerHolder player = GM.GetPlayerHolder(photonId);
+        PlayerHolder target = GM.GetPlayerHolder(target_photonId);
+
+        List<Transform> chips = GM.GetChips(ChipType.BLEED, player);
+
+        Card card = player.GetCard(cardId);
+
+        if (chips.Count == 0)
+        {
+            return null;
+        }
+
+        if (temp_amount > chips.Count)
+        {
+            temp_amount = chips.Count;
+        }
+
+        Animation animationPointer = new Animation(amount);
+
+        for (int i = 0; i < temp_amount; i++)
+        {
+            GameObject chip = chips[i].gameObject;
+            Chip chip_component = chip.GetComponent<Chip>();
+
+            if (card != null)
+            {
+                chip.transform.position = WorldToCanvasPosition(card.cardPhysicalInst.transform.position);
+            }
+
+            float delay = Settings.ANIMATION_DELAY + (Settings.ANIMATION_INTERVAL * i);
+
+            iTween.MoveTo(chip,
+                    iTween.Hash(
+                        "position", target.currentHolder.bleedChipHolder.value.position,
+                        "time", Settings.CHIP_ANIMATION_TIME,
+                        "onstart", "PlaySound",
+                        "onstarttarget", this.gameObject,
+                        "onstartparams", iTween.Hash("play_sound", SoundEffectType.MOVE_CHIP),
+                        "oncomplete", "BleedChipDamage",
+                        "easetype", Settings.ANIMATION_STYLE,
+                        "delay", delay,
+                        "oncompleteparams", iTween.Hash("action", actionId,
+                                                        "new_parent", chip_component.owner.currentHolder.bleedChipHolder.value.gameObject,
+                                                        "object", chip,
+                                                        "photonId", target_photonId,
+                                                        "animationId", animationPointer.animId,
+                                                        "reset_position", true),
+                        "onCompleteTarget", this.gameObject
+            ));
+        }
+
+        return animationPointer;
+    }
+
     public void BleedChipDamage(object animParams)
     {
         Hashtable hstbl = (Hashtable)animParams;
@@ -83,7 +141,7 @@ public class AnimationManager : MonoBehaviour
 
         PlayerHolder player = GM.GetPlayerHolder(photonId);
 
-        player.ModifyBloodChip(-1);
+        player.ModifyHitPoints(-1);
 
         AM_FinishAnimation(animParams);
 

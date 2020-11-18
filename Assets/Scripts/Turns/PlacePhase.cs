@@ -33,6 +33,22 @@ public class PlacePhase : Phase
                     }
                 }
             }
+
+            foreach (Card c in player.handCards)
+            {
+                foreach (CE_HandCheck hand_effect in c.cardEffects.OfType<CE_HandCheck>())
+                {
+                    if (hand_effect.linkedCardEffect.type == EffectType.PLACE)
+                    {
+                        place.Add(hand_effect.linkedCardEffect);
+                    }
+
+                    if (hand_effect.linkedCardEffect.type == EffectType.SPECIAL)
+                    {
+                        special.Add(hand_effect.linkedCardEffect);
+                    }
+                }
+            }
         }
 
         place = place.OrderBy(a => (a.card.owner.photonId != offensivePhotonId)).ThenBy(a => a.priority).ToList();

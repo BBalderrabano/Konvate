@@ -1,5 +1,6 @@
 ﻿using Photon.Pun;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class MultiplayerManager : MonoBehaviourPun, IPunInstantiateMagicCallback
@@ -222,6 +223,16 @@ public class MultiplayerManager : MonoBehaviourPun, IPunInstantiateMagicCallback
                     card.cardEffects[f] = (CardEffect)card.cardEffects[f].Clone();
                     card.cardEffects[f].card = card;
                     card.cardEffects[f].effectId = int.Parse((f + 1).ToString() + card.instanceId.ToString());
+                }
+
+                int handLinkEffectAmount = 0;
+
+                foreach (CE_HandCheck handEffect in card.cardEffects.OfType<CE_HandCheck>())
+                {
+                    handEffect.linkedCardEffect = (CardEffect)handEffect.linkedCardEffect.Clone();
+                    handEffect.linkedCardEffect.card = card;
+                    handEffect.linkedCardEffect.effectId = int.Parse(handLinkEffectAmount.ToString() + card.instanceId.ToString() + handLinkEffectAmount.ToString());
+                    handLinkEffectAmount++;
                 }
 
                 playerHolder.deck.Add(card);

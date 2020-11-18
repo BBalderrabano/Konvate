@@ -68,6 +68,14 @@ public class Card : ScriptableObject
             {
                 return cardEffects[i];
             }
+
+            if(cardEffects[i] is CE_HandCheck)
+            {
+                if(((CE_HandCheck)cardEffects[i]).linkedCardEffect.effectId == effectId)
+                {
+                    return ((CE_HandCheck)cardEffects[i]).linkedCardEffect;
+                }
+            }
         }
 
         return null;

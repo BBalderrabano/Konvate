@@ -41,5 +41,7 @@ public enum CardTags
 
     ADDS_START_TURN_CARD_DRAW,
     ADDS_ENERGY,
-    PLAYS_FROM_HAND
+    PLAYS_FROM_HAND,
+
+    RESTORES_HP
 }

@@ -17,11 +17,13 @@ MonoBehaviour:
   art: {fileID: 8038078386619319947, guid: 16ddd29cb9f74e7498e3ac8a48497102, type: 3}
   classIcon: {fileID: 21300000, guid: 2c8b01a2dc74d8043b92177bacc47146, type: 3}
   cardType: {fileID: 11400000, guid: 0e3332cf33a066a4d8be0f706aa9ccea, type: 2}
-  cardText: '<size=28>Si tu oponente no tiene en juego (al final del combate) ninguna
-    carta de Defensa o Defensa Superior pon en juego esta carta desde tu mano
+  cardText: '<size=28>Si al final del turno tu oponente no tiene en juego ninguna
+    carta de Defensa o Defensa Superior pon en juego esta carta
 
     <color=#FF0000>
     Coloca </color>1<sprite=0></size>'
-  cardEffects: []
+  cardEffects:
+  - {fileID: 11400000, guid: ede2e68374dc4644d9e9456480433e7e, type: 2}
+  - {fileID: 11400000, guid: 76d58748f42550148adfc25f67885ac1, type: 2}
   conditions: []
   cardTags: 01000000050000000200000015000000

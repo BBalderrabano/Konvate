@@ -29,6 +29,11 @@ public class A_Discard : Action
             foreach (CardEffect effect in card.cardEffects)
             {
                 effect.isDone = false;
+
+                if (effect is CE_HandCheck)
+                {
+                    ((CE_HandCheck)effect).linkedCardEffect.isDone = false;
+                }
             }
 
             CardInstance physInstance = card.cardPhysicalInst;

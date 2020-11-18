@@ -19,6 +19,7 @@ MonoBehaviour:
   cardType: {fileID: 11400000, guid: 0e3332cf33a066a4d8be0f706aa9ccea, type: 2}
   cardText: "<size=38>Por cada <sprite=0> que tu oponente no remueva este turno \nrecuperate
     1 <sprite=2></size>"
-  cardEffects: []
+  cardEffects:
+  - {fileID: 11400000, guid: 4abb3c8ff21c9e745b006618f425c978, type: 2}
   conditions: []
   cardTags: 01000000040000000b000000

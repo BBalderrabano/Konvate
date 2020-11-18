@@ -17,7 +17,7 @@ public class CE_RefrigerioRestoreEffect : CardEffect
 
         if(bloodChips.Count == 0)
         {
-            card.owner.ModifyBloodChip(3);
+            card.owner.ModifyHitPoints(3);
             isDone = true;
         }
         else

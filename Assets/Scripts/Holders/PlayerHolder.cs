@@ -232,7 +232,7 @@ public class PlayerHolder : ScriptableObject
         return result;
     }
 
-    public void ModifyBloodChip(int amount)
+    public void ModifyHitPoints(int amount)
     {
         bleedCount += amount;
 

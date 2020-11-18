@@ -27,6 +27,17 @@ public class RemovePhase : Phase
                     }
                 }
             }
+
+            foreach(Card c in player.handCards)
+            {
+                foreach(CE_HandCheck hand_effect in c.cardEffects.OfType<CE_HandCheck>())
+                {
+                    if (hand_effect.linkedCardEffect.type == EffectType.REMOVE)
+                    {
+                        remove.Add(hand_effect.linkedCardEffect);
+                    }
+                }
+            }
         }
 
         remove = remove.OrderBy(a => (a.card.owner.photonId != offensivePhotonId)).ThenBy(a => a.priority).ToList();            
