@@ -18,6 +18,9 @@ public class HandCard : CardLogic
 
     public override void OnHighlight(CardInstance inst)
     {
+        if (ScrollSelectionManager.singleton.isActive)
+            return;
+
         if (originalCard.value != null && originalCard.value != inst)
             originalCard.value.viz.cardBorder.color = Color.black;
 

@@ -7,7 +7,8 @@ public class DiscardCard : CardLogic
 {
     public override void OnClick(CardInstance inst)
     {
-        Debug.Log("Carta descartada");
+        PlayerHolder player = inst.viz.card.owner;
+        ScrollSelectionManager.singleton.SelectCards(player.discardCards, "Descarte de " + player.playerName, true);
     }
 
     public override void OnHighlight(CardInstance inst)

@@ -4,7 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ScrollSelectionManager : MonoBehaviour
-{    
+{
+    public bool isActive = false;
+
     public static ScrollSelectionManager singleton;
     public SimpleScrollSnap sss;
     public GameObject cardPrefab;
@@ -43,6 +45,8 @@ public class ScrollSelectionManager : MonoBehaviour
 
     public void SelectCards(List<Card> cards, string description, bool isVisual, bool isMultiple = false, int minSelected = 0, int maxSelected = 0, A_CardSelection callback = null)
     {
+        CloseSelection();
+
         selectedAmount = 0;
         listOfCards.Clear();
 
@@ -63,6 +67,7 @@ public class ScrollSelectionManager : MonoBehaviour
         else
         {
             gameObject.SetActive(true);
+            isActive = true;
         }
 
         if (isVisual)
@@ -204,6 +209,7 @@ public class ScrollSelectionManager : MonoBehaviour
             }
         }
 
+        isActive = false;
         gameObject.SetActive(false);
     }
 }

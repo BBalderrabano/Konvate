@@ -16,7 +16,6 @@ public class MainDataHolder : ScriptableObject
     public CardLogic cardFaceDownLogic;
     public CardLogic handLogic;
     public CardLogic opponentHandLogic;
-    public CardLogic playedLogic;
     public CardLogic discardLogic;
     public CardLogic deckLogic;
 

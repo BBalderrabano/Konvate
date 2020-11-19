@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
     public GameObject currentPreviewCard;
     Vector3 originalPreviewScale;
 
-    public void PreviewCard(Card c)
+    public void PreviewCard(Card c, bool autoHide = true)
     {
         if (c == null)
             return;
@@ -81,14 +81,30 @@ public class GameManager : MonoBehaviour
         currentPreviewCard.GetComponent<CardViz>().LoadCardViz(c);
         currentPreviewCard.SetActive(true);
 
+        if (autoHide)
+        {
+            iTween.ScaleTo(currentPreviewCard, iTween.Hash(
+                    "scale", Vector3.zero,
+                    "time", Settings.CARD_EFFECT_PREVIEW_ANIM_DURATION,
+                    "delay", Settings.CARD_EFFECT_MIN_PREVIEW,
+                    "easetype", "easeInElastic",
+                    "oncomplete", "HidePreviewCard",
+                    "oncompletetarget", this.gameObject
+                    ));
+        }
+    }
+
+    public void AnimateHidePrivewCard()
+    {
+        iTween.Stop(currentPreviewCard);
+
         iTween.ScaleTo(currentPreviewCard, iTween.Hash(
-                "scale", Vector3.zero,
-                "time", 0.5f,
-                "delay", Settings.CARD_EFFECT_MIN_PREVIEW,
-                "easetype", "easeInElastic",
-                "oncomplete", "HidePreviewCard",
-                "oncompletetarget", this.gameObject
-                ));
+                    "scale", Vector3.zero,
+                    "time", Settings.CARD_EFFECT_PREVIEW_ANIM_DURATION,
+                    "easetype", "easeInElastic",
+                    "oncomplete", "HidePreviewCard",
+                    "oncompletetarget", this.gameObject
+                    ));
     }
 
     public void HidePreviewCard()

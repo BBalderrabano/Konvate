@@ -164,7 +164,9 @@ public abstract class Action
     public virtual void LinkAnimation(Animation anim)
     {
         if(anim != null)
+        {
             linkedAnimations.Add(anim);
+        }
     }
 
     public virtual Animation GetAnimation(int animId)

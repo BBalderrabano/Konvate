@@ -12,12 +12,12 @@ public class Animation
         this.animId = GameManager.singleton.resourcesManager.GetAnimationIndex();
     }
 
-    public void OnComplete()
+    public virtual void OnComplete()
     {
         amount++;
     }
 
-    public bool isDone()
+    public virtual bool isDone()
     {
         return amount >= total;
     }
