@@ -138,6 +138,7 @@ public class AnimationManager : MonoBehaviour
 
         int photonId = ((int)hstbl["photonId"]);
         GameObject chip = (GameObject)hstbl["object"];
+        Chip chip_component = chip.GetComponent<Chip>();
 
         PlayerHolder player = GM.GetPlayerHolder(photonId);
 
@@ -145,7 +146,16 @@ public class AnimationManager : MonoBehaviour
 
         AM_FinishAnimation(animParams);
 
-        chip.GetComponent<Chip>().backSide.gameObject.SetActive(false);
+        chip_component.backSide.gameObject.SetActive(false);
+
+        if (chip_component.owner.isLocal)
+        {
+            GM.turn.localInflictedBleed = true;
+        }
+        else
+        {
+            GM.turn.opponentInflictedBleed = true;
+        }
     }
 
     #endregion

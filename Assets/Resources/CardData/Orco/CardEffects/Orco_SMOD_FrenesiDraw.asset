@@ -9,11 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0a514a83fcfd28438f697dd620f801c, type: 3}
-  m_Name: Orco_CE_FuerzaEnNumeros_Hand
+  m_Script: {fileID: 11500000, guid: 41b40f2b19aac754ea798d63e6e4d46d, type: 3}
+  m_Name: Orco_SMOD_FrenesiDraw
   m_EditorClassIdentifier: 
-  isTemporary: 0
-  priority: 0
-  type: 13
-  effectTags: 15000000
-  linkedCardEffect: {fileID: 11400000, guid: e00ebb7aad905ef4b93ba75f16e6c124, type: 2}
+  isTemporary: 1
+  priority: 1
+  type: 9
+  effectTags: 
+  stat_mod: 1
+  amount: 1

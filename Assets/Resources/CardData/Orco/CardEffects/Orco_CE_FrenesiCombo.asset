@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0a514a83fcfd28438f697dd620f801c, type: 3}
-  m_Name: Orco_CE_FuerzaEnNumeros_Hand
+  m_Script: {fileID: 11500000, guid: 77cd240f7b21b084da5d2ab9ca8032a0, type: 3}
+  m_Name: Orco_CE_FrenesiCombo
   m_EditorClassIdentifier: 
   isTemporary: 0
-  priority: 0
-  type: 13
-  effectTags: 15000000
-  linkedCardEffect: {fileID: 11400000, guid: e00ebb7aad905ef4b93ba75f16e6c124, type: 2}
+  priority: 3
+  type: 2
+  effectTags: 05000000
+  place_amount: 1

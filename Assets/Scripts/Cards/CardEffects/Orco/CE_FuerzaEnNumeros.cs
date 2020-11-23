@@ -11,6 +11,8 @@ public class CE_FuerzaEnNumeros : CardEffect
     {
         base.Execute();
 
+        skipsEffectPreview = false;
+
         List<Card> played_cards = GM.GetOpponentHolder(card.owner.photonId).playedCards;
 
         List<Card> defense = new List<Card>();
@@ -33,6 +35,7 @@ public class CE_FuerzaEnNumeros : CardEffect
         }
         else
         {
+            skipsEffectPreview = true;
             card.cardPhysicalInst.viz.cardBorder.color = Color.black;
             GM.HidePreviewCard();
         }

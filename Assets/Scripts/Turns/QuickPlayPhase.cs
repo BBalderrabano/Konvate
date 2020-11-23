@@ -83,6 +83,9 @@ public class QuickPlayPhase : Phase
             quickplay.Clear();
             GM.localPlayer.playedQuickCard = false;
 
+            GM.turn.localInflictedBleed = false;
+            GM.turn.opponentInflictedBleed = false;
+
             finalCheck = false;
             isInit = true;
         }

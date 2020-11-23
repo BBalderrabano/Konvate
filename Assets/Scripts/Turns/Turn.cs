@@ -23,6 +23,22 @@ public class Turn : ScriptableObject
     public List<CardEffect> startTurnEffects = new List<CardEffect>();
     public List<CardEffect> endTurnEffects = new List<CardEffect>();
 
+    public bool localInflictedBleed = false;
+    public bool opponentInflictedBleed = false;
+
+    public bool playerInflictedBleed(int photonId)
+    {
+        if (GameManager.singleton.GetPlayerHolder(photonId).isLocal)
+        {
+            return localInflictedBleed;
+        }
+        else
+        {
+            return opponentInflictedBleed;
+        }
+    }
+
+
     public bool IsOffensivePlayer(int photonId)
     {
         if (offensivePlayer == null)
@@ -41,6 +57,7 @@ public class Turn : ScriptableObject
         if(currentPhase.value != phases[index])
         {
             currentPhase.value = phases[index];
+
             phases[index].OnStartPhase();
 
             return false;

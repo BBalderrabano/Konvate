@@ -36,6 +36,9 @@ public abstract class CardEffect : ScriptableObject, ICloneable
     [System.NonSerialized]
     public A_ExecuteEffect parentAction;
 
+    [System.NonSerialized]
+    public bool skipsEffectPreview = false;
+
     public object Clone()
     {
         return this.MemberwiseClone();

@@ -15,5 +15,6 @@ public enum StatType
 {
     ENERGY_COST,
     START_DRAW_AMOUNT,
-    QUICK_PLAY
+    QUICK_PLAY,
+    START_ENERGY_AMOUNT
 }

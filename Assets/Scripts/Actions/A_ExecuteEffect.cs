@@ -39,7 +39,14 @@ public class A_ExecuteEffect : Action
 
     public override bool IsComplete()
     {
-        return isInit && LinkedActionsReady() && AnimationsAreReady() && (time > Settings.CARD_EFFECT_MIN_PREVIEW);
+        bool effectPreviewTimeout = time > Settings.CARD_EFFECT_MIN_PREVIEW;
+
+        if (effect.skipsEffectPreview)
+        {
+            effectPreviewTimeout = true;
+        }
+
+        return isInit && LinkedActionsReady() && AnimationsAreReady() && effectPreviewTimeout;
     }
 
     public override void OnComplete()
@@ -48,7 +55,7 @@ public class A_ExecuteEffect : Action
 
         effect.Finish();
 
-        if (owner.EffectsDone())
+        if (owner.EffectsDone() && effect.type != EffectType.STARTTURN)
         {
             GM.ActiveViz(owner);
         }

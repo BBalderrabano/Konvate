@@ -165,7 +165,26 @@ public class PlayerHolder : ScriptableObject
     }
 
     public SO.IntVariable currentEnergy;
-    public int baseEnergy = 3;
+    int baseEnergy = 3;
+
+    public int ModifiedBaseEnergy()
+    {
+        int modifiedCost = baseEnergy;
+
+        foreach (Card c in all_cards)
+        {
+            foreach (StatModification mod in c.cardEffects.OfType<StatModification>())
+            {
+                if (mod.stat_mod == StatType.START_ENERGY_AMOUNT)
+                {
+                    modifiedCost = mod.modify(modifiedCost);
+                }
+            }
+        }
+
+
+        return modifiedCost;
+    }
 
     public bool playedQuickCard = false;
 
@@ -201,7 +220,7 @@ public class PlayerHolder : ScriptableObject
 
     public void ResetMana()
     {
-        currentEnergy.value = baseEnergy;
+        currentEnergy.value = ModifiedBaseEnergy();
         VisualizeEnergy();
     }
 

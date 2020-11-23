@@ -11,23 +11,34 @@ public class StartPhase : Phase
     {
         int offensivePhotonId = GM.turn.offensivePlayer.photonId;
 
-        for (int i = 0; i < GM.turn.endTurnEffects.Count; i++)
+        for (int i = 0; i < GM.turn.startTurnEffects.Count; i++)
         {
-            if (GM.turn.endTurnEffects[i].isDone)
+            if (GM.turn.startTurnEffects[i].isDone)
                 continue;
 
-            if (GM.turn.endTurnEffects[i].type == EffectType.ENDTURNSTART)
+            if (GM.turn.startTurnEffects[i].type == EffectType.STARTTURN)
             {
-                turn_start.Add(GM.turn.endTurnEffects[i]);
+                turn_start.Add(GM.turn.startTurnEffects[i]);
             }
         }
 
         turn_start = turn_start.OrderBy(a => (a.card.owner.photonId != offensivePhotonId)).ThenBy(a => a.priority).ToList();
     }
 
+    void ExecuteEffects()
+    {
+        foreach (CardEffect eff in turn_start)
+        {
+            if (eff.isDone) { continue; }
+
+            Action turn_start = new A_ExecuteEffect(eff.card.instanceId, eff.effectId, eff.card.owner.photonId);
+            GM.actionManager.AddAction(turn_start);
+        }
+    }
+
     public override bool IsComplete()
     {
-        return isInit;
+        return isInit && GM.actionManager.IsDone();
     }
 
     public override bool CanPlayCard(Card c)
@@ -47,8 +58,6 @@ public class StartPhase : Phase
             GM.onPhaseChange.Raise();
             GM.onPhaseControllerChange.Raise();
 
-            turn_start.Clear();
-
             foreach (Card c in GameManager.singleton.all_cards)
             {
                 c.conditions.RemoveAll(a => a.isTemporary());
@@ -58,16 +67,12 @@ public class StartPhase : Phase
 
             SetOffensivePlayer();
 
-            for (int i = 0; i < GM.allPlayers.Length; i++)
-            {
-                GM.allPlayers[i].ResetMana();
-                GM.allPlayers[i].clearFloatingDefend();
-                GM.allPlayers[i].playerUI.UpdateAll();
-            }
-
             LoadCardEffects();
+            ExecuteEffects();
 
             isInit = true;
+
+            turn_start.Clear();
 
             MultiplayerManager.singleton.PhaseIsDone(GM.localPlayer.photonId, phaseIndex);
         }
@@ -92,6 +97,13 @@ public class StartPhase : Phase
             GM.turn.startTurnEffects.Clear();
             GM.SetState(null);
             isInit = false;
+
+            for (int i = 0; i < GM.allPlayers.Length; i++)
+            {
+                GM.allPlayers[i].ResetMana();
+                GM.allPlayers[i].clearFloatingDefend();
+                GM.allPlayers[i].playerUI.UpdateAll();
+            }
         }
     }
 

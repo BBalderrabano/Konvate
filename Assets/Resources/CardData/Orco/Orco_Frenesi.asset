@@ -20,8 +20,10 @@ MonoBehaviour:
   cardText: '<size=32>Si este turno inflijes <sprite=2> al inicio del proximo turno
     ganas <sprite=4> y robas una carta extra
 
-    Combo: <color=#FF0000> Coloca </color>2
+    Combo: <color=#FF0000> Coloca </color>1
     <sprite=0></size>'
-  cardEffects: []
+  cardEffects:
+  - {fileID: 11400000, guid: 64c165b6543671949adef8e60f8ea0b2, type: 2}
+  - {fileID: 11400000, guid: 6f1ad646962e8f44ea5c320190d8d8ce, type: 2}
   conditions: []
   cardTags: 01000000040000001300000014000000
