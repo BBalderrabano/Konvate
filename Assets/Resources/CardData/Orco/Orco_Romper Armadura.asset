@@ -18,6 +18,7 @@ MonoBehaviour:
   classIcon: {fileID: 21300000, guid: 2c8b01a2dc74d8043b92177bacc47146, type: 3}
   cardType: {fileID: 11400000, guid: 0e3332cf33a066a4d8be0f706aa9ccea, type: 2}
   cardText: <size=40>Remueve todas las cartas de Defensa y Defensa Superior oponentes</size>
-  cardEffects: []
+  cardEffects:
+  - {fileID: 11400000, guid: fe89c5d1117403d419bd94675615f04d, type: 2}
   conditions: []
   cardTags: 010000000400000012000000
