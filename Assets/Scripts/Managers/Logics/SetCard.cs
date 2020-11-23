@@ -10,6 +10,9 @@ public class SetCard : CardLogic
 
     public override void OnClick(CardInstance inst)
     {
+        if (ScrollSelectionManager.singleton.isActive)
+            return;
+
         if (GameManager.singleton.turn.currentPhase.value is SetCardsPhase)
         {
             if (inst.viz.card.owner.isLocal)

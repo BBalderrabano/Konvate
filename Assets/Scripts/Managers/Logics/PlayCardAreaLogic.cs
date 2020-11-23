@@ -9,6 +9,9 @@ public class PlayCardAreaLogic : AreaLogic
 
     public override void Execute(Vector3 position)
     {
+        if (ScrollSelectionManager.singleton.isActive)
+            return;
+
         if (card.value == null)
             return;
 

@@ -7,6 +7,18 @@ public class CardTag {
         CardTags.ATTACK,
         CardTags.BASIC_CARD
     };
+
+    public static CardTags[] DEFENSA =
+    {
+        CardTags.DEFENSE,
+        CardTags.BASIC_CARD
+    };
+
+    public static CardTags[] DEFENSA_SUPERIOR =
+    {
+        CardTags.DEFENSE,
+        CardTags.SUPERIOR_DEFENSE
+    };
 }
 
 public enum CardTags
@@ -43,5 +55,6 @@ public enum CardTags
     ADDS_ENERGY,
     PLAYS_FROM_HAND,
 
-    RESTORES_HP
+    RESTORES_HP,
+    SUPERIOR_DEFENSE
 }
