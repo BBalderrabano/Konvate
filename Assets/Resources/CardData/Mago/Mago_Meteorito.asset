@@ -21,6 +21,9 @@ MonoBehaviour:
 
     si
     no te quedan cartas en el mazo <color=#FF0000>coloca </color>1<sprite=0> extra'
-  cardEffects: []
+  cardEffects:
+  - {fileID: 11400000, guid: ede2e68374dc4644d9e9456480433e7e, type: 2}
+  - {fileID: 11400000, guid: 44563f497bc43954a955ab9340277f2f, type: 2}
+  - {fileID: 11400000, guid: cb9fd167871160d47a4797669d49d144, type: 2}
   conditions: []
   cardTags: 010000000500000007000000

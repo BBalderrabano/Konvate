@@ -164,7 +164,7 @@ public class AnimationManager : MonoBehaviour
 
     public Animation ReplaceChipsWithBleed(int actionId)
     {
-        Vector3 rotateTo;
+        Vector3 rotateTo = new Vector3(0, 90, 0);
         int animationAmount = 0;
 
         foreach (PlayerHolder player in GM.allPlayers)
@@ -185,20 +185,19 @@ public class AnimationManager : MonoBehaviour
         {
             Transform playedChips = player.currentHolder.playedCombatChipHolder.value;
 
+            int chips_to_animate = 0;
+
             for (int i = 0; i < playedChips.childCount; i++)
             {
-                float delay = Settings.ANIMATION_DELAY + (Settings.ANIMATION_INTERVAL * i);
-
                 GameObject chip = playedChips.GetChild(i).gameObject;
 
-                if(chip.GetComponent<Chip>().type != ChipType.BLEED)
+                if (chip.GetComponent<Chip>().type == ChipType.BLEED)
                 {
-                    rotateTo = new Vector3(0, 90, 0);
+                    animationPointer.OnComplete();
+                    continue;
                 }
-                else
-                {
-                    rotateTo = Vector3.zero;
-                }
+
+                float delay = Settings.ANIMATION_DELAY + (Settings.ANIMATION_INTERVAL * chips_to_animate);
 
                 iTween.RotateTo(chip,
                     iTween.Hash(
@@ -213,7 +212,8 @@ public class AnimationManager : MonoBehaviour
                                                         "animationId", animationPointer.animId),
                         "onCompleteTarget", this.gameObject
                 ));
-                
+
+                chips_to_animate++;
             }
         }
 
@@ -228,18 +228,9 @@ public class AnimationManager : MonoBehaviour
         int action_id = (int)hstbl["action"];
         int animationId = (int)hstbl["animationId"];
 
-        Vector3 rotateAdd;
+        Vector3 rotateAdd = new Vector3(0, 90, 0);
 
         chip.GetComponent<Chip>().backSide.gameObject.SetActive(true);
-
-        if (chip.GetComponent<Chip>().type != ChipType.BLEED)
-        {
-            rotateAdd = new Vector3(0, 90, 0);
-        }
-        else
-        {
-            rotateAdd = Vector3.zero;
-        }
 
         iTween.RotateAdd(chip,
             iTween.Hash(
@@ -400,7 +391,17 @@ public class AnimationManager : MonoBehaviour
                 }
                 else
                 {
-                    travelTo = p.currentHolder.playedCombatChipHolder.value.position;
+                    Transform combatChipHolder = p.currentHolder.playedCombatChipHolder.value;
+
+                    float x_right_most_pos = combatChipHolder.position.x;
+
+                    //Move the chips to the position of the right most currently placed chip
+                    if(combatChipHolder.childCount > 0)
+                    {
+                        x_right_most_pos = combatChipHolder.GetChild(combatChipHolder.childCount - 1).position.x;
+                    }
+
+                    travelTo = new Vector3(x_right_most_pos, p.currentHolder.playedCombatChipHolder.value.position.y);
                     parentTo = p.currentHolder.playedCombatChipHolder.value.gameObject;
                 }
             }

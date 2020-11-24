@@ -38,7 +38,7 @@ public class StartPhase : Phase
 
     public override bool IsComplete()
     {
-        return isInit && GM.actionManager.IsDone();
+        return isInit && (turn_start.Count == 0 || GM.actionManager.IsDone());
     }
 
     public override bool CanPlayCard(Card c)
@@ -70,11 +70,11 @@ public class StartPhase : Phase
             LoadCardEffects();
             ExecuteEffects();
 
-            isInit = true;
-
             turn_start.Clear();
 
             MultiplayerManager.singleton.PhaseIsDone(GM.localPlayer.photonId, phaseIndex);
+
+            isInit = true;
         }
     }
 

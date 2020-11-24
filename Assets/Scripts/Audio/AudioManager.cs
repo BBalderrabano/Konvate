@@ -18,6 +18,9 @@ public class AudioManager : MonoBehaviour
 
     public void Play(SoundEffectType type)
     {
+        if (type == SoundEffectType.NONE)
+            return;
+
         for (int i = 0; i < soundEffects.Count; i++)
         {
             if(soundEffects[i].type == type)

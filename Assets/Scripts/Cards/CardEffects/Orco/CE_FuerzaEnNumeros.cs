@@ -32,6 +32,7 @@ public class CE_FuerzaEnNumeros : CardEffect
             card.cardPhysicalInst.gameObject.SetActive(true);
 
             parentAction.PushAction(new Anim_FuerzaEnNumeros(player.photonId, card.instanceId, combat_chip_amount));
+            AudioManager.singleton.Play(SoundEffectType.CARD_ORCO_FUERZA_EN_NUMEROS);
         }
         else
         {

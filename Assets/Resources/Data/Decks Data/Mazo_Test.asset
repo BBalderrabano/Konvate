@@ -15,10 +15,7 @@ MonoBehaviour:
   deckName: Prueba
   cardIds:
   - Ataque Basico
-  - Ataque Basico
-  - Orco_Frenesi
-  - Orco_Romper Armadura
-  - Orco_Golpe Critico
-  - Orco_Golpe Critico
-  - Orco_Frenesi
-  - Orco_Frenesi
+  - Mago_Armagedon
+  - Mago_Meteorito
+  - Mago_Piroexplosion
+  - Mago_Piroexplosion

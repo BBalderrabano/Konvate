@@ -42,5 +42,9 @@ public enum SoundEffectType
     PLACE_CARD,
     PICK_CARD_UP,
     BUTTON_CLICK,
-    MOVE_CHIP
+    MOVE_CHIP,
+
+    CARD_ORCO_FUERZA_EN_NUMEROS,
+
+    CARD_MAGO_NO_DECK
 }

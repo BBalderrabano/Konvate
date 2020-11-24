@@ -18,6 +18,7 @@ MonoBehaviour:
   classIcon: {fileID: 21300000, guid: 39bda9c2069dc30499c917adffe4359d, type: 3}
   cardType: {fileID: 11400000, guid: 0e3332cf33a066a4d8be0f706aa9ccea, type: 2}
   cardText: Si no te quedan cartas en el mazo <color=#FF0000>coloca </color>4<sprite=2>
-  cardEffects: []
+  cardEffects:
+  - {fileID: 11400000, guid: add01ea72fafa3844b22e5a36835808c, type: 2}
   conditions: []
   cardTags: 0100000007000000
