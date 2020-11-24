@@ -47,7 +47,7 @@ public class Anim_FuerzaEnNumeros : Action
         }
         else if (isInit && AnimationsAreReady() && cardPlaced && (time > Settings.CARD_EFFECT_MIN_PREVIEW))
         {
-            GM.ActiveViz(card);
+            card.MakeBorderActive();
             GM.AnimateHidePrivewCard();
             return true;
         }

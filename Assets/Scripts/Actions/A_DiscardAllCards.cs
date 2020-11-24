@@ -69,7 +69,7 @@ public class A_DiscardAllCards : Action
             {
                 physInstance.setCurrentLogic(GM.resourcesManager.dataHolder.discardLogic);
 
-                physInstance.viz.cardBorder.color = Color.black;
+                card.MakeBorderInactive();
 
                 cardsToDiscard.Add(card);
             }

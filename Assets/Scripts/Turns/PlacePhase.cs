@@ -16,7 +16,7 @@ public class PlacePhase : Phase
         {
             foreach (Card c in player.playedCards)
             {
-                GM.RevealCard(c);
+                c.RevealCard();
 
                 for (int i = 0; i < c.cardEffects.Count; i++)
                 {

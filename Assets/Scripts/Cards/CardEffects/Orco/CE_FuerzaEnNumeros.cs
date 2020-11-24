@@ -24,7 +24,7 @@ public class CE_FuerzaEnNumeros : CardEffect
         {
             PlayerHolder player = card.owner;
 
-            GM.RevealCard(card);
+            card.RevealCard();
 
             player.handCards.Remove(card);
             player.playedCards.Add(card);
@@ -36,7 +36,7 @@ public class CE_FuerzaEnNumeros : CardEffect
         else
         {
             skipsEffectPreview = true;
-            card.cardPhysicalInst.viz.cardBorder.color = Color.black;
+            card.MakeBorderInactive();
             GM.HidePreviewCard();
         }
     }

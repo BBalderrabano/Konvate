@@ -327,25 +327,6 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
-    #region Card Activation
-
-    public void ActiveViz(Card card)
-    {
-        if (!card.owner.isFloatingDefend(card.instanceId))
-        {
-            card.cardViz.cardBorder.color = Color.green;
-        }
-
-        card.cardViz.cardBackImage.gameObject.SetActive(false);
-    }
-
-    public void RevealCard(Card card)
-    {
-        card.cardViz.cardBackImage.gameObject.SetActive(false);
-    }
-
-    #endregion
-
     #region Chips
     public List<Transform> GetChips(ChipType type, PlayerHolder player, bool played = false)
     {

@@ -19,6 +19,26 @@ public class Card : ScriptableObject
 
     public int CardCost;
 
+    public void MakeBorderActive()
+    {
+        if (!owner.isFloatingDefend(instanceId))
+        {
+            cardViz.cardBorder.color = Color.green;
+        }
+
+        cardViz.cardBackImage.gameObject.SetActive(false);
+    }
+
+    public void MakeBorderInactive()
+    {
+        cardViz.cardBorder.color = Color.black;
+    }
+
+    public void RevealCard()
+    {
+        cardViz.cardBackImage.gameObject.SetActive(false);
+    }
+
     public int ModifiedCardCost()
     {
         int modifiedCost = CardCost;

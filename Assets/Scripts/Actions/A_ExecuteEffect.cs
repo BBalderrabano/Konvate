@@ -57,7 +57,7 @@ public class A_ExecuteEffect : Action
 
         if (owner.EffectsDone() && effect.type != EffectType.STARTTURN)
         {
-            GM.ActiveViz(owner);
+            owner.MakeBorderActive();
         }
     }
 }

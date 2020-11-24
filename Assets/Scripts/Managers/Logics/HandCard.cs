@@ -22,10 +22,10 @@ public class HandCard : CardLogic
             return;
 
         if (originalCard.value != null && originalCard.value != inst)
-            originalCard.value.viz.cardBorder.color = Color.black;
+            originalCard.value.viz.card.MakeBorderInactive();
 
         if (currentCard.value != null && currentCard.value != inst)
-            currentCard.value.viz.cardBorder.color = Color.black;
+            currentCard.value.viz.card.MakeBorderInactive();
 
         originalCard.Set(inst);
         currentCard.Set(inst);

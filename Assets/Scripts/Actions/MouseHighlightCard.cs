@@ -36,7 +36,7 @@ public class MouseHighlightCard : PlayerAction
 
             cardIsSelected.value = false;
 
-            originalCard.value.viz.cardBorder.color = Color.black;
+            originalCard.value.viz.card.MakeBorderInactive();
             currentCard.value.gameObject.SetActive(true);
             currentCard.value = null;
             originalCard.value = null;
@@ -73,7 +73,7 @@ public class MouseHighlightCard : PlayerAction
             if(!isInsideCard)
             {
                 currentCard.value.gameObject.SetActive(false);
-                originalCard.value.viz.cardBorder.color = Color.black;
+                originalCard.value.viz.card.MakeBorderInactive();
                 onCurrentCardSet.Raise();
                 cardIsSelected.value = true;
             }

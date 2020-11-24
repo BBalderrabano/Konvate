@@ -36,10 +36,8 @@ public class A_Discard : Action
                 }
             }
 
-            CardInstance physInstance = card.cardPhysicalInst;
-
-            physInstance.setCurrentLogic(GM.resourcesManager.dataHolder.discardLogic);
-            physInstance.viz.cardBorder.color = Color.black;
+            card.cardPhysicalInst.setCurrentLogic(GM.resourcesManager.dataHolder.discardLogic);
+            card.MakeBorderInactive();
 
             player.handCards.Remove(card);
             player.playedCards.Remove(card);

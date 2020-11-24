@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 [CreateAssetMenu(menuName = "Card Effects/Orco/Frenesi Combo")]
 public class CE_FrenesiCombo : CardEffect
@@ -20,6 +19,6 @@ public class CE_FrenesiCombo : CardEffect
     {
         base.Finish();
 
-        GM.ActiveViz(card);
+        card.MakeBorderActive();
     }
 }
