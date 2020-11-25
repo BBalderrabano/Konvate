@@ -16,6 +16,9 @@ public class RemovePhase : Phase
         {
             foreach(Card c in player.playedCards)
             {
+                if (c.isBroken)
+                    continue;
+
                 for (int i = 0; i < c.cardEffects.Count; i++)
                 {
                     if (c.cardEffects[i].isDone)
@@ -40,7 +43,7 @@ public class RemovePhase : Phase
             }
         }
 
-        remove = remove.OrderBy(a => (a.card.owner.photonId != offensivePhotonId)).ThenBy(a => a.priority).ToList();            
+        remove = remove.OrderBy(a => a.priority).ThenBy(a => (a.card.owner.photonId != offensivePhotonId)).ToList();            
     }
 
     void ExecuteEffects()

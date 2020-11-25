@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deckName: Prueba
   cardIds:
-  - Ataque Basico
+  - Mago_Congelar
   - Mago_Armagedon
   - Mago_Meteorito
   - Mago_Piroexplosion
-  - Mago_Piroexplosion
+  - Mago_Congelar

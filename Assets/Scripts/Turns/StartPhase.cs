@@ -22,7 +22,7 @@ public class StartPhase : Phase
             }
         }
 
-        turn_start = turn_start.OrderBy(a => (a.card.owner.photonId != offensivePhotonId)).ThenBy(a => a.priority).ToList();
+        turn_start = turn_start.OrderBy(a => a.priority).ThenBy(a => (a.card.owner.photonId != offensivePhotonId)).ToList();
     }
 
     void ExecuteEffects()

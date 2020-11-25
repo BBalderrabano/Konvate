@@ -21,6 +21,8 @@ MonoBehaviour:
 
     (no afecta
     <sprite=3>)'
-  cardEffects: []
+  cardEffects:
+  - {fileID: 11400000, guid: 5590f2d4fc793924ba136a2e975e5fb8, type: 2}
   conditions: []
   cardTags: 010000000d000000
+  isBroken: 0

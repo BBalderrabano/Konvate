@@ -16,6 +16,9 @@ public class QuickPlayPhase : Phase
 
         foreach (Card c in player.playedCards)
         {
+            if (c.isBroken)
+                continue;
+
             LoadCardEffects(c);
         }
 

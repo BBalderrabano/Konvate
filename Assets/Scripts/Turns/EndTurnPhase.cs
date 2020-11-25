@@ -15,6 +15,9 @@ public class EndTurnPhase : Phase
 
         for (int i = 0; i < GM.turn.endTurnEffects.Count; i++)
         {
+            if (GM.turn.endTurnEffects[i].card.isBroken)
+                continue;
+
             if (GM.turn.endTurnEffects[i].isDone)
                 continue;
 
@@ -24,7 +27,7 @@ public class EndTurnPhase : Phase
             }
         }
 
-        endTurnStart = endTurnStart.OrderBy(a => (a.card.owner.photonId != offensivePhotonId)).ThenBy(a => a.priority).ToList();
+        endTurnStart = endTurnStart.OrderBy(a => a.priority).ThenBy(a => (a.card.owner.photonId != offensivePhotonId)).ToList();
     }
 
     void ExecuteEffect()

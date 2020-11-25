@@ -123,4 +123,25 @@ public class Card : ScriptableObject
 
         return cardTags.Intersect(checks).Count() == checks.Count();
     }
+
+    public bool isBroken = false;
+
+    public void BreakeCard()
+    {
+        isBroken = true;
+        cardViz.cardBrokenOverlay.gameObject.SetActive(true);
+        cardViz.cardBorder.color = Color.red;
+
+        foreach(CardEffect eff in cardEffects)
+        {
+            eff.OnBreake();
+        }
+    }
+
+    public void FixCard()
+    {
+        isBroken = false;
+        cardViz.cardBrokenOverlay.gameObject.SetActive(false);
+        cardViz.cardBorder.color = Color.black;
+    }
 }

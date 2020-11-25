@@ -42,6 +42,9 @@ public class FinalEndPhase : Phase
     {
         for (int i = 0; i < GM.turn.endTurnEffects.Count; i++)
         {
+            if (GM.turn.endTurnEffects[i].card.isBroken)
+                continue;
+
             if (GM.turn.endTurnEffects[i].isDone)
                 continue;
 

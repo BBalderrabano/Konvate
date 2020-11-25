@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Orco_CE_Porrazo
   m_EditorClassIdentifier: 
   isTemporary: 0
-  priority: 1
+  priority: 2
   type: 1
   effectTags: 12000000

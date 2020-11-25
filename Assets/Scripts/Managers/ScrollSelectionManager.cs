@@ -45,8 +45,6 @@ public class ScrollSelectionManager : MonoBehaviour
 
     public void SelectCards(List<Card> cards, string description, bool isVisual, bool isMultiple = false, int minSelected = 0, int maxSelected = 0, A_CardSelection callback = null)
     {
-        CloseSelection();
-
         selectedAmount = 0;
         listOfCards.Clear();
 

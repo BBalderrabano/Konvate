@@ -14,6 +14,7 @@ public class CardViz : MonoBehaviour
     public Image classIcon;
     public Image cardBackImage;
     public Image cardBorder;
+    public Image cardBrokenOverlay;
 
     public Card card;
 

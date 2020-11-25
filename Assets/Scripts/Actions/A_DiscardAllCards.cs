@@ -26,6 +26,8 @@ public class A_DiscardAllCards : Action
             {
                 Card card = cardsToDiscard[i];
 
+                card.FixCard();
+
                 A_Discard discard_card = new A_Discard(card.instanceId, photonId);
 
                 discardActions.Add(discard_card);

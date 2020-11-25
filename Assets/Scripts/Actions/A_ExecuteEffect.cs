@@ -1,4 +1,6 @@
-﻿
+﻿using UnityEngine;
+using System.Diagnostics;
+
 public class A_ExecuteEffect : Action
 {
     Card owner;
@@ -25,10 +27,11 @@ public class A_ExecuteEffect : Action
     {
         if (!isInit)
         {
-            GM.PreviewCard(effect.card);
-
             time = 0;
+
+            GM.PreviewCard(effect.card);
             effect.Execute();
+
             isInit = true;
         }
 
@@ -39,6 +42,9 @@ public class A_ExecuteEffect : Action
 
     public override bool IsComplete()
     {
+        if (owner.isBroken)
+            return true;
+
         bool effectPreviewTimeout = time > Settings.CARD_EFFECT_MIN_PREVIEW;
 
         if (effect.skipsEffectPreview)
@@ -55,7 +61,7 @@ public class A_ExecuteEffect : Action
 
         effect.Finish();
 
-        if (owner.EffectsDone() && effect.type != EffectType.STARTTURN)
+        if (owner.EffectsDone() && effect.type != EffectType.STARTTURN && !owner.isBroken)
         {
             owner.MakeBorderActive();
         }

@@ -49,6 +49,11 @@ public abstract class CardEffect : ScriptableObject, ICloneable
         card.cardViz.cardBorder.color = Color.blue;
     }
 
+    public virtual void OnBreake()
+    {
+
+    }
+
     public bool IsCombo()
     {
         PlayerHolder player = card.owner;

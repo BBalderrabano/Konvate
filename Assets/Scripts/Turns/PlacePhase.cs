@@ -18,6 +18,8 @@ public class PlacePhase : Phase
             {
                 c.RevealCard();
 
+                if (c.isBroken) { continue; }
+
                 for (int i = 0; i < c.cardEffects.Count; i++)
                 {
                     if (c.cardEffects[i].isDone)
@@ -51,8 +53,8 @@ public class PlacePhase : Phase
             }
         }
 
-        place = place.OrderBy(a => (a.card.owner.photonId != offensivePhotonId)).ThenBy(a => a.priority).ToList();
-        special = special.OrderBy(a => (a.card.owner.photonId != offensivePhotonId)).ThenBy(a => a.priority).ToList();
+        place = place.OrderBy(a => a.priority).ThenBy(a => (a.card.owner.photonId != offensivePhotonId)).ToList();
+        special = special.OrderBy(a => a.priority).ThenBy(a => (a.card.owner.photonId != offensivePhotonId)).ToList();
     }
 
     void ExecuteEffects()

@@ -22,6 +22,9 @@ public class DiscardPhase : Phase
             {
                 foreach (Card c in player.playedCards)
                 {
+                    if (c.isBroken)
+                        continue;
+
                     foreach (CardEffect eff in c.cardEffects)
                     {
                         if (eff.type == EffectType.ENDTURN || eff.type == EffectType.ENDTURNSTART)
