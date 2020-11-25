@@ -136,6 +136,11 @@ public class Card : ScriptableObject
         {
             eff.OnBreake();
         }
+
+        iTween.PunchRotation(cardPhysicalInst.gameObject, new Vector3(0, 0, 0.5f), 0.5f);
+        iTween.PunchScale(cardPhysicalInst.gameObject, new Vector3(0.3f, 0.3f), 0.5f);
+
+        AudioManager.singleton.Play(SoundEffectType.CARD_BREAKE);
     }
 
     public void FixCard()

@@ -46,5 +46,7 @@ public enum SoundEffectType
 
     CARD_ORCO_FUERZA_EN_NUMEROS,
 
-    CARD_MAGO_NO_DECK
+    CARD_MAGO_NO_DECK,
+
+    CARD_BREAKE
 }
