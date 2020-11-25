@@ -20,6 +20,9 @@ MonoBehaviour:
   cardText: 'Envia una carta de tu mano al fondo del mazo
 
     Roba 1 carta'
-  cardEffects: []
+  cardEffects:
+  - {fileID: 11400000, guid: e15587970d695144f818e27c86e0aa81, type: 2}
+  - {fileID: 11400000, guid: 2dda5a4452f4c6042b73eb6df3cb3465, type: 2}
   conditions: []
   cardTags: 010000000c00000019000000
+  isBroken: 0

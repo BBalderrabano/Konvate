@@ -124,6 +124,7 @@ public class Card : ScriptableObject
         return cardTags.Intersect(checks).Count() == checks.Count();
     }
 
+    [System.NonSerialized]
     public bool isBroken = false;
 
     public void BreakeCard()
@@ -134,7 +135,7 @@ public class Card : ScriptableObject
 
         foreach(CardEffect eff in cardEffects)
         {
-            eff.OnBreake();
+            eff.OnLeavePlay();
         }
 
         iTween.PunchRotation(cardPhysicalInst.gameObject, new Vector3(0, 0, 0.5f), 0.5f);

@@ -14,11 +14,28 @@ public class A_CardSelection : Action
         this.description = description;
         this.callback = callback;
 
-        if(callback != null)
+        isMultiple = false;
+        minSelected = 0;
+        maxSelected = 0;
+
+        if (callback != null)
         {
             this.cardOrigin = cardId;
             this.effectOrigin = callback.effectId;
         }
+    }
+
+    bool isMultiple = false;
+    int minSelected = 0;
+    int maxSelected = 0;
+
+    public A_CardSelection ModifyParameters(bool isMultiple, int minSelected, int maxSelected)
+    {
+        this.isMultiple = isMultiple;
+        this.minSelected = minSelected;
+        this.maxSelected = maxSelected;
+
+        return this;
     }
 
     public override bool Continue()
@@ -37,7 +54,7 @@ public class A_CardSelection : Action
             }
             else
             {
-                ScrollSelectionManager.singleton.SelectCards(card_pool, description, false, false, 0, 0, this);
+                ScrollSelectionManager.singleton.SelectCards(card_pool, description, false, isMultiple, minSelected, maxSelected, this);
             }
 
             isInit = true;

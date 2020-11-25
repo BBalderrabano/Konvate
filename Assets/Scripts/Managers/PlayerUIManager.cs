@@ -21,7 +21,7 @@ public class PlayerUIManager : MonoBehaviour
         }
         else
         {
-            energyCount.text = player.currentEnergy.value.ToString();
+            energyCount.text = Mathf.Max(0, player.currentEnergy.value).ToString();
         }
     }
 
