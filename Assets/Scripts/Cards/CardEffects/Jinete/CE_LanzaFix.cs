@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 [CreateAssetMenu(menuName = "Card Effects/Jinete/Lanza Fix")]
 public class CE_LanzaFix : CardEffect

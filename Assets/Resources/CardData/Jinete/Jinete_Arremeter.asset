@@ -18,8 +18,8 @@ MonoBehaviour:
   classIcon: {fileID: 21300000, guid: 6bdfa8e14a07022429a57ddaedc74481, type: 3}
   cardType: {fileID: 11400000, guid: 0e3332cf33a066a4d8be0f706aa9ccea, type: 2}
   cardText: <color=#FF0000>Coloca </color>1<sprite=0> y envia al descarte la carta
-    del tope del mazo oponente, si NO es un Ataque Basico o Defensa repitelo una
-    vez
+    del tope del mazo oponente, si NO es un Ataque Basico o Defensa repite el efecto
+    una vez
   textMods: []
   cardEffects:
   - {fileID: 11400000, guid: ede2e68374dc4644d9e9456480433e7e, type: 2}
