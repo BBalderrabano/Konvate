@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
-[CreateAssetMenu(menuName = "Card Effects/Mago/Congelar")]
-public class CE_Congelar : SelectionCardEffect
+[CreateAssetMenu(menuName = "Card Effects/Jinete/Flanqueo")]
+public class CE_Flanqueo : SelectionCardEffect
 {
     public override void Execute()
     {
@@ -15,9 +16,9 @@ public class CE_Congelar : SelectionCardEffect
 
         played_normal_cards.AddRange(played_cards.Where(a => a.GetCardType() is NormalPlay && a.isBroken == false && a.EffectsDone() == false));
 
-        if (played_normal_cards.Count > 0)
+        if(played_normal_cards.Count > 0)
         {
-            if (played_normal_cards.Count == 1)
+            if(played_normal_cards.Count == 1)
             {
                 Card selected = played_normal_cards.First();
                 selected.BreakeCard();
@@ -25,9 +26,15 @@ public class CE_Congelar : SelectionCardEffect
             }
             else
             {
+                List<Card> border_cards = new List<Card>
+                {
+                    played_normal_cards.First(),
+                    played_normal_cards.Last()
+                };
+
                 if (card.owner.isLocal)
                 {
-                    parentAction.PushAction(new A_CardSelection("<b>Anula</b> una carta oponente", played_normal_cards, card.owner.photonId, this, card.instanceId));
+                    parentAction.PushAction(new A_CardSelection("<b>Anula</b> una carta oponente", border_cards, card.owner.photonId, this, card.instanceId));
                 }
                 else
                 {

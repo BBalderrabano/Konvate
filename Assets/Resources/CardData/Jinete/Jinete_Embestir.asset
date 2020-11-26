@@ -19,6 +19,9 @@ MonoBehaviour:
   cardType: {fileID: 11400000, guid: 0e3332cf33a066a4d8be0f706aa9ccea, type: 2}
   cardText: <color=#FF0000>Coloca </color>1<sprite=0> y envia la carta del tope del
     mazo de un oponente a su pila de descarte
-  cardEffects: []
+  textMods: []
+  cardEffects:
+  - {fileID: 11400000, guid: ede2e68374dc4644d9e9456480433e7e, type: 2}
+  - {fileID: 11400000, guid: 85f0c1cebba626948bc30e3486c80313, type: 2}
   conditions: []
   cardTags: 01000000050000001b000000

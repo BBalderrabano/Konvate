@@ -5,7 +5,7 @@ public class A_Discard : Action
     int cardTarget;
     bool waitForAnimation;
 
-    public A_Discard(int cardId, int photonId, int actionId = -1, int cardOriginId = 0, int effectOriginId = 0, bool waitForAnimation = false) : base(photonId, actionId)
+    public A_Discard(int cardId, int photonId, bool waitForAnimation = false, int actionId = -1, int cardOriginId = 0, int effectOriginId = 0) : base(photonId, actionId)
     {
         cardOrigin = cardOriginId;
         effectOrigin = effectOriginId;
@@ -26,13 +26,16 @@ public class A_Discard : Action
             PlayerHolder player = GM.GetPlayerHolder(photonId);
             Card card = player.GetCard(cardTarget);
 
-            foreach (CardEffect effect in card.cardEffects)
+            if (player.handCards.Contains(card))
             {
-                effect.isDone = false;
-
-                if (effect is CE_HandCheck)
+                foreach (CardEffect effect in card.cardEffects)
                 {
-                    ((CE_HandCheck)effect).linkedCardEffect.isDone = false;
+                    effect.isDone = false;
+
+                    if (effect is CE_HandCheck)
+                    {
+                        ((CE_HandCheck)effect).linkedCardEffect.isDone = false;
+                    }
                 }
             }
 
@@ -41,6 +44,7 @@ public class A_Discard : Action
 
             player.handCards.Remove(card);
             player.playedCards.Remove(card);
+            player.deck.Remove(card);
             player.discardCards.Add(card);
 
             LinkAnimation(GM.animationManager.MoveCard(actionId, photonId, card.instanceId, player.currentHolder.discardGrid.value.position, player.currentHolder.discardGrid.value.gameObject));

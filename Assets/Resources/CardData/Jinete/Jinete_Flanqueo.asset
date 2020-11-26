@@ -19,6 +19,8 @@ MonoBehaviour:
   cardType: {fileID: 11400000, guid: 0e3332cf33a066a4d8be0f706aa9ccea, type: 2}
   cardText: Anula el efecto de una carta jugada por un oponente del lado derecho
     o izquierdo (no afecta a cartas <sprite=3>)
-  cardEffects: []
+  textMods: []
+  cardEffects:
+  - {fileID: 11400000, guid: b065cfd182739854eac3e70ab989d51b, type: 2}
   conditions: []
   cardTags: 010000000d000000
