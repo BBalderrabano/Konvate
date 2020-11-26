@@ -14,13 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deckName: Prueba
   cardIds:
-  - Mago_Congelar
+  - Jinete_Justa
   - Mago_Armagedon
   - Mago_Meteorito
   - Mago_Piroexplosion
   - Mago_Congelar
-  - Mago_Piroexplosion
-  - Mago_Retroceder el Tiempo
-  - Mago_Retroceder el Tiempo
-  - Mago_Retroceder el Tiempo
-  - Mago_Retroceder el Tiempo

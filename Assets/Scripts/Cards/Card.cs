@@ -76,6 +76,8 @@ public class Card : ScriptableObject
     [TextArea(15, 20)]
     public string cardText;
 
+    public List<CardTextMod> textMods = new List<CardTextMod>();
+
     public List<CardEffect> cardEffects = new List<CardEffect>();
 
     public List<Condition> conditions = new List<Condition>();

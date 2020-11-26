@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.XR;
 
 [CreateAssetMenu(menuName = "Actions/Highlight Card")]
 public class MouseHighlightCard : PlayerAction
@@ -60,6 +59,7 @@ public class MouseHighlightCard : PlayerAction
                 if (c != null && inst.GetCurrentLogic() is HandCard)
                 {
                     currentCard.value.gameObject.SetActive(true);
+
                     originalCard.value.viz.cardBorder.color = Color.green;
                     cardIsSelected.value = false;
                     c.OnHighlight();

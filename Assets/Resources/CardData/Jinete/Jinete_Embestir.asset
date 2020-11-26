@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a690ff51c21df6840a240e723fb5d079, type: 3}
+  m_Name: Jinete_Embestir
+  m_EditorClassIdentifier: 
+  CardCost: 1
+  cardName: Embestida
+  art: {fileID: 6062406356402369143, guid: 520d7963b32d69348a29662dedf2bad3, type: 3}
+  classIcon: {fileID: 21300000, guid: 6bdfa8e14a07022429a57ddaedc74481, type: 3}
+  cardType: {fileID: 11400000, guid: 0e3332cf33a066a4d8be0f706aa9ccea, type: 2}
+  cardText: <color=#FF0000>Coloca </color>1<sprite=0> y envia la carta del tope del
+    mazo de un oponente a su pila de descarte
+  cardEffects: []
+  conditions: []
+  cardTags: 01000000050000001b000000

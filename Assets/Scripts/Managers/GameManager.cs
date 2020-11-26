@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     public CardHolders playerTwoHolder;
 
     public List<Card> all_cards = new List<Card>();
+    public List<CardTextMod> text_mods = new List<CardTextMod>();
 
     public Card GetCard(int instanceId)
     {
@@ -133,6 +134,8 @@ public class GameManager : MonoBehaviour
 
     public void InitGame(int startingPlayerID)
     {
+        checkTextMods = true;
+
         if (!isMultiplayer)
         {
             allPlayers = new PlayerHolder[2];
@@ -265,6 +268,8 @@ public class GameManager : MonoBehaviour
 
     public bool endingTurn = false;
 
+    bool checkTextMods = true;
+
     private void Update()
     {
         if (!isInit)
@@ -295,6 +300,21 @@ public class GameManager : MonoBehaviour
             {
                 endingTurn = true;
                 return;
+            }
+        }
+
+        if (checkTextMods)
+        {
+            if (text_mods.Count > 0)
+            {
+                foreach (CardTextMod mod in text_mods)
+                {
+                    mod.UpdateText();
+                }
+            }
+            else
+            {
+                checkTextMods = false;
             }
         }
 

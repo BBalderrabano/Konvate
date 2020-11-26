@@ -235,6 +235,15 @@ public class MultiplayerManager : MonoBehaviourPun, IPunInstantiateMagicCallback
                     handLinkEffectAmount++;
                 }
 
+                if(card.textMods.Count > 0)
+                {
+                    foreach(CardTextMod mod in card.textMods)
+                    {
+                        mod.Init(card);
+                        GM.text_mods.Add((CardTextMod)mod.Clone());
+                    }
+                }
+
                 playerHolder.deck.Add(card);
                 playerHolder.all_cards.Add(card);
 
