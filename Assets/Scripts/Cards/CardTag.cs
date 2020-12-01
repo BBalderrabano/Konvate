@@ -65,5 +65,9 @@ public enum CardTags
 
     TARGETS_PLAYER,
 
-    PREVAILS
+    PREVAILS,
+    DISCARDS_CARDS,
+    CURSE,
+    CURSE_BRUJO,
+    SENDS_DECKCARD_TO_BOTTOM_DECK
 }

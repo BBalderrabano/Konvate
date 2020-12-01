@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Mago_CE_Retroceder el Tiempo
   m_EditorClassIdentifier: 
   isTemporary: 0
-  priority: 1
+  priority: 3
   type: 1
   effectTags: 19000000

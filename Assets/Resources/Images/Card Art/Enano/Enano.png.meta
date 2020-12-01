@@ -117,12 +117,12 @@ TextureImporter:
       name: Enano_0
       rect:
         serializedVersion: 2
-        x: 40
+        x: 0
         y: 260
-        width: 1147
-        height: 1074
+        width: 1255
+        height: 1124
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -138,12 +138,12 @@ TextureImporter:
       name: Enano_1
       rect:
         serializedVersion: 2
-        x: 1377
-        y: 353
-        width: 898
-        height: 1005
+        x: 1319
+        y: 333
+        width: 1039
+        height: 1051
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -159,12 +159,12 @@ TextureImporter:
       name: Enano_2
       rect:
         serializedVersion: 2
-        x: 2412
+        x: 2334
         y: 582
-        width: 1220
-        height: 771
+        width: 1332
+        height: 802
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -180,12 +180,12 @@ TextureImporter:
       name: Enano_3
       rect:
         serializedVersion: 2
-        x: 2363
+        x: 2358
         y: 6
-        width: 1250
-        height: 527
+        width: 1372
+        height: 586
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -201,12 +201,12 @@ TextureImporter:
       name: Enano_4
       rect:
         serializedVersion: 2
-        x: 3842
-        y: 533
-        width: 918
-        height: 820
+        x: 3720
+        y: 528
+        width: 1079
+        height: 856
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

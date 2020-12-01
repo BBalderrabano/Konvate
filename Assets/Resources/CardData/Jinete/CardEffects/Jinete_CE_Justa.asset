@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Jinete_CE_Justa
   m_EditorClassIdentifier: 
   isTemporary: 0
-  priority: 4
+  priority: 3
   type: 1
   effectTags: 05000000

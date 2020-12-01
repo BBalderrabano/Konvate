@@ -263,10 +263,12 @@ public class AnimationManager : MonoBehaviour
 
         Card card = GM.GetCard(cardId);
 
-        if (chips.Count == 0)
+        /* Esto para que estaba aca????
+         * 
+         * if (chips.Count == 0)
         {
             return null;
-        }
+        }*/
 
         if (temp_amount > chips.Count)
         {
@@ -277,7 +279,7 @@ public class AnimationManager : MonoBehaviour
 
         for (int i = 0; i < amount; i++)
         { 
-            if(i < temp_amount)
+            if(i < temp_amount && GM.turn.currentPhase.value is QuickPlayPhase)
             {
                 float delay = Settings.ANIMATION_DELAY + (Settings.ANIMATION_INTERVAL * i);
 
@@ -319,7 +321,7 @@ public class AnimationManager : MonoBehaviour
                         "onCompleteTarget", this.gameObject
                 ));
             }
-            else if(floatsDefend)
+            else if (floatsDefend)
             {
                 card.owner.AddFloatingDefend(new FloatingDefenseHolder(effect, type));
                 animationPointer.OnComplete();

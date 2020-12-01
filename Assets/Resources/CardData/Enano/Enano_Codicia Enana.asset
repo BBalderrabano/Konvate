@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a690ff51c21df6840a240e723fb5d079, type: 3}
+  m_Name: Enano_Codicia Enana
+  m_EditorClassIdentifier: 
+  CardCost: 1
+  cardName: Avaricia Enana
+  art: {fileID: -8680747953694796763, guid: fa7938fb9c5b1fd499384be4bc5621f0, type: 3}
+  classIcon: {fileID: 21300000, guid: bf61ba194d5ee724799503db86f9d07f, type: 3}
+  cardType: {fileID: 11400000, guid: 824122562ba26474b9e5d23302a17560, type: 2}
+  cardText: 'Roba 3 cartas
+
+    Tus aliados roban 1 carta'
+  textMods: []
+  cardEffects:
+  - {fileID: 11400000, guid: 3ec63243ddf603448bec16395df1cd49, type: 2}
+  conditions: []
+  cardTags: 010000000c000000
