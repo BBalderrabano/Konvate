@@ -20,6 +20,7 @@ MonoBehaviour:
   cardText: Un oponente roba 1 carta y la revela, si es una Maldicion o Libro Maldito
     <color=#880014>recupera</color> 1 <sprite=2>
   textMods: []
-  cardEffects: []
+  cardEffects:
+  - {fileID: 11400000, guid: 1029f2e1c8291094a8a76e3e1568ef2a, type: 2}
   conditions: []
   cardTags: 010000000b0000000c000000

@@ -4,7 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Card Effects/Brujo/Detonar Maldicion text mod")]
 public class TextMod_DetonarMaldicion : CardTextMod
 {
-    int curse_amount = 0;
+    int curse_amount = -99;
 
     public override void Init(Card c)
     {

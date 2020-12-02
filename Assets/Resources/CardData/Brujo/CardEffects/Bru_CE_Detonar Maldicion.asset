@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Bru_CE_Detonar Maldicion
   m_EditorClassIdentifier: 
   isTemporary: 0
-  priority: 1
-  type: 0
-  effectTags: 
+  priority: 4
+  type: 2
+  effectTags: 05000000

@@ -32,12 +32,14 @@ public class QuickPlayPhase : Phase
             return;
         }
 
+        c.cardViz.cardBorder.color = Color.blue;
+
         for (int i = 0; i < c.cardEffects.Count; i++)
         {
             if (c.cardEffects[i].isDone ||
                 (c.cardEffects[i].type != EffectType.PLACE
-                && c.cardEffects[i].type != EffectType.REMOVE
-                && c.cardEffects[i].type != EffectType.RESTORE
+                //&& c.cardEffects[i].type != EffectType.REMOVE
+                //&& c.cardEffects[i].type != EffectType.RESTORE
                 && c.cardEffects[i].type != EffectType.SPECIAL))
                 continue;
 

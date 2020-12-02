@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Diagnostics;
+using Photon.Realtime;
+using System.Threading;
 
 public class A_ExecuteEffect : Action
 {
@@ -7,6 +9,8 @@ public class A_ExecuteEffect : Action
     CardEffect effect;
 
     float time = 0;
+
+    bool makeActive = true;
 
     public A_ExecuteEffect(int cardId, int effectId, int photonId, int actionId = -1) : base(GameManager.singleton.localPlayer.photonId, actionId)
     {
@@ -16,6 +20,8 @@ public class A_ExecuteEffect : Action
 
         cardOrigin = cardId;
         effectOrigin = effectId;
+
+        makeActive = true;
     }
 
     public override bool Continue()
@@ -61,9 +67,15 @@ public class A_ExecuteEffect : Action
 
         effect.Finish();
 
-        if (owner.EffectsDone() && effect.type != EffectType.STARTTURN && !owner.isBroken)
+        if (makeActive && owner.EffectsDone() && effect.type != EffectType.STARTTURN && !owner.isBroken)
         {
             owner.MakeBorderActive();
         }
+    }
+
+    public A_ExecuteEffect MakeActiveOnComplete(bool makeActive)
+    {
+        this.makeActive = makeActive;
+        return this;
     }
 }

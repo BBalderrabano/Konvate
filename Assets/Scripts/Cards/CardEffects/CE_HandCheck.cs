@@ -5,8 +5,6 @@ public class CE_HandCheck : CardEffect
 {
     public CardEffect linkedCardEffect;
 
-    public override void Execute()
-    {
-    }
+    public override void Execute(){}
 }
 

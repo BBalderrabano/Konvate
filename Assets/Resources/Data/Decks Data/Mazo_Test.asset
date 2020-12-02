@@ -14,8 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deckName: Prueba
   cardIds:
-  - Jinete_Justa
-  - Mago_Armagedon
-  - Mago_Meteorito
-  - Mago_Piroexplosion
-  - Mago_Congelar
+  - Bru_Detonar Maldiciones
+  - Bru_Desencadenar Poder
+  - Bru_Drenar Vida
+  - Bru_Maldicion
+  - Bru_Maldicion
+  - Bru_Libro Maldito
+  - Bru_Libro Maldito
+  - Bru_Libro Maldito

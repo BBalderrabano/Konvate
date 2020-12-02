@@ -240,6 +240,17 @@ public class GameManager : MonoBehaviour
 
     #region Card Actions
 
+    public void ChangeCardOwner(int cardId, int oldOwnerPhotonId, int newOwnerPhotonId)
+    {
+        Card card = GetCard(cardId);
+        PlayerHolder newOwner = GetPlayerHolder(newOwnerPhotonId);
+        PlayerHolder oldOwner = GetPlayerHolder(oldOwnerPhotonId);
+
+        card.owner = newOwner;
+        newOwner.all_cards.Add(card);
+        oldOwner.all_cards.Remove(card);
+    }
+
     public List<Action> DrawCard(PlayerHolder player, int amount, int cardId = 0, int effectId = 0, Action action = null)
     {
         List<Action> actions = new List<Action>();
