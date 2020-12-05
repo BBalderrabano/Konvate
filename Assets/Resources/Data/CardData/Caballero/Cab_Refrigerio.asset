@@ -17,10 +17,11 @@ MonoBehaviour:
   art: {fileID: 3943294224564666751, guid: 8eb29d46c2c8afc4aab1f56d10fbaf44, type: 3}
   classIcon: {fileID: 21300000, guid: 0625c9cf1463d9e44a4e4448b01806ba, type: 3}
   cardType: {fileID: 11400000, guid: 0e3332cf33a066a4d8be0f706aa9ccea, type: 2}
-  cardText: '<color=#036bfc> Remueve </color>2<sprite=1>
+  cardText: '<color=#036bfc> Remueve </color>2 <sprite=1>
 
     Si no recibis <sprite=2>
-    este turno <color=#880014>recupera</color> 3<sprite=2>'
+    este turno <color=#880014>recupera</color> 3 <sprite=2>'
+  textMods: []
   cardEffects:
   - {fileID: 11400000, guid: 80685f1b9d3277d4b8646eacd8d178d6, type: 2}
   - {fileID: 11400000, guid: a2140408ca591a34887beff49e2d5b4c, type: 2}
