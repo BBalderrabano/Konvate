@@ -35,6 +35,7 @@ public class AnimationManager : MonoBehaviour
                 GameObject chip = playedChips.GetChild(i).gameObject;
                 Chip chip_component = chip.GetComponent<Chip>();
 
+                Vector3 travelTo = enemy.currentHolder.bleedChipHolder.value.position;
                 GameObject parent;
 
                 if (chip_component.type == ChipType.POISON)
@@ -49,25 +50,38 @@ public class AnimationManager : MonoBehaviour
                 {
                     parent = chip_component.owner.currentHolder.combatChipHolder.value.gameObject;
                 }
-                
-                iTween.MoveTo(chip,
-                    iTween.Hash(
-                        "position", enemy.currentHolder.bleedChipHolder.value.position,
-                        "time", Settings.CHIP_ANIMATION_TIME,
-                        "onstart", "PlaySound",
-                        "onstarttarget", this.gameObject,
-                        "onstartparams", iTween.Hash("play_sound", SoundEffectType.MOVE_CHIP),
-                        "oncomplete", "BleedChipDamage",
-                        "easetype", Settings.ANIMATION_STYLE,
-                        "delay", delay,
-                        "oncompleteparams", iTween.Hash("action", actionId,
-                                                        "new_parent", parent,
-                                                        "object", chip,
-                                                        "photonId", enemy.photonId,
-                                                        "animationId", animationPointer.animId,
-                                                        "reset_position", true),
-                        "onCompleteTarget", this.gameObject
-                ));
+
+                FloatingDefenseHolder floatingDefense = enemy.GetFloatingDefend(ChipType.BLEED);
+
+                if (floatingDefense != null)
+                {
+                    travelTo = WorldToCanvasPosition(floatingDefense.effect.card.cardPhysicalInst.gameObject.transform.position);
+
+                    animationPointer = MoveChip(chip, actionId, player.photonId, travelTo, parent);
+
+                    enemy.RemoveFloatingDefend(floatingDefense);
+                }
+                else
+                {
+                    iTween.MoveTo(chip,
+                        iTween.Hash(
+                            "position", travelTo,
+                            "time", Settings.CHIP_ANIMATION_TIME,
+                            "onstart", "PlaySound",
+                            "onstarttarget", this.gameObject,
+                            "onstartparams", iTween.Hash("play_sound", SoundEffectType.MOVE_CHIP),
+                            "oncomplete", "BleedChipDamage",
+                            "easetype", Settings.ANIMATION_STYLE,
+                            "delay", delay,
+                            "oncompleteparams", iTween.Hash("action", actionId,
+                                                            "new_parent", parent,
+                                                            "object", chip,
+                                                            "photonId", enemy.photonId,
+                                                            "animationId", animationPointer.animId,
+                                                            "reset_position", true),
+                            "onCompleteTarget", this.gameObject
+                    ));
+                }
             }
         }
 
@@ -373,7 +387,11 @@ public class AnimationManager : MonoBehaviour
             {
                 travelTo = WorldToCanvasPosition(floatingDefense.effect.card.cardPhysicalInst.gameObject.transform.position);
 
-                if (type == ChipType.POISON)
+                if (type == ChipType.BLEED)
+                {
+                    parentTo = chip_component.owner.currentHolder.bleedChipHolder.value.gameObject;
+                }
+                else if (type == ChipType.POISON)
                 {
                     parentTo = chip_component.owner.currentHolder.poisonChipHolder.value.gameObject;
                 }

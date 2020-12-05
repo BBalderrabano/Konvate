@@ -18,5 +18,9 @@ public class CE_NoDeckPlaceChip : CardEffect
             parentAction.LinkAnimation(GM.animationManager.PlaceChip(parentAction.actionId, player.photonId, card.instanceId, chip_type, amount));
             AudioManager.singleton.Play(SoundEffectType.CARD_MAGO_NO_DECK);
         }
+        else
+        {
+            skipsEffectPreview = true;
+        }
     }
 }

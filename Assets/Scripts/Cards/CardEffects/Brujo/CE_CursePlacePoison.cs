@@ -11,7 +11,12 @@ public class CE_CursePlacePoison : CardEffect
         
         if(card.owner.photonId != card.photonId)
         {
+            skipsEffectPreview = false;    
             parentAction.LinkAnimation(GM.animationManager.PlaceChip(parentAction.actionId, card.photonId, card.instanceId, ChipType.POISON, amount));
+        }
+        else
+        {
+            skipsEffectPreview = true;
         }
     }
 }

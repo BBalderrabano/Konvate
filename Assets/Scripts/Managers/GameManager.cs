@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
     public CardHolders playerTwoHolder;
 
     public List<Card> all_cards = new List<Card>();
+
+    [System.NonSerialized]
     public List<CardTextMod> text_mods = new List<CardTextMod>();
 
     public Card GetCard(int instanceId)

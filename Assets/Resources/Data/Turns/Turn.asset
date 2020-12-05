@@ -28,4 +28,8 @@ MonoBehaviour:
   clientPlayer: {fileID: 11400000, guid: 136895e718f1cf044807aeec75f4557b, type: 2}
   offensivePlayer: {fileID: 11400000, guid: 126e2f04c594a8f48a738f2e0728588c, type: 2}
   offensiveChip: {fileID: 0}
+  localInflictedBleed: 0
+  opponentInflictedBleed: 0
+  playerOneTurnLine: {fileID: 11400000, guid: 688422cb21ab650419961aec294548ad, type: 2}
+  playerTwoTurnLine: {fileID: 11400000, guid: 91cf9f4fb0af89e40bae95aa1d153664, type: 2}
   turnCount: 0

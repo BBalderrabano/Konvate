@@ -19,6 +19,7 @@ MonoBehaviour:
   cardType: {fileID: 11400000, guid: 0e3332cf33a066a4d8be0f706aa9ccea, type: 2}
   cardText: Al final del turno <color=#880014>previene</color> 2 <sprite=2>
   textMods: []
-  cardEffects: []
+  cardEffects:
+  - {fileID: 11400000, guid: 740e568aa673d0b498abed380ed1879b, type: 2}
   conditions: []
   cardTags: 0100000003000000170000000a000000

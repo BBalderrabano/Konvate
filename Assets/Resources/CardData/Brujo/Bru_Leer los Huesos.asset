@@ -20,6 +20,7 @@ MonoBehaviour:
   cardText: "Mira las 3 cartas del tope del mazo de un oponente y env\xEDa las que
     quieras al fondo de su mazo"
   textMods: []
-  cardEffects: []
+  cardEffects:
+  - {fileID: 11400000, guid: de99b30e18055c143b95774371679063, type: 2}
   conditions: []
   cardTags: 010000000400000021000000
