@@ -278,6 +278,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d126c7cb08c241c459e32662cf0fb959, type: 2}
   - {fileID: 11400000, guid: 334fef96829ee8842b293a85efb64637, type: 2}
   - {fileID: 11400000, guid: 824d89ef8575beb4399aa0d8b33ed774, type: 2}
+  - {fileID: 11400000, guid: 52b395c4654d022439c99e93a86cef29, type: 2}
   name_selection: {fileID: 482835565}
   deck_selection: {fileID: 936626663}
 --- !u!224 &113560300
@@ -3761,8 +3762,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.725, y: -208.09999}
-  m_SizeDelta: {x: 429.55, y: 183.8}
+  m_AnchoredPosition: {x: 1.725, y: -206.84998}
+  m_SizeDelta: {x: 429.55, y: 181.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &855760424595823125
 GameObject:

@@ -20,7 +20,7 @@ MonoBehaviour:
   cardText: 'Cada turno <color=#036bfc>remueve </color>1<sprite=0>
 
     Esta carta
-    <u>permanece</u> hasta que recargues tu mazo
+    <b>permanece</b> hasta que recargues tu mazo
 
     <u><color=#C000FF>Forma</color></u>'
   textMods: []

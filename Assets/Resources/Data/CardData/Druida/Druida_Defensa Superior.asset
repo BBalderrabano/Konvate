@@ -17,15 +17,15 @@ MonoBehaviour:
   art: {fileID: -8820207309147092198, guid: 4c51f9d633173a74fa4d467740265c35, type: 3}
   classIcon: {fileID: 21300000, guid: 4a78d1ac3bc99d746963f31060b1800f, type: 3}
   cardType: {fileID: 11400000, guid: 0e3332cf33a066a4d8be0f706aa9ccea, type: 2}
-  cardText: 'No puede usarse si Forma de Lobo esta en juego
+  cardText: '<color=#036bfc>Remueve </color>1<sprite=0>
 
-    <color=#036bfc>Remueve
+    <color=#FF0000>Coloca
     </color>1<sprite=0>
 
-    <color=#FF0000>Coloca </color>1<sprite=0>
+    Si Forma de Oso esta en juego <color=#036bfc>remueve
+    </color>1<sprite=0> extra
 
-    Si Forma
-    de Oso esta en juego <color=#036bfc>remueve </color>1<sprite=0> extra'
+    (No puede usarse si Forma de Lobo esta en juego)'
   textMods: []
   cardEffects: []
   conditions: []
