@@ -10,16 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a690ff51c21df6840a240e723fb5d079, type: 3}
-  m_Name: Cab_Defensa Superior
+  m_Name: Arq_Disparo Preciso
   m_EditorClassIdentifier: 
   CardCost: 1
-  cardName: Defensa Superior
-  art: {fileID: -1512738928268555037, guid: 8eb29d46c2c8afc4aab1f56d10fbaf44, type: 3}
-  classIcon: {fileID: 21300000, guid: 0625c9cf1463d9e44a4e4448b01806ba, type: 3}
+  cardName: Disparo Preciso
+  art: {fileID: 2868619206719825706, guid: fd14b43b46b502c4ab6d37b3f46faba5, type: 3}
+  classIcon: {fileID: 21300000, guid: 8f9c03aa63bbeba42bddf86183339a24, type: 3}
   cardType: {fileID: 11400000, guid: 0e3332cf33a066a4d8be0f706aa9ccea, type: 2}
-  cardText: <color=#036bfc> Remueve </color>2 <sprite=0>
+  cardText: '<color=#FF0000>Coloca </color>1 <sprite=0>
+
+    Si tus oponentes no
+    jugaron Defensa o Defensa Superior
+
+    <color=#FF0000>coloca </color>2 <sprite=0>
+    extra'
   textMods: []
-  cardEffects:
-  - {fileID: 11400000, guid: a310cea425cafb541bb5e135fa519214, type: 2}
+  cardEffects: []
   conditions: []
-  cardTags: 01000000030000000800000017000000
+  cardTags: 010000000200000005000000

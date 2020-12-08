@@ -17,10 +17,11 @@ MonoBehaviour:
   art: {fileID: 5823858386209679513, guid: 8eb29d46c2c8afc4aab1f56d10fbaf44, type: 3}
   classIcon: {fileID: 21300000, guid: 0625c9cf1463d9e44a4e4448b01806ba, type: 3}
   cardType: {fileID: 11400000, guid: 0e3332cf33a066a4d8be0f706aa9ccea, type: 2}
-  cardText: '<color=#FF0000> Coloca </color>1<sprite=0>
+  cardText: '<color=#FF0000> Coloca </color>1 <sprite=0>
 
     <color=#036bfc> Remueve
-    </color>1<sprite=0>'
+    </color>1 <sprite=0>'
+  textMods: []
   cardEffects:
   - {fileID: 11400000, guid: ede2e68374dc4644d9e9456480433e7e, type: 2}
   - {fileID: 11400000, guid: a9c5218c23a864845a4e48805a14b72e, type: 2}
