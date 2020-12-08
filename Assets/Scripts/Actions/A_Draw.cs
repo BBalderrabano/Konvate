@@ -54,6 +54,19 @@ public class A_Draw : Action
                 {
                     Action shuffle = new A_Shuffle(photonId);
 
+                    ////////////////////////////////////////////////////////////////////////////////////////////
+                    foreach(Card c in player.playedCards)
+                    {
+                        foreach(CardEffect e in c.cardEffects)
+                        {
+                            if(e.type == EffectType.BEFORE_RECHARGE)
+                            {
+                                PushAction(new A_ExecuteEffect(c.instanceId, e.effectId, player.photonId));
+                            }
+                        }
+                    }
+                    ////////////////////////////////////////////////////////////////////////////////////////////
+
                     PushAction(shuffle);
                 }
             }

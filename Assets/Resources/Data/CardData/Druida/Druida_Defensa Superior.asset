@@ -27,6 +27,9 @@ MonoBehaviour:
 
     (No puede usarse si Forma de Lobo esta en juego)'
   textMods: []
-  cardEffects: []
-  conditions: []
+  cardEffects:
+  - {fileID: 11400000, guid: 75d391602ef73814395b57c60ebf22ad, type: 2}
+  - {fileID: 11400000, guid: ede2e68374dc4644d9e9456480433e7e, type: 2}
+  conditions:
+  - {fileID: 11400000, guid: 91cf456789e347943948f76105861173, type: 2}
   cardTags: 01000000030000000800000017000000

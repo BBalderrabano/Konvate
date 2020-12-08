@@ -72,5 +72,9 @@ public enum CardTags
     SENDS_DECKCARD_TO_BOTTOM_DECK,
     CURSE_BRUJO_COST_TARGET,
     SHAPE,
-    TUTORS
+    TUTORS,
+
+    SHAPE_ENT,
+    SHAPE_WOLF,
+    SHAPE_BEAR
 }

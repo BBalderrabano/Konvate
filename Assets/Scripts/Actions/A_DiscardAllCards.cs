@@ -61,7 +61,7 @@ public class A_DiscardAllCards : Action
                     ((CE_HandCheck)effect).linkedCardEffect.isDone = false;
                 }
 
-                if (effect.type == EffectType.MAINTAIN || effect.type == EffectType.PREVAIL)
+                if ((effect.type == EffectType.MAINTAIN && card.owner.handCards.Contains(card)) || (effect.type == EffectType.PREVAIL && card.owner.playedCards.Contains(card)))
                 {
                     skip = true;
                 }

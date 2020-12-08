@@ -19,6 +19,7 @@ MonoBehaviour:
   cardType: {fileID: 11400000, guid: 824122562ba26474b9e5d23302a17560, type: 2}
   cardText: Elije una <u><color=#C000FF>forma</color></u> y ponla en tu mano
   textMods: []
-  cardEffects: []
+  cardEffects:
+  - {fileID: 11400000, guid: 04310e8054a7be24a884e13947ea8b37, type: 2}
   conditions: []
   cardTags: 0100000024000000

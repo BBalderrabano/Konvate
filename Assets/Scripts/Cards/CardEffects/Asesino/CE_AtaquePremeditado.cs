@@ -6,28 +6,21 @@ public class CE_AtaquePremeditado : SelectionCardEffect
 {
     public CardEffect maintainEffect;
 
-    bool init = false;
-
     public override void Execute()
     {
         base.Execute();
 
-        if (!init)
+        if (card.owner.isLocal)
         {
-            if (card.owner.isLocal)
-            {
-                List<Card> handCards = card.owner.handCards;
+            List<Card> handCards = card.owner.handCards;
 
-                handCards.RemoveAll(a => a.cardEffects.Exists(b => b.type == EffectType.MAINTAIN));
+            handCards.RemoveAll(a => a.cardEffects.Exists(b => b.type == EffectType.MAINTAIN));
 
-                parentAction.PushAction(new A_CardSelection("Puedes <b>mantener</b> una carta", handCards, card.owner.photonId, this, card.instanceId));
-            }
-            else
-            {
-                GM.actionManager.PushAction(parentAction.actionId, new A_CardSelectionWait(GM.localPlayer.photonId, this, card.instanceId));
-            }
-
-            init = true;
+            parentAction.PushAction(new A_CardSelection("Puedes <b>mantener</b> una carta", handCards, card.owner.photonId, this, card.instanceId));
+        }
+        else
+        {
+            GM.actionManager.PushAction(parentAction.actionId, new A_CardSelectionWait(GM.localPlayer.photonId, this, card.instanceId));
         }
     }
 

@@ -8,5 +8,4 @@ public class CE_PreparacionCombo : CardEffect
         IsCombo();
         isDone = true;
     }
-
 }

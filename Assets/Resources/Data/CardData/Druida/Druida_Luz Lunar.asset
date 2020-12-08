@@ -27,6 +27,10 @@ MonoBehaviour:
 
     (No puede usarse si Forma de Oso esta en juego)'
   textMods: []
-  cardEffects: []
-  conditions: []
+  cardEffects:
+  - {fileID: 11400000, guid: 8377e8e93d63bee4f8cbf4030104a729, type: 2}
+  - {fileID: 11400000, guid: ede2e68374dc4644d9e9456480433e7e, type: 2}
+  - {fileID: 11400000, guid: 097288ce59d2773438575b741229087b, type: 2}
+  conditions:
+  - {fileID: 11400000, guid: 87c1ed8caa406d543911f481f78ded26, type: 2}
   cardTags: 01000000240000001d000000

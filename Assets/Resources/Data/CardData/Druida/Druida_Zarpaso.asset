@@ -24,6 +24,8 @@ MonoBehaviour:
     <size=32>(No
     puede usarse si Forma de Ent esta en juego)</size>'
   textMods: []
-  cardEffects: []
-  conditions: []
+  cardEffects:
+  - {fileID: 11400000, guid: 115d08ea6cc6a774a91cf6c2498b291f, type: 2}
+  conditions:
+  - {fileID: 11400000, guid: b17dec76df1aa3b44bd1b96a102bf2f6, type: 2}
   cardTags: 010000000500000002000000

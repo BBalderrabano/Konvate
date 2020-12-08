@@ -24,6 +24,10 @@ MonoBehaviour:
 
     <u><color=#C000FF>Forma</color></u>'
   textMods: []
-  cardEffects: []
+  cardEffects:
+  - {fileID: 11400000, guid: a84b9b00e1577a243ba496d770236aa3, type: 2}
+  - {fileID: 11400000, guid: a9c5218c23a864845a4e48805a14b72e, type: 2}
+  - {fileID: 11400000, guid: ea28cb21925780a49bfb4b5c41d2e4d7, type: 2}
+  - {fileID: 11400000, guid: 4a7d701d05a99314cbd6df52db75a4c6, type: 2}
   conditions: []
-  cardTags: 0100000023000000080000001d000000
+  cardTags: 0100000023000000080000001d00000027000000

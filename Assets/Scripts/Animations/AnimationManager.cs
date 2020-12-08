@@ -293,7 +293,7 @@ public class AnimationManager : MonoBehaviour
 
         for (int i = 0; i < amount; i++)
         { 
-            if(i < temp_amount && GM.turn.currentPhase.value is QuickPlayPhase)
+            if(i < temp_amount)
             {
                 float delay = Settings.ANIMATION_DELAY + (Settings.ANIMATION_INTERVAL * i);
 

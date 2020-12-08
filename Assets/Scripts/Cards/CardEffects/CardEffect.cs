@@ -82,10 +82,11 @@ public enum EffectType
     ENDTURNSTART,
     ENDTURN,
     MAINTAIN,
-    PLAY_START,
+    ON_PLAY_START,
     STAT_MOD,
     PREVAIL,
     STARTTURN,
-    PLAY_END,
-    HAND_EFFECT
+    ON_PLAY_END,
+    HAND_EFFECT,
+    BEFORE_RECHARGE
 }

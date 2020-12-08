@@ -35,8 +35,10 @@ public class A_PlayCard : Action
 
             foreach (CardEffect eff in card.cardEffects)
             {
-                if (eff.type == EffectType.PLAY_START)
+                if (eff.type == EffectType.ON_PLAY_START)
+                {
                     eff.Execute();
+                }
             }
 
             player.handCards.Remove(card);
@@ -80,8 +82,10 @@ public class A_PlayCard : Action
 
             foreach (CardEffect eff in card.cardEffects)
             {
-                if (eff.type == EffectType.PLAY_END)
+                if (eff.type == EffectType.ON_PLAY_END)
+                {
                     eff.Execute();
+                }
             }
         }
 
