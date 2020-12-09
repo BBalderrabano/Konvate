@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a690ff51c21df6840a240e723fb5d079, type: 3}
+  m_Name: Cham_Encantar Arma
+  m_EditorClassIdentifier: 
+  CardCost: 1
+  cardName: Encantar Arma
+  art: {fileID: 9218720755442147268, guid: a0896f177e0afae43b97b150b08da72a, type: 3}
+  classIcon: {fileID: 21300000, guid: e6351bb092e84884abed4c968b0b0440, type: 3}
+  cardType: {fileID: 11400000, guid: 0e3332cf33a066a4d8be0f706aa9ccea, type: 2}
+  cardText: "<color=#FF0000>Coloca </color>1 <sprite=0>\n<size=35>Tus Ataques B\xE1sicos
+    y los de tus aliados <color=#FF0000>colocan </color>1 <sprite=0> extra este turno</size>"
+  textMods: []
+  cardEffects: []
+  conditions: []
+  cardTags: 020000000100000005000000

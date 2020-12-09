@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a690ff51c21df6840a240e723fb5d079, type: 3}
+  m_Name: Cham_Totem de Curacion
+  m_EditorClassIdentifier: 
+  CardCost: 1
+  cardName: "<size=43>T\xF3tem de Curaci\xF3n</size>"
+  art: {fileID: -3646919243983466147, guid: a0896f177e0afae43b97b150b08da72a, type: 3}
+  classIcon: {fileID: 21300000, guid: e6351bb092e84884abed4c968b0b0440, type: 3}
+  cardType: {fileID: 11400000, guid: 0e3332cf33a066a4d8be0f706aa9ccea, type: 2}
+  cardText: '<color=#880014>Recupera</color> 2 <sprite=2>
+
+    Un oponente puede
+    usar 2 <sprite=0> para prevenir el efecto'
+  textMods: []
+  cardEffects: []
+  conditions: []
+  cardTags: 010000000200000005000000
