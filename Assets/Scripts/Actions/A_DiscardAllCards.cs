@@ -63,6 +63,7 @@ public class A_DiscardAllCards : Action
 
                 if ((effect.type == EffectType.MAINTAIN && card.owner.handCards.Contains(card)) || (effect.type == EffectType.PREVAIL && card.owner.playedCards.Contains(card)))
                 {
+                    card.RevealCard();
                     skip = true;
                 }
             }

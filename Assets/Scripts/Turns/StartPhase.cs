@@ -58,7 +58,12 @@ public class StartPhase : Phase
             GM.onPhaseChange.Raise();
             GM.onPhaseControllerChange.Raise();
 
-            foreach (Card c in GameManager.singleton.all_cards)
+            foreach(PlayerHolder p in GM.allPlayers)
+            {
+                p.statModifications.RemoveAll(a => a.isTemporary);
+            }
+
+            foreach (Card c in GM.all_cards)
             {
                 c.conditions.RemoveAll(a => a.isTemporary());
                 c.cardEffects.RemoveAll(a => a.isTemporary);

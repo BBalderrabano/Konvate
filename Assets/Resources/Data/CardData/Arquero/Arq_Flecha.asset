@@ -22,6 +22,8 @@ MonoBehaviour:
     Esta carta se <b>mantiene</b>
     en la mano si no la jugaste'
   textMods: []
-  cardEffects: []
+  cardEffects:
+  - {fileID: 11400000, guid: ede2e68374dc4644d9e9456480433e7e, type: 2}
+  - {fileID: 11400000, guid: 50b0b4989e3f8874ca1fe5917140c4e3, type: 2}
   conditions: []
   cardTags: 0100000002000000050000000e000000

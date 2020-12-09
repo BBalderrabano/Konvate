@@ -20,6 +20,9 @@ MonoBehaviour:
   cardText: "Si tus oponentes jugaron un Ataque B\xE1sico o Golpe Cr\xEDtico, el
     proximo turno roban 2 cartas menos\n<color=#036bfc>Remueve </color>2 <sprite=0>"
   textMods: []
-  cardEffects: []
+  cardEffects:
+  - {fileID: 11400000, guid: 6838a475ecf916c4f861b757094b75cb, type: 2}
+  - {fileID: 11400000, guid: a310cea425cafb541bb5e135fa519214, type: 2}
+  - {fileID: 11400000, guid: 2dfc81b646dae524f953fa1556bd1cd8, type: 2}
   conditions: []
   cardTags: 010000000800000013000000

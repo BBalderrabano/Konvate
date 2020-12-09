@@ -1,4 +1,4 @@
-﻿    using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -34,14 +34,19 @@ public class PlayerHolder : ScriptableObject
     public List<Card> discardCards = new List<Card>();
 
     public int maxHealth;
+
     [System.NonSerialized]
     public int bleedCount;
+
     public bool IsDead()
     {
         return bleedCount <= 0;
     }
 
     int StartDrawAmount;
+
+    [System.NonSerialized]
+    public List<StatModification> statModifications = new List<StatModification>();
 
     public int ModifiedStartDrawAmount()
     {
@@ -58,8 +63,15 @@ public class PlayerHolder : ScriptableObject
             }
         }
 
+        foreach(StatModification mod in statModifications)
+        {
+            if (mod.stat_mod == StatType.START_DRAW_AMOUNT)
+            {
+                modifiedCost = mod.modify(modifiedCost);
+            }
+        }
 
-        return modifiedCost;
+        return Mathf.Max(0, modifiedCost);
     }
 
     public PlayerUIManager playerUI;
@@ -182,8 +194,15 @@ public class PlayerHolder : ScriptableObject
             }
         }
 
+        foreach(StatModification mod in statModifications)
+        {
+            if (mod.stat_mod == StatType.START_ENERGY_AMOUNT)
+            {
+                modifiedCost = mod.modify(modifiedCost);
+            }
+        }
 
-        return modifiedCost;
+        return Mathf.Max(0, modifiedCost);
     }
 
     public bool playedQuickCard = false;

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e081f4432769d894b9f5fed6eb97fccc, type: 3}
+  m_Name: Arq_CE_Disparo Multiple
+  m_EditorClassIdentifier: 
+  isTemporary: 0
+  priority: 3
+  type: 1
+  effectTags: 10000000
+  arrowDiscount: {fileID: 11400000, guid: f8c8b6dd6450cd34f9c675e21cf992e9, type: 2}
+  arrowQuickPlay: {fileID: 11400000, guid: 6f6bc8b3d8d820542b47a0448ad0704f, type: 2}
+  discountTarget: {fileID: 11400000, guid: f8bfb80364eaf574194ad53867255a94, type: 2}

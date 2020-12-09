@@ -59,6 +59,7 @@ public abstract class CardEffect : ScriptableObject, ICloneable
 
         List<Card> cardCopies = player.playedCards.FindAll(a => a.cardName == card.cardName);
 
+        ///TODO: cambiar esto
         if (cardCopies.Count > 1 && cardCopies.Count < 3)
         {
             foreach (Card c in cardCopies)

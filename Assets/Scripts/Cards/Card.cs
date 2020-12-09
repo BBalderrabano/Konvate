@@ -52,7 +52,18 @@ public class Card : ScriptableObject
             }
         }
 
-        return modifiedCost;
+        if(owner != null)
+        {
+            foreach (StatModification mod in owner.statModifications)
+            {
+                if (mod.stat_mod == StatType.ENERGY_COST)
+                {
+                    modifiedCost = mod.modify(modifiedCost);
+                }
+            }
+        }
+
+        return Math.Max(0, modifiedCost);
     }
 
     public string cardName;

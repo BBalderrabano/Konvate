@@ -7,6 +7,12 @@ public class CardTag {
         CardTags.ATTACK,
         CardTags.BASIC_CARD
     };
+    
+    public static CardTags[] GOLPE_CRITICO =
+    {
+        CardTags.ATTACK,
+        CardTags.CRITICAL_HIT
+    };
 
     public static CardTags[] DEFENSA =
     {
@@ -76,5 +82,7 @@ public enum CardTags
 
     SHAPE_ENT,
     SHAPE_WOLF,
-    SHAPE_BEAR
+    SHAPE_BEAR,
+
+    CRITICAL_HIT
 }

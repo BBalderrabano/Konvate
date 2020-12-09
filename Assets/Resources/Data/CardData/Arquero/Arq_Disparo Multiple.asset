@@ -24,6 +24,8 @@ MonoBehaviour:
     <size=28><b>Combo:</b>
     Coloca todas las Flechas de tu pila de descarte en tu mano</size>'
   textMods: []
-  cardEffects: []
+  cardEffects:
+  - {fileID: 11400000, guid: 08146887e0a3f7a4fb270e513d9d3608, type: 2}
+  - {fileID: 11400000, guid: 65a1b8688b215f741b0b04541596dc65, type: 2}
   conditions: []
   cardTags: 010000000200000004000000100000000f000000

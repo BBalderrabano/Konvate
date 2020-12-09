@@ -14,11 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deckName: Prueba
   cardIds:
-  - Bru_Detonar Maldiciones
-  - Bru_Desencadenar Poder
-  - Bru_Drenar Vida
-  - Bru_Maldicion
-  - Bru_Maldicion
-  - Bru_Libro Maldito
-  - Bru_Leer los Huesos
-  - Bru_Leer los Huesos
+  - Arq_Flecha
+  - Arq_Flecha
+  - Arq_Flecha
+  - Arq_Flecha
+  - Arq_Flecha
+  - Arq_Disparo Multiple
+  - Arq_Disparo Multiple
+  - Arq_Disparo Multiple
+  - Arq_Disparo Multiple
+  - Arq_Disparo Multiple
