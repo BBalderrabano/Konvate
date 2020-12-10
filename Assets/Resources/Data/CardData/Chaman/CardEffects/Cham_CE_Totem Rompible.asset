@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 728308217de230f41a206fdc7e0e8752, type: 3}
-  m_Name: Cham_CE_Totem Energia Fix
+  m_Script: {fileID: 11500000, guid: 4949a648bf6c5434f83867424bdeafdd, type: 3}
+  m_Name: Cham_CE_Totem Rompible
   m_EditorClassIdentifier: 
   isTemporary: 0
-  priority: 0
+  priority: 99
   type: 3
   effectTags: 04000000
+  amount_required: 1

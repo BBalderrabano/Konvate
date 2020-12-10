@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a4aac04a6843d44fa8d10991ed96b1e, type: 3}
-  m_Name: Cham_CE_Totem Curacion
+  m_Script: {fileID: 11500000, guid: 41b40f2b19aac754ea798d63e6e4d46d, type: 3}
+  m_Name: Orco_SMOD_FrenesiDraw
   m_EditorClassIdentifier: 
-  isTemporary: 0
-  priority: 4
-  type: 4
-  effectTags: 16000000
-  amount: 2
-  skipsPreview: 0
+  isTemporary: 1
+  priority: 1
+  type: 9
+  effectTags: 
+  stat_mod: 1
+  amount: 1

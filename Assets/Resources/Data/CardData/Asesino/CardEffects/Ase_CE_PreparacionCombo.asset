@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Ase_CE_PreparacionCombo
   m_EditorClassIdentifier: 
   isTemporary: 0
-  priority: 0
+  priority: 3
   type: 12
   effectTags: 0f000000

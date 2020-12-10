@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: CE_OnRechargeDiscardShape
   m_EditorClassIdentifier: 
   isTemporary: 0
-  priority: 0
+  priority: 3
   type: 14
   effectTags: 1e000000

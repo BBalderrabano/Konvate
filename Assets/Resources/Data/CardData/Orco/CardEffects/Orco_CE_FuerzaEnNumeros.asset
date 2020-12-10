@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Orco_CE_FuerzaEnNumeros
   m_EditorClassIdentifier: 
   isTemporary: 0
-  priority: 10
+  priority: 98
   type: 3
   effectTags: 15000000
-  combat_chip_amount: 1

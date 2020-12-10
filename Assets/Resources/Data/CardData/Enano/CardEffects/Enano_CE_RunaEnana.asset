@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Enano_CE_RunaEnana
   m_EditorClassIdentifier: 
   isTemporary: 0
-  priority: 5
+  priority: 99
   type: 2
   effectTags: 05000000

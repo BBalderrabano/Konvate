@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deckName: Prueba
   cardIds:
-  - Cham_Totem de Energia
-  - Cham_Totem de Energia
-  - Cham_Totem de Energia
-  - Cham_Totem de Energia
-  - Cham_Totem de Energia
-  - Cham_Totem de Energia
-  - Cham_Totem de Energia
-  - Cham_Totem de Energia
-  - Cham_Totem de Energia
-  - Cham_Totem de Energia
+  - Arq_Flecha
+  - Arq_Flecha
+  - Arq_Flecha
+  - Arq_Flecha
+  - Arq_Flecha
+  - Arq_Disparo Multiple
+  - Arq_Disparo Multiple
+  - Arq_Disparo Multiple
+  - Arq_Disparo Multiple
+  - Arq_Disparo Multiple

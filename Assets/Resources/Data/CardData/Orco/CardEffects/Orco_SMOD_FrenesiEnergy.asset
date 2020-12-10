@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 635ab22f67c016e46b078a826b47678e, type: 3}
-  m_Name: SMOD_1ExtraEnergy
+  m_Name: Orco_SMOD_FrenesiEnergy
   m_EditorClassIdentifier: 
   isTemporary: 1
   priority: 1

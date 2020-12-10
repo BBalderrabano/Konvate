@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: CE_ReemplazarForma
   m_EditorClassIdentifier: 
   isTemporary: 0
-  priority: 0
+  priority: 1
   type: 8
   effectTags: 230000001e000000

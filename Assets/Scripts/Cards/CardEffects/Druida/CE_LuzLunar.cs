@@ -15,6 +15,8 @@ public class CE_LuzLunar : CardEffect
 
         player = card.owner;
 
+        skipsEffectPreview = true;
+
         if (player.playedCards.Find(a => a.HasTags(new CardTags[] { CardTags.SHAPE_ENT })))
         {
             card.owner.ModifyHitPoints(amount);

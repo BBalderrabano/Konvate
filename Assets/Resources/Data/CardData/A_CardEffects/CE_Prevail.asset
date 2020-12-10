@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CE_Prevail
   m_EditorClassIdentifier: 
   isTemporary: 0
-  priority: 0
+  priority: 1
   type: 10
   effectTags: 1d000000
   skipsPreview: 1
