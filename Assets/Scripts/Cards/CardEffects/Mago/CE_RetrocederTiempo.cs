@@ -14,7 +14,7 @@ public class CE_RetrocederTiempo : SelectionCardEffect
         {
             if (card.owner.isLocal)
             {
-                parentAction.PushAction(new A_CardSelection("<b>Envia</b> hasta 5 cartas al fondo de tu mazo", discard_cards, card.owner.photonId, this, card.instanceId).ModifyParameters(true, 0, 5));
+                parentAction.PushAction(new A_CardSelection("<b>Envia</b> hasta 5 cartas al fondo de tu mazo", discard_cards, card.owner.photonId, this, card.instanceId).ModifyParameters(false, true, 0, 5));
             }
             else
             {

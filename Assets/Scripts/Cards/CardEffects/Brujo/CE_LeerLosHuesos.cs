@@ -19,7 +19,7 @@ public class CE_LeerLosHuesos : SelectionCardEffect
 
             if (card.owner.isLocal)
             {
-                parentAction.PushAction(new A_CardSelection("Envia al <b>fondo</b> del mazo oponente", top_deck_cards, card.owner.photonId, this, card.instanceId).ModifyParameters(true, 0, 3));
+                parentAction.PushAction(new A_CardSelection("Envia al <b>fondo</b> del mazo oponente", top_deck_cards, card.owner.photonId, this, card.instanceId).ModifyParameters(false, true, 0, 3));
             }
             else
             {

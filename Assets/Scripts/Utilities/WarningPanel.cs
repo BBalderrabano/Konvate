@@ -10,6 +10,8 @@ public class WarningPanel : MonoBehaviour
     Vector3 originalScale;
     bool important = false;
 
+    string lastEternalMessage = null;
+
     void Awake()
     {
         if (singleton == null)
@@ -21,9 +23,10 @@ public class WarningPanel : MonoBehaviour
         this.gameObject.SetActive(false);
     }
     
-    public void ShowWarning(string text, bool isImportant = false)
+    public void ShowWarning(string text, bool isImportant = false, bool isEternal = false)
     {
         if (!important) {
+
             iTween.Stop(this.gameObject);
 
             this.gameObject.SetActive(true);
@@ -31,13 +34,25 @@ public class WarningPanel : MonoBehaviour
 
             this.transform.localScale = Vector3.zero;
 
-            iTween.ScaleTo(this.gameObject, iTween.Hash(
-                            "scale", originalScale,
-                            "time", 0.5f,
-                            "easetype", "easeOutElastic",
-                            "oncomplete", "Dissapear",
-                            "oncompletetarget", this.gameObject
-                            ));
+            if (isEternal)
+            {
+                lastEternalMessage = text;
+
+                iTween.ScaleTo(this.gameObject, iTween.Hash(
+                    "scale", originalScale,
+                    "time", 0.5f,
+                    "easetype", "easeOutElastic"));
+            }
+            else
+            {
+                iTween.ScaleTo(this.gameObject, iTween.Hash(
+                    "scale", originalScale,
+                    "time", 0.5f,
+                    "easetype", "easeOutElastic",
+                    "oncomplete", "Dissapear",
+                    "oncompletetarget", this.gameObject
+                    ));
+            }
 
             important = isImportant;
         }
@@ -45,7 +60,13 @@ public class WarningPanel : MonoBehaviour
 
     public void Dissapear()
     {
-        iTween.ScaleTo(this.gameObject, iTween.Hash(
+        if(lastEternalMessage != null)
+        {
+            ShowWarning(lastEternalMessage, false, true);
+        }
+        else
+        {
+            iTween.ScaleTo(this.gameObject, iTween.Hash(
                         "scale", Vector3.zero,
                         "time", 0.5f,
                         "delay", 1f,
@@ -53,11 +74,13 @@ public class WarningPanel : MonoBehaviour
                         "oncomplete", "Disable",
                         "oncompletetarget", this.gameObject
                         ));
+        }
     }
 
     public void Disable()
     {
         important = false;
         this.gameObject.SetActive(false);
+        lastEternalMessage = null;
     }
 }

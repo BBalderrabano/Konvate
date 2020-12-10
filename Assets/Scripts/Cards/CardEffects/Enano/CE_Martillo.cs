@@ -14,7 +14,7 @@ public class CE_Martillo : SelectionCardEffect
         {
             if (card.owner.isLocal)
             {
-                parentAction.PushAction(new A_CardSelection("<b>Descarta</b> y cada 2 <color=#FF0000>coloca </color>1<sprite=0>", hand_cards, card.owner.photonId, this, card.instanceId).ModifyParameters(true, 0, 999));
+                parentAction.PushAction(new A_CardSelection("<b>Descarta</b> y cada 2 <color=#FF0000>coloca </color>1<sprite=0>", hand_cards, card.owner.photonId, this, card.instanceId).ModifyParameters(false, true, 0, 999));
             }
             else
             {

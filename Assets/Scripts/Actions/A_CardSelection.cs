@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 public class A_CardSelection : Action
 {
@@ -25,15 +26,17 @@ public class A_CardSelection : Action
         }
     }
 
+    bool isYesNo = false;
     bool isMultiple = false;
     int minSelected = 0;
     int maxSelected = 0;
 
-    public A_CardSelection ModifyParameters(bool isMultiple, int minSelected, int maxSelected)
+    public A_CardSelection ModifyParameters(bool isYesNo, bool isMultiple, int minSelected, int maxSelected)
     {
         this.isMultiple = isMultiple;
         this.minSelected = minSelected;
         this.maxSelected = maxSelected;
+        this.isYesNo = isYesNo;
 
         return this;
     }
@@ -54,7 +57,14 @@ public class A_CardSelection : Action
             }
             else
             {
-                ScrollSelectionManager.singleton.SelectCards(card_pool, description, false, isMultiple, minSelected, maxSelected, this);
+                if (!isYesNo)
+                {
+                    ScrollSelectionManager.singleton.SelectCards(card_pool, description, false, isMultiple, minSelected, maxSelected, this);
+                }
+                else
+                {
+                    ScrollSelectionManager.singleton.YesNoSelection(card_pool.First(), description, this);
+                }
             }
 
             isInit = true;
