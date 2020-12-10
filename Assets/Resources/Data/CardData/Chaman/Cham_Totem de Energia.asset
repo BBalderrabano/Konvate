@@ -20,6 +20,7 @@ MonoBehaviour:
   cardText: "El pr\xF3ximo turno tu y tus aliados ganan <sprite=4> y roban 1 carta
     extra\nUn oponente puede usar 2 <sprite=0> para prevenir el efecto"
   textMods: []
-  cardEffects: []
+  cardEffects:
+  - {fileID: 11400000, guid: 347ddfb5169034d47a8898e6e853a72f, type: 2}
   conditions: []
   cardTags: 010000000200000005000000

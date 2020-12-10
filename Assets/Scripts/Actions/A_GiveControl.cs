@@ -33,11 +33,11 @@ public class A_GiveControl : Action
                 {
                     if (photonId == GM.localPlayer.photonId)
                     {
-                        WarningPanel.singleton.ShowWarning("Terminaste la fase", true);
+                        WarningPanel.singleton.ShowWarning("Terminaste la fase");
                     }
                     else
                     {
-                        WarningPanel.singleton.ShowWarning(GM.GetPlayerHolder(photonId).playerName + " terminó la fase", true);
+                        WarningPanel.singleton.ShowWarning(GM.GetPlayerHolder(photonId).playerName + " terminó la fase");
                     }
                 }
             }

@@ -22,6 +22,8 @@ MonoBehaviour:
     Tus oponentes <color=#FF0000>colocan
     </color>1 <sprite=0>'
   textMods: []
-  cardEffects: []
+  cardEffects:
+  - {fileID: 11400000, guid: 84cfdfb1824dba545a2b0f85e3555f6a, type: 2}
+  - {fileID: 11400000, guid: b17603fa146e0094a9af4283e33304e7, type: 2}
   conditions: []
   cardTags: 020000000100000005000000
