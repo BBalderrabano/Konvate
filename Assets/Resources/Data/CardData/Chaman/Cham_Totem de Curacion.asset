@@ -19,8 +19,7 @@ MonoBehaviour:
   cardType: {fileID: 11400000, guid: 0e3332cf33a066a4d8be0f706aa9ccea, type: 2}
   cardText: '<color=#880014>Recupera</color> 2 <sprite=2>
 
-    Un oponente puede
-    usar 2 <sprite=0> para prevenir el efecto'
+    Un oponente puede usar 2 <sprite=0> para prevenir el efecto'
   textMods: []
   cardEffects:
   - {fileID: 11400000, guid: 49787ac7530812a4fb4a2f70295811cb, type: 2}

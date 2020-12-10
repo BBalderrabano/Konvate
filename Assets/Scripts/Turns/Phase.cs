@@ -102,6 +102,35 @@ public abstract class Phase : ScriptableObject
 
     public abstract void OnPlayCard(Card c);
     
+        /**
+        GameManager gm = GameManager.singleton;
+        
+        Settings.SetParent(c.cardPhysicalInst.transform, gm.localPlayer.currentHolder.playedGrid.value);
+
+        if (c.GetCardType() == gm.resourcesManager.dataHolder.setPlayType)
+        {
+            c.cardPhysicalInst.setCurrentLogic(gm.resourcesManager.dataHolder.cardFaceDownLogic);
+        }
+        else if (c.GetCardType() == gm.resourcesManager.dataHolder.quickPlayType)
+        {
+            c.cardPhysicalInst.setCurrentLogic(gm.resourcesManager.dataHolder.cardQuickPlayLogic);
+        }
+        else
+        {
+            c.cardPhysicalInst.setCurrentLogic(gm.resourcesManager.dataHolder.cardFaceDownLogic);
+        }
+
+        foreach (CardEffect eff in c.cardEffects)
+        {
+            if (eff.type == EffectType.PLAY)
+                eff.Execute();
+        }
+
+        c.cardPhysicalInst.gameObject.SetActive(true);
+
+        MultiplayerManager.singleton.PlayerWantsToUseCard(c.instanceId, GameManager.singleton.localPlayer.photonId, MultiplayerManager.CardOperation.cardPlayed);*/
+
+
     public abstract void OnPhaseControllerChange(int photonId);
 
 }

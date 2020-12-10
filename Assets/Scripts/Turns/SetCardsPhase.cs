@@ -46,7 +46,7 @@ public class SetCardsPhase : Phase
         }
         else
         {
-            WarningPanel.singleton.ShowWarning("No puedes jugar cartas relámpago (<sprite=3>) durante la fase de preparación");
+            WarningPanel.singleton.ShowWarning("No puedes jugar cartas relámpago (<sprite=3>) durante la fase de preparación", false);
             return false;
         }
     }

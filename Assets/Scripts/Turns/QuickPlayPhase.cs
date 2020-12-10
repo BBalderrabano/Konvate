@@ -112,7 +112,7 @@ public class QuickPlayPhase : Phase
         }
         else
         {
-            WarningPanel.singleton.ShowWarning("Solo puedes jugar cartas relámpago <sprite=3> durante esta fase");
+            WarningPanel.singleton.ShowWarning("Solo puedes jugar cartas relámpago <sprite=3> durante esta fase", false);
             return false;
         }
     }
