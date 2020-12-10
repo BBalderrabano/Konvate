@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abc033562e6ad2f4897e8dad0181eb15, type: 3}
   m_Name: Ase_CE_Esquivar
   m_EditorClassIdentifier: 
-  priority: 1
+  isTemporary: 0
+  priority: 0
   type: 8
+  effectTags: 
   removeCards: {fileID: 11400000, guid: 9a340bccbd3ea744d822318c25d10899, type: 2}
   basicAttackCondition: {fileID: 11400000, guid: 95fee806282cbd14586542dc046ae790,
     type: 2}

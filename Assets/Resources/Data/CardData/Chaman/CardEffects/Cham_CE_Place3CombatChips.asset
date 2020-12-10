@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71393b0ecebd1b94dbc6498ae1a30e34, type: 3}
-  m_Name: Cham_CE_Relampago Place
+  m_Name: Cham_CE_Place3CombatChips
   m_EditorClassIdentifier: 
   isTemporary: 0
   priority: 3

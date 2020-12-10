@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deckName: Prueba
   cardIds:
-  - Arq_Flecha
-  - Arq_Flecha
-  - Arq_Flecha
-  - Arq_Flecha
-  - Arq_Flecha
-  - Arq_Disparo Multiple
-  - Arq_Disparo Multiple
-  - Arq_Disparo Multiple
-  - Arq_Disparo Multiple
-  - Arq_Disparo Multiple
+  - Cham_Totem de Energia
+  - Cham_Totem de Energia
+  - Cham_Totem de Energia
+  - Cham_Totem de Energia
+  - Cham_Totem de Energia
+  - Cham_Totem de Energia
+  - Cham_Totem de Energia
+  - Cham_Totem de Energia
+  - Cham_Totem de Energia
+  - Cham_Totem de Energia

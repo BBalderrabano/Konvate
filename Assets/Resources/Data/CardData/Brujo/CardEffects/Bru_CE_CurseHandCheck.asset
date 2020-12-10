@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Bru_CE_CurseHandCheck
   m_EditorClassIdentifier: 
   isTemporary: 0
-  priority: 1
+  priority: 0
   type: 13
   effectTags: 07000000
   linkedCardEffect: {fileID: 11400000, guid: 1dd45dbc6d146134d8b4f094cf8f4a70, type: 2}

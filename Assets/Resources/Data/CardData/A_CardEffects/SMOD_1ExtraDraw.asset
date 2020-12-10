@@ -9,11 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc5d579a499497847b2d7f281badfb7b, type: 3}
-  m_Name: CE_Prevail
+  m_Script: {fileID: 11500000, guid: 41b40f2b19aac754ea798d63e6e4d46d, type: 3}
+  m_Name: SMOD_1ExtraDraw
   m_EditorClassIdentifier: 
-  isTemporary: 0
-  priority: 0
-  type: 10
-  effectTags: 1d000000
-  skipsPreview: 1
+  isTemporary: 1
+  priority: 1
+  type: 9
+  effectTags: 
+  stat_mod: 1
+  amount: 1
