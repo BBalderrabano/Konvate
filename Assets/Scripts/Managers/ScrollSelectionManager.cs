@@ -1,6 +1,6 @@
 ﻿using DanielLochner.Assets.SimpleScrollSnap;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -24,7 +24,6 @@ public class ScrollSelectionManager : MonoBehaviour
     A_CardSelection callback;
     string description;
 
-    bool isYesNo = false;
     bool isMultipleSelection = false;
     bool isVisual = false;
 
@@ -45,69 +44,14 @@ public class ScrollSelectionManager : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public void YesNoSelection(Card preview, string description, A_CardSelection callback = null)
-    {
-        selectedAmount = 0;
-        listOfCards.Clear();
-
-        visible = true;
-        this.isVisual = false;
-
-        isMultipleSelection = false;
-        isYesNo = true;
-
-        this.callback = callback;
-
-        if (preview == null)
-        {
-            CloseSelection();
-            return;
-        }
-        else
-        {
-            gameObject.SetActive(true);
-            isActive = true;
-        }
-
-        addCardButton.gameObject.SetActive(false);
-        acceptButton.gameObject.SetActive(true);
-        closeButton.gameObject.SetActive(true);
-
-        hideButton.gameObject.SetActive(true);
-        selectorHolder.gameObject.SetActive(true);
-
-        if (description != null)
-        {
-            this.description = description;
-            WarningPanel.singleton.ShowWarning(this.description, true, true);
-        }
-
-        while (sss.NumberOfPanels > 0)
-        {
-            sss.Remove(0);
-        }
-
-        GameObject newCard = Instantiate(cardPrefab) as GameObject;
-        CardViz viz = newCard.GetComponent<CardViz>();
-
-        viz.LoadCardViz(preview);
-        viz.card = preview;
-
-        sss.AddToBack(newCard, false);
-        listOfCards.Add(preview);
-    }
-
     public void SelectCards(List<Card> cards, string description, bool isVisual, bool isMultiple = false, int minSelected = 0, int maxSelected = 0, A_CardSelection callback = null)
     {
-        Clear();
-
         selectedAmount = 0;
         listOfCards.Clear();
 
         visible = true;
         this.isVisual = isVisual;
 
-        isYesNo = false;
         isMultipleSelection = isMultiple;
         this.minSelected = minSelected;
         this.maxSelected = maxSelected;
@@ -152,7 +96,7 @@ public class ScrollSelectionManager : MonoBehaviour
         if(description != null)
         {
             this.description = description;
-            WarningPanel.singleton.ShowWarning(this.description, true, true);
+            WarningPanel.singleton.ShowWarning(this.description, true);
         }
 
         while(sss.NumberOfPanels > 0)
@@ -173,34 +117,27 @@ public class ScrollSelectionManager : MonoBehaviour
         }
     }
 
+    internal void YesNoSelection(Card card, string description, A_CardSelection a_CardSelection)
+    {
+        throw new NotImplementedException();
+    }
+
     public void OnAcceptSelection()
     {
-        if (isYesNo)
+        if(selectedAmount < minSelected)
         {
-            if (callback != null)
-            {
-                callback.DoneSelecting(new int[] { listOfCards.First().instanceId });
-
-                Clear();
-            }
+            WarningPanel.singleton.ShowWarning((minSelected - selectedAmount) > 1 ? "Debes elegir " + (minSelected - selectedAmount) + " cartas mas" : "Debes elegir 1 carta mas");
         }
         else
         {
-            if (selectedAmount < minSelected)
+            if (!isMultipleSelection)
             {
-                WarningPanel.singleton.ShowWarning((minSelected - selectedAmount) > 1 ? "Debes elegir " + (minSelected - selectedAmount) + " cartas mas" : "Debes elegir 1 carta mas");
+                OnCardSelected();
+                CloseSelection();
             }
             else
             {
-                if (!isMultipleSelection)
-                {
-                    OnCardSelected();
-                    CloseSelection();
-                }
-                else
-                {
-                    CloseSelection();
-                }
+                CloseSelection();
             }
         }
     }
@@ -251,7 +188,7 @@ public class ScrollSelectionManager : MonoBehaviour
         {
             if (description != null)
             {
-                WarningPanel.singleton.ShowWarning(this.description, true, true);
+                WarningPanel.singleton.ShowWarning(this.description, false);
             }
 
             selectorHolder.SetActive(true);
@@ -261,37 +198,21 @@ public class ScrollSelectionManager : MonoBehaviour
 
     public void CloseSelection()
     {
-        if (isYesNo)
+        if (!isVisual)
         {
+            int[] cardIds = new int[cardsSelected.Count];
+
+            for (int i = 0; i < cardsSelected.Count; i++)
+            {
+                cardIds[i] = cardsSelected[i].instanceId;
+            }
+
             if (callback != null)
             {
-                callback.DoneSelecting(null);
-            }
-        }
-        else
-        {
-            if (!isVisual)
-            {
-                int[] cardIds = new int[cardsSelected.Count];
-
-                for (int i = 0; i < cardsSelected.Count; i++)
-                {
-                    cardIds[i] = cardsSelected[i].instanceId;
-                }
-
-                if (callback != null)
-                {
-                    callback.DoneSelecting(cardIds);
-                }
+                callback.DoneSelecting(cardIds);
             }
         }
 
-        Clear();
-    }
-
-    void Clear()
-    {
-        WarningPanel.singleton.Disable();
         isActive = false;
         gameObject.SetActive(false);
     }
