@@ -12,8 +12,8 @@ public class CE_Frenesi_SMODS : CardEffect
 
         if (GM.turn.playerInflictedBleed(card.owner.photonId))
         {
-            card.statMods.Add(temp_draw);
-            card.statMods.Add(temp_energy);
+            card.owner.statMods.Add(temp_draw);
+            card.owner.statMods.Add(temp_energy);
         }
         else
         {

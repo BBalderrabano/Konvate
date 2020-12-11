@@ -44,7 +44,7 @@ public class Card : ScriptableObject
     {
         int modifiedCost = CardCost;
 
-        foreach (StatModification mod in cardEffects.OfType<StatModification>())
+        foreach (StatModification mod in statMods)
         {
             if(mod.stat_mod == StatType.ENERGY_COST)
             {
