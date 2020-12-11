@@ -58,15 +58,16 @@ public class StartPhase : Phase
             GM.onPhaseChange.Raise();
             GM.onPhaseControllerChange.Raise();
 
-            foreach(PlayerHolder p in GM.allPlayers)
+            foreach (PlayerHolder p in GM.allPlayers)
             {
-                p.statModifications.RemoveAll(a => a.isTemporary);
+                p.statMods.RemoveAll(a => a.isTemporary);
             }
 
             foreach (Card c in GM.all_cards)
             {
                 c.conditions.RemoveAll(a => a.isTemporary());
                 c.cardEffects.RemoveAll(a => a.isTemporary);
+                c.statMods.RemoveAll(a => a.isTemporary);
                 c.cardViz.RefreshStats();
             }
 
@@ -74,8 +75,6 @@ public class StartPhase : Phase
 
             LoadCardEffects();
             ExecuteEffects();
-
-            turn_start.Clear();
 
             MultiplayerManager.singleton.PhaseIsDone(GM.localPlayer.photonId, phaseIndex);
 
@@ -99,7 +98,6 @@ public class StartPhase : Phase
     {
         if (isInit)
         {
-            GM.turn.startTurnEffects.Clear();
             GM.SetState(null);
             isInit = false;
 
@@ -109,6 +107,9 @@ public class StartPhase : Phase
                 GM.allPlayers[i].clearFloatingDefend();
                 GM.allPlayers[i].playerUI.UpdateAll();
             }
+
+            turn_start.Clear();
+            GM.turn.startTurnEffects.Clear();
         }
     }
 

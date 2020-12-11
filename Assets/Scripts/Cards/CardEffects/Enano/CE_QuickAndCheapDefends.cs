@@ -5,8 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Card Effects/Enano/Descuento y Relampago a Defs")]
 public class CE_QuickAndCheapDefends : CardEffect
 {
-    public SMOD_ZeroCost energyDiscount;
-    public SMOD_QuickPlay makeQuickPlay;
+    SMOD_ZeroCost energyDiscount = new SMOD_ZeroCost();
+    SMOD_QuickPlay makeQuickPlay = new SMOD_QuickPlay();
 
     public override void Execute()
     {
@@ -18,10 +18,10 @@ public class CE_QuickAndCheapDefends : CardEffect
         {
             if ((player.all_cards[i].HasTags(CardTag.DEFENSA) ||
                     player.all_cards[i].HasTags(CardTag.DEFENSA_SUPERIOR))
-                        && !player.all_cards[i].cardEffects.Contains(energyDiscount))
+                        && !player.all_cards[i].statMods.Contains(energyDiscount))
             {
-                player.all_cards[i].cardEffects.Add(energyDiscount);
-                player.all_cards[i].cardEffects.Add(makeQuickPlay);
+                player.all_cards[i].statMods.Add(energyDiscount);
+                player.all_cards[i].statMods.Add(makeQuickPlay);
 
                 player.all_cards[i].cardViz.RefreshStats();
             }

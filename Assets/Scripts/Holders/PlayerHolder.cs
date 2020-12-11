@@ -46,7 +46,7 @@ public class PlayerHolder : ScriptableObject
     int StartDrawAmount;
 
     [System.NonSerialized]
-    public List<StatModification> statModifications = new List<StatModification>();
+    public List<StatModification> statMods = new List<StatModification>();
 
     public int ModifiedStartDrawAmount()
     {
@@ -54,20 +54,20 @@ public class PlayerHolder : ScriptableObject
 
         foreach (Card c in all_cards)
         {
-            foreach (StatModification mod in c.cardEffects.OfType<StatModification>())
+            for (int i = 0; i < c.statMods.Count; i++)
             {
-                if (mod.stat_mod == StatType.START_DRAW_AMOUNT)
+                if (c.statMods[i].stat_mod == StatType.START_DRAW_AMOUNT)
                 {
-                    modifiedCost = mod.modify(modifiedCost);
+                    modifiedCost = c.statMods[i].modify(modifiedCost);
                 }
             }
         }
 
-        foreach(StatModification mod in statModifications)
+        for (int i = 0; i < statMods.Count; i++)
         {
-            if (mod.stat_mod == StatType.START_DRAW_AMOUNT)
+            if (statMods[i].stat_mod == StatType.START_DRAW_AMOUNT)
             {
-                modifiedCost = mod.modify(modifiedCost);
+                modifiedCost = statMods[i].modify(modifiedCost);
             }
         }
 
@@ -185,20 +185,20 @@ public class PlayerHolder : ScriptableObject
 
         foreach (Card c in all_cards)
         {
-            foreach (StatModification mod in c.cardEffects.OfType<StatModification>())
+            for (int i = 0; i < c.statMods.Count; i++)
             {
-                if (mod.stat_mod == StatType.START_ENERGY_AMOUNT)
+                if (c.statMods[i].stat_mod == StatType.START_ENERGY_AMOUNT)
                 {
-                    modifiedCost = mod.modify(modifiedCost);
+                    modifiedCost = c.statMods[i].modify(modifiedCost);
                 }
             }
         }
 
-        foreach(StatModification mod in statModifications)
+        for (int i = 0; i < statMods.Count; i++)
         {
-            if (mod.stat_mod == StatType.START_ENERGY_AMOUNT)
+            if (statMods[i].stat_mod == StatType.START_ENERGY_AMOUNT)
             {
-                modifiedCost = mod.modify(modifiedCost);
+                modifiedCost = statMods[i].modify(modifiedCost);
             }
         }
 

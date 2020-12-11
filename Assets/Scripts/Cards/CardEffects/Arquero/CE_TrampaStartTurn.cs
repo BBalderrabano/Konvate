@@ -9,7 +9,7 @@ public class CE_TrampaStartTurn : CardEffect
     [System.NonSerialized]
     public bool isActive = false;
 
-    public SMOD_StartTurnDraw startTurnPenalty;
+    SMOD_StartTurnDraw startTurnPenalty = new SMOD_StartTurnDraw(-1);
 
     public override void Execute()
     {
@@ -19,7 +19,7 @@ public class CE_TrampaStartTurn : CardEffect
         {
             PlayerHolder enemy = GM.GetOpponentHolder(card.owner.photonId);
 
-            enemy.statModifications.Add(startTurnPenalty);
+            enemy.statMods.Add(startTurnPenalty);
         }
         else
         {

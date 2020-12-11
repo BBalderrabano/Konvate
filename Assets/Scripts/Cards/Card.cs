@@ -54,7 +54,7 @@ public class Card : ScriptableObject
 
         if(owner != null)
         {
-            foreach (StatModification mod in owner.statModifications)
+            foreach (StatModification mod in owner.statMods)
             {
                 if (mod.stat_mod == StatType.ENERGY_COST)
                 {
@@ -74,7 +74,7 @@ public class Card : ScriptableObject
 
     public CardType GetCardType()
     {
-        foreach (StatModification mod in cardEffects.OfType<StatModification>())
+        foreach (StatModification mod in statMods)
         {
             if (mod.stat_mod == StatType.QUICK_PLAY)
             {
@@ -93,6 +93,9 @@ public class Card : ScriptableObject
     public List<CardEffect> cardEffects = new List<CardEffect>();
 
     public List<Condition> conditions = new List<Condition>();
+
+    [System.NonSerialized]
+    public List<StatModification> statMods = new List<StatModification>();
 
     public CardEffect GetEffect(int effectId)
     {

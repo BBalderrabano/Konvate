@@ -59,13 +59,10 @@ public abstract class CardEffect : ScriptableObject, ICloneable
 
         List<Card> cardCopies = player.playedCards.FindAll(a => a.cardName == card.cardName);
 
-        ///TODO: cambiar esto
-        if (cardCopies.Count > 1 && cardCopies.Count < 3)
+        if (cardCopies.Count > 1)
         {
-            foreach (Card c in cardCopies)
-            {
-                iTween.ShakePosition(c.cardPhysicalInst.gameObject, iTween.Hash("x", 0.01f, "y", 0.01f, "time", 1.0f));
-            }
+            iTween.ShakePosition(card.cardPhysicalInst.gameObject, iTween.Hash("x", 0.01f, "y", 0.01f, "time", 1.0f));
+
             return true;
         }
 

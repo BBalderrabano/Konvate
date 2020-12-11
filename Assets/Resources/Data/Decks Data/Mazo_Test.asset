@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deckName: Prueba
   cardIds:
-  - Arq_Flecha
-  - Arq_Flecha
-  - Arq_Flecha
-  - Arq_Flecha
-  - Arq_Flecha
-  - Arq_Disparo Multiple
-  - Arq_Disparo Multiple
-  - Arq_Disparo Multiple
-  - Arq_Disparo Multiple
-  - Arq_Disparo Multiple
+  - Orco_Frenesi
+  - Orco_Frenesi
+  - Orco_Frenesi
+  - Orco_Frenesi
+  - Orco_Frenesi
+  - Orco_Frenesi
+  - Orco_Frenesi
+  - Orco_Frenesi
+  - Orco_Frenesi
+  - Orco_Frenesi

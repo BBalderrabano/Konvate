@@ -19,9 +19,9 @@ MonoBehaviour:
   cardType: {fileID: 11400000, guid: 824122562ba26474b9e5d23302a17560, type: 2}
   cardText: 'Robas 2 cartas
 
-    <b>Combo:</b> Esta carta vale <sprite=7>'
+    Las copias de esta carta valen <sprite=7> este turno'
+  textMods: []
   cardEffects:
-  - {fileID: 11400000, guid: ef473d3d4c511fe4d9e0838824e50d80, type: 2}
   - {fileID: 11400000, guid: dda8c1f8d702b10438fb9d6616cc0ed2, type: 2}
   conditions: []
   cardTags: 01000000040000000c0000000f000000
