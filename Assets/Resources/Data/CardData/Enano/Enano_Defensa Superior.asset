@@ -17,10 +17,10 @@ MonoBehaviour:
   art: {fileID: -2878703986010340681, guid: fa7938fb9c5b1fd499384be4bc5621f0, type: 3}
   classIcon: {fileID: 21300000, guid: bf61ba194d5ee724799503db86f9d07f, type: 3}
   cardType: {fileID: 11400000, guid: 0e3332cf33a066a4d8be0f706aa9ccea, type: 2}
-  cardText: '<color=#036bfc> Remueve </color>2<sprite=0>
+  cardText: '<color=#036bfc> Remueve </color>2 <sprite=0>
 
     <color=#036bfc> Remueve
-    </color>1<sprite=1>'
+    </color>1 <sprite=1>'
   textMods: []
   cardEffects:
   - {fileID: 11400000, guid: a310cea425cafb541bb5e135fa519214, type: 2}

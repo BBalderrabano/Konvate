@@ -281,6 +281,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 52b395c4654d022439c99e93a86cef29, type: 2}
   - {fileID: 11400000, guid: abab3c3068127b64fa85449409985e15, type: 2}
   - {fileID: 11400000, guid: 146351bf49b14bd40a697ccef371d4a8, type: 2}
+  - {fileID: 11400000, guid: 77f23e1eff891274e8a0cd47ab65487e, type: 2}
   name_selection: {fileID: 482835565}
   deck_selection: {fileID: 936626663}
 --- !u!224 &113560300

@@ -10,17 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a690ff51c21df6840a240e723fb5d079, type: 3}
-  m_Name: Enano_Runa Enana
+  m_Name: Goblin_Defensa Superior
   m_EditorClassIdentifier: 
   CardCost: 1
-  cardName: Runa Enana
-  art: {fileID: 2751722820045541224, guid: fa7938fb9c5b1fd499384be4bc5621f0, type: 3}
-  classIcon: {fileID: 21300000, guid: bf61ba194d5ee724799503db86f9d07f, type: 3}
+  cardName: Defensa Superior
+  art: {fileID: -3361226018192319205, guid: 750fbda1c5f20e149b5a6fa6cde08cd4, type: 3}
+  classIcon: {fileID: 21300000, guid: 52340961cc5203342a63ce160f4cf075, type: 3}
   cardType: {fileID: 11400000, guid: 0e3332cf33a066a4d8be0f706aa9ccea, type: 2}
-  cardText: Por cada carta <sprite=3> jugada este turno <color=#FF0000>coloca </color>1
-    <sprite=0>
+  cardText: '<color=#036bfc>Remueve </color>2 <sprite=0>
+
+    Tu oponente puede <color=#FF0000>colocar
+    </color>1 <sprite=0> de sus fichas de tu lado para prevenirlo'
   textMods: []
-  cardEffects:
-  - {fileID: 11400000, guid: b650e4f173da7d04e9e83cc61d7c6788, type: 2}
+  cardEffects: []
   conditions: []
-  cardTags: 0100000005000000
+  cardTags: 01000000030000001700000005000000

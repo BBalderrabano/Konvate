@@ -17,10 +17,11 @@ MonoBehaviour:
   art: {fileID: -2771576603540186986, guid: fa7938fb9c5b1fd499384be4bc5621f0, type: 3}
   classIcon: {fileID: 21300000, guid: bf61ba194d5ee724799503db86f9d07f, type: 3}
   cardType: {fileID: 11400000, guid: 0e3332cf33a066a4d8be0f706aa9ccea, type: 2}
-  cardText: 'Podes descartar cartas de tu mano y <color=#FF0000>coloca </color>1<sprite=0>
-    extra por cada dos cartas descartadas,
+  cardText: 'Podes descartar cartas de tu mano y <color=#FF0000>coloca </color>1
+    <sprite=0> extra por cada dos cartas descartadas,
 
-    <color=#FF0000>Coloca </color>1<sprite=0>'
+    <color=#FF0000>Coloca
+    </color>1 <sprite=0>'
   textMods: []
   cardEffects:
   - {fileID: 11400000, guid: ede2e68374dc4644d9e9456480433e7e, type: 2}
