@@ -62,7 +62,7 @@ public class AnimationManager : MonoBehaviour
 
                 if (floatingDefense != null)
                 {
-                    travelTo = WorldToCanvasPosition(floatingDefense.effect.card.cardPhysicalInst.gameObject.transform.position);
+                    travelTo = Settings.WorldToCanvasPosition(floatingDefense.effect.card.cardPhysicalInst.gameObject.transform.position);
 
                     animationPointer = MoveChip(chip, actionId, player.photonId, travelTo, parent);
 
@@ -126,7 +126,7 @@ public class AnimationManager : MonoBehaviour
 
             if (card != null)
             {
-                chip.transform.position = WorldToCanvasPosition(card.cardPhysicalInst.transform.position);
+                chip.transform.position = Settings.WorldToCanvasPosition(card.cardPhysicalInst.transform.position);
             }
 
             float delay = Settings.ANIMATION_DELAY + (Settings.ANIMATION_INTERVAL * i);
@@ -323,7 +323,7 @@ public class AnimationManager : MonoBehaviour
 
                 iTween.MoveTo(chip,
                     iTween.Hash(
-                        "position", WorldToCanvasPosition(card.cardPhysicalInst.transform.position),
+                        "position", Settings.WorldToCanvasPosition(card.cardPhysicalInst.transform.position),
                         "time", Settings.CHIP_ANIMATION_TIME,
                         "onstart", "PlaySound",
                         "onstarttarget", this.gameObject,
@@ -381,7 +381,7 @@ public class AnimationManager : MonoBehaviour
 
             if (card != null)
             {
-                chip.transform.position = WorldToCanvasPosition(card.cardPhysicalInst.transform.position);
+                chip.transform.position = Settings.WorldToCanvasPosition(card.cardPhysicalInst.transform.position);
             }
 
             Vector3 travelTo;
@@ -391,7 +391,7 @@ public class AnimationManager : MonoBehaviour
 
             if (floatingDefense != null)
             {
-                travelTo = WorldToCanvasPosition(floatingDefense.effect.card.cardPhysicalInst.gameObject.transform.position);
+                travelTo = Settings.WorldToCanvasPosition(floatingDefense.effect.card.cardPhysicalInst.gameObject.transform.position);
 
                 if (type == ChipType.BLEED)
                 {
@@ -579,10 +579,5 @@ public class AnimationManager : MonoBehaviour
                 AudioManager.singleton.Play(soundEffect);
             }
         }
-    }
-
-    Vector3 WorldToCanvasPosition(Vector3 worldPosition)
-    {
-        return Camera.main.WorldToScreenPoint(worldPosition);
     }
 }

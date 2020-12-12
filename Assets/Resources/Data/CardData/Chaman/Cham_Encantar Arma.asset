@@ -20,6 +20,8 @@ MonoBehaviour:
   cardText: "<color=#FF0000>Coloca </color>1 <sprite=0>\n<size=35>Tus Ataques B\xE1sicos
     y los de tus aliados <color=#FF0000>colocan </color>1 <sprite=0> extra este turno</size>"
   textMods: []
-  cardEffects: []
+  cardEffects:
+  - {fileID: 11400000, guid: ede2e68374dc4644d9e9456480433e7e, type: 2}
+  - {fileID: 11400000, guid: f59ffe1cd42f6714a98cb961299560c0, type: 2}
   conditions: []
   cardTags: 020000000100000005000000

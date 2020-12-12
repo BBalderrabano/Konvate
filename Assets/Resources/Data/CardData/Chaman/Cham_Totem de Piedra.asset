@@ -20,6 +20,7 @@ MonoBehaviour:
   cardText: "Este turno los oponentes no pueden prevenir el efecto de tus T\xF3tems\n<color=#036bfc>Remueve
     </color>2 <sprite=0>"
   textMods: []
-  cardEffects: []
+  cardEffects:
+  - {fileID: 11400000, guid: a310cea425cafb541bb5e135fa519214, type: 2}
   conditions: []
   cardTags: 010000000800000004000000

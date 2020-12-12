@@ -66,4 +66,9 @@ public static class Settings
             c.localScale = Vector3.one;
         }
     }
+
+    public static Vector3 WorldToCanvasPosition(Vector3 worldPosition)
+    {
+        return Camera.main.WorldToScreenPoint(worldPosition);
+    }
 }

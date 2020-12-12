@@ -29,7 +29,7 @@ public class A_CheckFloatingDefense : Action
                         if (chip_component.type == ChipType.POISON)
                         {
                             GameObject parentTo = p.currentHolder.poisonChipHolder.value.gameObject;
-                            Vector3 targetPosition = floatingDefense.effect.card.cardPhysicalInst.gameObject.transform.position;
+                            Vector3 targetPosition = Settings.WorldToCanvasPosition(floatingDefense.effect.card.cardPhysicalInst.gameObject.transform.position);
 
                             LinkAnimation(GM.animationManager.MoveChip(chip, actionId, -1, targetPosition, parentTo));
                             chip_component.state = ChipSate.STASHED;
@@ -58,7 +58,7 @@ public class A_CheckFloatingDefense : Action
                         if (chip_component.type == ChipType.COMBAT || chip_component.type == ChipType.OFFENSIVE)
                         {
                             GameObject parentTo = p.currentHolder.combatChipHolder.value.gameObject;
-                            Vector3 targetPosition = floatCombatDefense.effect.card.cardPhysicalInst.gameObject.transform.position;
+                            Vector3 targetPosition = Settings.WorldToCanvasPosition(floatCombatDefense.effect.card.cardPhysicalInst.gameObject.transform.position);
 
                             LinkAnimation(GM.animationManager.MoveChip(chip, actionId, -1, targetPosition, parentTo));
                             chip_component.state = ChipSate.STASHED;
@@ -71,7 +71,7 @@ public class A_CheckFloatingDefense : Action
                         if(chip.GetComponent<Chip>().type == ChipType.POISON)
                         {
                             GameObject parentTo = p.currentHolder.poisonChipHolder.value.gameObject;
-                            Vector3 targetPosition = floatPoisonDefense.effect.card.cardPhysicalInst.gameObject.transform.position;
+                            Vector3 targetPosition = Settings.WorldToCanvasPosition(floatPoisonDefense.effect.card.cardPhysicalInst.gameObject.transform.position);
 
                             LinkAnimation(GM.animationManager.MoveChip(chip, actionId, -1, targetPosition, parentTo));
                             chip_component.state = ChipSate.STASHED;
