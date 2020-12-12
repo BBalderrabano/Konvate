@@ -19,7 +19,8 @@ MonoBehaviour:
   cardType: {fileID: 11400000, guid: 824122562ba26474b9e5d23302a17560, type: 2}
   cardText: 'Robas 2 cartas
 
-    Las copias de esta carta valen <sprite=7> este turno'
+    <size=35>Otras copias de esta carta valen <sprite=7>
+    este turno</size>'
   textMods: []
   cardEffects:
   - {fileID: 11400000, guid: dda8c1f8d702b10438fb9d6616cc0ed2, type: 2}

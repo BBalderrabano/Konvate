@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1384bf15f23d545459dbd03630fd53e8, type: 3}
+  m_Name: Cham_CE_Lava Totem
+  m_EditorClassIdentifier: 
+  isTemporary: 0
+  priority: 90
+  type: 3
+  effectTags: 04000000
+  amount_required: 1
+  totem_effect: {fileID: 11400000, guid: 00127d67abf7f184f945bdcff705c96b, type: 2}
+  stone_totem: {fileID: 11400000, guid: abc435e2b8963174fa55eaddbdab19f7, type: 2}

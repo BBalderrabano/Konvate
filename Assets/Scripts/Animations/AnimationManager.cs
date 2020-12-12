@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 public class AnimationManager : MonoBehaviour
 {
@@ -35,6 +36,12 @@ public class AnimationManager : MonoBehaviour
                 GameObject chip = playedChips.GetChild(i).gameObject;
                 Chip chip_component = chip.GetComponent<Chip>();
 
+                if(chip_component.state == ChipSate.STASHED)
+                {
+                    animationPointer.OnComplete();
+                    continue;
+                }
+
                 Vector3 travelTo = enemy.currentHolder.bleedChipHolder.value.position;
                 GameObject parent;
 
@@ -59,6 +66,7 @@ public class AnimationManager : MonoBehaviour
 
                     animationPointer = MoveChip(chip, actionId, player.photonId, travelTo, parent);
 
+                    chip_component.state = ChipSate.STASHED;
                     enemy.RemoveFloatingDefend(floatingDefense);
                 }
                 else
@@ -122,6 +130,7 @@ public class AnimationManager : MonoBehaviour
             }
 
             float delay = Settings.ANIMATION_DELAY + (Settings.ANIMATION_INTERVAL * i);
+            chip_component.state = ChipSate.STASHED;
 
             iTween.MoveTo(chip,
                     iTween.Hash(
@@ -161,6 +170,7 @@ public class AnimationManager : MonoBehaviour
         AM_FinishAnimation(animParams);
 
         chip_component.backSide.gameObject.SetActive(false);
+        chip_component.state = ChipSate.STASHED;
 
         if (chip_component.owner.isLocal)
         {
@@ -204,8 +214,9 @@ public class AnimationManager : MonoBehaviour
             for (int i = 0; i < playedChips.childCount; i++)
             {
                 GameObject chip = playedChips.GetChild(i).gameObject;
+                Chip chip_component = chip.GetComponent<Chip>();
 
-                if (chip.GetComponent<Chip>().type == ChipType.BLEED)
+                if (chip_component.type == ChipType.BLEED || chip_component.state == ChipSate.STASHED)
                 {
                     animationPointer.OnComplete();
                     continue;
@@ -277,13 +288,6 @@ public class AnimationManager : MonoBehaviour
 
         Card card = GM.GetCard(cardId);
 
-        /* Esto para que estaba aca????
-         * 
-         * if (chips.Count == 0)
-        {
-            return null;
-        }*/
-
         if (temp_amount > chips.Count)
         {
             temp_amount = chips.Count;
@@ -315,6 +319,8 @@ public class AnimationManager : MonoBehaviour
                     parentTo = chip_component.owner.currentHolder.combatChipHolder.value.gameObject;
                 }
 
+                chip_component.state = ChipSate.STASHED;
+
                 iTween.MoveTo(chip,
                     iTween.Hash(
                         "position", WorldToCanvasPosition(card.cardPhysicalInst.transform.position),
@@ -330,7 +336,7 @@ public class AnimationManager : MonoBehaviour
                                                         "object", chip,
                                                         "photonId", photonId,
                                                         "animationId", animationPointer.animId,
-                                                        "reset_position", false,
+                                                        "reset_position", true,
                                                         "play_sound", SoundEffectType.PLACE_CHIP),
                         "onCompleteTarget", this.gameObject
                 ));
@@ -401,6 +407,8 @@ public class AnimationManager : MonoBehaviour
                 }
 
                 e.RemoveFloatingDefend(floatingDefense);
+
+                chip_component.state = ChipSate.STASHED;
             }
             else
             {
@@ -424,6 +432,8 @@ public class AnimationManager : MonoBehaviour
                     travelTo = new Vector3(x_right_most_pos, p.currentHolder.playedCombatChipHolder.value.position.y);
                     parentTo = p.currentHolder.playedCombatChipHolder.value.gameObject;
                 }
+
+                chip_component.state = ChipSate.PLAYED;
             }
 
             float delay = Settings.ANIMATION_DELAY + (Settings.ANIMATION_INTERVAL * i);

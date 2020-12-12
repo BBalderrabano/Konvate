@@ -25,7 +25,7 @@ public class WarningPanel : MonoBehaviour
     
     public void ShowWarning(string text, bool isImportant = false, bool isEternal = false)
     {
-        if (!important) {
+        if (!important || isImportant) {
 
             iTween.Stop(this.gameObject);
 

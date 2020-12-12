@@ -90,6 +90,7 @@ public class StartPhase : Phase
         Settings.SetParent(GM.turn.offensiveChip.transform, opponent.currentHolder.playedCombatChipHolder.value);
 
         GM.turn.offensiveChip.GetComponent<Chip>().owner = opponent;
+        GM.turn.offensiveChip.GetComponent<Chip>().state = ChipSate.PLAYED;
 
         GM.turn.offensivePlayer = opponent;
     }

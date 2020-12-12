@@ -38,7 +38,7 @@ public class QuickPlayPhase : Phase
         {
             if (c.cardEffects[i].isDone ||
                 (c.cardEffects[i].type != EffectType.PLACE
-                //&& c.cardEffects[i].type != EffectType.REMOVE
+                && c.cardEffects[i].type != EffectType.REMOVE
                 //&& c.cardEffects[i].type != EffectType.RESTORE
                 && c.cardEffects[i].type != EffectType.SPECIAL))
                 continue;

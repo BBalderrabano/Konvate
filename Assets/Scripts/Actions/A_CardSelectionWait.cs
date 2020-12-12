@@ -1,14 +1,26 @@
-﻿
-public class A_CardSelectionWait : Action
+﻿public class A_CardSelectionWait : Action
 {
     PlayerHolder lastCurrentPlayer;
     SelectionCardEffect callback;
     bool doneWaiting = false;
+    int waitingForPlayer;
 
-    public A_CardSelectionWait(int photonId, SelectionCardEffect callback, int cardId, int actionId = -1) : base(photonId, actionId)
+    PlayerHolder waitingForPlayerHolder;
+
+    public A_CardSelectionWait(int photonId, SelectionCardEffect callback, int cardId, int waiting_for_photon = -1, int actionId = -1) : base(photonId, actionId)
     {
         this.callback = callback;
         this.cardOrigin = cardId;
+        this.waitingForPlayer = waiting_for_photon;
+
+        if (waitingForPlayer > 0)
+        {
+            waitingForPlayerHolder = GM.GetPlayerHolder(waitingForPlayer);
+        }
+        else
+        {
+            waitingForPlayerHolder = callback.card.owner;
+        }
     }
 
     public override bool Continue()
@@ -16,13 +28,15 @@ public class A_CardSelectionWait : Action
         return false;
     }
 
-    public override void Execute(float t) 
+    public override void Execute(float t)
     {
         if (!isInit)
         {
-            WarningPanel.singleton.ShowWarning(callback.card.owner.playerName + " esta eligiendo una carta");
+            WarningPanel.singleton.ShowWarning(waitingForPlayerHolder.playerName + " esta eligiendo", true);
+
             lastCurrentPlayer = GM.currentPlayer;
-            GM.ChangeTurnController(callback.card.owner.photonId, true);
+
+            GM.ChangeTurnController(waitingForPlayerHolder.photonId, true);
 
             isInit = true;
         }

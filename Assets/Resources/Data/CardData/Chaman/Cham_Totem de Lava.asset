@@ -22,6 +22,7 @@ MonoBehaviour:
     Un oponente puede usar
     1 <sprite=0> para prevenir el efecto'
   textMods: []
-  cardEffects: []
+  cardEffects:
+  - {fileID: 11400000, guid: 50f4379f41641594bab4ed7e5607cd14, type: 2}
   conditions: []
   cardTags: 010000000200000005000000
