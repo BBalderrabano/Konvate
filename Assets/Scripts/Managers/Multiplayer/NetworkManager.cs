@@ -1,7 +1,5 @@
 ﻿using Photon.Realtime;
 using SO;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
@@ -19,6 +17,8 @@ public class NetworkManager : Photon.Pun.MonoBehaviourPunCallbacks
     public GameEvent onFailToConnect;
     public GameEvent onWaitingForPlayer;
 
+    bool retryConnection = false;
+
     public void Awake()
     {
         if(singleton == null)
@@ -35,6 +35,8 @@ public class NetworkManager : Photon.Pun.MonoBehaviourPunCallbacks
 
     private void Start()
     {
+        retryConnection = false;
+
         Photon.Pun.PhotonNetwork.AutomaticallySyncScene = true;
         Init();
     }
@@ -53,10 +55,12 @@ public class NetworkManager : Photon.Pun.MonoBehaviourPunCallbacks
     {
         PlayerProfile profile = Resources.Load("PlayerProfile") as PlayerProfile;
 
-        Hashtable hash = new Hashtable();
-        hash.Add("deck", profile.cardIds);
-        hash.Add("player_name", profile.playerName);
-        hash.Add("PlayerIsReady", false);
+        Hashtable hash = new Hashtable
+        {
+            { "deck", profile.cardIds },
+            { "player_name", profile.playerName },
+            { "PlayerIsReady", false }
+        };
 
         Photon.Pun.PhotonNetwork.LocalPlayer.NickName = profile.playerName;
         Photon.Pun.PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
@@ -69,14 +73,23 @@ public class NetworkManager : Photon.Pun.MonoBehaviourPunCallbacks
         Photon.Pun.PhotonNetwork.JoinRandomRoom();
     }
 
+    public void RetryJoinRandomRoom()
+    {
+        retryConnection = true;
+        Photon.Pun.PhotonNetwork.LeaveRoom();
+        isMaster = false;
+    }
+
     public void CreateRoom()
     {
         RoomOptions room = new RoomOptions();
         room.MaxPlayers = 2;
+        room.EmptyRoomTtl = 0;
         Photon.Pun.PhotonNetwork.CreateRoom(RandomString(256), room, TypedLobby.Default);
     }
 
     private System.Random random = new System.Random();
+
     public string RandomString(int lenght)
     {
         const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefgolkipjklmnopqrstuvhui";
@@ -88,9 +101,18 @@ public class NetworkManager : Photon.Pun.MonoBehaviourPunCallbacks
     public override void OnConnectedToMaster()
     {
         base.OnConnectedToMaster();
-        logger.value = "Conectado";
-        loggerUpdate.Raise();
-        onConnected.Raise();
+
+        if (retryConnection)
+        {
+            JoinRandomRoom();
+            retryConnection = false;
+        }
+        else
+        {
+            logger.value = "Conectado";
+            loggerUpdate.Raise();
+            onConnected.Raise();
+        }
     }
 
     public override void OnJoinRandomFailed(short returnCode, string message)
@@ -156,5 +178,6 @@ public class NetworkManager : Photon.Pun.MonoBehaviourPunCallbacks
     {
         base.OnLeftRoom();
     }
+
     #endregion
 }

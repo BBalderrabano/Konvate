@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deckName: Prueba
   cardIds:
-  - Arq_Disparo Multiple
-  - Arq_Disparo Multiple
-  - Arq_Disparo Multiple
-  - Arq_Disparo Multiple
-  - Arq_Flecha
+  - Goblin_Barril Explosivo
+  - Goblin_Barril Explosivo
+  - Goblin_Barril Explosivo
+  - Goblin_Barril Explosivo
+  - Goblin_Barril Explosivo
   - Arq_Flecha
   - Arq_Flecha
   - Arq_Flecha

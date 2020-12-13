@@ -48,5 +48,6 @@ public enum SoundEffectType
 
     CARD_MAGO_NO_DECK,
 
-    CARD_BREAKE
+    CARD_BREAKE,
+    CARD_GOBLIN_BARRIL
 }

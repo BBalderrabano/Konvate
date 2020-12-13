@@ -25,6 +25,7 @@ MonoBehaviour:
     (si
     no se activa envia todas tus cartas al mazo)'
   textMods: []
-  cardEffects: []
+  cardEffects:
+  - {fileID: 11400000, guid: 37cf3d4433096c549bcafc07d8eb7b0e, type: 2}
   conditions: []
   cardTags: 010000000500000008000000190000000200000003000000
