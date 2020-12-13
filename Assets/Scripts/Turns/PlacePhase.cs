@@ -63,7 +63,7 @@ public class PlacePhase : Phase
         {
             if (eff.isDone) { continue; }
 
-            Action special_effect = new A_ExecuteEffect(eff.card.instanceId, eff.effectId, eff.card.owner.photonId);
+            KAction special_effect = new A_ExecuteEffect(eff.card.instanceId, eff.effectId, eff.card.owner.photonId);
             GM.actionManager.AddAction(special_effect);
         }
 
@@ -71,7 +71,7 @@ public class PlacePhase : Phase
         {
             if (eff.isDone) { continue; }
 
-            Action place_effect = new A_ExecuteEffect(eff.card.instanceId, eff.effectId, eff.card.owner.photonId);
+            KAction place_effect = new A_ExecuteEffect(eff.card.instanceId, eff.effectId, eff.card.owner.photonId);
             GM.actionManager.AddAction(place_effect);
         }
     }

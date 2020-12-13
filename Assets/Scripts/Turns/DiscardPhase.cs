@@ -42,14 +42,14 @@ public class DiscardPhase : Phase
 
             foreach (PlayerHolder player in GM.allPlayers)
             {
-                Action resetChips = new A_ResetChips(player.photonId);
+                KAction resetChips = new A_ResetChips(player.photonId);
 
                 GM.actionManager.AddAction(resetChips);
             }
 
             foreach (PlayerHolder player in GM.allPlayers)
             {
-                Action discardAllCards = new A_DiscardAllCards(player.photonId);
+                KAction discardAllCards = new A_DiscardAllCards(player.photonId);
 
                 GM.actionManager.AddAction(discardAllCards);
             }

@@ -21,7 +21,7 @@ public class SetCard : CardLogic
 
                 if (card.owner.hasCardOnLocation(card.instanceId, PlayerHolder.CardLocation.Play))
                 {
-                    Action returnToHand = new A_ReturnToHand(card.instanceId, card.owner.photonId);
+                    KAction returnToHand = new A_ReturnToHand(card.instanceId, card.owner.photonId);
                     GameManager.singleton.actionManager.AddAction(returnToHand);
                 }
             }

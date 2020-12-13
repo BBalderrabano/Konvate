@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using UnityEngine;
 
-public class A_CardSelectionComplete : Action
+public class A_CardSelectionComplete : KAction
 {
     int[] selectedCards;
     bool completedAction = false;

@@ -29,7 +29,7 @@ public class PlayCardAreaLogic : AreaLogic
 
         if (canUseCard && GM.turn.currentPhase.value.CanPlayCard(c) && ConditionsAreMet(c)) 
         {
-            Action playCard = new A_PlayCard(c.instanceId, GM.localPlayer.photonId);
+            KAction playCard = new A_PlayCard(c.instanceId, GM.localPlayer.photonId);
             GM.actionManager.AddAction(playCard);
         }
     }

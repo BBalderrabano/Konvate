@@ -279,7 +279,7 @@ public class MultiplayerManager : MonoBehaviourPun, IPunInstantiateMagicCallback
     [PunRPC]
     public void RPC_SendActionGiveControl(int phaseIndex, int photonId, bool endMyPhase, int newControllerPhotonId, bool showMessages, int actionId)
     {
-        Action giveControl = new A_GiveControl(phaseIndex, photonId, endMyPhase, newControllerPhotonId, showMessages, actionId);
+        KAction giveControl = new A_GiveControl(phaseIndex, photonId, endMyPhase, newControllerPhotonId, showMessages, actionId);
         GM.actionManager.AddAction(giveControl);
     }
 
@@ -427,7 +427,7 @@ public class MultiplayerManager : MonoBehaviourPun, IPunInstantiateMagicCallback
     [PunRPC]
     public void RPC_SendDraw(int photonId, int actionId = -1, int cardId = 0, int effectId = 0)
     {
-        Action draw = new A_Draw(photonId, actionId, cardId, effectId);
+        KAction draw = new A_Draw(photonId, actionId, cardId, effectId);
 
         GM.actionManager.AddAction(draw);
 
@@ -443,7 +443,7 @@ public class MultiplayerManager : MonoBehaviourPun, IPunInstantiateMagicCallback
     [PunRPC]
     public void RPC_SendShuffle(int actionId, int photonId, int[] deckIds, bool andDraw)
     {
-        Action shuffle = new A_Shuffle(photonId, deckIds, andDraw, actionId);
+        KAction shuffle = new A_Shuffle(photonId, deckIds, andDraw, actionId);
 
         GM.actionManager.AddAction(shuffle);
 
@@ -459,7 +459,7 @@ public class MultiplayerManager : MonoBehaviourPun, IPunInstantiateMagicCallback
     [PunRPC]
     public void RPC_SendUseCard(int instanceId, int photonId, int actionId, ActionType type)
     {
-        Action execute = null;
+        KAction execute = null;
 
         if (GM.actionManager.GetAction(actionId) != null)
         {

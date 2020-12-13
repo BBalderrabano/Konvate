@@ -28,7 +28,7 @@ public class ActionManager
         return isDone;
     }
 
-    public void AddAction(Action action)
+    public void AddAction(KAction action)
     {
         foreach (ActionList list in actions)
         {
@@ -40,11 +40,11 @@ public class ActionManager
         }
     }
 
-    public Action GetAction(int actionId)
+    public KAction GetAction(int actionId)
     {
         foreach (ActionList list in actions)
         {
-            foreach (Action action in list)
+            foreach (KAction action in list)
             {
                 if (action.actionId == actionId)
                     return action;
@@ -59,7 +59,7 @@ public class ActionManager
         return null;
     }
 
-    public List<Action> GetPlayerActions(int photonId)
+    public List<KAction> GetPlayerActions(int photonId)
     {
         foreach (ActionList list in actions)
         {
@@ -71,7 +71,7 @@ public class ActionManager
         return null;
     }
 
-    public void PushAction(int actionId, Action action)
+    public void PushAction(int actionId, KAction action)
     {
         foreach (ActionList list in actions)
         {
@@ -95,7 +95,7 @@ public class ActionManager
         {
             for (int i = 0; i < actionList.Count; i++)
             {
-                Action current = actionList[i];
+                KAction current = actionList[i];
 
                 if (!current.IsComplete())
                 {
@@ -130,7 +130,7 @@ public class ActionManager
     }
 }
 
-public class ActionList : List<Action> {
+public class ActionList : List<KAction> {
 
     public int photonId;
 

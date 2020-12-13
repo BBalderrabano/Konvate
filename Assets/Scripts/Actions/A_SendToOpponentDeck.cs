@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class A_SendToOpponentDeck : Action
+public class A_SendToOpponentDeck : KAction
 {
     readonly int cardTarget;
     readonly int sendToPosition;

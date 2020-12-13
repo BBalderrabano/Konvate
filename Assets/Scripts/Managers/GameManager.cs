@@ -253,15 +253,15 @@ public class GameManager : MonoBehaviour
         oldOwner.all_cards.Remove(card);
     }
 
-    public List<Action> DrawCard(PlayerHolder player, int amount, int cardId = 0, int effectId = 0, Action action = null)
+    public List<KAction> DrawCard(PlayerHolder player, int amount, int cardId = 0, int effectId = 0, KAction action = null)
     {
-        List<Action> actions = new List<Action>();
+        List<KAction> actions = new List<KAction>();
 
         if (player.isLocal)
         {
             for (int i = 0; i < amount; i++)
             {
-                Action draw = new A_Draw(player.photonId, -1, cardId, effectId);
+                KAction draw = new A_Draw(player.photonId, -1, cardId, effectId);
 
                 if(action == null)
                 {

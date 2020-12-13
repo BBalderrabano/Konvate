@@ -36,7 +36,7 @@ public class EndTurnPhase : Phase
         {
             if (eff.isDone) { continue; }
 
-            Action end_turn_start = new A_ExecuteEffect(eff.card.instanceId, eff.effectId, eff.card.owner.photonId);
+            KAction end_turn_start = new A_ExecuteEffect(eff.card.instanceId, eff.effectId, eff.card.owner.photonId);
             GM.actionManager.AddAction(end_turn_start);
         }
     }

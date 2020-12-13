@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public class A_DiscardAllCards : Action
+public class A_DiscardAllCards : KAction
 {
     public A_DiscardAllCards(int photonId, int actionId = -1) : base(photonId, actionId) {}
 
@@ -14,7 +14,7 @@ public class A_DiscardAllCards : Action
     {
         if (!isInit)
         {
-            List<Action> discardActions = new List<Action>();
+            List<KAction> discardActions = new List<KAction>();
             List<Card> cardsToDiscard = new List<Card>();
 
             PlayerHolder player = GM.GetPlayerHolder(photonId);

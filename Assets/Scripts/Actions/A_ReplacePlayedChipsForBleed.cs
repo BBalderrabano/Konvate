@@ -1,5 +1,5 @@
 ﻿
-public class A_ReplacePlayedChipsForBleed : Action
+public class A_ReplacePlayedChipsForBleed : KAction
 {
     public A_ReplacePlayedChipsForBleed(int photonId, int actionId = -1) : base(photonId, actionId) {}
 

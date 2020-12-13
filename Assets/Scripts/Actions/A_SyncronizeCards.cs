@@ -1,5 +1,5 @@
 ﻿
-public class A_SyncronizeCards : Action
+public class A_SyncronizeCards : KAction
 {
     bool hand;
     bool deck;

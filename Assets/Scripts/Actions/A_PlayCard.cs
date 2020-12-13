@@ -1,5 +1,5 @@
 ﻿
-public class A_PlayCard : Action
+public class A_PlayCard : KAction
 {
     PlayerHolder player;
     Card card;

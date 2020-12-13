@@ -2,7 +2,7 @@
 using System.Linq;
 using UnityEngine;
 
-public abstract class Action
+public abstract class KAction
 {
     #region Variables
     protected GameManager GM
@@ -22,7 +22,7 @@ public abstract class Action
     List<SyncSignal> playerSync;
     #endregion
 
-    public Action(int photonId, int actionId = -1)
+    public KAction(int photonId, int actionId = -1)
     {
         this.isInit = false;
         this.readyToRemove = false;
@@ -54,19 +54,19 @@ public abstract class Action
     }
 
     #region Linked Actions
-    public List<Action> linkedActions = new List<Action>();
+    public List<KAction> linkedActions = new List<KAction>();
 
-    public virtual void PushActions(List<Action> actionsToPush)
+    public virtual void PushActions(List<KAction> actionsToPush)
     {
         linkedActions.AddRange(actionsToPush);
     }
 
-    public virtual void PushAction(Action actionToPush)
+    public virtual void PushAction(KAction actionToPush)
     {
         linkedActions.Add(actionToPush);
     }
 
-    public virtual Action GetLinkedAction(int actionId)
+    public virtual KAction GetLinkedAction(int actionId)
     {
         for (int i = 0; i < linkedActions.Count; i++)
         {
@@ -86,7 +86,7 @@ public abstract class Action
     {
         for (int i = 0; i < linkedActions.Count; i++)
         {
-            Action current = linkedActions[i];
+            KAction current = linkedActions[i];
         
             if (!current.IsComplete())
             {

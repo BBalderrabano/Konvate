@@ -498,7 +498,23 @@ public class AnimationManager : MonoBehaviour
         PlayerHolder p = GM.GetPlayerHolder(photonId);
         Card c = p.GetCard(cardId);
 
-        iTween.MoveTo(c.cardPhysicalInst.gameObject, 
+        Hashtable hash = new Hashtable
+        {
+            { "action", actionId },
+            { "new_parent", new_parent},
+            { "object", c.cardPhysicalInst.gameObject},
+            { "photonId", photonId},
+            { "animationId", animationPointer.animId},
+            { "reset_position", true},
+            { "play_sound", playSound}
+        };
+
+        LeanTween.move(c.cardPhysicalInst.gameObject, position, Settings.ANIMATION_TIME)
+            .setEaseInOutQuad()
+            .setDelay(Settings.ANIMATION_DELAY)
+            .setOnComplete(AM_FinishAnimation).setOnCompleteParam(hash as object);
+
+        /*iTween.MoveTo(c.cardPhysicalInst.gameObject, 
             iTween.Hash(
                 "position", position,
                 "time", Settings.ANIMATION_TIME,
@@ -513,12 +529,14 @@ public class AnimationManager : MonoBehaviour
                                                 "reset_position", true,
                                                 "play_sound", playSound),
                 "onCompleteTarget", this.gameObject
-        ));
+        ));*/
 
-        iTween.RotateTo(c.cardPhysicalInst.gameObject,
+        LeanTween.rotate(c.cardPhysicalInst.gameObject, new_parent.transform.root.eulerAngles, Settings.ANIMATION_TIME);
+
+        /*iTween.RotateTo(c.cardPhysicalInst.gameObject,
             iTween.Hash(
                 "rotation", new_parent.transform.rotation.eulerAngles,
-                "time", Settings.ANIMATION_TIME));
+                "time", Settings.ANIMATION_TIME));*/
 
         return animationPointer;
     }
@@ -546,7 +564,7 @@ public class AnimationManager : MonoBehaviour
             }
         }
 
-        Action action = GM.actionManager.GetAction(action_id);
+        KAction action = GM.actionManager.GetAction(action_id);
 
         if (new_parent != null)
         {

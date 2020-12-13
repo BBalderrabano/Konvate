@@ -1,5 +1,5 @@
 ﻿
-public class A_Shuffle : Action
+public class A_Shuffle : KAction
 {
     int[] deck;
     bool andDraw;
@@ -54,7 +54,7 @@ public class A_Shuffle : Action
 
                 if (andDraw)
                 {
-                    Action draw = new A_Draw(photonId);
+                    KAction draw = new A_Draw(photonId);
                     PushAction(draw);
                 }
             }

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class A_Discard : Action
+public class A_Discard : KAction
 {
     int cardTarget;
     bool waitForAnimation;

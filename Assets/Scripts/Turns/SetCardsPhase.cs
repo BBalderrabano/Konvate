@@ -59,7 +59,7 @@ public class SetCardsPhase : Phase
         if (CheckPlayerIsReady(localPlayerId) || !GM.currentPlayer.isLocal)
             return;
 
-        Action giveControl = new A_GiveControl(phaseIndex, localPlayerId, true, otherPlayerId);
+        KAction giveControl = new A_GiveControl(phaseIndex, localPlayerId, true, otherPlayerId);
         GM.actionManager.AddAction(giveControl);
 
         AudioManager.singleton.Play(SoundEffectType.BUTTON_CLICK);

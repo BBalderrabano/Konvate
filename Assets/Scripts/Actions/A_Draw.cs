@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-public class A_Draw : Action
+public class A_Draw : KAction
 {
     Card cardDrawn = null;
     bool noCardsToDraw;
@@ -52,7 +52,7 @@ public class A_Draw : Action
             {
                 if (player.isLocal)
                 {
-                    Action shuffle = new A_Shuffle(photonId);
+                    KAction shuffle = new A_Shuffle(photonId);
 
                     ////////////////////////////////////////////////////////////////////////////////////////////
                     foreach(Card c in player.playedCards)

@@ -86,7 +86,7 @@ public class DamagePhase : Phase
         {
             if (eff.isDone) { continue; }
 
-            Action restore_effect = new A_ExecuteEffect(eff.card.instanceId, eff.effectId, eff.card.owner.photonId);
+            KAction restore_effect = new A_ExecuteEffect(eff.card.instanceId, eff.effectId, eff.card.owner.photonId);
             GM.actionManager.AddAction(restore_effect);
         }
     }
@@ -118,13 +118,13 @@ public class DamagePhase : Phase
 
             LoadCardEffects();
 
-            Action checkFloatingDefend = new A_CheckFloatingDefense(GM.localPlayer.photonId);
+            KAction checkFloatingDefend = new A_CheckFloatingDefense(GM.localPlayer.photonId);
             GM.actionManager.AddAction(checkFloatingDefend);
 
-            Action replaceForBleed = new A_ReplacePlayedChipsForBleed(GM.localPlayer.photonId);
+            KAction replaceForBleed = new A_ReplacePlayedChipsForBleed(GM.localPlayer.photonId);
             GM.actionManager.AddAction(replaceForBleed);
 
-            Action moveBleedToDamage = new A_MoveBleedToDamage(GM.localPlayer.photonId);
+            KAction moveBleedToDamage = new A_MoveBleedToDamage(GM.localPlayer.photonId);
             GM.actionManager.AddAction(moveBleedToDamage);
 
             ExecuteEffects();

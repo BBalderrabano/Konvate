@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-public class A_CardSelection : Action
+public class A_CardSelection : KAction
 {
     List<Card> card_pool;
     string description;

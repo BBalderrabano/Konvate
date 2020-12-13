@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class A_SendToDeck : Action
+public class A_SendToDeck : KAction
 {
     int cardTarget;
     int sendToPosition;

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class A_ResetChips : Action
+public class A_ResetChips : KAction
 {
     public A_ResetChips(int photonId, int actionId = -1) : base(photonId, actionId) {}
 

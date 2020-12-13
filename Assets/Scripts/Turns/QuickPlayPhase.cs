@@ -53,7 +53,7 @@ public class QuickPlayPhase : Phase
         {
             if (eff.isDone) { continue; }
 
-            Action execute_effect = new A_ExecuteEffect(eff.card.instanceId, eff.effectId, eff.card.owner.photonId);
+            KAction execute_effect = new A_ExecuteEffect(eff.card.instanceId, eff.effectId, eff.card.owner.photonId);
             GM.actionManager.AddAction(execute_effect);
         }
     }
@@ -125,7 +125,7 @@ public class QuickPlayPhase : Phase
         if ((CheckPlayerIsReady(localPlayerId) && !GM.currentPlayer.isLocal) || CheckPlayerIsReady(otherPlayerId))
             return;
 
-        Action giveControl = new A_GiveControl(phaseIndex, localPlayerId, false, otherPlayerId);
+        KAction giveControl = new A_GiveControl(phaseIndex, localPlayerId, false, otherPlayerId);
         GM.actionManager.AddAction(giveControl);
 
         AudioManager.singleton.Play(SoundEffectType.BUTTON_CLICK);
@@ -139,7 +139,7 @@ public class QuickPlayPhase : Phase
         if (CheckPlayerIsReady(localPlayerId))
             return;
 
-        Action giveControl = new A_GiveControl(phaseIndex, localPlayerId, true, otherPlayerId);
+        KAction giveControl = new A_GiveControl(phaseIndex, localPlayerId, true, otherPlayerId);
         GM.actionManager.AddAction(giveControl);
 
         AudioManager.singleton.Play(SoundEffectType.BUTTON_CLICK);
@@ -166,7 +166,7 @@ public class QuickPlayPhase : Phase
         {
             if (currentPlayerId == localPlayerId)
             {
-                Action giveControl = new A_GiveControl(phaseIndex, localPlayerId, false, otherPlayerId, false);
+                KAction giveControl = new A_GiveControl(phaseIndex, localPlayerId, false, otherPlayerId, false);
                 GM.actionManager.AddAction(giveControl);
             }
         }

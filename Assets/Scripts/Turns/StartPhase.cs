@@ -31,7 +31,7 @@ public class StartPhase : Phase
         {
             if (eff.isDone) { continue; }
 
-            Action turn_start = new A_ExecuteEffect(eff.card.instanceId, eff.effectId, eff.card.owner.photonId);
+            KAction turn_start = new A_ExecuteEffect(eff.card.instanceId, eff.effectId, eff.card.owner.photonId);
             GM.actionManager.AddAction(turn_start);
         }
     }

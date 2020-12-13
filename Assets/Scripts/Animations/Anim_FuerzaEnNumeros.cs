@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Anim_FuerzaEnNumeros : Action
+public class Anim_FuerzaEnNumeros : KAction
 {
     float time = 0;
     readonly PlayerHolder player;

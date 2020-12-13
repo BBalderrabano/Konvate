@@ -1,5 +1,6 @@
 ﻿using Photon.Realtime;
 using SO;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
@@ -18,6 +19,17 @@ public class NetworkManager : Photon.Pun.MonoBehaviourPunCallbacks
     public GameEvent onWaitingForPlayer;
 
     bool retryConnection = false;
+
+    public override void OnRoomListUpdate(List<RoomInfo> roomList)
+    {
+        base.OnRoomListUpdate(roomList);
+
+        foreach (RoomInfo ri in roomList)
+        {
+            Debug.Log(ri.PlayerCount);
+            Debug.Log(ri.masterClientId);
+        }
+    }
 
     public void Awake()
     {

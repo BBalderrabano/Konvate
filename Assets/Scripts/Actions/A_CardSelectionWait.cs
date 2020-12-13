@@ -1,4 +1,4 @@
-﻿public class A_CardSelectionWait : Action
+﻿public class A_CardSelectionWait : KAction
 {
     PlayerHolder lastCurrentPlayer;
     SelectionCardEffect callback;

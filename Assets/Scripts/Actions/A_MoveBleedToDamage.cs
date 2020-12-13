@@ -1,5 +1,5 @@
 ﻿
-public class A_MoveBleedToDamage : Action
+public class A_MoveBleedToDamage : KAction
 {
     public A_MoveBleedToDamage(int photonId, int actionId = -1) : base(photonId, actionId) {}
 

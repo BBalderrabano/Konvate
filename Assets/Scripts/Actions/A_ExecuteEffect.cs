@@ -3,7 +3,7 @@ using System.Diagnostics;
 using Photon.Realtime;
 using System.Threading;
 
-public class A_ExecuteEffect : Action
+public class A_ExecuteEffect : KAction
 {
     Card owner;
     CardEffect effect;

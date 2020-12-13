@@ -63,14 +63,14 @@ public class FinalEndPhase : Phase
         {
             if (eff.isDone) { continue; }
 
-            Action turn_end = new A_ExecuteEffect(eff.card.instanceId, eff.effectId, eff.card.owner.photonId);
+            KAction turn_end = new A_ExecuteEffect(eff.card.instanceId, eff.effectId, eff.card.owner.photonId);
             GM.actionManager.AddAction(turn_end);
         }
     }
 
     void SyncAllCards()
     {
-        Action sync_all_cards = new A_SyncronizeCards(GM.localPlayer.photonId, true, true, true, true);
+        KAction sync_all_cards = new A_SyncronizeCards(GM.localPlayer.photonId, true, true, true, true);
         GM.actionManager.AddAction(sync_all_cards);
     }
 

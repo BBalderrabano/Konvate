@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class A_CheckFloatingDefense : Action
+public class A_CheckFloatingDefense : KAction
 {
     public A_CheckFloatingDefense(int photonId, int actionId = -1) : base(photonId, actionId) {}
 

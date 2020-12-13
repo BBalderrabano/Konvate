@@ -1,5 +1,5 @@
 ﻿
-public class A_GiveControl : Action
+public class A_GiveControl : KAction
 {
     int newControllerPhotonId;
     int phaseIndex;

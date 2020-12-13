@@ -52,7 +52,7 @@ public class RemovePhase : Phase
         {
             if (eff.isDone) { continue; }
 
-            Action remove_effect = new A_ExecuteEffect(eff.card.instanceId, eff.effectId, eff.card.owner.photonId);
+            KAction remove_effect = new A_ExecuteEffect(eff.card.instanceId, eff.effectId, eff.card.owner.photonId);
             GM.actionManager.AddAction(remove_effect);
         }
     }
