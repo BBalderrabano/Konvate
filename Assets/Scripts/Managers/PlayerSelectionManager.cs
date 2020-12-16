@@ -1,16 +1,16 @@
 ﻿using SO;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerSelectionManager : MonoBehaviour
 {
     public StringVariable playerName;
     public List<DeckHolder> available_decks = new List<DeckHolder>();
 
-    public TMPro.TMP_InputField name_selection;
+    public TMP_InputField name_selection;
     public ScrollDeckSelector deck_selector;
-    //public TMPro.TMP_Dropdown deck_selection;
+    public TMP_Dropdown collection_selector;
 
     PlayerProfile profile;
     int deck_saved_index = 0;
@@ -39,13 +39,23 @@ public class PlayerSelectionManager : MonoBehaviour
             PlayerPrefs.SetString("player_name", name_selection.text);
         }
 
+        collection_selector.ClearOptions();
+
+
         for (int i = 0; i < available_decks.Count; i++)
         {
+            TMP_Dropdown.OptionData option = new TMP_Dropdown.OptionData(available_decks[i].deckName);
+
+            collection_selector.options.Add(option);
+
             if (available_decks[i].deckName == profile.deckName)
             {
                 deck_saved_index = i;
             }
         }
+
+        collection_selector.value = deck_saved_index;
+        collection_selector.captionText.text = available_decks[deck_saved_index].deckName;
 
         profile.cardIds = available_decks[deck_saved_index].cardIds;
         profile.playerName = name_selection.text;
