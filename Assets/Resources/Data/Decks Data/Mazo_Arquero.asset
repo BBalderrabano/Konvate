@@ -34,3 +34,7 @@ MonoBehaviour:
   - Arq_Flecha
   - Arq_Flecha
   - Arq_Flecha
+  deckArt: {fileID: -5378735716691999523, guid: fd14b43b46b502c4ab6d37b3f46faba5,
+    type: 3}
+  deckIcon: {fileID: 21300000, guid: 8f9c03aa63bbeba42bddf86183339a24, type: 3}
+  deckDesc: 

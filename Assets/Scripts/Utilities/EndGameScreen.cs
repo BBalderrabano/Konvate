@@ -44,11 +44,7 @@ public class EndGameScreen : MonoBehaviour
 
             victoryContainer.transform.localScale = Vector3.one;
 
-            iTween.ScaleTo(victoryContainer, iTween.Hash(
-                        "scale", new Vector3(2, 2, 2),
-                        "time", 1f,
-                        "easetype", "easeOutElastic"
-                        ));
+            LeanTween.scale(victoryContainer, new Vector3(2, 2, 2), 1f).setEaseOutElastic();
         }
         else
         {
@@ -57,12 +53,7 @@ public class EndGameScreen : MonoBehaviour
 
             defeatContainer.transform.localScale = Vector3.one;
 
-            iTween.ScaleTo(defeatContainer, iTween.Hash(
-                        "scale", new Vector3(2, 2, 2),
-                        "time", 1f,
-                        "easetype", "easeOutQuad"
-                        ));
+            LeanTween.scale(victoryContainer, new Vector3(2, 2, 2), 1f).setEaseOutQuad();
         }
-        
     }
 }

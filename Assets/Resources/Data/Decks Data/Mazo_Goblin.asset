@@ -34,3 +34,7 @@ MonoBehaviour:
   - Defensa
   - Defensa
   - Defensa
+  deckArt: {fileID: -3361226018192319205, guid: 750fbda1c5f20e149b5a6fa6cde08cd4,
+    type: 3}
+  deckIcon: {fileID: 21300000, guid: 52340961cc5203342a63ce160f4cf075, type: 3}
+  deckDesc: 

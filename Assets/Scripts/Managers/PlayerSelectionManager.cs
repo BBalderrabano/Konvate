@@ -9,12 +9,13 @@ public class PlayerSelectionManager : MonoBehaviour
     public List<DeckHolder> available_decks = new List<DeckHolder>();
 
     public TMPro.TMP_InputField name_selection;
-    public TMPro.TMP_Dropdown deck_selection;
+    public ScrollDeckSelector deck_selector;
+    //public TMPro.TMP_Dropdown deck_selection;
 
     PlayerProfile profile;
     int deck_saved_index = 0;
 
-    private void Start()
+    private void Awake()
     {
         deck_saved_index = 0;
 
@@ -38,25 +39,18 @@ public class PlayerSelectionManager : MonoBehaviour
             PlayerPrefs.SetString("player_name", name_selection.text);
         }
 
-        deck_selection.ClearOptions();
-
         for (int i = 0; i < available_decks.Count; i++)
         {
-            TMPro.TMP_Dropdown.OptionData option = new TMPro.TMP_Dropdown.OptionData(available_decks[i].deckName);
-
-            deck_selection.options.Add(option);
-
             if (available_decks[i].deckName == profile.deckName)
             {
                 deck_saved_index = i;
             }
         }
 
-        deck_selection.value = deck_saved_index;
-        deck_selection.captionText.text = available_decks[deck_saved_index].deckName;
-
         profile.cardIds = available_decks[deck_saved_index].cardIds;
         profile.playerName = name_selection.text;
+
+        deck_selector.Init(available_decks, deck_saved_index);
     }
 
     public void SelectDeck(int index)

@@ -34,3 +34,7 @@ MonoBehaviour:
   - Ase_DagaEnvenenada
   - Ase_Esquivar
   - Ase_AtaquePorEspalda
+  deckArt: {fileID: -4237794622484010815, guid: 97a79c830db58284fb68dd5fed6f8a64,
+    type: 3}
+  deckIcon: {fileID: 21300000, guid: 57a308f36f61f40448287854439f13ae, type: 3}
+  deckDesc: 

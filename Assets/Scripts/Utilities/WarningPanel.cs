@@ -27,7 +27,7 @@ public class WarningPanel : MonoBehaviour
     {
         if (!important || isImportant) {
 
-            iTween.Stop(this.gameObject);
+            LeanTween.cancel(this.gameObject);
 
             this.gameObject.SetActive(true);
             description.text = text;
@@ -38,20 +38,11 @@ public class WarningPanel : MonoBehaviour
             {
                 lastEternalMessage = text;
 
-                iTween.ScaleTo(this.gameObject, iTween.Hash(
-                    "scale", originalScale,
-                    "time", 0.5f,
-                    "easetype", "easeOutElastic"));
+                LeanTween.scale(this.gameObject, originalScale, 0.5f).setEaseOutElastic();
             }
             else
             {
-                iTween.ScaleTo(this.gameObject, iTween.Hash(
-                    "scale", originalScale,
-                    "time", 0.5f,
-                    "easetype", "easeOutElastic",
-                    "oncomplete", "Dissapear",
-                    "oncompletetarget", this.gameObject
-                    ));
+                LeanTween.scale(this.gameObject, originalScale, 0.5f).setEaseOutElastic().setOnComplete(Dissapear);
             }
 
             important = isImportant;
@@ -66,14 +57,7 @@ public class WarningPanel : MonoBehaviour
         }
         else
         {
-            iTween.ScaleTo(this.gameObject, iTween.Hash(
-                        "scale", Vector3.zero,
-                        "time", 0.5f,
-                        "delay", 1f,
-                        "easetype", "easeInElastic",
-                        "oncomplete", "Disable",
-                        "oncompletetarget", this.gameObject
-                        ));
+            LeanTween.scale(this.gameObject, Vector3.zero, 0.5f).setDelay(1f).setEaseInElastic().setOnComplete(Dissapear);
         }
     }
 

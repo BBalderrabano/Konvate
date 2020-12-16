@@ -34,3 +34,6 @@ MonoBehaviour:
   - Pes_Veneno
   - Pes_Veneno
   - Pes_Veneno
+  deckArt: {fileID: 2923887539519740020, guid: f205d4b6ceb05924483801ce30c77fd5, type: 3}
+  deckIcon: {fileID: 21300000, guid: 80d50a17ad7910344a6eb1e82f1228f0, type: 3}
+  deckDesc: 

@@ -31,6 +31,8 @@ public static class Settings
         }
     }
 
+    public static float SCREEN_HEIGHT;
+
     public static ResourcesManager GetResourcesManager() 
     {
         if (_resourcesManager == null)

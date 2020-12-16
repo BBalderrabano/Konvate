@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
         if (c == null)
             return;
 
-        iTween.Stop(currentPreviewCard);
+        LeanTween.cancel(currentPreviewCard);
 
         currentPreviewCard.transform.localScale = originalPreviewScale;
         currentPreviewCard.GetComponent<CardViz>().LoadCardViz(c);
@@ -86,28 +86,20 @@ public class GameManager : MonoBehaviour
 
         if (autoHide)
         {
-            iTween.ScaleTo(currentPreviewCard, iTween.Hash(
-                    "scale", Vector3.zero,
-                    "time", Settings.CARD_EFFECT_PREVIEW_ANIM_DURATION,
-                    "delay", Settings.CARD_EFFECT_MIN_PREVIEW,
-                    "easetype", "easeInElastic",
-                    "oncomplete", "HidePreviewCard",
-                    "oncompletetarget", this.gameObject
-                    ));
+            LeanTween.scale(currentPreviewCard, Vector3.zero, Settings.CARD_EFFECT_PREVIEW_ANIM_DURATION)
+                .setDelay(Settings.CARD_EFFECT_MIN_PREVIEW)
+                .setEaseInElastic()
+                .setOnComplete(HidePreviewCard);
         }
     }
 
     public void AnimateHidePrivewCard()
     {
-        iTween.Stop(currentPreviewCard);
+        LeanTween.cancel(currentPreviewCard);
 
-        iTween.ScaleTo(currentPreviewCard, iTween.Hash(
-                    "scale", Vector3.zero,
-                    "time", Settings.CARD_EFFECT_PREVIEW_ANIM_DURATION,
-                    "easetype", "easeInElastic",
-                    "oncomplete", "HidePreviewCard",
-                    "oncompletetarget", this.gameObject
-                    ));
+        LeanTween.scale(currentPreviewCard, Vector3.zero, Settings.CARD_EFFECT_PREVIEW_ANIM_DURATION)
+            .setEaseInElastic()
+            .setOnComplete(HidePreviewCard);
     }
 
     public void HidePreviewCard()

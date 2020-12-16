@@ -34,3 +34,6 @@ MonoBehaviour:
   - Jinete_Justa
   - Jinete_Lanza
   - Jinete_Lanza
+  deckArt: {fileID: 4257011219963083905, guid: 520d7963b32d69348a29662dedf2bad3, type: 3}
+  deckIcon: {fileID: 21300000, guid: 6bdfa8e14a07022429a57ddaedc74481, type: 3}
+  deckDesc: 

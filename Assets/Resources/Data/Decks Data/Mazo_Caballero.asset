@@ -34,3 +34,7 @@ MonoBehaviour:
   - Cab_Golpe Critico
   - Cab_Defensa Superior
   - Cab_Defensa Superior
+  deckArt: {fileID: -1512738928268555037, guid: 8eb29d46c2c8afc4aab1f56d10fbaf44,
+    type: 3}
+  deckIcon: {fileID: 21300000, guid: 0625c9cf1463d9e44a4e4448b01806ba, type: 3}
+  deckDesc: 

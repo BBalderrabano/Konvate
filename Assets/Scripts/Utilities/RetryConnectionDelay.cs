@@ -29,6 +29,12 @@ public class RetryConnectionDelay : MonoBehaviour
         timer = 0f;
     }
 
+    private void OnDisable()
+    {
+        startCountdown = false;
+        timer = 0f;
+    }
+
     void Update()
     {
         if (startCountdown)

@@ -47,7 +47,9 @@ public class NetworkManager : Photon.Pun.MonoBehaviourPunCallbacks
 
     private void Start()
     {
+        propertiesInit = false;
         retryConnection = false;
+        isMaster = false;
 
         Photon.Pun.PhotonNetwork.AutomaticallySyncScene = true;
         Init();
@@ -63,19 +65,26 @@ public class NetworkManager : Photon.Pun.MonoBehaviourPunCallbacks
 
     #region My Calls
 
+    bool propertiesInit = false;
+
     public void OnPlayGame()
     {
-        PlayerProfile profile = Resources.Load("PlayerProfile") as PlayerProfile;
-
-        Hashtable hash = new Hashtable
+        if (!propertiesInit)
         {
-            { "deck", profile.cardIds },
-            { "player_name", profile.playerName },
-            { "PlayerIsReady", false }
-        };
+            PlayerProfile profile = Resources.Load("PlayerProfile") as PlayerProfile;
 
-        Photon.Pun.PhotonNetwork.LocalPlayer.NickName = profile.playerName;
-        Photon.Pun.PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
+            Hashtable hash = new Hashtable
+            {
+                { "deck", profile.cardIds },
+                { "player_name", profile.playerName },
+                { "PlayerIsReady", false }
+            };
+
+            Photon.Pun.PhotonNetwork.LocalPlayer.NickName = profile.playerName;
+            Photon.Pun.PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
+
+            propertiesInit = true;
+        }
 
         JoinRandomRoom();
     }
@@ -98,6 +107,20 @@ public class NetworkManager : Photon.Pun.MonoBehaviourPunCallbacks
         room.MaxPlayers = 2;
         room.EmptyRoomTtl = 0;
         Photon.Pun.PhotonNetwork.CreateRoom(RandomString(256), room, TypedLobby.Default);
+    }
+
+    public void EndConnection()
+    {
+        if (Photon.Pun.PhotonNetwork.InRoom)
+        {
+            Photon.Pun.PhotonNetwork.LeaveRoom();
+        }
+
+        isMaster = false;
+        retryConnection = false;
+
+        logger.value = "Conectado";
+        loggerUpdate.Raise();
     }
 
     private System.Random random = new System.Random();
@@ -170,6 +193,7 @@ public class NetworkManager : Photon.Pun.MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         base.OnJoinedRoom();
+
         logger.value = "Esperando a un jugador";
         loggerUpdate.Raise();
         onWaitingForPlayer.Raise();

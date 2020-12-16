@@ -34,3 +34,7 @@ MonoBehaviour:
   - Enano_Runa Enana
   - Enano_Runa Enana
   - Enano_Martillo
+  deckArt: {fileID: -4717873233198967311, guid: fa7938fb9c5b1fd499384be4bc5621f0,
+    type: 3}
+  deckIcon: {fileID: 21300000, guid: bf61ba194d5ee724799503db86f9d07f, type: 3}
+  deckDesc: 

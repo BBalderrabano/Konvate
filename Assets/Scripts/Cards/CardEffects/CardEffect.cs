@@ -61,7 +61,20 @@ public abstract class CardEffect : ScriptableObject, ICloneable
 
         if (cardCopies.Count > 1)
         {
-            iTween.ShakePosition(card.cardPhysicalInst.gameObject, iTween.Hash("x", 0.01f, "y", 0.01f, "time", 1.0f));
+            float shakeAmt = 0.2f; // the degrees to shake
+            float shakePeriodTime = 0.22f; // The period of each shake
+            float dropOffTime = 1f; // How long it takes the shaking to settle down to nothing
+
+            LTDescr shakeTween = LeanTween.rotateAroundLocal(card.cardPhysicalInst.gameObject, Vector3.right, shakeAmt, shakePeriodTime)
+                .setEase(LeanTweenType.easeShake) // this is a special ease that is good for shaking
+                .setLoopClamp()
+                .setRepeat(-1);
+
+            LeanTween.value(card.cardPhysicalInst.gameObject, shakeAmt, 0f, dropOffTime).setOnUpdate(
+                (float val) => {
+                    shakeTween.setTo(Vector3.right * val);
+                }
+            ).setEase(LeanTweenType.easeOutQuad);
 
             return true;
         }

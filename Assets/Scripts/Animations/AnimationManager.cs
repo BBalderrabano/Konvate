@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 public class AnimationManager : MonoBehaviour
 {
@@ -71,7 +72,24 @@ public class AnimationManager : MonoBehaviour
                 }
                 else
                 {
-                    iTween.MoveTo(chip,
+                    Hashtable hash = new Hashtable
+                    {
+                        { "action", actionId },
+                        { "new_parent", parent},
+                        { "object", chip},
+                        { "photonId", enemy.photonId},
+                        { "animationId", animationPointer.animId},
+                        { "reset_position", true}
+                    };
+
+                    LeanTween.move(chip, travelTo, Settings.CHIP_ANIMATION_TIME)
+                        .setEaseInOutQuad()
+                        .setDelay(delay)
+                        .setOnStart(() => { AudioManager.singleton.Play(SoundEffectType.MOVE_CHIP); })
+                        .setOnComplete(BleedChipDamage)
+                        .setOnCompleteParam(hash as object);
+
+                    /*iTween.MoveTo(chip,
                         iTween.Hash(
                             "position", travelTo,
                             "time", Settings.CHIP_ANIMATION_TIME,
@@ -88,7 +106,7 @@ public class AnimationManager : MonoBehaviour
                                                             "animationId", animationPointer.animId,
                                                             "reset_position", true),
                             "onCompleteTarget", this.gameObject
-                    ));
+                    ));*/
                 }
             }
         }
@@ -132,7 +150,24 @@ public class AnimationManager : MonoBehaviour
             float delay = Settings.ANIMATION_DELAY + (Settings.ANIMATION_INTERVAL * i);
             chip_component.state = ChipSate.STASHED;
 
-            iTween.MoveTo(chip,
+            Hashtable hash = new Hashtable
+                    {
+                        { "action", actionId },
+                        { "new_parent", chip_component.owner.currentHolder.bleedChipHolder.value.gameObject},
+                        { "object", chip},
+                        { "photonId", target_photonId},
+                        { "animationId", animationPointer.animId},
+                        { "reset_position", true}
+                    };
+
+            LeanTween.move(chip, target.currentHolder.bleedChipHolder.value.position, Settings.CHIP_ANIMATION_TIME)
+                .setEaseInOutQuad()
+                .setDelay(delay)
+                .setOnStart(() => { AudioManager.singleton.Play(SoundEffectType.MOVE_CHIP); })
+                .setOnComplete(BleedChipDamage)
+                .setOnCompleteParam(hash as object);
+
+            /*iTween.MoveTo(chip,
                     iTween.Hash(
                         "position", target.currentHolder.bleedChipHolder.value.position,
                         "time", Settings.CHIP_ANIMATION_TIME,
@@ -149,7 +184,7 @@ public class AnimationManager : MonoBehaviour
                                                         "animationId", animationPointer.animId,
                                                         "reset_position", true),
                         "onCompleteTarget", this.gameObject
-            ));
+            ));*/
         }
 
         return animationPointer;
@@ -224,7 +259,21 @@ public class AnimationManager : MonoBehaviour
 
                 float delay = Settings.ANIMATION_DELAY + (Settings.ANIMATION_INTERVAL * chips_to_animate);
 
-                iTween.RotateTo(chip,
+                Hashtable hash = new Hashtable
+                    {
+                        { "action", actionId },
+                        { "object", chip},
+                        { "photonId", player.photonId},
+                        { "animationId", animationPointer.animId},
+                    };
+
+                LeanTween.rotate(chip, rotateTo, Settings.CHIP_ANIMATION_TIME * 0.5f)
+                    .setEaseInOutQuad()
+                    .setDelay(delay)
+                    .setOnComplete(RotateBleedChips)
+                    .setOnCompleteParam(hash);
+
+                /*iTween.RotateTo(chip,
                     iTween.Hash(
                         "rotation", rotateTo,
                         "time", (Settings.CHIP_ANIMATION_TIME * 0.5),
@@ -236,7 +285,7 @@ public class AnimationManager : MonoBehaviour
                                                         "photonId", player.photonId,
                                                         "animationId", animationPointer.animId),
                         "onCompleteTarget", this.gameObject
-                ));
+                ));*/
 
                 chips_to_animate++;
             }
@@ -253,11 +302,28 @@ public class AnimationManager : MonoBehaviour
         int action_id = (int)hstbl["action"];
         int animationId = (int)hstbl["animationId"];
 
-        Vector3 rotateAdd = new Vector3(0, 90, 0);
+        Vector3 rotateAdd = new Vector3(0, 180, 0);
 
         chip.GetComponent<Chip>().backSide.gameObject.SetActive(true);
 
-        iTween.RotateAdd(chip,
+        Hashtable hash = new Hashtable
+                    {
+                        { "action", action_id },
+                        { "new_parent", null},
+                        { "object", chip},
+                        { "photonId", -1},
+                        { "animationId", animationId},
+                        { "reset_position", true}
+                    };
+
+        LeanTween.rotate(chip, rotateAdd, Settings.CHIP_ANIMATION_TIME * 0.5f)
+            .setEaseInOutQuad()
+            .setDelay(Settings.CHIP_ANIMATION_DELAY)
+            .setOnStart(() => { AudioManager.singleton.Play(SoundEffectType.PLACE_CHIP); })
+            .setOnComplete(AM_FinishAnimation)
+            .setOnCompleteParam(hash as object);
+
+        /*iTween.RotateAdd(chip,
             iTween.Hash(
                     "amount", rotateAdd,
                     "time", (Settings.CHIP_ANIMATION_TIME * 0.5),
@@ -273,7 +339,7 @@ public class AnimationManager : MonoBehaviour
                                                     "animationId", animationId,
                                                     "reset_position", true),
                     "onCompleteTarget", this.gameObject
-        ));
+        ));*/
     }
     #endregion
 
@@ -321,7 +387,25 @@ public class AnimationManager : MonoBehaviour
 
                 chip_component.state = ChipSate.STASHED;
 
-                iTween.MoveTo(chip,
+                Hashtable hash = new Hashtable
+                    {
+                        { "action", actionId },
+                        { "new_parent", parentTo},
+                        { "object", chip},
+                        { "photonId", photonId},
+                        { "animationId", animationPointer.animId},
+                        { "reset_position", true},
+                        { "play_sound", SoundEffectType.PLACE_CHIP }
+                    };
+
+                LeanTween.move(chip, Settings.WorldToCanvasPosition(card.cardPhysicalInst.transform.position), Settings.CHIP_ANIMATION_TIME)
+                    .setEaseInOutQuad()
+                    .setDelay(delay)
+                    .setOnStart(() => { AudioManager.singleton.Play(SoundEffectType.MOVE_CHIP); })
+                    .setOnComplete(AM_FinishAnimation)
+                    .setOnCompleteParam(hash as object);
+
+                /*iTween.MoveTo(chip,
                     iTween.Hash(
                         "position", Settings.WorldToCanvasPosition(card.cardPhysicalInst.transform.position),
                         "time", Settings.CHIP_ANIMATION_TIME,
@@ -339,7 +423,7 @@ public class AnimationManager : MonoBehaviour
                                                         "reset_position", true,
                                                         "play_sound", SoundEffectType.PLACE_CHIP),
                         "onCompleteTarget", this.gameObject
-                ));
+                ));*/
             }
             else if (floatsDefend)
             {
@@ -438,7 +522,25 @@ public class AnimationManager : MonoBehaviour
 
             float delay = Settings.ANIMATION_DELAY + (Settings.ANIMATION_INTERVAL * i);
 
-            iTween.MoveTo(chip.gameObject,
+            Hashtable hash = new Hashtable
+                    {
+                        { "action", actionId },
+                        { "new_parent", parentTo},
+                        { "object", chip.gameObject},
+                        { "photonId", photonId},
+                        { "animationId", animationPointer.animId},
+                        { "reset_position", true},
+                        { "play_sound", SoundEffectType.PLACE_CHIP }
+                    };
+
+            LeanTween.move(chip.gameObject, travelTo, Settings.CHIP_ANIMATION_TIME)
+                .setEaseInOutQuad()
+                .setDelay(delay)
+                .setOnStart(() => { AudioManager.singleton.Play(SoundEffectType.MOVE_CHIP); })
+                .setOnComplete(AM_FinishAnimation)
+                .setOnCompleteParam(hash as object);
+
+            /*iTween.MoveTo(chip.gameObject,
                 iTween.Hash(
                     "position", travelTo,
                     "time", Settings.CHIP_ANIMATION_TIME,
@@ -456,7 +558,7 @@ public class AnimationManager : MonoBehaviour
                                                     "reset_position", true,
                                                     "play_sound", SoundEffectType.PLACE_CHIP),
                     "onCompleteTarget", this.gameObject
-            ));
+            ));*/
         }
 
         return animationPointer;
@@ -466,9 +568,25 @@ public class AnimationManager : MonoBehaviour
     {
         Animation animationPointer = new Animation();
 
-        AudioManager.singleton.Play(SoundEffectType.MOVE_CHIP);
+        Hashtable hash = new Hashtable
+                    {
+                        { "action", actionId },
+                        { "new_parent", new_parent},
+                        { "object", chip},
+                        { "photonId", photonId},
+                        { "animationId", animationPointer.animId},
+                        { "reset_position", true},
+                        { "play_sound", SoundEffectType.PLACE_CHIP }
+                    };
 
-        iTween.MoveTo(chip,
+        LeanTween.move(chip.gameObject, position, Settings.CHIP_ANIMATION_TIME)
+            .setEaseInOutQuad()
+            .setDelay(Settings.CHIP_ANIMATION_DELAY)
+            .setOnStart(() => { AudioManager.singleton.Play(SoundEffectType.MOVE_CHIP); })
+            .setOnComplete(AM_FinishAnimation)
+            .setOnCompleteParam(hash as object);
+
+        /*iTween.MoveTo(chip,
             iTween.Hash(
                 "position", position,
                 "time", Settings.CHIP_ANIMATION_TIME,
@@ -483,7 +601,7 @@ public class AnimationManager : MonoBehaviour
                                                 "reset_position", true,
                                                 "play_sound", SoundEffectType.PLACE_CHIP),
                 "onCompleteTarget", this.gameObject
-        ));
+        ));*/
 
         return animationPointer;
     }
@@ -542,7 +660,7 @@ public class AnimationManager : MonoBehaviour
     }
     #endregion
     
-    public void AM_FinishAnimation(object animParams)
+    void AM_FinishAnimation(object animParams)
     {
         Hashtable hstbl = (Hashtable)animParams;
 
@@ -584,7 +702,7 @@ public class AnimationManager : MonoBehaviour
         }
     }
 
-    public void PlaySound(object animParams)
+    void PlaySound(object animParams)
     {
         Hashtable hstbl = (Hashtable)animParams;
 
