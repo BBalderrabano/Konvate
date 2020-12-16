@@ -21,6 +21,13 @@ public class UINavigator : MonoBehaviour
     List<Button> allButtons;
     List<TMP_InputField> allInputFields;
 
+    [SerializeField]
+    AudioClip chainUp;
+    [SerializeField]
+    AudioClip chainDown;
+    [SerializeField]
+    AudioClip buttonClick;
+
     void Start()
     {
         screenHeight = GetComponent<RectTransform>().rect.height;
@@ -40,6 +47,7 @@ public class UINavigator : MonoBehaviour
         }); ;
 
         LeanTween.moveLocalY(multiplayerMenu, multiplayerMenu.transform.localPosition.y + screenHeight, time).setEase(type).setOnComplete(EnableAllButtons);
+        LeanAudio.play(chainUp, 0.7f);
     }
 
     public void NavigateToMain()
@@ -52,6 +60,7 @@ public class UINavigator : MonoBehaviour
 
         LeanTween.moveLocalY(multiplayerMenu, multiplayerMenu.transform.localPosition.y - screenHeight, time).setEase(type).setOnComplete(EnableAllButtons);
 
+        LeanAudio.play(chainDown, 0.7f);
     }
 
     void DisableAllButtons()
@@ -78,6 +87,11 @@ public class UINavigator : MonoBehaviour
         {
             input_field.interactable = true;
         }
+    }
+    
+    public void PlayButtonSfx()
+    {
+        LeanAudio.play(buttonClick, 1f);
     }
 
     public enum MENU

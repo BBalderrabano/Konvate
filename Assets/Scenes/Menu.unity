@@ -967,6 +967,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1785416457}
+        m_MethodName: PlayButtonSfx
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &492092023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1540,6 +1551,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1785416457}
         m_MethodName: NavigateToMultiplayer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1785416457}
+        m_MethodName: PlayButtonSfx
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2253,7 +2275,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1172790758}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1785416457}
+        m_MethodName: PlayButtonSfx
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1172790758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2769,6 +2802,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1785416457}
+        m_MethodName: PlayButtonSfx
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1290638968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3037,6 +3081,17 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1608396521}
         m_MethodName: ContinueSelection
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1785416457}
+        m_MethodName: PlayButtonSfx
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3812,6 +3867,9 @@ MonoBehaviour:
   rightDeckContainer: {fileID: 1467504491}
   selector: {fileID: 113560299}
   transition_time: 0.28
+  selectDeckSfx:
+  - {fileID: 8300000, guid: 7b87cb6a6c697a149b6b57981943ef73, type: 3}
+  - {fileID: 8300000, guid: ab61573577a8bf448ac788c519ea6571, type: 3}
 --- !u!114 &1608396522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4064,6 +4122,9 @@ MonoBehaviour:
   multiplayerMenu: {fileID: 1640659698}
   type: 28
   time: 1
+  chainUp: {fileID: 8300000, guid: 2bc32ea938b16db4ebd5874394ca5d84, type: 3}
+  chainDown: {fileID: 8300000, guid: 0f10b37295fc7904e9ecae987d9eb064, type: 3}
+  buttonClick: {fileID: 8300000, guid: 92526bc488cadab4594d3741b8b75566, type: 3}
 --- !u!1 &1799289347
 GameObject:
   m_ObjectHideFlags: 0
@@ -5147,7 +5208,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1954180965}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1785416457}
+        m_MethodName: PlayButtonSfx
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1954180965
 MonoBehaviour:
   m_ObjectHideFlags: 0

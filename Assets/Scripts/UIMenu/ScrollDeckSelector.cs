@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -78,11 +77,14 @@ public class ScrollDeckSelector : MonoBehaviour
     //[SerializeField]
     LeanTweenType scaleAnimation = LeanTweenType.linear;
 
+    [SerializeField]
+    List<AudioClip> selectDeckSfx = new List<AudioClip>();
+
     internal void Init(List<DeckHolder> available_decks, int saved_deck)
     {
         isMoving = false;
         canMove = true;
-
+        
         deckList = available_decks;
 
         centerPosition = centerDeck.transform.position;
@@ -143,6 +145,8 @@ public class ScrollDeckSelector : MonoBehaviour
 
         isMoving = true;
 
+        LeanAudio.play(selectDeckSfx[Random.Range(0, selectDeckSfx.Count)]);
+
         LeanTween.value(0, 1, transition_time + 0.01f).setOnComplete(() => {
             isMoving = false;
         });
@@ -168,6 +172,8 @@ public class ScrollDeckSelector : MonoBehaviour
             return;
 
         isMoving = true;
+
+        LeanAudio.play(selectDeckSfx[Random.Range(0, selectDeckSfx.Count)]);
 
         LeanTween.value(0, 1, transition_time + 0.01f).setOnComplete(() => {
             isMoving = false;
