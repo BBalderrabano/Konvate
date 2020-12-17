@@ -72,7 +72,7 @@ public class CardViz : MonoBehaviour
         }
 
         ModifyCostColor(c);
-    }
+    }    
 
     public void ModifyCostColor(Card c)
     {

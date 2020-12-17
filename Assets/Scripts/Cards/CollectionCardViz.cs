@@ -2,13 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.EventSystems;
+using System.Collections.ObjectModel;
 
-public class CollectionCardViz : MonoBehaviour
+public class CollectionCardViz : MonoBehaviour, IPointerClickHandler
 {
     public CardViz viz;
 
-    [SerializeField]
-    TMP_Text amount_counter;
+    public TMP_Text amount_counter;
+
+    public CollectionNavigator collectionNavigator;
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        collectionNavigator.PreviewCard(viz.card, transform.position);
+    }
 
     private void Start()
     {
