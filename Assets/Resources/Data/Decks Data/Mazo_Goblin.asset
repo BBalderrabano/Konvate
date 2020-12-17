@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deckName: Goblin
   cardIds:
-  - Goblin_Barril de Pescado
-  - Goblin_Barril de Pescado
-  - Goblin_Barril de Pescado
+  - Goblin_Barril Apestoso
+  - Goblin_Barril Apestoso
+  - Goblin_Barril Apestoso
   - Goblin_Barril Explosivo
   - Goblin_Chantaje
   - Goblin_Chantaje

@@ -28,6 +28,16 @@ public class SwipeDetector : MonoBehaviour
             OnSwipeRight();
         }
 
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            OnSwipeUp();
+        }
+
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            OnSwipeDown();
+        }
+
         foreach (Touch touch in Input.touches)
         {
             if (touch.phase == TouchPhase.Began)
@@ -107,6 +117,7 @@ public class SwipeDetector : MonoBehaviour
     //////////////////////////////////CALLBACK FUNCTIONS/////////////////////////////
     void OnSwipeUp()
     {
+        nav.NavigateToCollection();
     }
 
     void OnSwipeDown()

@@ -7,6 +7,8 @@ using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class NetworkManager : Photon.Pun.MonoBehaviourPunCallbacks
 {
+    public PlayerProfileManager profileManager;
+
     public static bool isMaster;
     public static NetworkManager singleton;
 
@@ -85,6 +87,8 @@ public class NetworkManager : Photon.Pun.MonoBehaviourPunCallbacks
 
             propertiesInit = true;
         }
+
+        profileManager.SelectDeck(profileManager.deck_saved_index);
 
         JoinRandomRoom();
     }

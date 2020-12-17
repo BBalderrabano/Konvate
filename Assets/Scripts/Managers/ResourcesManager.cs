@@ -5,6 +5,7 @@ using UnityEngine;
 public class ResourcesManager : ScriptableObject
 {
     public Card[] allCards;
+
     [System.NonSerialized]
     Dictionary<string, Card> cardDictionary = new Dictionary<string, Card>();
 
@@ -53,6 +54,19 @@ public class ResourcesManager : ScriptableObject
         cardInstIndex++;
 
         return newInst;
+    }
+
+    public Card GetCardInfo(string id)
+    {
+        for (int i = 0; i < allCards.Length; i++)
+        {
+            if(allCards[i].name == id)
+            {
+                return allCards[i];
+            }
+        }
+
+        return null;
     }
 
     private Card GetCard(string id)

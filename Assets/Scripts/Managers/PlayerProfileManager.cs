@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class PlayerSelectionManager : MonoBehaviour
+public class PlayerProfileManager : MonoBehaviour
 {
     public StringVariable playerName;
     public List<DeckHolder> available_decks = new List<DeckHolder>();
@@ -13,7 +13,9 @@ public class PlayerSelectionManager : MonoBehaviour
     public TMP_Dropdown collection_selector;
 
     PlayerProfile profile;
-    int deck_saved_index = 0;
+
+    [System.NonSerialized]
+    public int deck_saved_index = 0;
 
     private void Awake()
     {
@@ -41,7 +43,6 @@ public class PlayerSelectionManager : MonoBehaviour
 
         collection_selector.ClearOptions();
 
-
         for (int i = 0; i < available_decks.Count; i++)
         {
             TMP_Dropdown.OptionData option = new TMP_Dropdown.OptionData(available_decks[i].deckName);
@@ -67,6 +68,9 @@ public class PlayerSelectionManager : MonoBehaviour
     {
         profile.cardIds = available_decks[index].cardIds;
         profile.deckName = available_decks[index].deckName;
+
+        collection_selector.value = index;
+        collection_selector.captionText.text = available_decks[index].deckName;
 
         if (PlayerPrefs.HasKey("deck_name"))
         {

@@ -22,7 +22,7 @@ public class ScrollDeckSelector : MonoBehaviour
 
     Vector3 rightPosition;
 
-    public PlayerSelectionManager selector;
+    public PlayerProfileManager playerProfile;
 
     List<DeckHolder> deckList;
     List<DeckPreviewHolder> decksPreview = new List<DeckPreviewHolder>();
@@ -57,7 +57,8 @@ public class ScrollDeckSelector : MonoBehaviour
     [SerializeField]
     float transition_time = 0.28f;
 
-    int current_deck_index;
+    [System.NonSerialized]
+    public int current_deck_index = 0;
 
     bool isMoving = false;
     bool canMove = true;
@@ -164,6 +165,8 @@ public class ScrollDeckSelector : MonoBehaviour
         ScaleDeckHolder(getDeckAtPos(DeckPreviewPosition.RIGHT_HIDDEN), Vector3.zero, Vector3.one, DeckPreviewPosition.RIGHT, right.transform.position);
 
         PopulateCard(getDeckAtPos(DeckPreviewPosition.LEFT_HIDDEN), nextDeck(current_deck_index, 2), DeckPreviewPosition.RIGHT_HIDDEN);
+
+        playerProfile.deck_saved_index = current_deck_index;
     }
 
     public void MoveRight()
@@ -192,6 +195,8 @@ public class ScrollDeckSelector : MonoBehaviour
         ScaleDeckHolder(getDeckAtPos(DeckPreviewPosition.LEFT_HIDDEN), Vector3.zero, Vector3.one, DeckPreviewPosition.LEFT, left.transform.position);
 
         PopulateCard(getDeckAtPos(DeckPreviewPosition.RIGHT_HIDDEN), nextDeck(current_deck_index, -2), DeckPreviewPosition.LEFT_HIDDEN);
+
+        playerProfile.deck_saved_index = current_deck_index;
     }
 
     void MoveDeckHolder(DeckPreviewHolder holder, Vector3 moveTo, Vector3 scaleTo, DeckPreviewPosition newPosition)
