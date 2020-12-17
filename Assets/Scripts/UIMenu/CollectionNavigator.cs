@@ -34,14 +34,15 @@ public class CollectionNavigator : MonoBehaviour
         LoadDeck(playerProfileManager.deck_saved_index);
     }
 
-    public void LoadCollectionMenu()
+    public void LoadDeck()
     {
         LoadDeck(playerProfileManager.deck_saved_index);
-        cardCollectionScroll.verticalNormalizedPosition = 1;
     }
 
     public void LoadDeck(int deck_index)
     {
+        cardCollectionScroll.verticalNormalizedPosition = 1;
+
         DeckHolder loadedDeck = playerProfileManager.available_decks[deck_index];
 
         foreach (DeckPreviewHolder dp in deckPreviews)

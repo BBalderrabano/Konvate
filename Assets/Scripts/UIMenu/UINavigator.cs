@@ -80,7 +80,7 @@ public class UINavigator : MonoBehaviour
         lastMenu = currentMenu;
         currentMenu = MENU.COLLECTION_MENU;
 
-        collectionNavigator.LoadCollectionMenu();
+        collectionNavigator.LoadDeck();
         collectionMenu.transform.GetChild(0).transform.localScale = new Vector3(2, 2);
 
         LeanTween.scale(collectionMenu.transform.GetChild(0).gameObject, Vector3.one, time);
