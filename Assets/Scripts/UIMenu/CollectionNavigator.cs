@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,7 +24,8 @@ public class CollectionNavigator : MonoBehaviour
 
     List<CollectionCardViz> cardsViz = new List<CollectionCardViz>();
 
-    CanvasGroup canvasGroup;
+    [SerializeField]
+    List<AudioClip> selectDeckSfx = new List<AudioClip>();
 
     void Start()
     {
@@ -38,8 +38,6 @@ public class CollectionNavigator : MonoBehaviour
             GameObject go = Instantiate(cardPrefab, cardPrefab.transform.parent);
             cardsViz.Add(go.GetComponent<CollectionCardViz>());
         }
-
-        canvasGroup = GetComponent<CanvasGroup>();
 
         cardPreview_viz = cardPreview.GetComponent<CardViz>();
 
@@ -63,6 +61,8 @@ public class CollectionNavigator : MonoBehaviour
         LeanTween.scale(cardPreview, cardPreviewScale, 0.3f);
 
         cardPreview_viz.LoadCardViz(c);
+
+        LeanAudio.play(selectDeckSfx[UnityEngine.Random.Range(0, selectDeckSfx.Count)]);
     }
 
     public void LoadDeck()

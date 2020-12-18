@@ -738,6 +738,9 @@ MonoBehaviour:
   - {fileID: 1832868017}
   playerProfileManager: {fileID: 113560299}
   resourcesManager: {fileID: 11400000, guid: 523b36263646ffe489ec02869abdfaf9, type: 2}
+  selectDeckSfx:
+  - {fileID: 8300000, guid: 7b87cb6a6c697a149b6b57981943ef73, type: 3}
+  - {fileID: 8300000, guid: ab61573577a8bf448ac788c519ea6571, type: 3}
 --- !u!1 &332576838
 GameObject:
   m_ObjectHideFlags: 0
