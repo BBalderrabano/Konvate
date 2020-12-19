@@ -64,6 +64,11 @@ public class PlayerProfileManager : MonoBehaviour
         deck_selector.Init(available_decks, deck_saved_index);
     }
 
+    public void SelectDeck()
+    {
+        SelectDeck(deck_saved_index);
+    }
+
     public void SelectDeck(int index)
     {
         profile.cardIds = available_decks[index].cardIds;

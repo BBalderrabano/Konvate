@@ -14,7 +14,6 @@ public class PlayerHolder : ScriptableObject
     [System.NonSerialized]
     public NetworkPrint print;
 
-    public List<string> starting_deck = new List<string>();
     public List<Card> all_cards = new List<Card>();
 
     public Card GetCard(int instanceId)
@@ -210,7 +209,7 @@ public class PlayerHolder : ScriptableObject
     public void Init()
     {
         baseEnergy = 3;
-        maxHealth = 10;
+        maxHealth = 1;  ///BRUNO ojo aca
         bleedCount = maxHealth;
         StartDrawAmount = 5;
 
@@ -219,6 +218,8 @@ public class PlayerHolder : ScriptableObject
         handCards.Clear();
         playedCards.Clear();
         discardCards.Clear();
+        floatingDefends.Clear();
+        statMods.Clear();
 
         playerUI.UpdateAll();
 
@@ -227,13 +228,16 @@ public class PlayerHolder : ScriptableObject
 
     void CreateBleedChips()
     {
-        GameObject prefab = GameManager.singleton.resourcesManager.dataHolder.bleedChipPrefab;
-
-        for (int i = 0; i < maxHealth; i++)
+        if(currentHolder.bleedChipHolder.value.GetComponentsInChildren<Chip>().Length <= maxHealth)
         {
-            GameObject newInstance = Instantiate(prefab);
-            Settings.SetParent( newInstance.transform, currentHolder.bleedChipHolder.value);
-            newInstance.GetComponent<Chip>().owner = this;
+            GameObject prefab = GameManager.singleton.resourcesManager.dataHolder.bleedChipPrefab;
+
+            for (int i = 0; i < maxHealth; i++)
+            {
+                GameObject newInstance = Instantiate(prefab);
+                Settings.SetParent(newInstance.transform, currentHolder.bleedChipHolder.value);
+                newInstance.GetComponent<Chip>().owner = this;
+            }
         }
     }
 

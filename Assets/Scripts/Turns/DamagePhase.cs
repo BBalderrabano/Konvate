@@ -31,6 +31,8 @@ public class DamagePhase : Phase
                 EndGameScreen.singleton.EndGame(isOffensive, (isOffensive ? "Victoria por ofensiva" : "Derrota por ofensiva"));
             }
 
+            OnEndPhase();
+
             return false;
         }
         else

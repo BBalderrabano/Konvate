@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Turn : ScriptableObject
 {
     [System.NonSerialized]
-    public int index = 0;
+    public int phaseIndex = 0;
     public PhaseVariable currentPhase;
     public Phase[] phases;
 
@@ -56,33 +56,43 @@ public class Turn : ScriptableObject
 
     public int turnCount = 0;
 
+    public void ResetMatch()
+    {
+        turnCount = 0;
+        phaseIndex = 0;
+        startTurnEffects.Clear();
+        endTurnEffects.Clear();
+        localInflictedBleed = false;
+        opponentInflictedBleed = false;
+    }
+
     public bool Execute()
     {
         bool result = false;
         bool phaseDone;
 
-        if(currentPhase.value != phases[index])
+        if(currentPhase.value != phases[phaseIndex])
         {
-            currentPhase.value = phases[index];
+            currentPhase.value = phases[phaseIndex];
 
-            phases[index].OnStartPhase();
+            phases[phaseIndex].OnStartPhase();
 
             return false;
         }
         else
         {
-            phaseDone = phases[index].IsComplete();
+            phaseDone = phases[phaseIndex].IsComplete();
         }
 
         if (phaseDone)
         {
-            phases[index].OnEndPhase();
+            phases[phaseIndex].OnEndPhase();
 
-            index++;
+            phaseIndex++;
 
-            if(index > phases.Length - 1)
+            if(phaseIndex > phases.Length - 1)
             {
-                index = 0;
+                phaseIndex = 0;
                 result = true;
             }
         }

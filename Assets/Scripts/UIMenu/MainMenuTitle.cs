@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -25,6 +26,7 @@ public class MainMenuTitle : MonoBehaviour
     Color alphaColor;
 
     public List<Button> mainMenuButtons;
+    public Button multiplayerButton;
 
     [SerializeField]
     bool tryGradient = false;
@@ -93,6 +95,8 @@ public class MainMenuTitle : MonoBehaviour
         {
             button.interactable = true;
         }
+
+        multiplayerButton.interactable = PhotonNetwork.IsConnectedAndReady;
 
         StartGradient();
     }

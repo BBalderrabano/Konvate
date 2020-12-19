@@ -102,6 +102,9 @@ public class MultiplayerManager : MonoBehaviourPun, IPunInstantiateMagicCallback
         singleton = this;
         DontDestroyOnLoad(this.gameObject);
 
+        SessionManager.singleton.dontDestroyOnLoadObjects.Add(multiplayerReferences.gameObject);
+        SessionManager.singleton.dontDestroyOnLoadObjects.Add(this.gameObject);
+
         InstantiateNetworkPrint();
         NetworkManager.singleton.LoadGameScene();
     }
@@ -127,8 +130,6 @@ public class MultiplayerManager : MonoBehaviourPun, IPunInstantiateMagicCallback
             {
                 GM.allPlayers[0] = GM.localPlayer;
                 GM.allPlayers[0].photonId = p.photonId;
-                GM.allPlayers[0].starting_deck.Clear();
-                GM.allPlayers[0].starting_deck.AddRange(p.getStartingCardIds());
                 GM.allPlayers[0].isLocal = true;
                 GM.allPlayers[0].playerName = PhotonNetwork.PlayerList[0].NickName;
 
@@ -140,8 +141,6 @@ public class MultiplayerManager : MonoBehaviourPun, IPunInstantiateMagicCallback
             {
                 GM.allPlayers[1] = GM.clientPlayer;
                 GM.allPlayers[1].photonId = p.photonId;
-                GM.allPlayers[1].starting_deck.Clear();
-                GM.allPlayers[1].starting_deck.AddRange(p.getStartingCardIds());
                 GM.allPlayers[1].isLocal = false;
                 GM.allPlayers[1].playerName = PhotonNetwork.PlayerList[1].NickName;
 

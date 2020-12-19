@@ -289,7 +289,7 @@ public class ScrollSelectionManager : MonoBehaviour
         Clear();
     }
 
-    void Clear()
+    public void Clear()
     {
         WarningPanel.singleton.Disable();
         isActive = false;

@@ -20,12 +20,21 @@ public class ResourcesManager : ScriptableObject
     {
         actionIndex = 0;
         cardInstIndex = 0;
+        animationIndex = 0;
+
         cardDictionary.Clear();
 
         for (int i = 0; i < allCards.Length; i++)
         {
             cardDictionary.Add(allCards[i].name, allCards[i]);
         }
+    }
+
+    public void ResetMatch()
+    {
+        actionIndex = 0;
+        cardInstIndex = 0;
+        animationIndex = 0;
     }
 
     public int GetActionIndex()

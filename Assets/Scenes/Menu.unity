@@ -224,6 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bf54ab74695cf644b4c8e1589ebc0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dontDestroyOnLoadObjects: []
 --- !u!4 &103901670
 Transform:
   m_ObjectHideFlags: 0
@@ -2748,6 +2749,7 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
+  observableSearch: 0
   Synchronization: 0
   OwnershipTransfer: 0
   ObservedComponents:
@@ -3361,6 +3363,7 @@ MonoBehaviour:
   mainMenuButtons:
   - {fileID: 1954180964}
   - {fileID: 1172790757}
+  multiplayerButton: {fileID: 704036223}
   tryGradient: 0
   gradientDuration: 0.2
   shakeIntensity: 14
@@ -6446,7 +6449,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 629891817}
   m_HandleRect: {fileID: 629891816}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -12080,6 +12083,7 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
+  observableSearch: 0
   Synchronization: 0
   OwnershipTransfer: 0
   ObservedComponents:

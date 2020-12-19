@@ -34,4 +34,9 @@ public class AudioManager : MonoBehaviour
     {
         GetComponentInChildren<PlayMusic>().playMusic = true;
     }
+
+    public void StopAllSounds()
+    {
+        GetComponentInChildren<PlayMusic>().StopAllSounds();
+    }
 }

@@ -20,6 +20,7 @@ public class StartGameScript : MonoBehaviour
             playerVsText.GetComponent<TMPro.TMP_Text>().text = MultiplayerManager.singleton.GetVsText();
         }
 
+        img.color = new Color(0, 0, 0, 1);
         img.gameObject.SetActive(true);
         displayText.SetActive(true);
         playerVsText.SetActive(true);
@@ -27,6 +28,11 @@ public class StartGameScript : MonoBehaviour
         fadeCourtain = false;
         timerEnd = false;
         waitTimer = 0f;
+    }
+
+    public void ResetMatch()
+    {
+        Start();
     }
 
     void Update()

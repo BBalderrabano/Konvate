@@ -35,6 +35,13 @@ public class PlayMusic : MonoBehaviour
         audioSource.PlayOneShot(GetMusicTrack());
     }
 
+    public void StopAllSounds()
+    {
+        index = 0;
+        playMusic = false;
+        audioSource.Stop();
+    }
+
     private AudioClip GetMusicTrack()
     {
         return tracks[index];

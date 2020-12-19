@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public ActionManager actionManager;
     public AnimationManager animationManager;
     public ResourcesManager resourcesManager;
+    public StartGameScript startGameManager;
 
     public bool isMultiplayer;
 
@@ -187,6 +188,38 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void ResetMatch(int new_deck_index = -1)
+    {
+        foreach (Card c in all_cards)
+        {
+            Destroy(c.cardPhysicalInst.gameObject);
+        }
+
+        all_cards.Clear();
+
+        currentPlayer = null;
+
+        text_mods.Clear();
+
+        HidePreviewCard();
+        SetState(null);
+
+        ScrollSelectionManager.singleton.Clear();
+        AudioManager.singleton.StopAllSounds();
+        WarningPanel.singleton.Disable();
+
+        resourcesManager.ResetMatch();
+        startGameManager.ResetMatch();
+
+        turn.ResetMatch();
+        onTurnChange.Raise();
+        onPhaseControllerChange.Raise();
+
+        SetPlayers();
+
+        isInit = false;
+    }
+
     void SetPlayers()
     {
         for (int i = 0; i < allPlayers.Length; i++)
@@ -195,7 +228,7 @@ public class GameManager : MonoBehaviour
 
             if (!isMultiplayer) 
             {
-                PlayerHolder playerHolder = allPlayers[i];
+                /*PlayerHolder playerHolder = allPlayers[i];
 
                 for (int d = 0; d < playerHolder.starting_deck.Count; d++)
                 {
@@ -221,7 +254,7 @@ public class GameManager : MonoBehaviour
 
                     playerHolder.deck.Add(card);
                     playerHolder.all_cards.Add(card);
-                }
+                }*/
             }
         }
 

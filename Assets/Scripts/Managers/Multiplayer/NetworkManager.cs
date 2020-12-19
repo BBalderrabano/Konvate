@@ -40,6 +40,8 @@ public class NetworkManager : Photon.Pun.MonoBehaviourPunCallbacks
             rm = Resources.Load("ResourcesManager") as ResourcesManager;
             singleton = this;
             DontDestroyOnLoad(this.gameObject);
+
+            SessionManager.singleton.dontDestroyOnLoadObjects.Add(this.gameObject);
         }
         else
         {
@@ -49,7 +51,6 @@ public class NetworkManager : Photon.Pun.MonoBehaviourPunCallbacks
 
     private void Start()
     {
-        propertiesInit = false;
         retryConnection = false;
         isMaster = false;
 
@@ -60,35 +61,34 @@ public class NetworkManager : Photon.Pun.MonoBehaviourPunCallbacks
     public void Init()
     {
         rm.Init();
-        Photon.Pun.PhotonNetwork.ConnectUsingSettings();
+
+        if (!Photon.Pun.PhotonNetwork.IsConnected)
+        {
+            Photon.Pun.PhotonNetwork.ConnectUsingSettings();
+        }
+
         logger.value = "Conectando...";
         loggerUpdate.Raise();
     }
 
     #region My Calls
 
-    bool propertiesInit = false;
-
     public void OnPlayGame()
     {
-        if (!propertiesInit)
+        PlayerProfile profile = Resources.Load("PlayerProfile") as PlayerProfile;
+
+        Hashtable hash = new Hashtable
         {
-            PlayerProfile profile = Resources.Load("PlayerProfile") as PlayerProfile;
+            { "deck", profile.cardIds },
+            { "player_name", profile.playerName },
+            { "PlayerIsReady", false },
+            { "RematchIsReady", false}
+        };
 
-            Hashtable hash = new Hashtable
-            {
-                { "deck", profile.cardIds },
-                { "player_name", profile.playerName },
-                { "PlayerIsReady", false }
-            };
+        Photon.Pun.PhotonNetwork.LocalPlayer.NickName = profile.playerName;
+        Photon.Pun.PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
 
-            Photon.Pun.PhotonNetwork.LocalPlayer.NickName = profile.playerName;
-            Photon.Pun.PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
-
-            propertiesInit = true;
-        }
-
-        profileManager.SelectDeck(profileManager.deck_saved_index);
+        profileManager.SelectDeck();
 
         JoinRandomRoom();
     }
@@ -206,7 +206,7 @@ public class NetworkManager : Photon.Pun.MonoBehaviourPunCallbacks
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
         base.OnPlayerLeftRoom(otherPlayer);
-        EndGameScreen.singleton.EndGame(true, "Oponente se a desconectado");
+        EndGameScreen.singleton.PlayerDisconnected();
     }
 
     public override void OnDisconnected(DisconnectCause cause)
