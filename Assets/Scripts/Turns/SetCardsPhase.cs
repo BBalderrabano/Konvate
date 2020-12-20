@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(menuName = "Turns/Phases/Set Cards Phase")]
 
@@ -51,8 +52,10 @@ public class SetCardsPhase : Phase
         }
     }
 
-    public override void OnTurnButtonPress()
+    public override void OnTurnButtonPress(Button button)
     {
+        base.OnTurnButtonPress(button);
+
         int localPlayerId = GM.localPlayer.photonId;
         int otherPlayerId = GM.clientPlayer.photonId;
 
@@ -65,9 +68,9 @@ public class SetCardsPhase : Phase
         AudioManager.singleton.Play(SoundEffectType.BUTTON_CLICK);
     }
 
-    public override void OnTurnButtonHold()
+    public override void OnTurnButtonHold(Button button)
     {
-        OnTurnButtonPress();
+        OnTurnButtonPress(button);
     }
 
     public override void OnPhaseControllerChange(int photonId)

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(menuName = "Turns/Phase")]
 public abstract class Phase : ScriptableObject
@@ -87,9 +88,31 @@ public abstract class Phase : ScriptableObject
     [System.NonSerialized]
     protected bool isInit = false;
 
-    public abstract void OnTurnButtonHold();
+    public virtual void OnTurnButtonHold(Button button)
+    {
+        LeanTween.value(0, 1, Settings.TURN_BUTTON_COOLDOWN)
+            .setOnStart(() =>
+            {
+                button.interactable = false;
+            })
+            .setOnComplete(()=> 
+            {
+                button.interactable = true;
+            });
+    }
 
-    public abstract void OnTurnButtonPress();
+    public virtual void OnTurnButtonPress(Button button)
+    {
+        LeanTween.value(0, 1, Settings.TURN_BUTTON_COOLDOWN)
+            .setOnStart(() =>
+            {
+                button.interactable = false;
+            })
+            .setOnComplete(() =>
+            {
+                button.interactable = true;
+            });
+    }
 
     public virtual void OnStartPhase()
     {

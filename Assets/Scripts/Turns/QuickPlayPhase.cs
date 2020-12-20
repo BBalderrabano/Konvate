@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SocialPlatforms;
+using UnityEngine.UI;
 
 [CreateAssetMenu(menuName = "Turns/Phases/Quick Play Phase")]
 public class QuickPlayPhase : Phase
@@ -117,8 +118,10 @@ public class QuickPlayPhase : Phase
         }
     }
 
-    public override void OnTurnButtonPress()
+    public override void OnTurnButtonPress(Button button)
     {
+        base.OnTurnButtonPress(button);
+
         int localPlayerId = GM.localPlayer.photonId;
         int otherPlayerId = GM.clientPlayer.photonId;
 
@@ -131,8 +134,10 @@ public class QuickPlayPhase : Phase
         AudioManager.singleton.Play(SoundEffectType.BUTTON_CLICK);
     }
 
-    public override void OnTurnButtonHold()
+    public override void OnTurnButtonHold(Button button)
     {
+        base.OnTurnButtonHold(button);
+
         int localPlayerId = GM.localPlayer.photonId;
         int otherPlayerId = GM.clientPlayer.photonId;
 

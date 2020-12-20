@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(menuName = "Turns/Phases/Final Phase")]
 public class FinalEndPhase : Phase
@@ -148,11 +149,11 @@ public class FinalEndPhase : Phase
     {
     }
 
-    public override void OnTurnButtonHold()
+    public override void OnTurnButtonHold(Button button)
     {
     }
 
-    public override void OnTurnButtonPress()
+    public override void OnTurnButtonPress(Button button)
     {
     }
 

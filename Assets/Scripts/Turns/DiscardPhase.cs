@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(menuName = "Turns/Phases/Discard Phase")]
 public class DiscardPhase : Phase
@@ -70,11 +71,11 @@ public class DiscardPhase : Phase
     {
     }
 
-    public override void OnTurnButtonHold()
+    public override void OnTurnButtonHold(Button button)
     {
     }
 
-    public override void OnTurnButtonPress()
+    public override void OnTurnButtonPress(Button button)
     {
     }
 

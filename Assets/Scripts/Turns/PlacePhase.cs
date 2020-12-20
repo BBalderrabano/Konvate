@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(menuName = "Turns/Phases/Place Phase")]
 public class PlacePhase : Phase
@@ -119,10 +120,10 @@ public class PlacePhase : Phase
         return false;
     }
 
-    public override void OnTurnButtonPress()
+    public override void OnTurnButtonPress(Button button)
     {
     }
-    public override void OnTurnButtonHold()
+    public override void OnTurnButtonHold(Button button)
     {
     }
 

@@ -21,6 +21,8 @@ public static class Settings
     public static float VOLUME_MUSIC = 1f;
     public static float VOLUME_SFX = 1f;
 
+    public static float TURN_BUTTON_COOLDOWN = 0.5f;
+
     public static void Shuffle<T>(this IList<T> ts)
     {
         var count = ts.Count;

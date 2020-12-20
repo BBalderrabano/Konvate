@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(menuName = "Turns/Phases/Damage Phase")]
 public class DamagePhase : Phase
@@ -149,10 +150,11 @@ public class DamagePhase : Phase
         return false;
     }
 
-    public override void OnTurnButtonPress()
+    public override void OnTurnButtonPress(Button button)
     {
     }
-    public override void OnTurnButtonHold()
+
+    public override void OnTurnButtonHold(Button button)
     {
     }
 
