@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Linq;
 
 public class PlayerProfileManager : MonoBehaviour
 {
     public StringVariable playerName;
-    public List<DeckHolder> available_decks = new List<DeckHolder>();
+
+    public ResourcesManager RM;
 
     public TMP_InputField name_selection;
     public ScrollDeckSelector deck_selector;
@@ -29,7 +31,7 @@ public class PlayerProfileManager : MonoBehaviour
         }
         else
         {
-            PlayerPrefs.SetString("deck_name", available_decks[0].deckName);
+            PlayerPrefs.SetString("deck_name", RM.allDecks[0].deckName);
         }
 
         if (PlayerPrefs.HasKey("player_name"))
@@ -43,25 +45,25 @@ public class PlayerProfileManager : MonoBehaviour
 
         collection_selector.ClearOptions();
 
-        for (int i = 0; i < available_decks.Count; i++)
+        for (int i = 0; i < RM.allDecks.Length; i++)
         {
-            TMP_Dropdown.OptionData option = new TMP_Dropdown.OptionData(available_decks[i].deckName);
+            TMP_Dropdown.OptionData option = new TMP_Dropdown.OptionData(RM.allDecks[i].deckName);
 
             collection_selector.options.Add(option);
 
-            if (available_decks[i].deckName == profile.deckName)
+            if (RM.allDecks[i].deckName == profile.deckName)
             {
                 deck_saved_index = i;
             }
         }
 
         collection_selector.value = deck_saved_index;
-        collection_selector.captionText.text = available_decks[deck_saved_index].deckName;
+        collection_selector.captionText.text = RM.allDecks[deck_saved_index].deckName;
 
-        profile.cardIds = available_decks[deck_saved_index].cardIds;
+        profile.cardIds = RM.allDecks[deck_saved_index].cardIds;
         profile.playerName = name_selection.text;
 
-        deck_selector.Init(available_decks, deck_saved_index);
+        deck_selector.Init(RM.allDecks.ToList(), deck_saved_index);
     }
 
     public void SelectDeck()
@@ -71,19 +73,19 @@ public class PlayerProfileManager : MonoBehaviour
 
     public void SelectDeck(int index)
     {
-        profile.cardIds = available_decks[index].cardIds;
-        profile.deckName = available_decks[index].deckName;
+        profile.cardIds = RM.allDecks[index].cardIds;
+        profile.deckName = RM.allDecks[index].deckName;
 
         collection_selector.value = index;
-        collection_selector.captionText.text = available_decks[index].deckName;
+        collection_selector.captionText.text = RM.allDecks[index].deckName;
 
         if (PlayerPrefs.HasKey("deck_name"))
         {
-            PlayerPrefs.SetString("deck_name", available_decks[index].deckName);
+            PlayerPrefs.SetString("deck_name", RM.allDecks[index].deckName);
         }
         else
         {
-            PlayerPrefs.SetString("deck_name", available_decks[index].deckName);
+            PlayerPrefs.SetString("deck_name", RM.allDecks[index].deckName);
         }
     }
 

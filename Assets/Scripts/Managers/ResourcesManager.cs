@@ -5,12 +5,12 @@ using UnityEngine;
 public class ResourcesManager : ScriptableObject
 {
     public Card[] allCards;
+    public DeckHolder[] allDecks;
 
     [System.NonSerialized]
     Dictionary<string, Card> cardDictionary = new Dictionary<string, Card>();
 
     public MainDataHolder dataHolder;
-    public ScrollSelectionManager selectionManager;
 
     int cardInstIndex;
     int actionIndex;

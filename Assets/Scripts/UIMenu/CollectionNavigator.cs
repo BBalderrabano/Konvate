@@ -76,7 +76,7 @@ public class CollectionNavigator : MonoBehaviour
     {
         cardCollectionScroll.verticalNormalizedPosition = 1;
 
-        DeckHolder loadedDeck = playerProfileManager.available_decks[deck_index];
+        DeckHolder loadedDeck = resourcesManager.allDecks[deck_index];
 
         foreach (DeckPreviewHolder dp in deckPreviews)
         {

@@ -13,6 +13,11 @@ public class NetworkPrint : MonoBehaviourPun, IPunInstantiateMagicCallback
 
     string[] cardIds;
 
+    public void changeStartingCards(string[] cardIds)
+    {
+        this.cardIds = cardIds;
+    }
+
     public string[] getStartingCardIds()
     {
         return cardIds;

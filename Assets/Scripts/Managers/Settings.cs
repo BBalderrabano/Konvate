@@ -18,6 +18,9 @@ public static class Settings
     public static float CARD_EFFECT_PREVIEW_ANIM_DURATION = 0.5f;
     public static float SHUFFLE_MIN_PREVIEW = 0.5f;
 
+    public static float VOLUME_MUSIC = 1f;
+    public static float VOLUME_SFX = 1f;
+
     public static void Shuffle<T>(this IList<T> ts)
     {
         var count = ts.Count;

@@ -57,7 +57,7 @@ public class UINavigator : MonoBehaviour
         }); ;
 
         LeanTween.moveLocalY(multiplayerMenu, multiplayerMenu.transform.localPosition.y + screenHeight, time).setEase(type).setOnComplete(EnableAllButtons);
-        LeanAudio.play(chainUp, 0.7f);
+        LeanAudio.play(chainUp, (0.7f * Settings.VOLUME_SFX));
     }
 
     public void NavigateToMain()
@@ -70,7 +70,7 @@ public class UINavigator : MonoBehaviour
 
         LeanTween.moveLocalY(multiplayerMenu, multiplayerMenu.transform.localPosition.y - screenHeight, time).setEase(type).setOnComplete(EnableAllButtons);
 
-        LeanAudio.play(chainDown, 0.7f);
+        LeanAudio.play(chainDown, (0.7f * Settings.VOLUME_SFX));
     }
     
     public void NavigateToCollection()
@@ -100,7 +100,7 @@ public class UINavigator : MonoBehaviour
                 EnableAllButtons();
             });
 
-        LeanAudio.play(chainUp, 0.7f);
+        LeanAudio.play(chainUp, (0.7f * Settings.VOLUME_SFX));
     }
 
     public void ReturnFromCollection()
@@ -127,7 +127,7 @@ public class UINavigator : MonoBehaviour
                 currentMenu = lastMenu;
             });
 
-        LeanAudio.play(chainDown, 0.7f);
+        LeanAudio.play(chainDown, (0.7f * Settings.VOLUME_SFX));
     }
 
     void DisableAllButtons()
@@ -158,7 +158,7 @@ public class UINavigator : MonoBehaviour
     
     public void PlayButtonSfx()
     {
-        LeanAudio.play(buttonClick, 1f);
+        LeanAudio.play(buttonClick, Settings.VOLUME_SFX);
     }
 
     public enum MENU

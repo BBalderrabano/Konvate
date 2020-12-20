@@ -16,7 +16,7 @@ public class SoundEffect : MonoBehaviour
 
     public void PlaySound()
     {
-        audioSource.PlayOneShot(GetAudioClip());
+        audioSource.PlayOneShot(GetAudioClip(), Settings.VOLUME_SFX);
     }
 
     private AudioClip GetAudioClip()

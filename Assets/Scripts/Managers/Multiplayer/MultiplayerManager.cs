@@ -11,7 +11,12 @@ public class MultiplayerManager : MonoBehaviourPun, IPunInstantiateMagicCallback
 
     public string GetVsText()
     {
-        return PhotonNetwork.PlayerList[0].NickName + " vs " + PhotonNetwork.PlayerList[1].NickName;
+        int firstPlayerWins = PhotonNetwork.PlayerList[0].IsLocal ? EndGameScreen.singleton.localWins : EndGameScreen.singleton.opponentWins;
+        int secondPlayerWins = PhotonNetwork.PlayerList[1].IsLocal ? EndGameScreen.singleton.localWins : EndGameScreen.singleton.opponentWins;
+
+        return PhotonNetwork.PlayerList[0].NickName + (firstPlayerWins > 0 || secondPlayerWins > 0 ? " (" + firstPlayerWins + ")" : "") + 
+                                                                                    " vs " + 
+               PhotonNetwork.PlayerList[1].NickName + (firstPlayerWins > 0 || secondPlayerWins > 0 ? " (" + secondPlayerWins + ")" : "");
     }
 
     NetworkPrint localPrint;
@@ -496,6 +501,43 @@ public class MultiplayerManager : MonoBehaviourPun, IPunInstantiateMagicCallback
         {
             GM.actionManager.GetAction(actionId).PlayerIsReady(photonId);
         }
+    }
+
+    #endregion
+
+    #region Rematch
+    public void AskForRematch()
+    {
+        photonView.RPC("RPC_AskForRematch", RpcTarget.OthersBuffered);
+    }
+
+    [PunRPC]
+    public void RPC_AskForRematch()
+    {
+        EndGameScreen.singleton.OpponentWantsRematch();
+    }
+
+    public void SetRematchMode(bool keepDeck)
+    {
+        photonView.RPC("RPC_SetRematchMode", RpcTarget.OthersBuffered, keepDeck);
+    }
+
+    [PunRPC]
+    public void RPC_SetRematchMode(bool keepDeck)
+    {
+        EndGameScreen.singleton.OpponentPickedMode(keepDeck);
+    }
+
+    public void SendNewDeckData(int photon, string[] new_deck)
+    {
+        photonView.RPC("RPC_SendNewDeckData", RpcTarget.AllBuffered, photon, new_deck);
+    }
+
+    [PunRPC]
+    public void RPC_SendNewDeckData(int photon, string[] new_deck)
+    {
+        GetPrint(photon).changeStartingCards(new_deck);
+        EndGameScreen.singleton.DeckSynced(photon);
     }
 
     #endregion

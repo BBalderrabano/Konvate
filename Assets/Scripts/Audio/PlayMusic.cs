@@ -32,7 +32,7 @@ public class PlayMusic : MonoBehaviour
     public void PlaySound()
     {
         lastIndex = index;
-        audioSource.PlayOneShot(GetMusicTrack());
+        audioSource.PlayOneShot(GetMusicTrack(), Settings.VOLUME_MUSIC);
     }
 
     public void StopAllSounds()

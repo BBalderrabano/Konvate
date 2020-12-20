@@ -39,10 +39,10 @@ public class SessionManager : MonoBehaviour
             Destroy(dontDestroyOnLoadObjects[i]);
         }
 
-        StartCoroutine(DisconnectAndLoadLevel("Menu"));
+        StartCoroutine(DisconnectAndLoadMenu());
     }
 
-    IEnumerator DisconnectAndLoadLevel(string level)
+    IEnumerator DisconnectAndLoadMenu()
     {
         PhotonNetwork.AutomaticallySyncScene = false;
         PhotonNetwork.LeaveRoom();
@@ -52,12 +52,19 @@ public class SessionManager : MonoBehaviour
             yield return null;
         }
 
-        yield return SceneManager.LoadSceneAsync(level, LoadSceneMode.Single);
+        if (!PhotonNetwork.InRoom)
+        {
+            LeanTween.value(0, 1, 0.4f).setOnComplete(() => {
+                PhotonNetwork.LoadLevel(0);
+            });
+        }
+
+        /*yield return SceneManager.LoadSceneAsync(level, LoadSceneMode.Single);
 
         if (onSceneLoaded != null)
         {
             onSceneLoaded();
             onSceneLoaded = null;
-        }
+        }*/
     }
 }

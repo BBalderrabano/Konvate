@@ -74,7 +74,7 @@ public class MainMenuTitle : MonoBehaviour
         text.color = alphaColor;
 
         LeanTween.value(0f, 1f, soundDelay).setOnComplete(()=> {
-            LeanAudio.play(titleSpawn, 1f);
+            LeanAudio.play(titleSpawn, Settings.VOLUME_SFX);
         });
 
         LeanTween.scale(gameObject, Vector3.one, title_anim_time).setDelay(delay).setEase(type);
@@ -106,7 +106,7 @@ public class MainMenuTitle : MonoBehaviour
         float firstVal = 0f;
         float delay = 0.3f;
 
-        LeanAudio.play(titleGradient, 1f).PlayDelayed(delay);
+        LeanAudio.play(titleGradient, Settings.VOLUME_SFX).PlayDelayed(delay);
 
         LeanTween.value(gameObject, 1f, 0.5f, gradientDuration).setOnUpdate((float val) =>
         {
