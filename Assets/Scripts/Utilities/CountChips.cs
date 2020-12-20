@@ -4,6 +4,8 @@ using TMPro;
 public class CountChips : MonoBehaviour
 {
     public Transform checkFrom;
+    public int max = 999;
+
     int previousCount = 0;
 
     private void Start()
@@ -18,7 +20,7 @@ public class CountChips : MonoBehaviour
 
         if(previousCount != count)
         {
-            GetComponent<TextMeshProUGUI>().text = "x"+count;
+            GetComponent<TextMeshProUGUI>().text = "x" + Mathf.Min(count, max);
             previousCount = count;
         }
     }

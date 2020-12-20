@@ -13,7 +13,7 @@ public class PlayedCardsSpacing : MonoBehaviour
 
     void Update()
     {
-        int childCount = transform.GetComponentsInChildren<Card>().Length;
+        int childCount = transform.GetComponentsInChildren<CardInstance>().Length;
 
         if (childAmount != childCount)
         {

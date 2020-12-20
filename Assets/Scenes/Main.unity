@@ -7020,6 +7020,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   checkFrom: {fileID: 1250282167}
+  max: 8
 --- !u!114 &911521537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9497,6 +9498,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   checkFrom: {fileID: 719501958}
+  max: 99
 --- !u!114 &1198559292
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12202,6 +12204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   checkFrom: {fileID: 325831157}
+  max: 99
 --- !u!1 &1618783001
 GameObject:
   m_ObjectHideFlags: 0
@@ -14912,7 +14915,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: -0.5, y: -339}
-  m_SizeDelta: {x: 2000, y: 572}
+  m_SizeDelta: {x: 2300, y: 572}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1857468193
 MonoBehaviour:
@@ -15265,6 +15268,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   checkFrom: {fileID: 1108302839}
+  max: 8
 --- !u!1001 &1920696302
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15728,7 +15732,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0.6, y: 425}
-  m_SizeDelta: {x: 1601.9243, y: 572}
+  m_SizeDelta: {x: 2300, y: 572}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1946110470
 MonoBehaviour:
@@ -15748,7 +15752,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: -180
+  m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
