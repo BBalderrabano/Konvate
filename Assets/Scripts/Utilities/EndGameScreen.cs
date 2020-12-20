@@ -271,6 +271,8 @@ public class EndGameScreen : MonoBehaviour
 
         if (isWinner)
         {
+            AudioManager.singleton.PlayVictorySfx();
+
             localWins++;
 
             defeatContainer.transform.parent.gameObject.SetActive(false);
@@ -282,6 +284,8 @@ public class EndGameScreen : MonoBehaviour
         }
         else
         {
+            AudioManager.singleton.PlayDefeatySfx();
+
             opponentWins++;
 
             victoryContainer.transform.parent.gameObject.SetActive(false);

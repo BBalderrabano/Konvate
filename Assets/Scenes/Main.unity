@@ -2091,6 +2091,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e7484ff4986d3d4fb9df11d8cf4a5d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  victoryClip: {fileID: 8300000, guid: 0e2cf94d902278c468bfa67b6460f9ff, type: 3}
+  victoryFireworks: {fileID: 8300000, guid: 0cf1e5aa7ae22c241a7944cf8427b5ce, type: 3}
+  defeatClip: {fileID: 8300000, guid: ffc9d134cca371b4b98abecabdc7ce29, type: 3}
+  defeatEffects: {fileID: 8300000, guid: c2edc866bb95f1744bd019cd7436f351, type: 3}
 --- !u!4 &261833477
 Transform:
   m_ObjectHideFlags: 0

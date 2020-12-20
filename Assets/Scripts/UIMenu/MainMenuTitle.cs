@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 public class MainMenuTitle : MonoBehaviour
 {
+    public AudioClip menuTheme;
     public AudioClip titleSpawn;
     public AudioClip titleGradient;
 
@@ -150,6 +151,8 @@ public class MainMenuTitle : MonoBehaviour
 
                 text.colorGradient = new VertexGradient(firstColor, secondColor, firstColor, secondColor);
             });
+
+            LeanAudio.play(menuTheme, (0.7f * Settings.VOLUME_MUSIC)).time = 9.75f;
         });
     }
 }
