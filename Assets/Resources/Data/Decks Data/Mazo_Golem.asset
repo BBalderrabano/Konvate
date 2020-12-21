@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6db648d9446c03d4faab3f39fee6b0c0, type: 3}
+  m_Name: Mazo_Golem
+  m_EditorClassIdentifier: 
+  deckName: Golem
+  cardIds:
+  - Ataque Basico
+  - Ataque Basico
+  - Ataque Basico
+  - Ataque Basico
+  - Ataque Basico
+  - Golem_Piel de Piedra
+  - Golem_Piel de Piedra
+  - Golem_Piel de Piedra
+  - Golem_Piel de Piedra
+  - Golem_Piel de Piedra
+  - Golem_Defensa Superior
+  - Golem_Defensa Superior
+  - Golem_Avalancha
+  - Golem_Avalancha
+  - Golem_Avalancha
+  - Golem_Roca
+  - Golem_Roca
+  - Golem_Roca
+  - Golem_Roca
+  - Golem_Roca
+  deckArt: {fileID: 270011104305318459, guid: 9cfa281cdbfc7274e85a9c23332aecdb, type: 3}
+  deckIcon: {fileID: 21300000, guid: 4390ad174b40d904699f7d31b0c191fd, type: 3}
+  deckDesc: 

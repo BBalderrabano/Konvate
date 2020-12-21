@@ -40,6 +40,7 @@ public class A_SendToDeck : KAction
             card.MakeBorderInactive();
 
             player.handCards.Remove(card);
+            player.discardCards.Remove(card);
             player.playedCards.Remove(card);
 
             if(sendToPosition < 0)

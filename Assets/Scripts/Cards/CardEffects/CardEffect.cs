@@ -99,5 +99,6 @@ public enum EffectType
     STARTTURN,
     ON_PLAY_END,
     HAND_EFFECT,
-    BEFORE_RECHARGE
+    BEFORE_RECHARGE,
+    QUICK_COUNTER
 }

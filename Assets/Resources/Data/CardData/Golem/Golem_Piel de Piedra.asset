@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a690ff51c21df6840a240e723fb5d079, type: 3}
+  m_Name: Golem_Piel de Piedra
+  m_EditorClassIdentifier: 
+  CardCost: 1
+  cardName: Piel de Piedra
+  art: {fileID: -2961968561874689778, guid: 9cfa281cdbfc7274e85a9c23332aecdb, type: 3}
+  classIcon: {fileID: 21300000, guid: 4390ad174b40d904699f7d31b0c191fd, type: 3}
+  cardType: {fileID: 11400000, guid: 0e3332cf33a066a4d8be0f706aa9ccea, type: 2}
+  cardText: '<color=#036bfc>Remueve </color>1<sprite=0>
+
+    (esta carta <b>permanece</b>
+    hasta <color=#036bfc>remover</color>)'
+  textMods: []
+  cardEffects:
+  - {fileID: 11400000, guid: 40cf8119a27f89a4f98c2e33ed734b9f, type: 2}
+  - {fileID: 11400000, guid: ab0f08f2b6c4f7b40bf70b82f73c673d, type: 2}
+  conditions: []
+  cardTags: 0100000003000000080000001d000000

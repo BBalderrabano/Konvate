@@ -88,25 +88,6 @@ public class AnimationManager : MonoBehaviour
                         .setOnStart(() => { AudioManager.singleton.Play(SoundEffectType.MOVE_CHIP); })
                         .setOnComplete(BleedChipDamage)
                         .setOnCompleteParam(hash as object);
-
-                    /*iTween.MoveTo(chip,
-                        iTween.Hash(
-                            "position", travelTo,
-                            "time", Settings.CHIP_ANIMATION_TIME,
-                            "onstart", "PlaySound",
-                            "onstarttarget", this.gameObject,
-                            "onstartparams", iTween.Hash("play_sound", SoundEffectType.MOVE_CHIP),
-                            "oncomplete", "BleedChipDamage",
-                            "easetype", Settings.ANIMATION_STYLE,
-                            "delay", delay,
-                            "oncompleteparams", iTween.Hash("action", actionId,
-                                                            "new_parent", parent,
-                                                            "object", chip,
-                                                            "photonId", enemy.photonId,
-                                                            "animationId", animationPointer.animId,
-                                                            "reset_position", true),
-                            "onCompleteTarget", this.gameObject
-                    ));*/
                 }
             }
         }
@@ -166,25 +147,6 @@ public class AnimationManager : MonoBehaviour
                 .setOnStart(() => { AudioManager.singleton.Play(SoundEffectType.MOVE_CHIP); })
                 .setOnComplete(BleedChipDamage)
                 .setOnCompleteParam(hash as object);
-
-            /*iTween.MoveTo(chip,
-                    iTween.Hash(
-                        "position", target.currentHolder.bleedChipHolder.value.position,
-                        "time", Settings.CHIP_ANIMATION_TIME,
-                        "onstart", "PlaySound",
-                        "onstarttarget", this.gameObject,
-                        "onstartparams", iTween.Hash("play_sound", SoundEffectType.MOVE_CHIP),
-                        "oncomplete", "BleedChipDamage",
-                        "easetype", Settings.ANIMATION_STYLE,
-                        "delay", delay,
-                        "oncompleteparams", iTween.Hash("action", actionId,
-                                                        "new_parent", chip_component.owner.currentHolder.bleedChipHolder.value.gameObject,
-                                                        "object", chip,
-                                                        "photonId", target_photonId,
-                                                        "animationId", animationPointer.animId,
-                                                        "reset_position", true),
-                        "onCompleteTarget", this.gameObject
-            ));*/
         }
 
         return animationPointer;
@@ -539,26 +501,6 @@ public class AnimationManager : MonoBehaviour
                 .setOnStart(() => { AudioManager.singleton.Play(SoundEffectType.MOVE_CHIP); })
                 .setOnComplete(AM_FinishAnimation)
                 .setOnCompleteParam(hash as object);
-
-            /*iTween.MoveTo(chip.gameObject,
-                iTween.Hash(
-                    "position", travelTo,
-                    "time", Settings.CHIP_ANIMATION_TIME,
-                    "onstart", "PlaySound",
-                    "onstarttarget", this.gameObject,
-                    "onstartparams", iTween.Hash("play_sound", SoundEffectType.MOVE_CHIP),
-                    "oncomplete", "AM_FinishAnimation",
-                    "easetype", Settings.ANIMATION_STYLE,
-                    "delay", delay,
-                    "oncompleteparams", iTween.Hash("action", actionId,
-                                                    "new_parent", parentTo,
-                                                    "object", chip.gameObject,
-                                                    "photonId", photonId,
-                                                    "animationId", animationPointer.animId,
-                                                    "reset_position", true,
-                                                    "play_sound", SoundEffectType.PLACE_CHIP),
-                    "onCompleteTarget", this.gameObject
-            ));*/
         }
 
         return animationPointer;
@@ -585,23 +527,6 @@ public class AnimationManager : MonoBehaviour
             .setOnStart(() => { AudioManager.singleton.Play(SoundEffectType.MOVE_CHIP); })
             .setOnComplete(AM_FinishAnimation)
             .setOnCompleteParam(hash as object);
-
-        /*iTween.MoveTo(chip,
-            iTween.Hash(
-                "position", position,
-                "time", Settings.CHIP_ANIMATION_TIME,
-                "easetype", Settings.ANIMATION_STYLE,
-                "delay", Settings.CHIP_ANIMATION_DELAY,
-                "oncomplete", "AM_FinishAnimation",
-                "oncompleteparams", iTween.Hash("action", actionId,
-                                                "new_parent", new_parent,
-                                                "object", chip,
-                                                "photonId", photonId,
-                                                "animationId", animationPointer.animId,
-                                                "reset_position", true,
-                                                "play_sound", SoundEffectType.PLACE_CHIP),
-                "onCompleteTarget", this.gameObject
-        ));*/
 
         return animationPointer;
     }
@@ -632,29 +557,7 @@ public class AnimationManager : MonoBehaviour
             .setDelay(Settings.ANIMATION_DELAY)
             .setOnComplete(AM_FinishAnimation).setOnCompleteParam(hash as object);
 
-        /*iTween.MoveTo(c.cardPhysicalInst.gameObject, 
-            iTween.Hash(
-                "position", position,
-                "time", Settings.ANIMATION_TIME,
-                "oncomplete", "AM_FinishAnimation",
-                "easetype", Settings.ANIMATION_STYLE,
-                "delay", Settings.ANIMATION_DELAY,
-                "oncompleteparams", iTween.Hash("action", actionId,
-                                                "new_parent", new_parent,
-                                                "object", c.cardPhysicalInst.gameObject,
-                                                "photonId", photonId,
-                                                "animationId", animationPointer.animId,
-                                                "reset_position", true,
-                                                "play_sound", playSound),
-                "onCompleteTarget", this.gameObject
-        ));*/
-
         LeanTween.rotate(c.cardPhysicalInst.gameObject, new_parent.transform.root.eulerAngles, Settings.ANIMATION_TIME);
-
-        /*iTween.RotateTo(c.cardPhysicalInst.gameObject,
-            iTween.Hash(
-                "rotation", new_parent.transform.rotation.eulerAngles,
-                "time", Settings.ANIMATION_TIME));*/
 
         return animationPointer;
     }

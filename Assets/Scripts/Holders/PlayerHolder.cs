@@ -209,7 +209,7 @@ public class PlayerHolder : ScriptableObject
     public void Init()
     {
         baseEnergy = 3;
-        maxHealth = 1;  ///BRUNO ojo aca
+        maxHealth = 15;
         bleedCount = maxHealth;
         StartDrawAmount = 5;
 

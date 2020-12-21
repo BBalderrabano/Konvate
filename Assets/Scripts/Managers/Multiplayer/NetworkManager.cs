@@ -75,7 +75,9 @@ public class NetworkManager : Photon.Pun.MonoBehaviourPunCallbacks
 
     public void OnPlayGame()
     {
-        PlayerProfile profile = Resources.Load("PlayerProfile") as PlayerProfile;
+        profileManager.SelectDeck();
+
+        PlayerProfile profile = profileManager.profile;
 
         Hashtable hash = new Hashtable
         {
@@ -87,8 +89,6 @@ public class NetworkManager : Photon.Pun.MonoBehaviourPunCallbacks
 
         Photon.Pun.PhotonNetwork.LocalPlayer.NickName = profile.playerName;
         Photon.Pun.PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
-
-        profileManager.SelectDeck();
 
         JoinRandomRoom();
     }

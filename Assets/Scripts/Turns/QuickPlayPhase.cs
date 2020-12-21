@@ -11,13 +11,15 @@ public class QuickPlayPhase : Phase
 {
     List<CardEffect> quickplay = new List<CardEffect>();
 
+    bool counterPlayed = false;
+
     void LoadPlayedCardEffects(int photonId)
     {
         PlayerHolder player = GM.GetPlayerHolder(photonId);
 
         foreach (Card c in player.playedCards)
         {
-            if (c.isBroken)
+            if (c.isBroken || c.GetCardType() is NormalPlay)
                 continue;
 
             LoadCardEffects(c);
@@ -28,7 +30,7 @@ public class QuickPlayPhase : Phase
 
     void LoadCardEffects(Card c)
     {
-        if (c.EffectsDone())
+        if (c.EffectsDone() || c.GetCardType() is NormalPlay)
         {
             return;
         }
@@ -41,6 +43,7 @@ public class QuickPlayPhase : Phase
                 (c.cardEffects[i].type != EffectType.PLACE
                 && c.cardEffects[i].type != EffectType.REMOVE
                 //&& c.cardEffects[i].type != EffectType.RESTORE
+                && c.cardEffects[i].type != EffectType.QUICK_COUNTER
                 && c.cardEffects[i].type != EffectType.SPECIAL))
                 continue;
 
@@ -53,7 +56,7 @@ public class QuickPlayPhase : Phase
         foreach (CardEffect eff in quickplay)
         {
             if (eff.isDone) { continue; }
-
+            
             KAction execute_effect = new A_ExecuteEffect(eff.card.instanceId, eff.effectId, eff.card.owner.photonId);
             GM.actionManager.AddAction(execute_effect);
         }
@@ -63,6 +66,21 @@ public class QuickPlayPhase : Phase
 
     public override bool IsComplete()
     {
+        if(isInit && GM.actionManager.IsDone() && counterPlayed)
+        {
+            counterPlayed = false;
+
+            int currentPlayerId = GM.currentPlayer.photonId;
+            int localPlayerId = GM.localPlayer.photonId;
+            int otherPlayerId = GM.clientPlayer.photonId;
+
+            if (currentPlayerId == localPlayerId)
+            {
+                KAction giveControl = new A_GiveControl(phaseIndex, localPlayerId, false, otherPlayerId, false);
+                GM.actionManager.AddAction(giveControl);
+            }
+        }
+
         if(isInit && GM.actionManager.IsDone() && PlayersAreReady() && !finalCheck)
         {
             foreach (PlayerHolder p in GM.allPlayers)
@@ -92,6 +110,7 @@ public class QuickPlayPhase : Phase
             GM.turn.localInflictedBleed = false;
             GM.turn.opponentInflictedBleed = false;
 
+            counterPlayed = false;
             finalCheck = false;
             isInit = true;
         }
@@ -169,10 +188,23 @@ public class QuickPlayPhase : Phase
         }
         else
         {
-            if (currentPlayerId == localPlayerId)
+            if(c.cardEffects.Find(a => a.type == EffectType.QUICK_COUNTER))
             {
-                KAction giveControl = new A_GiveControl(phaseIndex, localPlayerId, false, otherPlayerId, false);
-                GM.actionManager.AddAction(giveControl);
+                if (currentPlayerId == localPlayerId)
+                {
+                    counterPlayed = true;
+                }
+
+                LoadCardEffects(c);
+                ExecuteEffect();
+            }
+            else
+            {
+                if (currentPlayerId == localPlayerId)
+                {
+                    KAction giveControl = new A_GiveControl(phaseIndex, localPlayerId, false, otherPlayerId, false);
+                    GM.actionManager.AddAction(giveControl);
+                }
             }
         }
     }

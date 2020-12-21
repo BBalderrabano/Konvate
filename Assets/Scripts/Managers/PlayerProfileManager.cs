@@ -14,7 +14,7 @@ public class PlayerProfileManager : MonoBehaviour
     public ScrollDeckSelector deck_selector;
     public TMP_Dropdown collection_selector;
 
-    PlayerProfile profile;
+    public PlayerProfile profile;
 
     [System.NonSerialized]
     public int deck_saved_index = 0;

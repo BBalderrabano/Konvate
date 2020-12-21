@@ -25,6 +25,8 @@ MonoBehaviour:
     <color=#FF0000>coloca
     </color>1 <sprite=0> extra'
   textMods: []
-  cardEffects: []
+  cardEffects:
+  - {fileID: 11400000, guid: ede2e68374dc4644d9e9456480433e7e, type: 2}
+  - {fileID: 11400000, guid: 0fb55fbb06b0ba54a9ea2331ce63201f, type: 2}
   conditions: []
   cardTags: 010000000200000005000000

@@ -22,6 +22,7 @@ MonoBehaviour:
     Tu oponente puede <color=#FF0000>colocar
     </color>1 <sprite=0> de sus fichas de tu lado para prevenirlo'
   textMods: []
-  cardEffects: []
+  cardEffects:
+  - {fileID: 11400000, guid: 71b25e7f72d660f4791ecb45c55b934f, type: 2}
   conditions: []
   cardTags: 01000000030000001700000005000000

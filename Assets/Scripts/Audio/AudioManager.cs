@@ -6,8 +6,6 @@ public class AudioManager : MonoBehaviour
     public static AudioManager singleton;
     private List<SoundEffect> soundEffects = new List<SoundEffect>();
 
-    private AudioSource endGameAudioSource;
-
     void Awake()
     {
         if (singleton == null)
@@ -15,7 +13,6 @@ public class AudioManager : MonoBehaviour
             singleton = this;
         }
 
-        endGameAudioSource = GetComponent<AudioSource>();
         soundEffects.AddRange(gameObject.GetComponentsInChildren<SoundEffect>());
     }
 
@@ -48,6 +45,8 @@ public class AudioManager : MonoBehaviour
 
     public void PlayVictorySfx()
     {
+        StopAllSounds();
+
         LeanAudio.play(victoryClip, Settings.VOLUME_SFX);
 
         LeanTween.value(0, 1, victoryFireworks.length).setOnStart(()=> 
@@ -70,7 +69,7 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            fireworks.volume = fireworks.volume * value;
+            fireworks.volume *= value;
         }
     }
 
@@ -79,6 +78,8 @@ public class AudioManager : MonoBehaviour
 
     public void PlayDefeatySfx()
     {
+        StopAllSounds();
+
         LeanAudio.play(defeatClip, Settings.VOLUME_SFX);
         LeanAudio.play(defeatEffects, Settings.VOLUME_SFX).time = 1.3f;
     }

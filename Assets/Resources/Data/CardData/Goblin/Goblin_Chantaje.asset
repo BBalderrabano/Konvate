@@ -25,6 +25,8 @@ MonoBehaviour:
 
 '
   textMods: []
-  cardEffects: []
-  conditions: []
+  cardEffects:
+  - {fileID: 11400000, guid: 5110526341dc8024bb156cfb263e95e5, type: 2}
+  conditions:
+  - {fileID: 11400000, guid: 37173cb95c6ddfd468fbb512a4af8803, type: 2}
   cardTags: 0100000004000000050000000d000000
