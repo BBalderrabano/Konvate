@@ -14,6 +14,7 @@ public class PlayerProfileManager : MonoBehaviour
     public ScrollDeckSelector deck_selector;
     public TMP_Dropdown collection_selector;
 
+    [System.NonSerialized]
     public PlayerProfile profile;
 
     [System.NonSerialized]

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94265bab3a8cd4240967094d9e3bd09c, type: 3}
+  m_Name: TextMod_Choque de Espadas
+  m_EditorClassIdentifier: 
+  description: Los ataques basicos ahora tambien remueven
+  text_target: 
+  isTemporary: 1
+  text_mod: '
+
+    <color=#036bfc>Remueve </color>1 <sprite=0>'

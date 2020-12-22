@@ -1,14 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class WarningPanel : MonoBehaviour
+public class WarningPanel : MonoBehaviour, IPointerClickHandler
 {
     public TMPro.TextMeshProUGUI description;
     public static WarningPanel singleton;
 
     Vector3 originalScale;
-    bool important = false;
+    bool lastMessageWasImportant = false;
 
     string lastEternalMessage = null;
 
@@ -25,7 +26,7 @@ public class WarningPanel : MonoBehaviour
     
     public void ShowWarning(string text, bool isImportant = false, bool isEternal = false)
     {
-        if (!important || isImportant) {
+        if (!lastMessageWasImportant || isImportant) {
 
             LeanTween.cancel(this.gameObject);
 
@@ -45,7 +46,7 @@ public class WarningPanel : MonoBehaviour
                 LeanTween.scale(this.gameObject, originalScale, 0.5f).setEaseOutElastic().setOnComplete(Dissapear);
             }
 
-            important = isImportant;
+            lastMessageWasImportant = isImportant;
         }
     }
 
@@ -57,14 +58,22 @@ public class WarningPanel : MonoBehaviour
         }
         else
         {
-            LeanTween.scale(this.gameObject, Vector3.zero, 0.5f).setDelay(1f).setEaseInElastic().setOnComplete(Dissapear);
+            LeanTween.scale(this.gameObject, Vector3.zero, 0.5f).setDelay(1f).setEaseInElastic().setOnComplete(Disable);
         }
     }
 
     public void Disable()
     {
-        important = false;
+        lastMessageWasImportant = false;
         this.gameObject.SetActive(false);
         lastEternalMessage = null;
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if(lastEternalMessage == null)
+        {
+            LeanTween.scale(this.gameObject, Vector3.zero, 0.2f).setEaseOutSine().setOnComplete(Disable);
+        }
     }
 }

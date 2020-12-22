@@ -54,11 +54,11 @@ public class A_DiscardAllCards : KAction
 
             foreach (CardEffect effect in card.cardEffects)
             {
-                effect.isDone = false;
+                effect.Reset();
 
                 if(effect is CE_HandCheck)
                 {
-                    ((CE_HandCheck)effect).linkedCardEffect.isDone = false;
+                    ((CE_HandCheck)effect).linkedCardEffect.Reset();
                 }
 
                 if ((effect.type == EffectType.MAINTAIN && card.owner.handCards.Contains(card)) || (effect.type == EffectType.PREVAIL && card.owner.playedCards.Contains(card)))

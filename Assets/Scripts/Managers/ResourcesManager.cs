@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Managers/Resource Manager")]
@@ -28,6 +29,8 @@ public class ResourcesManager : ScriptableObject
         {
             cardDictionary.Add(allCards[i].name, allCards[i]);
         }
+
+        allDecks.OrderBy(a => a.deckName);
     }
 
     public void ResetMatch()

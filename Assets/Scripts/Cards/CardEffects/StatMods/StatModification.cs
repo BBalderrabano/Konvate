@@ -7,12 +7,21 @@ public abstract class StatModification
 
     public bool isTemporary;
 
+    public int identifier;
+
     public abstract int modify(int value);
 
     public StatModification(int amount = 0, bool isTemporary = true)
     {
         this.amount = amount;
         this.isTemporary = isTemporary;
+    }
+    
+    public StatModification(int amount = 0, bool isTemporary = true, int identifier = -1)
+    {
+        this.amount = amount;
+        this.isTemporary = isTemporary;
+        this.identifier = identifier;
     }
 }
 

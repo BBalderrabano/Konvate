@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a690ff51c21df6840a240e723fb5d079, type: 3}
+  m_Name: Duelista_Tomar Ofensiva
+  m_EditorClassIdentifier: 
+  CardCost: 0
+  cardName: Tomar Ofensiva
+  art: {fileID: 9192109541679122109, guid: 4590fa47e8ba88a4fa1fa71fc568fbd5, type: 3}
+  classIcon: {fileID: 21300000, guid: dcdeecfd3528a40489ee38757f9a211a, type: 3}
+  cardType: {fileID: 11400000, guid: 824122562ba26474b9e5d23302a17560, type: 2}
+  cardText: 'Este turno tomas la ofensiva si no la tienes
+
+    Puedes poner esta
+    carta en el tope de tu mazo'
+  textMods: []
+  cardEffects:
+  - {fileID: 11400000, guid: 2e946ca13c4697c43842b0dd95f0cf36, type: 2}
+  conditions: []
+  cardTags: 020000001900000001000000

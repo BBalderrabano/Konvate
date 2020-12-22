@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 
 public class A_Discard : KAction
 {
@@ -30,11 +31,11 @@ public class A_Discard : KAction
             {
                 foreach (CardEffect effect in card.cardEffects)
                 {
-                    effect.isDone = false;
+                    effect.Reset();
 
                     if (effect is CE_HandCheck)
                     {
-                        ((CE_HandCheck)effect).linkedCardEffect.isDone = false;
+                        ((CE_HandCheck)effect).linkedCardEffect.Reset();
                     }
                 }
             }
@@ -46,6 +47,16 @@ public class A_Discard : KAction
             player.playedCards.Remove(card);
             player.deck.Remove(card);
             player.discardCards.Add(card);
+
+            foreach (CardTextMod text_mod in card.textMods)
+            {
+                if (text_mod.isTemporary)
+                {
+                    text_mod.OnExpire();
+                }
+            }
+
+            card.textMods.RemoveAll(a => a.isTemporary);
 
             LinkAnimation(GM.animationManager.MoveCard(actionId, photonId, card.instanceId, player.currentHolder.discardGrid.value.position, player.currentHolder.discardGrid.value.gameObject));
 

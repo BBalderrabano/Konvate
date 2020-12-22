@@ -84,5 +84,6 @@ public enum CardTags
     SHAPE_WOLF,
     SHAPE_BEAR,
 
-    CRITICAL_HIT
+    CRITICAL_HIT,
+    PREVENT_USE_OF_CARDS
 }

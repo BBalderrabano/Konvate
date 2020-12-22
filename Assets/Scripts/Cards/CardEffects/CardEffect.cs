@@ -20,6 +20,12 @@ public abstract class CardEffect : ScriptableObject, ICloneable
     [System.NonSerialized]
     public bool isDone = false;
 
+    public virtual void Reset()
+    {
+        this.isDone = false;
+        this.parentAction = null;
+    }
+
     public virtual void Finish()
     {
         this.isDone = true;
@@ -49,10 +55,8 @@ public abstract class CardEffect : ScriptableObject, ICloneable
         card.cardViz.cardBorder.color = Color.blue;
     }
 
-    public virtual void OnLeavePlay()
-    {
-    }
-
+    public virtual void OnLeavePlay() { }
+    
     public bool IsCombo()
     {
         PlayerHolder player = card.owner;

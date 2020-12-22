@@ -27,6 +27,16 @@ public class A_Draw : KAction
             {
                 cardDrawn = player.deck[0];
 
+                foreach (CardTextMod text_mod in cardDrawn.textMods)
+                {
+                    if (text_mod.isTemporary)
+                    {
+                        text_mod.OnExpire();
+                    }
+                }
+
+                cardDrawn.textMods.RemoveAll(a => a.isTemporary);
+
                 if (player.isLocal)
                 {
                     cardDrawn.cardPhysicalInst.setCurrentLogic(GM.resourcesManager.dataHolder.handLogic);

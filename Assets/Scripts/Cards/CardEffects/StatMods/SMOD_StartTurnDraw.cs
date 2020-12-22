@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SMOD_StartTurnDraw : StatModification
 {
-    public SMOD_StartTurnDraw(int amount, bool isTemporary = true) : base(amount, isTemporary)
+    public SMOD_StartTurnDraw(int amount, bool isTemporary = true, int identifier = -1) : base(amount, isTemporary, identifier)
     {
         stat_mod = StatType.START_DRAW_AMOUNT;
     }
