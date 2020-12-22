@@ -97,6 +97,19 @@ public class Card : ScriptableObject
     [System.NonSerialized]
     public List<StatModification> statMods = new List<StatModification>();
 
+    public void ResetCardEffects()
+    {
+        foreach (CardEffect effect in cardEffects)
+        {
+            effect.Reset();
+
+            if (effect is CE_HandCheck)
+            {
+                ((CE_HandCheck)effect).linkedCardEffect.Reset();
+            }
+        }
+    }
+
     public CardEffect GetEffect(int effectId)
     {
         for (int i = 0; i < cardEffects.Count; i++)

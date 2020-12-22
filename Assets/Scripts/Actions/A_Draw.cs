@@ -37,6 +37,8 @@ public class A_Draw : KAction
 
                 cardDrawn.textMods.RemoveAll(a => a.isTemporary);
 
+                cardDrawn.ResetCardEffects();
+
                 if (player.isLocal)
                 {
                     cardDrawn.cardPhysicalInst.setCurrentLogic(GM.resourcesManager.dataHolder.handLogic);

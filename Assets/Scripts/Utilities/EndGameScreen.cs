@@ -203,6 +203,8 @@ public class EndGameScreen : MonoBehaviour
     {
         if (!this.gameObject.activeInHierarchy)
         {
+            GM.isInit = false;
+
             this.description.text = description;
             this.isWinner = isWinner;
 

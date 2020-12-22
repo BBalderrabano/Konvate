@@ -150,7 +150,10 @@ public class NetworkManager : Photon.Pun.MonoBehaviourPunCallbacks
         {
             logger.value = "Conectado";
             loggerUpdate.Raise();
-            onConnected.Raise();
+
+            LeanTween.value(0, 1, 0.5f).setOnComplete(() => {
+                onConnected.Raise();
+            });
         }
     }
 

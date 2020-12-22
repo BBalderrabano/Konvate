@@ -19,8 +19,12 @@ public class QuickPlayPhase : Phase
 
         foreach (Card c in player.playedCards)
         {
+            Debug.Log(c.cardName + " - " + (c.GetCardType() is NormalPlay));
+
             if (c.isBroken || c.GetCardType() is NormalPlay)
                 continue;
+
+            Debug.Log(c.cardName + " - loaded");
 
             LoadCardEffects(c);
         }
@@ -32,8 +36,12 @@ public class QuickPlayPhase : Phase
     {
         if (c.EffectsDone() || c.GetCardType() is NormalPlay)
         {
+            Debug.Log(c.cardName + " - effects done");
+
             return;
         }
+
+        Debug.Log(c.cardName + " - added");
 
         c.cardViz.cardBorder.color = Color.blue;
 
@@ -55,8 +63,12 @@ public class QuickPlayPhase : Phase
     {
         foreach (CardEffect eff in quickplay)
         {
+            Debug.Log(eff.card.cardName + " - eff");
+
             if (eff.isDone) { continue; }
-            
+
+            Debug.Log(eff.card.cardName + " - eff executed");
+
             KAction execute_effect = new A_ExecuteEffect(eff.card.instanceId, eff.effectId, eff.card.owner.photonId);
             GM.actionManager.AddAction(execute_effect);
         }

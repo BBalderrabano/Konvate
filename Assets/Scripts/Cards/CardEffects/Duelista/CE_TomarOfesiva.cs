@@ -42,12 +42,10 @@ public class CE_TomarOfesiva : SelectionCardEffect
 
     public override void DoneSelecting(int[] cardIds)
     {
-        if(cardIds != null)
+        if (cardIds != null)
         {
             parentAction.MakeActiveOnComplete(false);
             parentAction.PushAction(new A_SendToDeck(card.instanceId, card.owner.photonId, 0));
         }
-
-        Finish();
     }
 }

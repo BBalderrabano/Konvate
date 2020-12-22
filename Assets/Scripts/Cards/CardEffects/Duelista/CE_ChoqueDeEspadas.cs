@@ -16,7 +16,7 @@ public class CE_ChoqueDeEspadas : CardEffect
 
         for (int i = 0; i < ataques_basicos.Count; i++)
         {
-            if(!ataques_basicos[i].cardEffects.Find(a => a.GetType() == abTextMod.GetType()))
+            if(!ataques_basicos[i].textMods.Find(a => a.GetType() == abTextMod.GetType()))
             {
                 CardEffect clone = (CardEffect)remove.Clone();
 

@@ -29,15 +29,7 @@ public class A_SendToOpponentDeck : KAction
             PlayerHolder target = GM.GetPlayerHolder(targetPhotonId);
             Card card = player.GetCard(cardTarget);
 
-            foreach (CardEffect effect in card.cardEffects)
-            {
-                effect.Reset();
-
-                if (effect is CE_HandCheck)
-                {
-                    ((CE_HandCheck)effect).linkedCardEffect.Reset();
-                }
-            }
+            card.ResetCardEffects();
 
             card.cardPhysicalInst.setCurrentLogic(GM.resourcesManager.dataHolder.deckLogic);
             card.MakeBorderInactive();

@@ -18,7 +18,8 @@ MonoBehaviour:
   classIcon: {fileID: -3489923402679896410, guid: 2eee63c6bb266654b9b31ef874534da9,
     type: 3}
   cardType: {fileID: 11400000, guid: 0e3332cf33a066a4d8be0f706aa9ccea, type: 2}
-  cardText: <color=#036bfc> Remueve </color>1<sprite=0>
+  cardText: <color=#036bfc> Remueve </color>1 <sprite=0>
+  textMods: []
   cardEffects:
   - {fileID: 11400000, guid: a9c5218c23a864845a4e48805a14b72e, type: 2}
   conditions: []

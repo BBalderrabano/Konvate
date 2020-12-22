@@ -29,15 +29,7 @@ public class A_Discard : KAction
 
             if (player.handCards.Contains(card))
             {
-                foreach (CardEffect effect in card.cardEffects)
-                {
-                    effect.Reset();
-
-                    if (effect is CE_HandCheck)
-                    {
-                        ((CE_HandCheck)effect).linkedCardEffect.Reset();
-                    }
-                }
+                card.ResetCardEffects();
             }
 
             card.cardPhysicalInst.setCurrentLogic(GM.resourcesManager.dataHolder.discardLogic);
