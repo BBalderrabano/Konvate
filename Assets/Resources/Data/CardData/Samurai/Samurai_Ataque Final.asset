@@ -21,7 +21,8 @@ MonoBehaviour:
 
     <color=#FF0000>Coloca </color>1 <sprite=0>
     por cada <sprite=2> que te hayan efectuado esta partida'
-  textMods: []
+  textMods:
+  - {fileID: 11400000, guid: 5c94b96b019165442b8795ec3d7dd6de, type: 2}
   cardEffects: []
   conditions: []
   cardTags: 0100000002000000050000000c000000

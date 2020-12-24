@@ -14,3 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: Muestra la diferencia numerica entre cartas en el descarte
   text_target: '%%'
+  isTemporary: 0
+  text: '
+
+    <b><i>(<color=#FF0000>Coloca </color>%% <sprite=0>)</i><b>'

@@ -67,13 +67,13 @@ public class CollectionNavigator : MonoBehaviour
 
     public void LoadDeck()
     {
-        cardPreview.gameObject.SetActive(false);
-
         LoadDeck(playerProfileManager.deck_saved_index);
     }
 
     public void LoadDeck(int deck_index)
     {
+        cardPreview.gameObject.SetActive(false);
+
         cardCollectionScroll.verticalNormalizedPosition = 1;
 
         DeckHolder loadedDeck = resourcesManager.allDecks[deck_index];
