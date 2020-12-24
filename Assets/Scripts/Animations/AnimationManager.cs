@@ -35,6 +35,7 @@ public class AnimationManager : MonoBehaviour
                 float delay = Settings.CHIP_ANIMATION_DELAY + (Settings.ANIMATION_INTERVAL * i);
 
                 GameObject chip = playedChips.GetChild(i).gameObject;
+
                 Chip chip_component = chip.GetComponent<Chip>();
 
                 if(chip_component.state == ChipSate.STASHED)
@@ -154,6 +155,8 @@ public class AnimationManager : MonoBehaviour
 
     public void BleedChipDamage(object animParams)
     {
+        AM_FinishAnimation(animParams);
+
         Hashtable hstbl = (Hashtable)animParams;
 
         int photonId = ((int)hstbl["photonId"]);
@@ -163,8 +166,6 @@ public class AnimationManager : MonoBehaviour
         PlayerHolder player = GM.GetPlayerHolder(photonId);
 
         player.ModifyHitPoints(-1);
-
-        AM_FinishAnimation(animParams);
 
         chip_component.backSide.gameObject.SetActive(false);
         chip_component.state = ChipSate.STASHED;
@@ -235,20 +236,6 @@ public class AnimationManager : MonoBehaviour
                     .setOnComplete(RotateBleedChips)
                     .setOnCompleteParam(hash);
 
-                /*iTween.RotateTo(chip,
-                    iTween.Hash(
-                        "rotation", rotateTo,
-                        "time", (Settings.CHIP_ANIMATION_TIME * 0.5),
-                        "oncomplete", "RotateBleedChips",
-                        "easetype", Settings.ANIMATION_STYLE,
-                        "delay", delay,
-                        "oncompleteparams", iTween.Hash("object", chip,
-                                                        "action", actionId,
-                                                        "photonId", player.photonId,
-                                                        "animationId", animationPointer.animId),
-                        "onCompleteTarget", this.gameObject
-                ));*/
-
                 chips_to_animate++;
             }
         }
@@ -284,24 +271,6 @@ public class AnimationManager : MonoBehaviour
             .setOnStart(() => { AudioManager.singleton.Play(SoundEffectType.PLACE_CHIP); })
             .setOnComplete(AM_FinishAnimation)
             .setOnCompleteParam(hash as object);
-
-        /*iTween.RotateAdd(chip,
-            iTween.Hash(
-                    "amount", rotateAdd,
-                    "time", (Settings.CHIP_ANIMATION_TIME * 0.5),
-                    "delay", Settings.CHIP_ANIMATION_DELAY,
-                    "onstart", "PlaySound",
-                    "onstarttarget", this.gameObject,
-                    "onstartparams", iTween.Hash("play_sound", SoundEffectType.PLACE_CHIP),
-                    "oncomplete", "AM_FinishAnimation",
-                    "oncompleteparams", iTween.Hash("action", action_id,
-                                                    "new_parent", null,
-                                                    "object", chip,
-                                                    "photonId", -1,
-                                                    "animationId", animationId,
-                                                    "reset_position", true),
-                    "onCompleteTarget", this.gameObject
-        ));*/
     }
     #endregion
 

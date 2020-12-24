@@ -5,8 +5,8 @@ using System.Threading;
 
 public class A_ExecuteEffect : KAction
 {
-    Card owner;
-    CardEffect effect;
+    public Card owner;
+    public CardEffect effect;
 
     float time = 0;
 
@@ -58,7 +58,7 @@ public class A_ExecuteEffect : KAction
             effectPreviewTimeout = true;
         }
 
-        return isInit && LinkedActionsReady() && AnimationsAreReady() && effectPreviewTimeout;
+        return isInit && LinkedActionsReady() && AnimationsAreReady() && effectPreviewTimeout && !effect.isAnimatingCombo;
     }
 
     public override void OnComplete()

@@ -26,6 +26,8 @@ public class Turn : ScriptableObject
     public List<CardEffect> startTurnEffects = new List<CardEffect>();
     [System.NonSerialized]
     public List<CardEffect> endTurnEffects = new List<CardEffect>();
+    [System.NonSerialized]
+    public List<ComboTracker> comboTracker = new List<ComboTracker>();
 
     public bool localInflictedBleed = false;
     public bool opponentInflictedBleed = false;

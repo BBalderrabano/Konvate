@@ -16,4 +16,5 @@ MonoBehaviour:
   priority: 3
   type: 2
   effectTags: 05000000
-  place_amount: 1
+  isAnimatingCombo: 0
+  place_amount: 2

@@ -16,5 +16,6 @@ MonoBehaviour:
   priority: 1
   type: 1
   effectTags: 290000000c0000000f000000
-  draw_amount: 1
+  isAnimatingCombo: 0
+  draw_amount: 2
   quickPlayCondition: {fileID: 11400000, guid: 6642a63d7a2bff34ab1f497c9c97fb04, type: 2}

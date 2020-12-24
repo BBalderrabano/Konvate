@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
-using Debug = UnityEngine.Debug;
 
 public class ActionManager
 {
@@ -59,6 +59,20 @@ public class ActionManager
         return null;
     }
 
+    public KAction GetActionByEffect(int effectId)
+    {
+        foreach (ActionList list in actions)
+        {
+            foreach (A_ExecuteEffect action in list.OfType<A_ExecuteEffect>())
+            {
+                if (action.effect.effectId == effectId)
+                    return action;
+            }
+        }
+
+        return null;
+    }
+
     public List<KAction> GetPlayerActions(int photonId)
     {
         foreach (ActionList list in actions)
@@ -69,6 +83,18 @@ public class ActionManager
             }
         }
         return null;
+    }
+
+    public void PushActionToStart(KAction action)
+    {
+        foreach (ActionList list in actions)
+        {
+            if (list.photonId == action.photonId)
+            {
+                list.Insert(0, action);
+                break;
+            }
+        }
     }
 
     public void PushAction(int actionId, KAction action)

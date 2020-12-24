@@ -135,6 +135,7 @@ public class FinalEndPhase : Phase
     {
         if (isInit)
         {
+            GM.turn.comboTracker.Clear();
             GM.turn.endTurnEffects.Clear();
             GM.SetState(null);
             isInit = false;

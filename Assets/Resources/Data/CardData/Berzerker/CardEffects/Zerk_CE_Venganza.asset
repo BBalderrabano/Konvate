@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f53f764c2324b774885094479a6e4f0d, type: 3}
+  m_Name: Zerk_CE_Venganza
+  m_EditorClassIdentifier: 
+  isTemporary: 0
+  priority: 3
+  type: 1
+  effectTags: 0c000000

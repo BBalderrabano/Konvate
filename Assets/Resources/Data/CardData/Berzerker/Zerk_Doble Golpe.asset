@@ -17,11 +17,12 @@ MonoBehaviour:
   art: {fileID: -8084380630292903134, guid: 05dacce2953788743b456219a863c2d5, type: 3}
   classIcon: {fileID: 21300000, guid: 134daf8ff23041a4993226b5a6b4e4f6, type: 3}
   cardType: {fileID: 11400000, guid: 0e3332cf33a066a4d8be0f706aa9ccea, type: 2}
-  cardText: 'Copia las habilidades de otra carta que hayas jugado este turno
+  cardText: 'Copia las habilidades de otra carta tuya que hayas jugado este turno
 
     (no
-    afecta <sprite=3>)'
+    afecta <sprite=3> ni a otro Doble Golpe)'
   textMods: []
-  cardEffects: []
+  cardEffects:
+  - {fileID: 11400000, guid: 7da8a2ab408247d479fe5681f9d47209, type: 2}
   conditions: []
   cardTags: 0100000002000000

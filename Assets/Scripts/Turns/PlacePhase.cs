@@ -133,5 +133,65 @@ public class PlacePhase : Phase
 
     public override void OnPlayCard(Card c)
     {
+        int offensivePhotonId = GM.turn.offensivePlayer.photonId;
+
+        for (int i = 0; i < c.cardEffects.Count; i++)
+        {
+            if (c.cardEffects[i].isDone)
+                continue;
+
+            if (c.cardEffects[i].type == EffectType.PLACE)
+            {
+                place.Add(c.cardEffects[i]);
+            }
+            if (c.cardEffects[i].type == EffectType.SPECIAL)
+            {
+                special.Add(c.cardEffects[i]);
+            }
+        }
+
+        place = place.OrderBy(a => a.priority).ThenBy(a => (a.card.owner.photonId != offensivePhotonId)).ToList();
+        special = special.OrderBy(a => a.priority).ThenBy(a => (a.card.owner.photonId != offensivePhotonId)).ToList();
+
+        for (int i = 0; i < c.cardEffects.Count; i++)
+        {
+            if (c.cardEffects[i].isDone)
+                continue;
+
+            int place_index = place.FindIndex(a => a.effectId == c.cardEffects[i].effectId);
+            int special_index = special.FindIndex(a => a.effectId == c.cardEffects[i].effectId);
+
+            if(place_index > 0)
+            {
+                KAction previousAction = GM.actionManager.GetActionByEffect(place[Mathf.Max(0, place_index - 1)].effectId);
+
+                KAction place_action = new A_ExecuteEffect(c.cardEffects[i].card.instanceId, c.cardEffects[i].effectId, c.cardEffects[i].card.owner.photonId);
+
+                if (previousAction != null)
+                {
+                    GM.actionManager.PushAction(previousAction.actionId, place_action);
+                }
+                else
+                {
+                    GM.actionManager.PushActionToStart(place_action);
+                }
+            }
+
+            if(special_index > 0)
+            {
+                KAction previousAction = GM.actionManager.GetActionByEffect(special[Mathf.Max(0, special_index - 1)].effectId);
+
+                KAction special_action = new A_ExecuteEffect(c.cardEffects[i].card.instanceId, c.cardEffects[i].effectId, c.cardEffects[i].card.owner.photonId);
+
+                if (previousAction != null)
+                {
+                    GM.actionManager.PushAction(previousAction.actionId, special_action);
+                }
+                else
+                {
+                    GM.actionManager.PushActionToStart(special_action);
+                }
+            }
+        }
     }
 }

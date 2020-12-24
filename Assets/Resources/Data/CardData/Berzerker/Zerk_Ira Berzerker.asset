@@ -21,6 +21,7 @@ MonoBehaviour:
     carta (no <sprite=3>) de tu mano y pon esta carta en el tope de tu mazo\n<color=#FF0000>Coloca
     </color>1 <sprite=0>"
   textMods: []
-  cardEffects: []
+  cardEffects:
+  - {fileID: 11400000, guid: f8cb124473f3a40428566d8f6759a4e8, type: 2}
   conditions: []
-  cardTags: 
+  cardTags: 0100000002000000050000001500000019000000

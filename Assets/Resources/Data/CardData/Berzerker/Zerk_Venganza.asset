@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a690ff51c21df6840a240e723fb5d079, type: 3}
   m_Name: Zerk_Venganza
   m_EditorClassIdentifier: 
-  CardCost: 1
+  CardCost: 0
   cardName: Venganza
   art: {fileID: 4734405570688487242, guid: 05dacce2953788743b456219a863c2d5, type: 3}
   classIcon: {fileID: 21300000, guid: 134daf8ff23041a4993226b5a6b4e4f6, type: 3}
   cardType: {fileID: 11400000, guid: 824122562ba26474b9e5d23302a17560, type: 2}
-  cardText: "A partir de la activaci\xF3n de esta carta efect\xFAa la misma cantidad
-    de <sprite=2> que recibas este turno a tu oponente"
+  cardText: Roba 1 carta, si hay en juego otra carta <sprite=3> roba 1 carta extra
   textMods: []
-  cardEffects: []
+  cardEffects:
+  - {fileID: 11400000, guid: 878b60f579cedf2478cfdebc9867b423, type: 2}
   conditions: []
   cardTags: 010000000400000007000000

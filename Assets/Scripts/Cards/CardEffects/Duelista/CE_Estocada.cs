@@ -15,14 +15,14 @@ public class CE_Estocada : CardEffect
         {
             if (IsCombo())
             {
-                if (!opponent.statMods.Exists(a => a.identifier == effectId))
-                {
-                    opponent.statMods.Add(new SMOD_StartTurnDraw(-3, true, effectId));
-                }
+                opponent.statMods.Add(new SMOD_StartTurnDraw(-3, true));
             }
             else
             {
-                opponent.statMods.Add(new SMOD_StartTurnDraw(-1, true, effectId));
+                if(!GM.turn.comboTracker.Exists(a => a.card_name == card.cardName && a.photonId == card.owner.photonId))
+                {
+                    opponent.statMods.Add(new SMOD_StartTurnDraw(-1, true));
+                }
             }
         }
     }

@@ -19,6 +19,7 @@ MonoBehaviour:
   cardType: {fileID: 11400000, guid: 0e3332cf33a066a4d8be0f706aa9ccea, type: 2}
   cardText: <color=#FF0000> Coloca </color>2 <sprite=0>
   textMods: []
-  cardEffects: []
+  cardEffects:
+  - {fileID: 11400000, guid: 115d08ea6cc6a774a91cf6c2498b291f, type: 2}
   conditions: []
   cardTags: 010000000200000005000000

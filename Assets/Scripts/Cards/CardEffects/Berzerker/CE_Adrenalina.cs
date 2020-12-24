@@ -2,17 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CE_Adrenalina : MonoBehaviour
+[CreateAssetMenu(menuName = "Card Effects/Berzerker/Adrenalina")]
+public class CE_Adrenalina : CardEffect
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void Execute()
     {
-        
-    }
+        base.Execute();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        card.owner.ChangeMana(1);
     }
 }

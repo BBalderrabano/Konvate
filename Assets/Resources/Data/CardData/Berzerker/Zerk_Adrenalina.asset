@@ -19,6 +19,7 @@ MonoBehaviour:
   cardType: {fileID: 11400000, guid: 824122562ba26474b9e5d23302a17560, type: 2}
   cardText: Gana <sprite=4> este turno
   textMods: []
-  cardEffects: []
+  cardEffects:
+  - {fileID: 11400000, guid: 3fa11728299140d47a7f5697d6086d28, type: 2}
   conditions: []
   cardTags: 010000000400000014000000

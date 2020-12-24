@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public abstract class CardEffect : ScriptableObject, ICloneable
@@ -56,29 +57,44 @@ public abstract class CardEffect : ScriptableObject, ICloneable
     }
 
     public virtual void OnLeavePlay() { }
-    
+
+    [System.NonSerialized]
+    public bool isAnimatingCombo = false;
+
     public bool IsCombo()
     {
         PlayerHolder player = card.owner;
 
         List<Card> cardCopies = player.playedCards.FindAll(a => a.cardName == card.cardName);
 
-        if (cardCopies.Count > 1)
+        if (cardCopies.Count > 1 && !GM.turn.comboTracker.Exists(a => a.card_name == card.cardName && a.photonId == card.owner.photonId))
         {
-            float shakeAmt = 0.2f; // the degrees to shake
-            float shakePeriodTime = 0.22f; // The period of each shake
-            float dropOffTime = 1f; // How long it takes the shaking to settle down to nothing
+            float shakeAmt = 20f;
+            float shakePeriodTime = 0.22f;
+            float dropOffTime = 1f;
 
-            LTDescr shakeTween = LeanTween.rotateAroundLocal(card.cardPhysicalInst.gameObject, Vector3.right, shakeAmt, shakePeriodTime)
-                .setEase(LeanTweenType.easeShake) // this is a special ease that is good for shaking
-                .setLoopClamp()
-                .setRepeat(-1);
+            isAnimatingCombo = true;
 
-            LeanTween.value(card.cardPhysicalInst.gameObject, shakeAmt, 0f, dropOffTime).setOnUpdate(
-                (float val) => {
-                    shakeTween.setTo(Vector3.right * val);
-                }
-            ).setEase(LeanTweenType.easeOutQuad);
+            foreach (Card c in cardCopies)
+            {
+                LTDescr shakeTween = LeanTween.rotateAroundLocal(c.cardPhysicalInst.gameObject, Vector3.up, shakeAmt, shakePeriodTime)
+                    .setEase(LeanTweenType.easeShake)
+                    .setLoopClamp()
+                    .setRepeat(-1);
+
+                LeanTween.value(c.cardPhysicalInst.gameObject, shakeAmt, 0f, dropOffTime).setOnUpdate(
+                    (float val) => {
+                        shakeTween.setTo(Vector3.right * val);
+
+                        if(val <= 0)
+                        {
+                            this.isAnimatingCombo = false;
+                        }
+                    }
+                ).setEase(LeanTweenType.easeOutQuad);
+            }
+
+            GM.turn.comboTracker.Add(new ComboTracker(card.owner.photonId, card.cardName));
 
             return true;
         }

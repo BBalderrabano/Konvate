@@ -209,7 +209,7 @@ public class PlayerHolder : ScriptableObject
     public void Init()
     {
         baseEnergy = 3;
-        maxHealth = 1;
+        maxHealth = 15;
         bleedCount = maxHealth;
         StartDrawAmount = 5;
 
@@ -276,7 +276,17 @@ public class PlayerHolder : ScriptableObject
 
     public void ModifyHitPoints(int amount)
     {
-        bleedCount += amount;
+        int n = amount;
+
+        if(amount < 0)
+        {
+            foreach (SMOD_DamageMod smod in statMods.OfType<SMOD_DamageMod>())
+            {
+                n = smod.modify(n);
+            }
+        }
+
+        bleedCount += n;
 
         if(bleedCount > maxHealth)
         {
@@ -285,6 +295,7 @@ public class PlayerHolder : ScriptableObject
 
         if(playerUI != null)
         {
+            playerUI.ShowHPChange(n);
             playerUI.UpdateBloodChips();
         }
     }

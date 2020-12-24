@@ -17,7 +17,13 @@ MonoBehaviour:
   art: {fileID: -7969676442348903706, guid: 82b1138787066bf4082fc83e4050d5b6, type: 3}
   classIcon: {fileID: 21300000, guid: 3db69d441ad43d84b888cd2beab37841, type: 3}
   cardType: {fileID: 11400000, guid: 824122562ba26474b9e5d23302a17560, type: 2}
-  cardText: 
+  cardText: '<size=25>Al final del turno baraja esta carta en el mazo de un oponente
+
+    Si
+    otro jugador juega esta carta <color=#1E9D44>colocas </color>1 <sprite=1>
+
+    Si
+    otro jugador descarta esta carta le <color=#FF0000>inflijes</color> 1<sprite=2></size>'
   textMods:
   - {fileID: 11400000, guid: 095f3dbde6839b94e9f0ea3410b69511, type: 2}
   cardEffects:

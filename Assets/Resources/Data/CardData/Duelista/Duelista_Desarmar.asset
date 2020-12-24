@@ -20,7 +20,7 @@ MonoBehaviour:
   cardText: 'Por este turno y a partir de activar esta carta tu oponente no puede
     jugar cartas <sprite=3>
 
-    Combo: Roba 1 carta'
+    Combo: Roba 2 cartas'
   textMods: []
   cardEffects:
   - {fileID: 11400000, guid: b976a9527e06b0b49b962ea10795a7a0, type: 2}

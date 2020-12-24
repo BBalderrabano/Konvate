@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Card Effects/Duelista/Desarmar")]
 public class CE_Desarmar : CardEffect
 {
-    public int draw_amount = 1;
+    public int draw_amount = 2;
     public Condition quickPlayCondition;
 
     public override void Execute()

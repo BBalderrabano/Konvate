@@ -49,6 +49,7 @@ public class ScrollSelectionManager : MonoBehaviour
     {
         selectedAmount = 0;
         listOfCards.Clear();
+        cardsSelected.Clear();
 
         visible = true;
         this.isVisual = false;
@@ -103,6 +104,7 @@ public class ScrollSelectionManager : MonoBehaviour
 
         selectedAmount = 0;
         listOfCards.Clear();
+        cardsSelected.Clear();
 
         visible = true;
         this.isVisual = isVisual;

@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6db648d9446c03d4faab3f39fee6b0c0, type: 3}
+  m_Name: Mazo_Samurai
+  m_EditorClassIdentifier: 
+  deckName: Samurai
+  cardIds:
+  - Ataque Basico
+  - Ataque Basico
+  - Ataque Basico
+  - Ataque Basico
+  - Ataque Basico
+  - Defensa
+  - Defensa
+  - Defensa
+  - Samurai_Ataque Final
+  - Samurai_Espiritu Inquebrantable
+  - Samurai_Ya Estas Muerto
+  - Samurai_Golpe Critico
+  - Samurai_Golpe Critico
+  - Samurai_Shuriken
+  - Samurai_Shuriken
+  - Samurai_Corte Instantaneo
+  - Samurai_Corte Instantaneo
+  - Samurai_Corte Instantaneo
+  - Samurai_Duelo Honorable
+  - Samurai_Duelo Honorable
+  deckArt: {fileID: 5818398284439870630, guid: 0c21fa4a52dd93741926d32d5dcd50b2, type: 3}
+  deckIcon: {fileID: 21300000, guid: 1cf095f3eadd001478292f5dd6af04f5, type: 3}
+  deckDesc: 

@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deckName: Prueba
   cardIds:
-  - Ataque Basico
-  - Ataque Basico
-  - Ataque Basico
-  - Ataque Basico
-  - Duelista_Tomar Ofensiva
-  - Duelista_Tomar Ofensiva
-  - Duelista_Choque de Espadas
-  - Duelista_Choque de Espadas
-  - Duelista_Choque de Espadas
-  - Duelista_Choque de Espadas
+  - Zerk_Doble Golpe
+  - Zerk_Doble Golpe
+  - Zerk_Doble Golpe
+  - Zerk_Doble Golpe
+  - Zerk_Hachazo Doble
+  - Zerk_Hachazo Doble
+  - Zerk_Hachazo Doble
+  - Zerk_Hachazo Doble
+  - Zerk_Hachazo Doble
+  - Zerk_Hachazo Doble
   deckArt: {fileID: -4243352877662240769, guid: 82b1138787066bf4082fc83e4050d5b6,
     type: 3}
   deckIcon: {fileID: 21300000, guid: bf61ba194d5ee724799503db86f9d07f, type: 3}

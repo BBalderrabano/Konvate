@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class A_CardSelectionComplete : KAction
@@ -22,7 +23,7 @@ public class A_CardSelectionComplete : KAction
     {
         if (!completedAction)
         {
-            foreach (A_CardSelectionWait selection in GM.actionManager.GetPlayerActions(GM.localPlayer.photonId).OfType<A_CardSelectionWait>())
+            foreach (A_CardSelectionWait selection in GM.actionManager.GetPlayerActions(GM.localPlayer.photonId).OfType<A_CardSelectionWait>().ToList())
             {
                 if (selection.CompletionCheck(selectedCards, cardOrigin, effectOrigin))
                 {
