@@ -220,6 +220,16 @@ public class AnimationManager : MonoBehaviour
                     continue;
                 }
 
+                if((chip_component.type == ChipType.COMBAT || chip_component.type == ChipType.OFFENSIVE) &&
+                    chip_component.state == ChipSate.PLAYED && player.statMods.OfType<SMOD_FistToBleed>().Any())
+                {
+                    animationPointer = MoveChip(chip, actionId, player.photonId, chip_component.owner.currentHolder.combatChipHolder.value.position,
+                                                                                 chip_component.owner.currentHolder.combatChipHolder.value.gameObject);
+                    chip_component.state = ChipSate.STASHED;
+                    chips_to_animate++;
+                    continue;
+                }
+
                 float delay = Settings.ANIMATION_DELAY + (Settings.ANIMATION_INTERVAL * chips_to_animate);
 
                 Hashtable hash = new Hashtable
@@ -335,26 +345,6 @@ public class AnimationManager : MonoBehaviour
                     .setOnStart(() => { AudioManager.singleton.Play(SoundEffectType.MOVE_CHIP); })
                     .setOnComplete(AM_FinishAnimation)
                     .setOnCompleteParam(hash as object);
-
-                /*iTween.MoveTo(chip,
-                    iTween.Hash(
-                        "position", Settings.WorldToCanvasPosition(card.cardPhysicalInst.transform.position),
-                        "time", Settings.CHIP_ANIMATION_TIME,
-                        "onstart", "PlaySound",
-                        "onstarttarget", this.gameObject,
-                        "onstartparams", iTween.Hash("play_sound", SoundEffectType.MOVE_CHIP),
-                        "oncomplete", "AM_FinishAnimation",
-                        "easetype", Settings.ANIMATION_STYLE,
-                        "delay", delay,
-                        "oncompleteparams", iTween.Hash("action", actionId,
-                                                        "new_parent", parentTo,
-                                                        "object", chip,
-                                                        "photonId", photonId,
-                                                        "animationId", animationPointer.animId,
-                                                        "reset_position", true,
-                                                        "play_sound", SoundEffectType.PLACE_CHIP),
-                        "onCompleteTarget", this.gameObject
-                ));*/
             }
             else if (floatsDefend)
             {

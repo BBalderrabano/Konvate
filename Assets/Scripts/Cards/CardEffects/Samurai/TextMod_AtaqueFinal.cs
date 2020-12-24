@@ -1,11 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Card Effects/Samurai/TextMod Ataque Final")]
 public class TextMod_AtaqueFinal : CardTextMod
 {
-    public string text = "\n<b><i>(<color=#FF0000>Coloca </color>%% <sprite=0>)</i><b>";
+    public string text = "<b><i>(<color=#FF0000>Coloca </color>%% <sprite=0>)</i><b>";
 
     int hp_difference = -99;
 
@@ -28,11 +28,11 @@ public class TextMod_AtaqueFinal : CardTextMod
         }
         else if (current_amount != hp_difference)
         {
-            string original_text_copy = original_text + "" + text;
+            string original_text_copy = original_text + text;
             string modified_text = original_text_copy.Replace(text_target, current_amount.ToString());
 
             card.cardText = modified_text;
-            card.cardViz.cardText.SetText(modified_text);
+            card.cardViz.cardText.text = modified_text;
             card.cardViz.cardText.ForceMeshUpdate(true);
 
             hp_difference = current_amount;

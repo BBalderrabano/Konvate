@@ -17,8 +17,10 @@ MonoBehaviour:
   art: {fileID: 5818398284439870630, guid: 0c21fa4a52dd93741926d32d5dcd50b2, type: 3}
   classIcon: {fileID: 21300000, guid: 1cf095f3eadd001478292f5dd6af04f5, type: 3}
   cardType: {fileID: 11400000, guid: 0e3332cf33a066a4d8be0f706aa9ccea, type: 2}
-  cardText: "El pr\xF3ximo turno <color=#FF0000>coloca </color>1 <sprite=0>"
+  cardText: "El pr\xF3ximo turno <color=#FF0000>coloca </color>3 <sprite=0>"
   textMods: []
-  cardEffects: []
+  cardEffects:
+  - {fileID: 11400000, guid: 0c4ec83169477264aa68948110c94677, type: 2}
+  - {fileID: 11400000, guid: 22358ab99060f4b4382c18e04cfc06ba, type: 2}
   conditions: []
   cardTags: 010000000200000005000000

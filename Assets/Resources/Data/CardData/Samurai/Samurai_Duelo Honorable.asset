@@ -22,6 +22,7 @@ MonoBehaviour:
 
     (si hay empate ninguno las convierte)'
   textMods: []
-  cardEffects: []
+  cardEffects:
+  - {fileID: 11400000, guid: 780f78e0b2d42c649a918367f7fafb89, type: 2}
   conditions: []
   cardTags: 01000000040000000a000000

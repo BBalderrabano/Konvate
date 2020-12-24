@@ -286,14 +286,29 @@ public class PlayerHolder : ScriptableObject
             }
         }
 
-        bleedCount += n;
+        bool tryndaMere = false;
+
+        foreach (SMOD_Tryndamere smod in statMods.OfType<SMOD_Tryndamere>())
+        {
+            tryndaMere = true;
+            break;
+        }
+
+        if (tryndaMere)
+        {
+            bleedCount = Mathf.Max(1, bleedCount + n);
+        }
+        else
+        {
+            bleedCount += n;
+        }
 
         if(bleedCount > maxHealth)
         {
             bleedCount = maxHealth;
         }
 
-        if(playerUI != null)
+        if (playerUI != null)
         {
             playerUI.ShowHPChange(n);
             playerUI.UpdateBloodChips();

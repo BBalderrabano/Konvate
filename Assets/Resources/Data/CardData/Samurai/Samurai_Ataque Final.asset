@@ -20,9 +20,12 @@ MonoBehaviour:
   cardText: 'Tu oponente roba 1 carta
 
     <color=#FF0000>Coloca </color>1 <sprite=0>
-    por cada <sprite=2> que te hayan efectuado esta partida'
+    por cada <sprite=2> que te hayan efectuado esta partida
+
+'
   textMods:
   - {fileID: 11400000, guid: 5c94b96b019165442b8795ec3d7dd6de, type: 2}
-  cardEffects: []
+  cardEffects:
+  - {fileID: 11400000, guid: 053ec842df7c1c24fad0faeebc9eace8, type: 2}
   conditions: []
   cardTags: 0100000002000000050000000c000000

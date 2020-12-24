@@ -12,7 +12,6 @@ public class CE_IraBerzerker : SelectionCardEffect
     {
         base.Execute();
 
-        skipsEffectPreview = false;
         parentAction.MakeActiveOnComplete(true);
 
         parentAction.LinkAnimation(GM.animationManager.PlaceChip(parentAction.actionId, card.owner.photonId, card.instanceId, ChipType.COMBAT, amount));
@@ -34,14 +33,6 @@ public class CE_IraBerzerker : SelectionCardEffect
                     GM.actionManager.PushAction(parentAction.actionId, new A_CardSelectionWait(GM.localPlayer.photonId, this, card.instanceId));
                 }
             }
-            else
-            {
-                skipsEffectPreview = true;
-            }
-        }
-        else
-        {
-            skipsEffectPreview = true;
         }
     }
 

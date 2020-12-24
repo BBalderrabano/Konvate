@@ -22,6 +22,7 @@ MonoBehaviour:
     Si no jugaste cartas
     de Defensa este turno juega una carta de tu mano que no sea Defensa o <sprite=3>'
   textMods: []
-  cardEffects: []
+  cardEffects:
+  - {fileID: 11400000, guid: 741a5bb7cf9f32d498890a2fa0cb0495, type: 2}
   conditions: []
   cardTags: 01000000020000000500000015000000
