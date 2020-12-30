@@ -120,12 +120,12 @@ TextureImporter:
       name: A_CardArt_Nigromante_0
       rect:
         serializedVersion: 2
-        x: 3646
-        y: 1413
-        width: 892
-        height: 1176
+        x: 3741
+        y: 1582
+        width: 722
+        height: 1007
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -142,11 +142,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2305
-        y: 1403
-        width: 972
-        height: 1231
+        y: 1517
+        width: 887
+        height: 1117
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -162,12 +162,12 @@ TextureImporter:
       name: A_CardArt_Nigromante_2
       rect:
         serializedVersion: 2
-        x: 989
-        y: 1398
-        width: 1067
-        height: 1211
+        x: 1009
+        y: 1597
+        width: 942
+        height: 1027
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -184,11 +184,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 346
-        y: 62
-        width: 1221
-        height: 1341
+        y: 316
+        width: 1096
+        height: 987
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -205,11 +205,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1717
-        y: 96
+        y: 251
         width: 1236
-        height: 1277
+        height: 1122
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -225,12 +225,12 @@ TextureImporter:
       name: A_CardArt_Nigromante_5
       rect:
         serializedVersion: 2
-        x: 3372
-        y: 416
-        width: 1271
-        height: 947
+        x: 3402
+        y: 510
+        width: 1166
+        height: 853
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

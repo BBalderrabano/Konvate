@@ -38,7 +38,7 @@ public class CE_AjustarEstrategia : SelectionCardEffect
             {
                 Card selected = card.owner.GetCard(cardIds[i]);
 
-                discard.Add(new A_Discard(selected.instanceId, selected.owner.photonId));
+                discard.Add(new A_Discard(selected.instanceId, selected.owner.photonId, true));
             }
 
             parentAction.PushActions(discard);

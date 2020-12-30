@@ -120,5 +120,6 @@ public enum EffectType
     ON_PLAY_END,
     HAND_EFFECT,
     BEFORE_RECHARGE,
-    QUICK_COUNTER
+    QUICK_COUNTER,
+    DISCARD_EFFECT
 }

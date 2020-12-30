@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a690ff51c21df6840a240e723fb5d079, type: 3}
+  m_Name: Nigro_Necronomicon
+  m_EditorClassIdentifier: 
+  CardCost: 1
+  cardName: Necronomicon
+  art: {fileID: 3410793918581731794, guid: c287f2057dc5bd640a8a40aa28b31c79, type: 3}
+  classIcon: {fileID: 21300000, guid: 4cc6367a0c22b4e44953b6271dfedcd1, type: 3}
+  cardType: {fileID: 11400000, guid: 824122562ba26474b9e5d23302a17560, type: 2}
+  cardText: 'Roba 2 cartas
+
+    Descarta 1 carta para robar 1 carta extra'
+  textMods: []
+  cardEffects:
+  - {fileID: 11400000, guid: 824f5471ae11ad0489e876e03f3abdb5, type: 2}
+  - {fileID: 11400000, guid: 056db5a0764ba6547ad428bd6b185485, type: 2}
+  conditions: []
+  cardTags: 01000000040000000c0000001e000000
