@@ -170,7 +170,7 @@ public class GameManager : MonoBehaviour
 
         turn.offensiveChip = offensiveChip;
 
-        turn.turnCount = 0;
+        turn.ResetMatch();
 
         for (int i = 0; i < turn.phases.Length; i++)
         {
@@ -212,6 +212,12 @@ public class GameManager : MonoBehaviour
         startGameManager.ResetMatch();
 
         turn.ResetMatch();
+
+        for (int i = 0; i < turn.phases.Length; i++)
+        {
+            turn.phases[i].InitPlayerSync();
+        }
+
         onTurnChange.Raise();
         onPhaseControllerChange.Raise();
 

@@ -13,7 +13,4 @@ MonoBehaviour:
   m_Name: Start Turn Phase
   m_EditorClassIdentifier: 
   phaseDescription: 
-  forceExit: 0
   forcePlayerControlChange: 0
-  isDoneClient: 1
-  isDoneLocal: 1

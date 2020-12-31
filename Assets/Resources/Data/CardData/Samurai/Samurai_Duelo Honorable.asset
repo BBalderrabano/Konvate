@@ -17,8 +17,8 @@ MonoBehaviour:
   art: {fileID: -939177153114755833, guid: 0c21fa4a52dd93741926d32d5dcd50b2, type: 3}
   classIcon: {fileID: 21300000, guid: 1cf095f3eadd001478292f5dd6af04f5, type: 3}
   cardType: {fileID: 11400000, guid: 0e3332cf33a066a4d8be0f706aa9ccea, type: 2}
-  cardText: 'Solo el jugador que tenga mas <sprite=0> al final del turno las convierte
-    en <sprite=2>
+  cardText: 'Solo el jugador que tenga mas <sprite=0> las convierte en <sprite=2>
+    durante la fase de Konvate
 
     (si hay empate ninguno las convierte)'
   textMods: []

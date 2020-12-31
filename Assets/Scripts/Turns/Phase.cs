@@ -25,6 +25,8 @@ public abstract class Phase : ScriptableObject
 
     public void InitPlayerSync()
     {
+        isInit = false;
+
         if (playerSync == null)
         {
             playerSync = new List<SyncSignal>();

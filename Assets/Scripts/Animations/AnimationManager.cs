@@ -516,7 +516,7 @@ public class AnimationManager : MonoBehaviour
             .setDelay(Settings.ANIMATION_DELAY)
             .setOnComplete(AM_FinishAnimation).setOnCompleteParam(hash as object);
 
-        LeanTween.rotate(c.cardPhysicalInst.gameObject, new_parent.transform.root.eulerAngles, Settings.ANIMATION_TIME);
+        LeanTween.rotate(c.cardPhysicalInst.gameObject, new_parent.transform.eulerAngles, Settings.ANIMATION_TIME);
 
         return animationPointer;
     }

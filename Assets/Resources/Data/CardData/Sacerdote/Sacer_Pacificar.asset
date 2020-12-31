@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a690ff51c21df6840a240e723fb5d079, type: 3}
+  m_Name: Sacer_Pacificar
+  m_EditorClassIdentifier: 
+  CardCost: 1
+  cardName: Pacificar
+  art: {fileID: 8415020696481696213, guid: 8df043382813fa147b9a54ba2c5aec21, type: 3}
+  classIcon: {fileID: 21300000, guid: b69e8eb3003c0fe4f853f48ea1a38810, type: 3}
+  cardType: {fileID: 11400000, guid: 0e3332cf33a066a4d8be0f706aa9ccea, type: 2}
+  cardText: <size=38>Este turno las fichas de <sprite=0> no se convierten en <sprite=2>
+    durante la fase de Konvate</size>
+  textMods: []
+  cardEffects:
+  - {fileID: 11400000, guid: 76b6f41579b685d408d76ce8d99645d3, type: 2}
+  conditions: []
+  cardTags: 01000000030000000a000000

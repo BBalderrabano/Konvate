@@ -136,7 +136,7 @@ public class Card : ScriptableObject
         for (int i = 0; i < cardEffects.Count; i++)
         {
             if (cardEffects[i].type == EffectType.MAINTAIN || cardEffects[i].type == EffectType.ENDTURN || cardEffects[i].type == EffectType.STAT_MOD || cardEffects[i].type == EffectType.PREVAIL
-                || cardEffects[i].type == EffectType.DISCARD_EFFECT || cardEffects[i].type == EffectType.HAND_EFFECT || cardEffects[i].type == EffectType.ENDTURNSTART)
+                || cardEffects[i].type == EffectType.DISCARD_EFFECT || cardEffects[i].type == EffectType.HAND_EFFECT || cardEffects[i].type == EffectType.ENDTURNSTART || cardEffects[i].type == EffectType.STARTTURN)
                 continue;
 
             if (!cardEffects[i].isDone)

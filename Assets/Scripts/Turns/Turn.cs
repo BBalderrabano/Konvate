@@ -1,5 +1,6 @@
 ﻿using SO;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -60,6 +61,7 @@ public class Turn : ScriptableObject
 
     public void ResetMatch()
     {
+        currentPhase.value = phases.Last();
         turnCount = 0;
         phaseIndex = 0;
         startTurnEffects.Clear();
@@ -73,7 +75,7 @@ public class Turn : ScriptableObject
         bool result = false;
         bool phaseDone;
 
-        if(currentPhase.value != phases[phaseIndex])
+        if (currentPhase.value != phases[phaseIndex])
         {
             currentPhase.value = phases[phaseIndex];
 

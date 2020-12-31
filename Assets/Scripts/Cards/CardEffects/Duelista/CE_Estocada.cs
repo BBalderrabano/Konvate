@@ -7,7 +7,7 @@ public class CE_Estocada : CardEffect
 {
     public override void Execute()
     {
-        base.Execute();
+        Debug.Log("Estocada");
 
         PlayerHolder opponent = GM.GetOpponentHolder(card.owner.photonId);
 

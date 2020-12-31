@@ -160,7 +160,7 @@ public class QuickPlayPhase : Phase
         if (CheckPlayerIsReady(localPlayerId))
             return;
 
-        if (GM.localPlayer.playedCards.Exists(a => !a.EffectsDone()))
+        if (GM.localPlayer.playedCards.Exists(a => !a.EffectsDone() && a.GetCardType() is QuickPlay))
         {
             WarningPanel.singleton.ShowWarning("Aun tienes cartas <sprite=3> en juego sin activar", true);
             return;

@@ -65,7 +65,7 @@ public class A_Shuffle : KAction
 
                 for (int i = 0; i < deck.Length; i++)
                 {
-                    Card c = player.GetCard(deck[i]);
+                    Card c = GM.GetCard(deck[i]);
 
                     player.deck.Add(c);
                     Settings.SetParent(c.cardPhysicalInst.transform, player.currentHolder.deckGrid.value);

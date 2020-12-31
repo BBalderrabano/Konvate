@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a690ff51c21df6840a240e723fb5d079, type: 3}
+  m_Name: Sacer_Favor Divino
+  m_EditorClassIdentifier: 
+  CardCost: 1
+  cardName: Favor Divino
+  art: {fileID: 8641687895571669764, guid: 8df043382813fa147b9a54ba2c5aec21, type: 3}
+  classIcon: {fileID: 21300000, guid: b69e8eb3003c0fe4f853f48ea1a38810, type: 3}
+  cardType: {fileID: 11400000, guid: 0e3332cf33a066a4d8be0f706aa9ccea, type: 2}
+  cardText: <color=#880014>Recupera</color> 4 <sprite=2>, luego esta carta sale de
+    juego
+  textMods: []
+  cardEffects:
+  - {fileID: 11400000, guid: 77c7b968bc31b5442a821f83ce3699b4, type: 2}
+  conditions: []
+  cardTags: 010000000400000016000000

@@ -1,7 +1,4 @@
 ﻿using UnityEngine;
-using System.Diagnostics;
-using Photon.Realtime;
-using System.Threading;
 
 public class A_ExecuteEffect : KAction
 {
@@ -15,7 +12,13 @@ public class A_ExecuteEffect : KAction
     public A_ExecuteEffect(int cardId, int effectId, int photonId, int actionId = -1) : base(GameManager.singleton.localPlayer.photonId, actionId)
     {
         owner = GM.GetPlayerHolder(photonId).GetCard(cardId);
+
+        Debug.Log(owner.instanceId);
+
         effect = owner.GetEffect(effectId);
+
+        Debug.Log(effect.name);
+
         effect.parentAction = this;
 
         cardOrigin = cardId;

@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6db648d9446c03d4faab3f39fee6b0c0, type: 3}
+  m_Name: Mazo_Sacerdote
+  m_EditorClassIdentifier: 
+  deckName: Sacerdote
+  cardIds:
+  - Ataque Basico
+  - Ataque Basico
+  - Ataque Basico
+  - Ataque Basico
+  - Defensa
+  - Defensa
+  - Defensa
+  - Defensa
+  - Defensa
+  - Sacer_Wololo
+  - Sacer_Wololo
+  - Sacer_Wololo
+  - Sacer_Wololo
+  - Sacer_Wololo
+  - Sacer_Convertir
+  - Sacer_Convertir
+  - Sacer_Favor Divino
+  - Sacer_Purificar
+  - Sacer_Purificar
+  - Sacer_Pacificar
+  deckArt: {fileID: 8641687895571669764, guid: 8df043382813fa147b9a54ba2c5aec21, type: 3}
+  deckIcon: {fileID: 21300000, guid: b69e8eb3003c0fe4f853f48ea1a38810, type: 3}
+  deckDesc: 
