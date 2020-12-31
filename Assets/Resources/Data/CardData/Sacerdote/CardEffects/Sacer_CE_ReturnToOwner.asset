@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a945e93aed52464ea2436b2f079d20f, type: 3}
   m_Name: Sacer_CE_ReturnToOwner
   m_EditorClassIdentifier: 
-  isTemporary: 1
+  isTemporary: 0
   priority: 99
   type: 11
   effectTags: 04000000

@@ -59,20 +59,9 @@ public class StartPhase : Phase
             GM.onPhaseChange.Raise();
             GM.onPhaseControllerChange.Raise();
 
-            foreach (PlayerHolder p in GM.allPlayers)
-            {
-                p.statMods.RemoveAll(a => a.isTemporary);
-            }
-
-            foreach (Card c in GM.all_cards)
-            {
-                c.conditions.RemoveAll(a => a.isTemporary());
-                c.cardEffects.RemoveAll(a => a.isTemporary);
-                c.statMods.RemoveAll(a => a.isTemporary);
-                c.cardViz.RefreshStats();
-            }
-
             SetOffensivePlayer();
+
+            RemoveTemporaryEffects();
 
             LoadCardEffects();
             ExecuteEffects();
@@ -80,6 +69,22 @@ public class StartPhase : Phase
             MultiplayerManager.singleton.PhaseIsDone(GM.localPlayer.photonId, phaseIndex);
 
             isInit = true;
+        }
+    }
+
+    void RemoveTemporaryEffects()
+    {
+        foreach (PlayerHolder p in GM.allPlayers)
+        {
+            p.statMods.RemoveAll(a => a.isTemporary);
+        }
+
+        foreach (Card c in GM.all_cards)
+        {
+            c.conditions.RemoveAll(a => a.isTemporary());
+            c.cardEffects.RemoveAll(a => a.isTemporary);
+            c.statMods.RemoveAll(a => a.isTemporary);
+            c.cardViz.RefreshStats();
         }
     }
 

@@ -9,8 +9,6 @@ public class CE_ReturnToOwner : CardEffect
     {
         base.Execute();
 
-        Debug.Log("ENTRO");
-
         skipsEffectPreview = (card == null);
         parentAction.MakeActiveOnComplete((card == null));
 
@@ -30,5 +28,11 @@ public class CE_ReturnToOwner : CardEffect
 
             parentAction.PushAction(new A_Discard(card.instanceId, card.photonId));
         }
+    }
+
+    public override void Finish()
+    {
+        base.Finish();
+        card.cardEffects.Remove(this);
     }
 }

@@ -7,8 +7,6 @@ public class CE_Estocada : CardEffect
 {
     public override void Execute()
     {
-        Debug.Log("Estocada");
-
         PlayerHolder opponent = GM.GetOpponentHolder(card.owner.photonId);
 
         if (GM.turn.playerInflictedBleed(card.owner.photonId))

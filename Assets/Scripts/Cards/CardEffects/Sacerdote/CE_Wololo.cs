@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Card Effects/Sacerdote/Wololo")]
 public class CE_Wololo : SelectionCardEffect
 {
-    public CE_ReturnToOwner returnToOwner;
+    public CardEffect returnToOwner;
 
     PlayerHolder opponent = null;
     Transform playedHolder = null;
@@ -34,6 +34,7 @@ public class CE_Wololo : SelectionCardEffect
             if (opponent.deck.Count > 0)
             {
                 top_deck_card = opponent.deck[0];
+                top_deck_card.owner = card.owner;
 
                 top_deck_card.RevealCard();
 
@@ -82,6 +83,7 @@ public class CE_Wololo : SelectionCardEffect
 
             card.owner.playedCards.Remove(c);
             card.owner.all_cards.Remove(c);
+            c.owner = GM.GetPlayerHolder(c.photonId);
 
             parentAction.LinkAnimation(GM.animationManager.DirectDamageBleedChip(parentAction.actionId, card.owner.photonId, card.instanceId, opponent.photonId));
             parentAction.PushAction(new A_Discard(c.instanceId, c.owner.photonId));
@@ -90,12 +92,10 @@ public class CE_Wololo : SelectionCardEffect
         {
             if (top_deck_card != null)
             {
-                CE_ReturnToOwner clone = (CE_ReturnToOwner) returnToOwner.Clone();
+                CardEffect clone = (CardEffect) returnToOwner.Clone();
 
                 clone.effectId = int.Parse((9).ToString() + effectId.ToString());
                 clone.card = top_deck_card;
-
-                top_deck_card.owner = card.owner;
 
                 top_deck_card.cardEffects.Add(clone);
 
