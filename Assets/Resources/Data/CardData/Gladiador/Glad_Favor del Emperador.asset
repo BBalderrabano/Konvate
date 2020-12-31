@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a690ff51c21df6840a240e723fb5d079, type: 3}
+  m_Name: Glad_Favor del Emperador
+  m_EditorClassIdentifier: 
+  CardCost: 1
+  cardName: <size=40>Favor del Emperador</size>
+  art: {fileID: -1137934713759834856, guid: d3138ad0820a0fe4eb19dc7ce227ecc2, type: 3}
+  classIcon: {fileID: 21300000, guid: f3a6c9729eed98a42a2aedaaa5a3c88e, type: 3}
+  cardType: {fileID: 11400000, guid: 824122562ba26474b9e5d23302a17560, type: 2}
+  cardText: Coloca 1 carta de tu pila de descarte en tu mano
+  textMods: []
+  cardEffects: []
+  conditions: []
+  cardTags: 0100000004000000

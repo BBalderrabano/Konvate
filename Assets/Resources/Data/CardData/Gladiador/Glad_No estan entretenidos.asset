@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a690ff51c21df6840a240e723fb5d079, type: 3}
+  m_Name: Glad_No estan entretenidos
+  m_EditorClassIdentifier: 
+  CardCost: 1
+  cardName: "<size=34>\xBFNo est\xE1n entretenidos?</size>"
+  art: {fileID: 5544271354606795376, guid: d3138ad0820a0fe4eb19dc7ce227ecc2, type: 3}
+  classIcon: {fileID: 21300000, guid: f3a6c9729eed98a42a2aedaaa5a3c88e, type: 3}
+  cardType: {fileID: 11400000, guid: 0e3332cf33a066a4d8be0f706aa9ccea, type: 2}
+  cardText: 'Todos los jugadores ganan <sprite=4>
+
+    <color=#FF0000>Coloca </color>1
+    <sprite=0> por cada turno que esta carta permanezca en juego
+
+    Un oponente
+    puede gastar <sprite=4> al inicio del turno para enviar esta carta al descarte
+
+    <b>Permanece</b>'
+  textMods: []
+  cardEffects: []
+  conditions: []
+  cardTags: 010000000400000005000000140000001d000000

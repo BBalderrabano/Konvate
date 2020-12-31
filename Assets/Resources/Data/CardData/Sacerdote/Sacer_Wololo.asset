@@ -18,8 +18,8 @@ MonoBehaviour:
   classIcon: {fileID: 21300000, guid: b69e8eb3003c0fe4f853f48ea1a38810, type: 3}
   cardType: {fileID: 11400000, guid: 824122562ba26474b9e5d23302a17560, type: 2}
   cardText: "Revela la carta del tope del mazo de un oponente y ponla en juego bajo
-    tu control (gana <sprite=3>)\nSu due\xF1o puede <color=#880014>inflingirse</color>
-    1 <sprite=2> para negar su activaci\xF3n y enviar la carta a su descarte."
+    tu control\nSu due\xF1o puede <color=#880014>inflingirse</color> 1 <sprite=2>
+    para negar su activaci\xF3n y enviar la carta a su descarte"
   textMods: []
   cardEffects:
   - {fileID: 11400000, guid: dc85d9f43165bdd47bf60c9a7e224575, type: 2}

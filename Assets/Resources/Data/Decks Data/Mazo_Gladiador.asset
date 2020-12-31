@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6db648d9446c03d4faab3f39fee6b0c0, type: 3}
+  m_Name: Mazo_Gladiador
+  m_EditorClassIdentifier: 
+  deckName: Gladiador
+  cardIds:
+  - Ataque Basico
+  - Ataque Basico
+  - Ataque Basico
+  - Ataque Basico
+  - Ataque Basico
+  - Defensa
+  - Defensa
+  - Defensa
+  - Defensa
+  - Defensa
+  - Glad_Favor del Emperador
+  - Glad_Favor de la Audiencia
+  - Glad_Favor de la Audiencia
+  - Glad_No estan entretenidos
+  - Glad_Maestro del Combate
+  - Glad_Maestro del Combate
+  - Glad_Red de Gladiador
+  - Glad_Red de Gladiador
+  - Glad_Parry
+  - Glad_Parry
+  deckArt: {fileID: 5544271354606795376, guid: d3138ad0820a0fe4eb19dc7ce227ecc2, type: 3}
+  deckIcon: {fileID: 21300000, guid: f3a6c9729eed98a42a2aedaaa5a3c88e, type: 3}
+  deckDesc: 

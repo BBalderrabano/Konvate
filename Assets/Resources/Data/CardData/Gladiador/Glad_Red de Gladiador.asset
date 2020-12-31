@@ -10,17 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a690ff51c21df6840a240e723fb5d079, type: 3}
-  m_Name: Ataque Basico
+  m_Name: Glad_Red de Gladiador
   m_EditorClassIdentifier: 
   CardCost: 1
-  cardName: Ataque Basico
-  art: {fileID: -8134795744910985930, guid: 8eb29d46c2c8afc4aab1f56d10fbaf44, type: 3}
-  classIcon: {fileID: -3489923402679896410, guid: 2eee63c6bb266654b9b31ef874534da9,
-    type: 3}
+  cardName: Red de Gladiador
+  art: {fileID: 8600260371677110845, guid: d3138ad0820a0fe4eb19dc7ce227ecc2, type: 3}
+  classIcon: {fileID: 21300000, guid: f3a6c9729eed98a42a2aedaaa5a3c88e, type: 3}
   cardType: {fileID: 11400000, guid: 0e3332cf33a066a4d8be0f706aa9ccea, type: 2}
-  cardText: <color=#FF0000>Coloca </color>1 <sprite=0>
+  cardText: 'Anula una carta de Ataque Basico o Golpe Critico jugada por un oponente
+
+    <color=#036bfc>Remueve
+    </color>1 <sprite=0>'
   textMods: []
-  cardEffects:
-  - {fileID: 11400000, guid: ede2e68374dc4644d9e9456480433e7e, type: 2}
+  cardEffects: []
   conditions: []
-  cardTags: 000000000200000005000000
+  cardTags: 0100000003000000080000000d000000

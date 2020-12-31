@@ -125,7 +125,7 @@ TextureImporter:
         width: 1207
         height: 1026
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -141,12 +141,12 @@ TextureImporter:
       name: A_CardArt_Gladiador_1
       rect:
         serializedVersion: 2
-        x: 3475
-        y: 66
-        width: 1124
-        height: 1388
+        x: 3553
+        y: 184
+        width: 909
+        height: 1148
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -167,7 +167,7 @@ TextureImporter:
         width: 1270
         height: 1471
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -183,12 +183,12 @@ TextureImporter:
       name: A_CardArt_Gladiador_3
       rect:
         serializedVersion: 2
-        x: 1716
-        y: 1449
-        width: 1583
-        height: 1192
+        x: 1857
+        y: 1601
+        width: 1442
+        height: 982
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -204,12 +204,12 @@ TextureImporter:
       name: A_CardArt_Gladiador_4
       rect:
         serializedVersion: 2
-        x: 225
-        y: 1298
-        width: 1271
-        height: 1294
+        x: 235
+        y: 1591
+        width: 1202
+        height: 899
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -230,7 +230,7 @@ TextureImporter:
         width: 1280
         height: 1006
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
