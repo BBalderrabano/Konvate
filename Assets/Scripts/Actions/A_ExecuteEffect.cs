@@ -9,7 +9,7 @@ public class A_ExecuteEffect : KAction
 
     bool makeActive = true;
 
-    public A_ExecuteEffect(int cardId, int effectId, int photonId, int actionId = -1) : base(photonId, actionId)
+    public A_ExecuteEffect(int cardId, int effectId, int photonId, int actionId = -1) : base(GameManager.singleton.localPlayer.photonId, actionId)
     {
         owner = GM.GetPlayerHolder(photonId).GetCard(cardId);
 

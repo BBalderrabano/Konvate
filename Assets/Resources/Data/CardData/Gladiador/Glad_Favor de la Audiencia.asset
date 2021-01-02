@@ -20,6 +20,8 @@ MonoBehaviour:
   cardText: "Roba 1 carta\nUna carta de Ataque Basico o Defensa de tu mano \ncuesta
     <sprite=7> y gana <sprite=3>\nOtras copias de esta carta valen <sprite=7>"
   textMods: []
-  cardEffects: []
+  cardEffects:
+  - {fileID: 11400000, guid: 0815a41f1efd86d418217fb037fbd693, type: 2}
+  - {fileID: 11400000, guid: 24787700b2b41ae4cadb18cb8a255146, type: 2}
   conditions: []
   cardTags: 0100000004000000100000000c000000

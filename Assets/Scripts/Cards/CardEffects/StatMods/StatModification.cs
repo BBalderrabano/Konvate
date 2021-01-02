@@ -5,7 +5,14 @@ public abstract class StatModification
 
     public int amount;
 
-    public bool isTemporary;
+    readonly bool isTemporary;
+
+    public bool IsTemporary()
+    {
+        protection--;
+
+        return protection < 0 && isTemporary;
+    }
 
     public int identifier;
 
@@ -15,13 +22,23 @@ public abstract class StatModification
     {
         this.amount = amount;
         this.isTemporary = isTemporary;
+        this.protection = 0;
     }
-    
+
+    public int protection = 0;
+
+    public StatModification GiveProtection(int amount)
+    {
+        protection += amount;
+        return this;
+    }
+
     public StatModification(int amount = 0, bool isTemporary = true, int identifier = -1)
     {
         this.amount = amount;
         this.isTemporary = isTemporary;
         this.identifier = identifier;
+        this.protection = 0;
     }
 }
 

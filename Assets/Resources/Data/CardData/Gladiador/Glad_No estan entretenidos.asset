@@ -23,10 +23,16 @@ MonoBehaviour:
     <sprite=0> por cada turno que esta carta permanezca en juego
 
     Un oponente
-    puede gastar <sprite=4> al inicio del turno para enviar esta carta al descarte
+    puede iniciar el turno siguiente con <sprite=4> menos para enviar esta carta
+    al descarte
 
     <b>Permanece</b>'
   textMods: []
-  cardEffects: []
+  cardEffects:
+  - {fileID: 11400000, guid: ea28cb21925780a49bfb4b5c41d2e4d7, type: 2}
+  - {fileID: 11400000, guid: 71dbb39fbdb96524c82bb2293bd429a8, type: 2}
+  - {fileID: 11400000, guid: 9d336ee2fcb558741a60012445912b30, type: 2}
+  - {fileID: 11400000, guid: 78e3b0a5f13b663408520560eba14581, type: 2}
+  - {fileID: 11400000, guid: 59942fb8068eda94cad0ed846cf9bf97, type: 2}
   conditions: []
   cardTags: 010000000400000005000000140000001d000000

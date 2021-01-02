@@ -76,14 +76,14 @@ public class StartPhase : Phase
     {
         foreach (PlayerHolder p in GM.allPlayers)
         {
-            p.statMods.RemoveAll(a => a.isTemporary);
+            p.statMods.RemoveAll(a => a.IsTemporary());
         }
 
         foreach (Card c in GM.all_cards)
         {
             c.conditions.RemoveAll(a => a.isTemporary());
             c.cardEffects.RemoveAll(a => a.isTemporary);
-            c.statMods.RemoveAll(a => a.isTemporary);
+            c.statMods.RemoveAll(a => a.IsTemporary());
             c.cardViz.RefreshStats();
         }
     }

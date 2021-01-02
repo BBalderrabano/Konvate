@@ -22,6 +22,8 @@ MonoBehaviour:
     <color=#036bfc>Remueve
     </color>1 <sprite=0>'
   textMods: []
-  cardEffects: []
+  cardEffects:
+  - {fileID: 11400000, guid: a9c5218c23a864845a4e48805a14b72e, type: 2}
+  - {fileID: 11400000, guid: 1d7fd1dc588317d4ca5d7c4e3fdce67e, type: 2}
   conditions: []
   cardTags: 0100000003000000080000000d000000

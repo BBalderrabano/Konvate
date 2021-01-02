@@ -18,7 +18,6 @@ MonoBehaviour:
   - Ataque Basico
   - Ataque Basico
   - Ataque Basico
-  - Ataque Basico
   - Defensa
   - Defensa
   - Defensa
@@ -26,6 +25,7 @@ MonoBehaviour:
   - Defensa
   - Cab_Defensa Superior
   - Cab_Defensa Superior
+  - Cab_Golpe con Escudo
   - Cab_Golpe con Escudo
   - Cab_Golpe con Escudo
   - Cab_Golpe Critico

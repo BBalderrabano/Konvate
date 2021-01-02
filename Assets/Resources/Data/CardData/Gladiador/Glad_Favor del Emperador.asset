@@ -19,6 +19,7 @@ MonoBehaviour:
   cardType: {fileID: 11400000, guid: 824122562ba26474b9e5d23302a17560, type: 2}
   cardText: Coloca 1 carta de tu pila de descarte en tu mano
   textMods: []
-  cardEffects: []
+  cardEffects:
+  - {fileID: 11400000, guid: 778a576028cb95f429247da5ef7e2ca9, type: 2}
   conditions: []
   cardTags: 0100000004000000
