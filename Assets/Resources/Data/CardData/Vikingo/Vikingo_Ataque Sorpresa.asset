@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a690ff51c21df6840a240e723fb5d079, type: 3}
+  m_Name: Vikingo_Ataque Sorpresa
+  m_EditorClassIdentifier: 
+  CardCost: 1
+  cardName: Ataque Sorpresa
+  art: {fileID: -1081593785980420415, guid: 2158537e100ce804c9650967b703455b, type: 3}
+  classIcon: {fileID: 21300000, guid: 6482ce3aed359ad48913e2d7958a8689, type: 3}
+  cardType: {fileID: 11400000, guid: 0e3332cf33a066a4d8be0f706aa9ccea, type: 2}
+  cardText: "<color=#FF0000>Coloca </color>1 <sprite=0> por cada carta que tu oponente
+    haya descartado este turno por efectos de otras cartas \n(m\xEDnimo 1 <sprite=0>)"
+  textMods: []
+  cardEffects:
+  - {fileID: 11400000, guid: 59b7788f5c8042146aca1bb052857ccd, type: 2}
+  conditions: []
+  cardTags: 010000000200000005000000

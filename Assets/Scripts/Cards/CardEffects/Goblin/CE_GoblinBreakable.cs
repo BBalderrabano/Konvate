@@ -26,11 +26,6 @@ public class CE_GoblinBreakable : SelectionCardEffect
             }
             else
             {
-                List<Card> card = new List<Card>
-                    {
-                        base.card
-                    };
-
                 parentAction.PushAction(new A_CardSelection("¿Colocar " + amount_required + " <sprite=0> del lado oponente?\nTienes: " + reserve_combat_chips, card, enemy.photonId, this, base.card.instanceId).ModifyParameters(true, false, 0, 0));
             }
         }

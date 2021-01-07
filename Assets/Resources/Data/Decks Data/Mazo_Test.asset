@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deckName: Prueba
   cardIds:
-  - Duelista_Estocada
-  - Duelista_Estocada
-  - Duelista_Estocada
-  - Duelista_Estocada
-  - Duelista_Estocada
-  - Sacer_Wololo
-  - Sacer_Wololo
-  - Sacer_Wololo
-  - Sacer_Wololo
-  - Sacer_Wololo
+  - Vikingo_Drakkar
+  - Vikingo_Drakkar
+  - Ataque Basico
+  - Ataque Basico
+  - Ataque Basico
+  - Ataque Basico
+  - Ataque Basico
+  - Defensa
+  - Defensa
+  - Defensa
   deckArt: {fileID: -4243352877662240769, guid: 82b1138787066bf4082fc83e4050d5b6,
     type: 3}
   deckIcon: {fileID: 21300000, guid: bf61ba194d5ee724799503db86f9d07f, type: 3}

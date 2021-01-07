@@ -26,11 +26,6 @@ public class CE_GolpeAfortunado : SelectionCardEffect
         {
             if (card.owner.isLocal)
             {
-                List<Card> card = new List<Card>
-                    {
-                        base.card
-                    };
-
                 parentAction.PushAction(new A_CardSelection("¿Es <sprite=3> la carta del fondo del mazo oponente?", card, base.card.photonId, this, base.card.instanceId).ModifyParameters(true, false, 0, 0));
             }
             else

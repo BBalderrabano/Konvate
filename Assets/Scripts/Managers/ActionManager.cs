@@ -91,8 +91,14 @@ public class ActionManager
         {
             if (list.photonId == action.photonId)
             {
-                list.Insert(0, action);
-                break;
+                for (int i = 0; i < list.Count; i++)
+                {
+                    if (list[i].actionId == current.actionId)
+                    {
+                        list.Insert(i+1, action);
+                        break;
+                    }
+                }
             }
         }
     }
@@ -115,13 +121,15 @@ public class ActionManager
         }
     }
 
+    KAction current;
+
     public void Tick(float d)
     {
         foreach (ActionList actionList in actions)
         {
             for (int i = 0; i < actionList.Count; i++)
             {
-                KAction current = actionList[i];
+                current = actionList[i];
 
                 if (!current.IsComplete())
                 {

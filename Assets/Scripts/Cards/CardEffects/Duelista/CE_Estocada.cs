@@ -9,7 +9,7 @@ public class CE_Estocada : CardEffect
     {
         PlayerHolder opponent = GM.GetOpponentHolder(card.owner.photonId);
 
-        if (GM.turn.playerInflictedBleed(card.owner.photonId))
+        if (GM.turn.turnFlags.GetFlag(card.owner.photonId, FlagDesc.INFLICTED_BLEED).amount > 0)
         {
             if (IsCombo())
             {

@@ -34,12 +34,7 @@ public class CE_BreakableTotem : SelectionCardEffect
                 }
                 else
                 {
-                    List<Card> totem = new List<Card>
-                    {
-                        card
-                    };
-
-                    parentAction.PushAction(new A_CardSelection("¿Usar " + amount_required + " <sprite=0>?\nTienes: " + played_combat_chips, totem, enemy.photonId, this, card.instanceId).ModifyParameters(true, false, 0, 0));
+                    parentAction.PushAction(new A_CardSelection("¿Usar " + amount_required + " <sprite=0>?\nTienes: " + played_combat_chips, card, enemy.photonId, this, card.instanceId).ModifyParameters(true, false, 0, 0));
                 }
             }
             else

@@ -26,12 +26,7 @@ public class CE_TomarOfesiva : SelectionCardEffect
 
         if (card.owner.isLocal)
         {
-            List<Card> c = new List<Card>
-            {
-                card
-            };
-
-            parentAction.PushAction(new A_CardSelection("¿<b>Poner</b> esta carta en el tope de tu mazo?", c, card.owner.photonId, this, card.instanceId).ModifyParameters(true, false, 0, 0));
+            parentAction.PushAction(new A_CardSelection("¿<b>Poner</b> esta carta en el tope de tu mazo?", card, card.owner.photonId, this, card.instanceId).ModifyParameters(true, false, 0, 0));
         }
         else
         {

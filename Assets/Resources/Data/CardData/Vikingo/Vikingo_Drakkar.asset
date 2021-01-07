@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a690ff51c21df6840a240e723fb5d079, type: 3}
+  m_Name: Vikingo_Drakkar
+  m_EditorClassIdentifier: 
+  CardCost: 1
+  cardName: Drakkar
+  art: {fileID: -1156615695492608139, guid: 2158537e100ce804c9650967b703455b, type: 3}
+  classIcon: {fileID: 21300000, guid: 6482ce3aed359ad48913e2d7958a8689, type: 3}
+  cardType: {fileID: 11400000, guid: 0e3332cf33a066a4d8be0f706aa9ccea, type: 2}
+  cardText: "Pon en juego todos tus Ataques B\xE1sicos y Defensas de tu mano\nPon
+    en juego un Ataque B\xE1sico y Defensa de tu descarte"
+  textMods: []
+  cardEffects:
+  - {fileID: 11400000, guid: 895c22df6e1314e43a7124236f0b0cef, type: 2}
+  conditions: []
+  cardTags: 010000000400000015000000

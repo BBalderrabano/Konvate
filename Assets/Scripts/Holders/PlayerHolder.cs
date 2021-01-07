@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using NUnit.Framework.Constraints;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -274,15 +275,22 @@ public class PlayerHolder : ScriptableObject
         return result;
     }
 
-    public void ModifyHitPoints(int amount)
+    public void ModifyHitPoints(int amount, int originId = -1)
     {
         int n = amount;
+
+        int originid = originId < 0 ? photonId : originId;
 
         if(amount < 0)
         {
             foreach (SMOD_DamageMod smod in statMods.OfType<SMOD_DamageMod>())
             {
                 n = smod.modify(n);
+            }
+
+            if(n < 0)
+            {
+                GameManager.singleton.turn.turnFlags.AddFlag(new TurnFlag(originid, FlagDesc.INFLICTED_BLEED, Mathf.Abs(n)));
             }
         }
 

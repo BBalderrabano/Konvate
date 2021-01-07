@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a690ff51c21df6840a240e723fb5d079, type: 3}
+  m_Name: Vikingo_Ofrenda de Paz
+  m_EditorClassIdentifier: 
+  CardCost: 1
+  cardName: Ofrenda de Paz
+  art: {fileID: 4780230551043057667, guid: 2158537e100ce804c9650967b703455b, type: 3}
+  classIcon: {fileID: 21300000, guid: 6482ce3aed359ad48913e2d7958a8689, type: 3}
+  cardType: {fileID: 11400000, guid: 824122562ba26474b9e5d23302a17560, type: 2}
+  cardText: "Ofr\xE9cele una tregua a tu oponente\nSi acepta, este turno ning\xFAn
+    jugador recibe da\xF1o\nSi no acepta, <color=#FF0000>coloca </color>2 <sprite=0>"
+  textMods: []
+  cardEffects:
+  - {fileID: 11400000, guid: 2fc78ce9d9c24414583e449be625ee6a, type: 2}
+  conditions: []
+  cardTags: 010000000200000004000000050000000a000000

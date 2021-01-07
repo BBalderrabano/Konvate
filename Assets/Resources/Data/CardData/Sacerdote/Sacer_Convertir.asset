@@ -23,4 +23,4 @@ MonoBehaviour:
   cardEffects:
   - {fileID: 11400000, guid: 3fa935264d4814548b581917ddb5503c, type: 2}
   conditions: []
-  cardTags: 010000000400000019000000
+  cardTags: 0100000004000000190000002a000000

@@ -144,6 +144,7 @@ public class PlacePhase : Phase
             {
                 place.Add(c.cardEffects[i]);
             }
+
             if (c.cardEffects[i].type == EffectType.SPECIAL)
             {
                 special.Add(c.cardEffects[i]);
@@ -161,9 +162,9 @@ public class PlacePhase : Phase
             int place_index = place.FindIndex(a => a.effectId == c.cardEffects[i].effectId);
             int special_index = special.FindIndex(a => a.effectId == c.cardEffects[i].effectId);
 
-            if(place_index > 0)
+            if(place_index >= 0)
             {
-                KAction previousAction = GM.actionManager.GetActionByEffect(place[Mathf.Max(0, place_index - 1)].effectId);
+                KAction previousAction = place_index == 0 ? null : GM.actionManager.GetActionByEffect(place[place_index - 1].effectId);
 
                 KAction place_action = new A_ExecuteEffect(c.cardEffects[i].card.instanceId, c.cardEffects[i].effectId, c.cardEffects[i].card.owner.photonId);
 
@@ -177,9 +178,9 @@ public class PlacePhase : Phase
                 }
             }
 
-            if(special_index > 0)
+            if(special_index >= 0)
             {
-                KAction previousAction = GM.actionManager.GetActionByEffect(special[Mathf.Max(0, special_index - 1)].effectId);
+                KAction previousAction = special_index == 0 ? null : GM.actionManager.GetActionByEffect(special[special_index - 1].effectId);
 
                 KAction special_action = new A_ExecuteEffect(c.cardEffects[i].card.instanceId, c.cardEffects[i].effectId, c.cardEffects[i].card.owner.photonId);
 

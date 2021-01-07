@@ -54,12 +54,7 @@ public class CE_Wololo : SelectionCardEffect
                 }
                 else
                 {
-                    List<Card> selected = new List<Card>
-                    {
-                        top_deck_card
-                    };
-
-                    parentAction.PushAction(new A_CardSelection("¿<color=#880014>Inflingirte</color> 1 <sprite=2> para enviar tu \"" + top_deck_card.cardName + "\" al descarte?", selected, opponent.photonId, this, card.instanceId).ModifyParameters(true, false, 0, 0));
+                    parentAction.PushAction(new A_CardSelection("¿<color=#880014>Inflingirte</color> 1 <sprite=2> para enviar tu \"" + top_deck_card.cardName + "\" al descarte?", top_deck_card, opponent.photonId, this, card.instanceId).ModifyParameters(true, false, 0, 0));
                 }
             }
             else

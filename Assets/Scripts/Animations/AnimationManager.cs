@@ -165,19 +165,10 @@ public class AnimationManager : MonoBehaviour
 
         PlayerHolder player = GM.GetPlayerHolder(photonId);
 
-        player.ModifyHitPoints(-1);
+        player.ModifyHitPoints(-1, chip_component.owner.photonId);
 
         chip_component.backSide.gameObject.SetActive(false);
         chip_component.state = ChipSate.STASHED;
-
-        if (chip_component.owner.isLocal)
-        {
-            GM.turn.localInflictedBleed = true;
-        }
-        else
-        {
-            GM.turn.opponentInflictedBleed = true;
-        }
     }
 
     #endregion

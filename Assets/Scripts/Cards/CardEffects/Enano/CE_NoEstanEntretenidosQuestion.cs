@@ -17,12 +17,7 @@ public class CE_NoEstanEntretenidosQuestion : SelectionCardEffect
         }
         else
         {
-            List<Card> target = new List<Card>
-            {
-                card
-            };
-
-            parentAction.PushAction(new A_CardSelection("¿Iniciar el proximo turno con <sprite=4> menos?", target, enemy.photonId, this, card.instanceId).ModifyParameters(true, false, 0, 0));
+            parentAction.PushAction(new A_CardSelection("¿Iniciar el proximo turno con <sprite=4> menos?", card, enemy.photonId, this, card.instanceId).ModifyParameters(true, false, 0, 0));
         }
     }
 

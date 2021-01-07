@@ -10,7 +10,7 @@ public class CE_Frenesi_SMODS : CardEffect
     {
         skipsEffectPreview = false;
 
-        if (GM.turn.playerInflictedBleed(card.owner.photonId))
+        if (GM.turn.turnFlags.GetFlag(card.owner.photonId, FlagDesc.INFLICTED_BLEED).amount > 0)
         {
             card.owner.statMods.Add(temp_draw);
             card.owner.statMods.Add(temp_energy);

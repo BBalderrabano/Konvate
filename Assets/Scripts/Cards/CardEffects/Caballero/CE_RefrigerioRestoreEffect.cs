@@ -15,7 +15,7 @@ public class CE_RefrigerioRestoreEffect : CardEffect
 
         List<Transform> bloodChips = GameManager.singleton.GetChips(ChipType.BLEED, enemy, true);
 
-        if(bloodChips.Count == 0 && !GM.turn.playerInflictedBleed(enemy.photonId))
+        if(bloodChips.Count == 0 && GM.turn.turnFlags.GetFlag(enemy.photonId, FlagDesc.INFLICTED_BLEED).amount <= 0)
         {
             card.owner.ModifyHitPoints(3);
             isDone = true;

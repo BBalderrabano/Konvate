@@ -26,6 +26,26 @@ public class A_CardSelection : KAction
         }
     }
 
+    public A_CardSelection(string description, Card card, int photonId, SelectionCardEffect callback = null, int cardId = -1, int actionId = -1) : base(photonId, actionId)
+    {
+        this.card_pool = new List<Card>
+        {
+            card
+        };
+        this.description = description;
+        this.callback = callback;
+
+        isMultiple = false;
+        minSelected = 0;
+        maxSelected = 0;
+
+        if (callback != null)
+        {
+            this.cardOrigin = cardId;
+            this.effectOrigin = callback.effectId;
+        }
+    }
+
     bool isYesNo = false;
     bool isMultiple = false;
     int minSelected = 0;

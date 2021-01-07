@@ -29,25 +29,11 @@ public class Turn : ScriptableObject
     public List<CardEffect> endTurnEffects = new List<CardEffect>();
     [System.NonSerialized]
     public List<ComboTracker> comboTracker = new List<ComboTracker>();
-
-    public bool localInflictedBleed = false;
-    public bool opponentInflictedBleed = false;
+    [System.NonSerialized]
+    public TurnFlags turnFlags = new TurnFlags();
 
     public TransformVariable playerOneTurnLine;
     public TransformVariable playerTwoTurnLine;
-
-    public bool playerInflictedBleed(int photonId)
-    {
-        if (GameManager.singleton.GetPlayerHolder(photonId).isLocal)
-        {
-            return localInflictedBleed;
-        }
-        else
-        {
-            return opponentInflictedBleed;
-        }
-    }
-
 
     public bool IsOffensivePlayer(int photonId)
     {
@@ -66,8 +52,7 @@ public class Turn : ScriptableObject
         phaseIndex = 0;
         startTurnEffects.Clear();
         endTurnEffects.Clear();
-        localInflictedBleed = false;
-        opponentInflictedBleed = false;
+        turnFlags.ResetFlags();
     }
 
     public bool Execute()

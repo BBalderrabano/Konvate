@@ -89,6 +89,8 @@ public class A_Discard : KAction
 
             PushActions(discardEffects);
 
+            GM.turn.turnFlags.AddFlag(new TurnFlag(card.owner.photonId, FlagDesc.DISCARD_AMOUNT_BY_EFF, 1));
+
             hasDiscardEffect = false;
         }
         else if(LinkedActionsReady())
