@@ -21,15 +21,11 @@ public class CE_PielDePiedra : CardEffect
         }
 
         parentAction.MakeActiveOnComplete(false);
-        skipsEffectPreview = true;
+        skipsEffectPreviewTime = true;
 
         if (!remove.removed && card.owner.isFloatingDefend(card.instanceId))
         {
-            CardEffect clone = (CardEffect)prevail.Clone();
-
-            clone.effectId = int.Parse((9).ToString() + effectId.ToString());
-            clone.card = card;
-            clone.isTemporary = true;
+            CardEffect clone = prevail.Clone(card);
 
             card.cardEffects.Add(clone);
 

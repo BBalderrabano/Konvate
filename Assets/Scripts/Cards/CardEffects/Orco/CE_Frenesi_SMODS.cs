@@ -8,7 +8,7 @@ public class CE_Frenesi_SMODS : CardEffect
 
     public override void Execute()
     {
-        skipsEffectPreview = false;
+        skipsEffectPreviewTime = false;
 
         if (GM.turn.turnFlags.GetFlag(card.owner.photonId, FlagDesc.INFLICTED_BLEED).amount > 0)
         {
@@ -17,7 +17,7 @@ public class CE_Frenesi_SMODS : CardEffect
         }
         else
         {
-            skipsEffectPreview = true;
+            skipsEffectPreviewTime = true;
             GM.HidePreviewCard();
         }
     }

@@ -14,7 +14,7 @@ public class CE_DisparoPreciso : CardEffect
 
         PlayerHolder enemy = GM.GetOpponentHolder(card.owner.photonId);
 
-        skipsEffectPreview = false;
+        skipsEffectPreviewTime = false;
 
         if (!enemy.playedCards.Any(a => a.HasTags(CardTag.DEFENSA)) && !enemy.playedCards.Any(a => a.HasTags(CardTag.DEFENSA_SUPERIOR)))
         {
@@ -22,7 +22,7 @@ public class CE_DisparoPreciso : CardEffect
         }
         else
         {
-            skipsEffectPreview = true;
+            skipsEffectPreviewTime = true;
         }
     }
 }

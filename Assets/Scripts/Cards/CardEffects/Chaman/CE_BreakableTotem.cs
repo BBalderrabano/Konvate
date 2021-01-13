@@ -60,11 +60,7 @@ public class CE_BreakableTotem : SelectionCardEffect
 
     void ExecuteTotemEffect()
     {
-        CardEffect clone = (CardEffect)totem_effect.Clone();
-
-        clone.effectId = int.Parse((9).ToString() + effectId.ToString());
-        clone.card = card;
-        clone.isTemporary = true;
+        CardEffect clone = totem_effect.Clone(card);
 
         card.cardEffects.Add(clone);
 

@@ -87,10 +87,7 @@ public class CE_Wololo : SelectionCardEffect
         {
             if (top_deck_card != null)
             {
-                CardEffect clone = (CardEffect) returnToOwner.Clone();
-
-                clone.effectId = int.Parse((9).ToString() + effectId.ToString());
-                clone.card = top_deck_card;
+                CardEffect clone = returnToOwner.Clone(top_deck_card, false);
 
                 top_deck_card.cardEffects.Add(clone);
 

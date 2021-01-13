@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a690ff51c21df6840a240e723fb5d079, type: 3}
+  m_Name: Vampiro_Chupar Sangre
+  m_EditorClassIdentifier: 
+  CardCost: 1
+  cardName: Chupar Sangre
+  art: {fileID: -7917720641013132633, guid: e389943a8b1638c4c9a9047752308388, type: 3}
+  classIcon: {fileID: 21300000, guid: 5c832cdca808cb44d85792802baf7d85, type: 3}
+  cardType: {fileID: 11400000, guid: 0e3332cf33a066a4d8be0f706aa9ccea, type: 2}
+  cardText: "<color=#FF0000>Coloca </color>1<sprite=2>\nSi Forma de Murci\xE9lago
+    esta en juego \n<color=#880014>recupera</color> 1<sprite=2>"
+  textMods: []
+  cardEffects:
+  - {fileID: 11400000, guid: 2cf7dadd6eb72184285ba7808675371d, type: 2}
+  - {fileID: 11400000, guid: 0353a97b67797544fbaa5f1a270bb11e, type: 2}
+  conditions: []
+  cardTags: 0100000002000000070000000b000000

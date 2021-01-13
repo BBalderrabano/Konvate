@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Card Effects/Arquero/Trampa")]
@@ -21,7 +19,7 @@ public class CE_Trampa : CardEffect
             card.cardEffects.OfType<CE_TrampaStartTurn>().First().isActive = false;
         }
 
-        skipsEffectPreview = true;
+        skipsEffectPreviewTime = true;
         GM.HidePreviewCard();
     }
 }

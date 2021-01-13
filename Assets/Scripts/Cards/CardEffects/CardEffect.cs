@@ -44,11 +44,25 @@ public abstract class CardEffect : ScriptableObject, ICloneable
     public A_ExecuteEffect parentAction;
 
     [System.NonSerialized]
-    public bool skipsEffectPreview = false;
+    public bool skipsEffectPreviewTime = false;
+
+    [System.NonSerialized]
+    public bool skipsCardPreview = false;
 
     public object Clone()
     {
         return this.MemberwiseClone();
+    }
+
+    public CardEffect Clone(Card effectOwner, bool isTemporary = true)
+    {
+        CardEffect clone = (CardEffect) this.Clone();
+
+        clone.effectId = int.Parse(effectId.ToString() + GM.resourcesManager.GetUniqueId());
+        clone.card = effectOwner;
+        clone.isTemporary = isTemporary;
+
+        return clone;
     }
 
     public virtual void Execute()
@@ -57,6 +71,9 @@ public abstract class CardEffect : ScriptableObject, ICloneable
     }
 
     public virtual void OnLeavePlay() { }
+
+    [System.NonSerialized]
+    public bool isAnimatingLeanTween = false;
 
     [System.NonSerialized]
     public bool isAnimatingCombo = false;

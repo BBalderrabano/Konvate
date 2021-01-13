@@ -17,11 +17,14 @@ public class ResourcesManager : ScriptableObject
     int actionIndex;
     int animationIndex;
 
+    int uniqueId;
+
     public void Init()
     {
         actionIndex = 0;
         cardInstIndex = 0;
         animationIndex = 0;
+        uniqueId = 0;
 
         cardDictionary.Clear();
 
@@ -38,6 +41,13 @@ public class ResourcesManager : ScriptableObject
         actionIndex = 0;
         cardInstIndex = 0;
         animationIndex = 0;
+        uniqueId = 0;
+    }
+
+    public int GetUniqueId()
+    {
+        uniqueId++;
+        return uniqueId;
     }
 
     public int GetActionIndex()

@@ -13,13 +13,13 @@ public class CE_GolpeAfortunado : SelectionCardEffect
     {
         base.Execute();
 
-        skipsEffectPreview = false;
+        skipsEffectPreviewTime = false;
 
         opponent = GM.GetOpponentHolder(card.owner.photonId);
 
         if(opponent.deck.Count < 1)
         {
-            skipsEffectPreview = true;
+            skipsEffectPreviewTime = true;
             Finish();
         }
         else

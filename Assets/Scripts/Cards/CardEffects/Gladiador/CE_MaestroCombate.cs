@@ -11,7 +11,7 @@ public class CE_MaestroCombate : CardEffect
 
         Card copy = card.owner.handCards.Find(a => a.cardName == card.cardName);
 
-        skipsEffectPreview = (copy == null);
+        skipsEffectPreviewTime = (copy == null);
 
         if (copy != null)
         {

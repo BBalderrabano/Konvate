@@ -18,14 +18,8 @@ public class CE_ChoqueDeEspadas : CardEffect
         {
             if(!ataques_basicos[i].textMods.Find(a => a.GetType() == abTextMod.GetType()))
             {
-                CardEffect clone = (CardEffect)remove.Clone();
-
-                clone.effectId = int.Parse((i).ToString() + effectId.ToString());
-                clone.card = ataques_basicos[i];
-                clone.isTemporary = true;
-
-                ataques_basicos[i].cardEffects.Add(clone);
-
+                ataques_basicos[i].cardEffects.Add(remove.Clone(ataques_basicos[i]));
+                
                 CardTextMod textMod = (CardTextMod)abTextMod.Clone();
 
                 textMod.Init(ataques_basicos[i]);

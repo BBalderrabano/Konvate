@@ -9,6 +9,6 @@ public class CE_Joker : CardEffect
 
     public override void Execute()
     {
-        skipsEffectPreview = skipsPreview;
+        skipsEffectPreviewTime = skipsPreview;
     }
 }

@@ -10,7 +10,7 @@ public class CE_ShapeReplace : CardEffect
     {
         List<Card> playedShapes = card.owner.playedCards.FindAll(a => a.HasTags(new CardTags[] { CardTags.SHAPE }.ToArray()));
 
-        skipsEffectPreview = false;
+        skipsEffectPreviewTime = false;
 
         if (playedShapes.Count > 0)
         {
@@ -21,7 +21,7 @@ public class CE_ShapeReplace : CardEffect
         }
         else
         {
-            skipsEffectPreview = true;
+            skipsEffectPreviewTime = true;
             Finish();
         }
     }

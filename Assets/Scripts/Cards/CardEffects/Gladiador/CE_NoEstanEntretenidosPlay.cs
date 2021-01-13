@@ -6,7 +6,7 @@ public class CE_NoEstanEntretenidosPlay : CardEffect
 {
     public override void Execute()
     {
-        skipsEffectPreview = true;
+        skipsEffectPreviewTime = true;
 
         foreach (CE_NoEstanEntrenidosPlace eff in card.cardEffects.OfType<CE_NoEstanEntrenidosPlace>().ToList())
         {

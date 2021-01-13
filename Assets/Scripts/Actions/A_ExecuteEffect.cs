@@ -34,7 +34,11 @@ public class A_ExecuteEffect : KAction
         {
             time = 0;
 
-            GM.PreviewCard(effect.card);
+            if (!effect.skipsCardPreview)
+            {
+                GM.PreviewCard(effect.card);
+            }
+
             effect.Execute();
 
             isInit = true;
@@ -52,12 +56,12 @@ public class A_ExecuteEffect : KAction
 
         bool effectPreviewTimeout = time > Settings.CARD_EFFECT_MIN_PREVIEW;
 
-        if (effect.skipsEffectPreview)
+        if (effect.skipsEffectPreviewTime)
         {
             effectPreviewTimeout = true;
         }
 
-        return isInit && LinkedActionsReady() && AnimationsAreReady() && effectPreviewTimeout && !effect.isAnimatingCombo;
+        return isInit && !effect.isAnimatingCombo && !effect.isAnimatingLeanTween && LinkedActionsReady() && AnimationsAreReady() && effectPreviewTimeout;
     }
 
     public override void OnComplete()

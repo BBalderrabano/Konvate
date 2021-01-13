@@ -20,7 +20,7 @@ public class CE_NoDeckPlaceChip : CardEffect
         }
         else
         {
-            skipsEffectPreview = true;
+            skipsEffectPreviewTime = true;
         }
     }
 }

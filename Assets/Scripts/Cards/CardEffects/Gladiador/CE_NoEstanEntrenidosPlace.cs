@@ -14,7 +14,7 @@ public class CE_NoEstanEntretenidosPlace : CardEffect
 
         int amount = Mathf.Abs(start_turn - GM.turn.turnCount);
 
-        skipsEffectPreview = (amount > 0);
+        skipsEffectPreviewTime = (amount > 0);
 
         if(amount > 0)
         {

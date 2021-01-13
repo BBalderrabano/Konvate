@@ -17,10 +17,11 @@ MonoBehaviour:
   art: {fileID: 2971325421844879717, guid: 2158537e100ce804c9650967b703455b, type: 3}
   classIcon: {fileID: 21300000, guid: 6482ce3aed359ad48913e2d7958a8689, type: 3}
   cardType: {fileID: 11400000, guid: 0e3332cf33a066a4d8be0f706aa9ccea, type: 2}
-  cardText: "Al final del turno baraja una carta jugada por un oponente a tu mazo
-    y remueve del juego esta carta\nEl pr\xF3ximo turno luego de jugar la carta capturada
-    devu\xE9lvela al mazo de su due\xF1o y esta carta regresa a tu pila de descarte"
+  cardText: "Al final del turno, baraja una carta jugada por un oponente a tu mazo
+    y remueve del juego esta carta\nLuego de jugar la carta capturada devu\xE9lvela
+    al mazo de su due\xF1o y esta a tu pila de descarte"
   textMods: []
-  cardEffects: []
+  cardEffects:
+  - {fileID: 11400000, guid: dac1b87addf08d9439bac467702b6fc1, type: 2}
   conditions: []
   cardTags: 01000000040000002a000000

@@ -60,11 +60,8 @@ public class CE_GoblinBreakable : SelectionCardEffect
 
     void ExecuteGoblinEffect()
     {
-        CardEffect clone = (CardEffect)card_effect.Clone();
+        CardEffect clone = card_effect.Clone(card);
 
-        clone.effectId = int.Parse((9).ToString() + effectId.ToString());
-        clone.card = card;
-        clone.isTemporary = true;
         clone.isDone = true;
 
         card.cardEffects.Add(clone);

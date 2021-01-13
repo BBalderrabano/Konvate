@@ -13,7 +13,7 @@ public class CE_TrampaStartTurn : CardEffect
 
     public override void Execute()
     {
-        skipsEffectPreview = !isActive;
+        skipsEffectPreviewTime = !isActive;
 
         if (isActive)
         {

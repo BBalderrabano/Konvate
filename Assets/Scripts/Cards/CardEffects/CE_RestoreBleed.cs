@@ -13,7 +13,7 @@ public class CE_RestoreBleed : CardEffect
     {
         base.Execute();
 
-        skipsEffectPreview = skipsPreview;
+        skipsEffectPreviewTime = skipsPreview;
 
         card.owner.ModifyHitPoints(amount);
 

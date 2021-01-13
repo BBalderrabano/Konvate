@@ -14,7 +14,7 @@ public class CE_DobleGolpe : SelectionCardEffect
 
         textMod.Init(card);
 
-        skipsEffectPreview = false;
+        skipsEffectPreviewTime = false;
         parentAction.MakeActiveOnComplete(true);
 
         List<Card> available_cards = card.owner.playedCards.FindAll(a => a.GetCardType() is NormalPlay && a.photonId == card.owner.photonId && a.cardName != card.cardName);
@@ -32,7 +32,7 @@ public class CE_DobleGolpe : SelectionCardEffect
         }
         else
         {
-            skipsEffectPreview = true;
+            skipsEffectPreviewTime = true;
         }
     }
 
@@ -47,13 +47,7 @@ public class CE_DobleGolpe : SelectionCardEffect
 
             for (int i = 0; i < c.cardEffects.Count; i++)
             {
-                CardEffect clone = (CardEffect)c.cardEffects[i].Clone();
-
-                clone.effectId = int.Parse(effectId.ToString() + (i).ToString());
-                clone.card = card;
-                clone.isTemporary = true;
-
-                card.cardEffects.Add(clone);
+                card.cardEffects.Add(c.cardEffects[i].Clone(card));
             }
 
             GM.turn.currentPhase.value.OnPlayCard(card);

@@ -9,6 +9,6 @@ public class CE_OnRechargeDiscardShape : CardEffect
     {
         parentAction.PushAction(new A_Discard(card.instanceId, card.owner.photonId));
 
-        skipsEffectPreview = true;
+        skipsEffectPreviewTime = true;
     }
 }

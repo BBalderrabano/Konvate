@@ -11,7 +11,7 @@ public class CE_LibroMalditoCostReduction : CardEffect
     {
         base.Execute();
 
-        skipsEffectPreview = true;
+        skipsEffectPreviewTime = true;
 
         if (card.owner.photonId == card.photonId)
         {

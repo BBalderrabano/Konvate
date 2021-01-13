@@ -12,6 +12,7 @@ public class CardViz : MonoBehaviour
     public Text cardCost;
     public Image quickPlayIcon;
     public Image classIcon;
+    public Image cardFrontImage;
     public Image cardBackImage;
     public Image cardBorder;
     public Image cardBrokenOverlay;

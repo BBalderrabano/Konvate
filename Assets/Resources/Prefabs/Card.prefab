@@ -208,6 +208,7 @@ MonoBehaviour:
   cardCost: {fileID: 3839741357472183679}
   quickPlayIcon: {fileID: 3839741357971723726}
   classIcon: {fileID: 3839741358099678783}
+  cardFrontImage: {fileID: 3839741358340914041}
   cardBackImage: {fileID: 3839741356638069870}
   cardBorder: {fileID: 4951086415410193359}
   cardBrokenOverlay: {fileID: 2172756982447098166}
@@ -260,6 +261,7 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
+  observableSearch: 0
   Synchronization: 0
   OwnershipTransfer: 0
   ObservedComponents:

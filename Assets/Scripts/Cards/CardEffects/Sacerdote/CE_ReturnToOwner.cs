@@ -9,7 +9,7 @@ public class CE_ReturnToOwner : CardEffect
     {
         base.Execute();
 
-        skipsEffectPreview = (card == null);
+        skipsEffectPreviewTime = (card == null);
         parentAction.MakeActiveOnComplete((card == null));
 
         if (card != null)

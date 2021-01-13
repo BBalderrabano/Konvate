@@ -11,13 +11,13 @@ public class CE_CurseSelfInflictBleed : CardEffect
         {
             base.Execute();
 
-            skipsEffectPreview = false;
+            skipsEffectPreviewTime = false;
             card.RevealCard();
             parentAction.LinkAnimation(GM.animationManager.DirectDamageBleedChip(parentAction.actionId, card.owner.photonId, card.instanceId, card.owner.photonId));
         }
         else
         {
-            skipsEffectPreview = true;
+            skipsEffectPreviewTime = true;
 
             card.MakeBorderInactive();
             GM.HidePreviewCard();

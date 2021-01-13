@@ -10,7 +10,7 @@ public class CE_NoEstanEntretenidosEnergy : CardEffect
         {
             base.Execute();
 
-            skipsEffectPreview = false;
+            skipsEffectPreviewTime = false;
             parentAction.MakeActiveOnComplete(true);
 
             foreach (PlayerHolder p in GM.allPlayers)
@@ -20,7 +20,7 @@ public class CE_NoEstanEntretenidosEnergy : CardEffect
         }
         else
         {
-            skipsEffectPreview = true;
+            skipsEffectPreviewTime = true;
             parentAction.MakeActiveOnComplete(false);
         }
     }

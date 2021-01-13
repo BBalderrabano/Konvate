@@ -20,15 +20,12 @@ public class CE_ExplosionVenenosa : CardEffect
             if (player.all_cards[i].HasTags(new CardTags[] { CardTags.PES_EXPLO_VENENO_TARGET })
                 && !player.all_cards[i].statMods.Contains(poisonDiscount))
             {
-                CardEffect clone = (CardEffect)placePoison.Clone();
+                CardEffect clone = placePoison.Clone(player.all_cards[i], false);
 
-                clone.effectId = int.Parse((i+1).ToString() + effectId.ToString());
-                clone.card = player.all_cards[i];
+                player.all_cards[i].cardEffects.Add(clone);
 
                 player.all_cards[i].statMods.Add(poisonDiscount);
                 player.all_cards[i].statMods.Add(poisonQuickPlay);
-                player.all_cards[i].cardEffects.Add(clone);
-
                 player.all_cards[i].cardViz.RefreshStats();
             }
         }

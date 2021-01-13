@@ -11,7 +11,7 @@ public class CE_BravadoCombo : CardEffect
     {
         base.Execute();
 
-        skipsEffectPreview = false;
+        skipsEffectPreviewTime = false;
 
         if (IsCombo())
         {
@@ -19,7 +19,7 @@ public class CE_BravadoCombo : CardEffect
         }
         else
         {
-            skipsEffectPreview = true;
+            skipsEffectPreviewTime = true;
         }
     }
 }
