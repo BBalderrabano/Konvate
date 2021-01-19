@@ -146,6 +146,8 @@ public class OptionsMenu : MonoBehaviour
 
     public void Concede()
     {
+        LeanAudio.play(BUTTON_CLICK, Settings.VOLUME_SFX);
+
         EndGameScreen.singleton.EndGame(false, "Te has rendido");
 
         MultiplayerManager.singleton.SendConcede(GameManager.singleton.localPlayer.photonId);
