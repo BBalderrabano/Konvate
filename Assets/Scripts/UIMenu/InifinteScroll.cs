@@ -5,15 +5,12 @@ public class InifinteScroll : MonoBehaviour
 {
     public float speed = 0.5f;
 
-    void Start()
-    {
-
-    }
+    public Image targetImage;
 
     void Update()
     {
-        Vector2 offset = new Vector2(0, Time.time * speed);
+        float offset = Time.time * speed;
 
-        gameObject.GetComponent<Image>().material.mainTextureOffset = offset;
+        targetImage.material.mainTextureOffset = new Vector2(0, offset);
     }
 }
