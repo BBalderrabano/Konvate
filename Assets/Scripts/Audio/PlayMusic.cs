@@ -25,11 +25,11 @@ public class PlayMusic : MonoBehaviour
                 index = Random.Range(0, tracks.Count);
             }
 
-            PlaySound();
+            Play();
         }
     }
 
-    public void PlaySound()
+    public void Play()
     {
         lastIndex = index;
         audioSource.PlayOneShot(GetMusicTrack(), Settings.VOLUME_MUSIC);

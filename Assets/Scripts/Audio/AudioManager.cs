@@ -47,11 +47,11 @@ public class AudioManager : MonoBehaviour
     {
         StopAllSounds();
 
-        LeanAudio.play(victoryClip, Settings.VOLUME_SFX);
+        LeanAudio.play(victoryClip, Settings.VOLUME_SFX, false);
 
         LeanTween.value(0, 1, victoryFireworks.length).setOnStart(()=> 
         {
-            LeanAudio.play(victoryFireworks, (0.7f * Settings.VOLUME_SFX));
+            LeanAudio.play(victoryFireworks, (0.7f * Settings.VOLUME_SFX), false);
 
         }).setOnComplete(()=> {
             LeanTween.value(1, 0, victoryFireworks.length)

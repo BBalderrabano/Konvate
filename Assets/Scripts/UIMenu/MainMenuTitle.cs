@@ -152,7 +152,7 @@ public class MainMenuTitle : MonoBehaviour
                 text.colorGradient = new VertexGradient(firstColor, secondColor, firstColor, secondColor);
             });
 
-            LeanAudio.play(menuTheme, (0.7f * Settings.VOLUME_MUSIC)).time = 9.75f;
+            LeanAudio.play(menuTheme, (0.7f * Settings.VOLUME_MUSIC), true).time = 9.75f;
         });
     }
 }

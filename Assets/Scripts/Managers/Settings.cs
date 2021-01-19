@@ -23,6 +23,8 @@ public static class Settings
 
     public static float TURN_BUTTON_COOLDOWN = 0.5f;
 
+    public static float GENERAL_TURN_SPEED = 1f;
+
     public static void Shuffle<T>(this IList<T> ts)
     {
         var count = ts.Count;

@@ -1,6 +1,7 @@
 
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.Audio;
 
 public class LeanAudioStream {
 
@@ -263,9 +264,21 @@ public class LeanAudio : object {
 		return audioClip;
 	}
 
-	public static AudioSource play( AudioClip audio, float volume ){
+	public static AudioSource play( AudioClip audio, float volume , bool isMusic = false){
 		AudioSource audioSource = playClipAt(audio, Vector3.zero);
 		audioSource.volume = volume;
+
+		AudioMixer mixer = Resources.Load("Audio/AudioMixer") as AudioMixer;
+
+		if (isMusic)
+		{
+			audioSource.outputAudioMixerGroup = mixer.FindMatchingGroups("Music")[0];
+		}
+		else
+		{
+			audioSource.outputAudioMixerGroup = mixer.FindMatchingGroups("Sfx")[0];
+		}
+
 		return audioSource; 
 	}
 
