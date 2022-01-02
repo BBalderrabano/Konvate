@@ -505,7 +505,7 @@ public class MultiplayerManager : MonoBehaviourPun, IPunInstantiateMagicCallback
 
     public void SendConcede(int photonId)
     {
-        photonView.RPC("RPC_SendConcede", RpcTarget.OthersBuffered, photonId);
+        photonView.RPC("RPC_SendConcede", RpcTarget.AllBuffered, photonId);
     }
 
     [PunRPC]
@@ -514,6 +514,10 @@ public class MultiplayerManager : MonoBehaviourPun, IPunInstantiateMagicCallback
         if (!GM.GetPlayerHolder(photonId).isLocal)
         {
             EndGameScreen.singleton.EndGame(true, "Tu oponente se a rendido");
+        }
+        else
+        {
+            EndGameScreen.singleton.EndGame(false, "Te has rendido");
         }
     }
 
