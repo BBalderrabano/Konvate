@@ -106,7 +106,7 @@ public class CollectionNavigator : MonoBehaviour
             }
         }
 
-        ToggleCardCopies(showCardCopies, true);
+        ToggleCardCopies(showCardCopies.isOn, true);
     }
 
     public void ToggleCardCopies(bool toggle)

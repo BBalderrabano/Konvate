@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CardCost: 1
   cardName: "Armaged\xF3n"
-  art: {fileID: -7255779512297840701, guid: 0171d50fb22000000a71d50fb2200000, type: 3}
+  art: {fileID: -7255779512297840701, guid: 91b9a6866a7068749b0542879543ddec, type: 3}
   classIcon: {fileID: 21300000, guid: 39bda9c2069dc30499c917adffe4359d, type: 3}
   cardType: {fileID: 11400000, guid: 0e3332cf33a066a4d8be0f706aa9ccea, type: 2}
   cardText: Si no te quedan cartas en el mazo <color=#FF0000>coloca </color>4<sprite=2>

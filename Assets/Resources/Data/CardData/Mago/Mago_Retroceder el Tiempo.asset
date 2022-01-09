@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CardCost: 0
   cardName: <size=39>Retroceder el Tiempo</size>
-  art: {fileID: -8409782439678555224, guid: 0171d50fb22000000a71d50fb2200000, type: 3}
+  art: {fileID: -8409782439678555224, guid: 91b9a6866a7068749b0542879543ddec, type: 3}
   classIcon: {fileID: 21300000, guid: 39bda9c2069dc30499c917adffe4359d, type: 3}
   cardType: {fileID: 11400000, guid: 824122562ba26474b9e5d23302a17560, type: 2}
   cardText: Pon hasta 5 cartas de tu pila de descarte en el fondo de tu mazo

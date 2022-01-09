@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CardCost: 1
   cardName: Muro de Hielo
-  art: {fileID: 2818292984382652682, guid: 0171d50fb22000000a71d50fb2200000, type: 3}
+  art: {fileID: 2818292984382652682, guid: 91b9a6866a7068749b0542879543ddec, type: 3}
   classIcon: {fileID: 21300000, guid: 39bda9c2069dc30499c917adffe4359d, type: 3}
   cardType: {fileID: 11400000, guid: 824122562ba26474b9e5d23302a17560, type: 2}
   cardText: Un oponente tiene <sprite=4> menos este turno
